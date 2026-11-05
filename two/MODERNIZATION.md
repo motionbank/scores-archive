@@ -129,6 +129,39 @@ Goal: make the score work when hosted under **any `https://` domain**.
 
 ---
 
+## 6b. Unity mocap viewers ported to three.js (2026-11-05)
+
+The seven **Unity Web Player** mocap cells (`MocapView_44a/44b/44c/45/46/47/48`
+on S3) could never load again — the plugin has been dead since 2017. They are
+now served by a self-hosted three.js viewer at `/modules/two/mocap/`:
+
+- Skeleton, skinning and animation were extracted from the original Unity
+  **4.2.0f4** `.unity3d` bundles (downloaded from S3) with UnityPy into one
+  JSON per bundle under `modules/two/mocap/data/` — bone hierarchy + rest
+  pose, the 24 fps "Take 001" keyframe curves, and skinned meshes with 4
+  weights/indices per vertex plus bind poses.
+- The viewer (`modules/two/mocap/viewer.js`, three.js r170 vendored) builds
+  the bone hierarchy, creates `SkinnedMesh`s with the file bindPoses as
+  `boneInverses`, and samples the keyframe curves directly (full scrub
+  control). UI: play/pause, timeline, speed, camera reset, skeleton overlay.
+- Unity-specific findings recorded in `modules/two/mocap/README.md`: clip
+  paths are avatar-relative (resolved by suffix match), the serialized scene
+  pose is mid-motion so the **file bindPoses must be used**, and the
+  MotionBuilder control rigs (`*_Ctrl:*`, present in 44a/46/47) can be
+  ignored — the deform skeletons carry their own baked curves.
+- All 7 bundles verified visually in headless Chromium (solos, duets and the
+  Careful Scientist trio deform and animate correctly), and the embedded cell
+  was verified inside the running score (iframe + canvas + zero console
+  errors).
+- `docker/nginx-default.conf` now gzips JSON (the largest mocap JSON is
+  14 MB, ~3.5 MB compressed).
+
+Not yet ported: the `InterAct_31_PhrasingLandscape` cell (also a Unity Web
+Player embed on S3, referenced by a set); the same extraction pipeline
+applies. The `TextCells/TEND-*` S3 pages remain plain-HTML embeds.
+
+---
+
 ## 7. How to run
 
 ```sh

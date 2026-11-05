@@ -16,7 +16,7 @@ scores, their JSON data, and their media are all served as files.
 |---|---|---|
 | `/dh`  | **Using the Sky** — Deborah Hay's *No Time To Fly* | text cells, video recording cells with scene overlays, data visualizations |
 | `/jbmf` | **Seven Duets** — Jonathan Burrows & Matteo Fargion | Vimeo video cells, interactive generator/performer modules |
-| `/two` | **TWO** — "A Choreographic Object" companion score | image/text cells, Vimeo, S3-hosted text & mocap modules |
+| `/two` | **TWO** — "A Choreographic Object" companion score | image/text cells, Vimeo, self-hosted three.js mocap viewers, S3 text modules |
 
 A landing page (`index.html`) links to all three. Shared assets (fonts,
 styles) live in `/assets`.
@@ -110,8 +110,14 @@ would unblock everything below:
       repoint in `dh/javascripts/app-extend.js`.
 - [ ] **Private Vimeo videos (HTTP 401)** in `/jbmf` — embed-restricted;
       needs updated video IDs or public embeds in the data.
-- [ ] **Unity-Web-Player mocap cells in `/two`** — plugin dead; needs a
-      WebAssembly/three.js-style rebuild of the mocap viewers (larger project).
+- [x] **Unity-Web-Player mocap cells in `/two`** — **done**: all seven mocap
+      viewers were rebuilt as a self-hosted three.js player
+      (`/modules/two/mocap/`); skeleton, skinning and animation were extracted
+      from the original Unity 4.2 `.unity3d` bundles with UnityPy, and every
+      `iframe-src` now points at the local viewer. See
+      `modules/two/mocap/README.md` for the pipeline and Unity-specific
+      findings. Follow-up: the `InterAct_31_PhrasingLandscape` cell is also
+      Unity-based and not yet ported (same pipeline applies).
 
 ### Data cleanup (low risk, no blockers)
 
