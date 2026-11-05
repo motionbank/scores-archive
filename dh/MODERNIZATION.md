@@ -306,6 +306,22 @@ value, breaking iframe resolution outright — trimmed. Aggregate
 - CloudFront overlay images (`/dh/app/cells/…`) still 403; cells fall back to
   local poster images.
 
+### 6.6 Follow-up fixes from user testing
+
+- **Recording cells went dark grey on close** instead of returning to their
+  poster: the `cell-recording-view.close()` override saved the current
+  background (which `open()` had set to `none`) and re-applied it *after* the
+  base `close()` had restored the poster. The override now only re-applies
+  actual scene-overlay backgrounds.
+- **Scene navigation felt dead after the first click**: the player warned
+  about missing timing data only once, and every cell open logged a 404 for
+  the per-video scenes probe. It now fetches a shipped (empty)
+  `scenes/index.json` manifest — no 404 noise — and logs every unmatched
+  scene navigation. Note the overlay behaviour is genuinely mixed: ~22 of 30
+  `20130601_all` scene overlay PNGs are still alive on CloudFront, so those
+  text-score links visibly "jump" the cell to the scene's frame grab; the
+  video itself still cannot seek without timing data (see 6.5).
+
 ---
 
 ## 7. How to run
