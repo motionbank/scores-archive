@@ -155,10 +155,24 @@ now served by a self-hosted three.js viewer at `/modules/two/mocap/`:
   errors).
 - `docker/nginx-default.conf` now gzips JSON (the largest mocap JSON is
   14 MB, ~3.5 MB compressed).
+- **Skeleton overlay fix**: the toggle draws one helper per skinned mesh —
+  only the moving deform skeletons. (Drawing the whole scene root also drew
+  the static MotionBuilder control rigs and effectors that ship in the
+  bundles.)
+- **Camera fit**: robust world-space framing (median center + trimmed
+  radius over the dancers' bind-mapped vertices), so figures start framed
+  in every scene from tight solos to the Phrasing Landscape's shard terrain.
+- **The remaining Unity InterAct scenes are ported too**: `Recall08`
+  (InterAct 24), `Redux19` (25) and `PhrasingLandscapeBoth02` (31) go through
+  the same viewer. Caveat: these were interactive games — mocap playback and
+  scene render, but the game logic living in compiled Unity scripts (user
+  input, physics, scoring) is not reproduced. InterAct 27–29 are d3.js
+  visualizations and 30 a paper.js player — web-native, served as-is with
+  their local deps vendored under `/modules/two/interact/`. The two
+  `http://` TextCells URLs were also upgraded to https.
 
-Not yet ported: the `InterAct_31_PhrasingLandscape` cell (also a Unity Web
-Player embed on S3, referenced by a set); the same extraction pipeline
-applies. The `TextCells/TEND-*` S3 pages remain plain-HTML embeds.
+The plain `TextCells/TEND-*` S3 pages remain plain-HTML embeds (alive over
+https; vendoring them is optional future work).
 
 ---
 

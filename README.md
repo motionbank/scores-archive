@@ -116,8 +116,11 @@ would unblock everything below:
       from the original Unity 4.2 `.unity3d` bundles with UnityPy, and every
       `iframe-src` now points at the local viewer. See
       `modules/two/mocap/README.md` for the pipeline and Unity-specific
-      findings. Follow-up: the `InterAct_31_PhrasingLandscape` cell is also
-      Unity-based and not yet ported (same pipeline applies).
+      findings. The three additional Unity InterAct scenes (24 Recall, 25
+      Redux, 31 Phrasing Landscape) are ported through the same viewer —
+      as playback (the games' compiled logic is not reproduced); InterAct
+      27–30 are web-native d3.js/paper.js pages, vendored under
+      `/modules/two/interact/`.
 
 ### Data cleanup (low risk, no blockers)
 
