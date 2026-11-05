@@ -12,8 +12,9 @@ original mocap data — skeleton, skinning, and animation — extracted from the
 
 `index.html?data=<bundle>` with one of: `MocapView_44a`, `MocapView_44b`,
 `MocapView_44c`, `MocapView_45`, `MocapView_46`, `MocapView_47`,
-`MocapView_48`. The score cells reference these directly
-(`/modules/two/mocap/index.html?data=MocapView_47`).
+`MocapView_48` (the original mocap cells), or `Recall08`, `Redux19`,
+`PhrasingLandscapeBoth02` (the InterAct Unity scenes). The score cells
+reference these directly.
 
 UI: play/pause, timeline scrub, playback speed, camera reset (orbit with the
 mouse), skeleton overlay toggle.
@@ -45,7 +46,13 @@ Notes on the Unity specifics that matter:
 
 ## Remaining Unity content
 
-The `InterAct_31_PhrasingLandscape` cell (also Unity Web Player on S3, embedded
-in a `/two` set) is not yet ported — the same extraction pipeline applies.
-`three.js` r170 is vendored under `vendor/` (import map: `three` →
-`./vendor/three.module.js`).
+The three additional Unity InterAct scenes are also ported through the same
+pipeline: `Recall08` (InterAct 24), `Redux19` (25) and
+`PhrasingLandscapeBoth02` (31). Note these were interactive **games** — the
+mocap playback and scene render, but the game logic (user input, physics
+sim, scoring) that lived in compiled Unity scripts is not reproduced; the
+cells play as viewers. The InterAct 27–29 cells are d3.js visualizations and
+30 is a paper.js 2D mocap player — those are web-native and are served
+as-is from `/modules/two/interact/` (S3 pages with their local deps
+vendored). `three.js` r170 is vendored under `vendor/` (import map: `three`
+→ `./vendor/three.module.js`).

@@ -85,6 +85,7 @@ function matFor(meshName, skinned) {
 
 // ---------- meshes ----------
 const skinnedMeshes = [];
+const staticMeshes = [];
 for (const m of data.meshes) {
   const geo = new THREE.BufferGeometry();
   const flat = m.positions.flat();
@@ -110,6 +111,7 @@ for (const m of data.meshes) {
     const mesh = new THREE.SkinnedMesh(geo, matFor(m.name, true));
     mesh.frustumCulled = false;
     mesh.bind(skeleton, new THREE.Matrix4());
+    mesh.userData.bindInverses = inverses;
     scene.add(mesh);
     skinnedMeshes.push(mesh);
   } else {
@@ -117,6 +119,7 @@ for (const m of data.meshes) {
     const mesh = new THREE.Mesh(geo, matFor(m.name, false));
     mesh.frustumCulled = false;
     parent.add(mesh);
+    staticMeshes.push(mesh);
   }
 }
 
@@ -188,19 +191,60 @@ function bracket(ts, t) {
   return lo;
 }
 
-// ---------- camera fit ----------
+// ---------- camera fit (robust, world-space) ----------
 {
-  const box = new THREE.Box3();
-  for (const m of data.meshes) {
-    for (const p of m.positions) box.expandByPoint(_v.set(p[0], p[1], p[2]));
+  root.updateMatrixWorld(true);
+  const _m = new THREE.Matrix4();
+  const samples = [];
+  const push = (x, y, z) => { if (samples.length < 200000) samples.push(x, y, z); };
+  // Frame the DANCERS when present; static props/floors would skew the fit.
+  if (!skinnedMeshes.length) {
+    for (const mesh of staticMeshes) {
+      const pos = mesh.geometry.getAttribute("position");
+      for (let i = 0; i < pos.count; i += 2) {
+        _v.fromBufferAttribute(pos, i).applyMatrix4(mesh.matrixWorld);
+        push(_v.x, _v.y, _v.z);
+      }
+    }
   }
-  const size = box.getSize(new THREE.Vector3());
-  const center = box.getCenter(new THREE.Vector3());
-  const r = Math.max(size.x, size.y, size.z) || 2;
-  camera.position.set(center.x + r * 0.9, center.y + r * 0.35, center.z + r * 1.1);
-  controls.target.copy(center);
+  // skinned: bind-space vertices mapped through the dominant bone's
+  // bind-time world matrix (= inverse of its bindPose)
+  for (const mesh of skinnedMeshes) {
+    const pos = mesh.geometry.getAttribute("position");
+    const si = mesh.geometry.getAttribute("skinIndex");
+    const sw = mesh.geometry.getAttribute("skinWeight");
+    const inv = mesh.userData.bindInverses;
+    for (let i = 0; i < pos.count; i += 1) {
+      let best = 0;
+      for (let k = 1; k < 4; k++) if (sw.getComponent(i, k) > sw.getComponent(i, best)) best = k;
+      _m.copy(inv[si.getComponent(i, best)]).invert();
+      _v.fromBufferAttribute(pos, i).applyMatrix4(_m);
+      push(_v.x, _v.y, _v.z);
+    }
+  }
+  // median center + trimmed radius: immune to stray vertices/bones
+  const n = samples.length / 3;
+  const med = (arr) => {
+    const s = [...arr].sort((a, b) => a - b);
+    return s[s.length >> 1];
+  };
+  const xs = [], ys = [], zs = [];
+  for (let i = 0; i < samples.length; i += 3) { xs.push(samples[i]); ys.push(samples[i + 1]); zs.push(samples[i + 2]); }
+  const cx = med(xs), cy = med(ys), cz = med(zs);
+  const d = new Array(n);
+  for (let i = 0; i < n; i++) {
+    const dx = xs[i] - cx, dy = ys[i] - cy, dz = zs[i] - cz;
+    d[i] = Math.sqrt(dx * dx + dy * dy + dz * dz);
+  }
+  d.sort((a, b) => a - b);
+  const r = Math.max((d[Math.floor(n * 0.97)] || 1) * 1.7, 1);
+  camera.far = Math.max(500, r * 60);
+  camera.updateProjectionMatrix();
+  // slightly elevated vantage: keeps the subject framed while clearing props
+  camera.position.set(cx + r * 0.8, cy + r * 1.1, cz + r * 1.3);
+  controls.target.set(cx, cy, cz);
   controls.update();
-  window.__home = { pos: camera.position.clone(), target: center.clone() };
+  window.__home = { pos: camera.position.clone(), target: controls.target.clone() };
 }
 
 // ---------- UI ----------
@@ -222,12 +266,18 @@ document.getElementById("reset").onclick = () => {
   controls.update();
 };
 let showBones = false;
-const helper = new THREE.SkeletonHelper(root);
-helper.visible = false;
-scene.add(helper);
+// One helper per skinned mesh: draws only the deform skeleton bones that
+// actually move (a helper over the whole scene root would also draw the
+// static MotionBuilder control rigs / effectors that ship in the bundles).
+const helpers = skinnedMeshes.map((m) => {
+  const h = new THREE.SkeletonHelper(m);
+  h.visible = false;
+  scene.add(h);
+  return h;
+});
 document.getElementById("bones").onclick = (e) => {
   showBones = !showBones;
-  helper.visible = showBones;
+  helpers.forEach((h) => (h.visible = showBones));
   e.target.classList.toggle("on", showBones);
 };
 
