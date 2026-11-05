@@ -75,6 +75,64 @@ known remaining limitations (jbmf's `pm_player_01` cells and scene timings
 need a PieceMaker 2 database dump, private Vimeo videos, and
 Unity-Web-Player-based mocap content in `/two`).
 
+## Todo — open items
+
+What is still broken or unfinished, and what each item needs to move forward.
+Blocked items are marked with the missing input.
+
+### Blocked on data (PieceMaker 2 database dump)
+
+The old PM2 databases (Ruby/Postgres, hosted on now-deleted Heroku apps
+`deborah-hay-pm2.herokuapp.com` and `jbmf-pm2.herokuapp.com`) held the video
+event metadata. There are no Wayback captures of either API. A dump of the
+`events` tables (with `fields.file`, `fields.vid_service`,
+`fields.vid_service_id`, `fields['alt-angle-*']`, `utc_timestamp`, `duration`)
+would unblock everything below:
+
+- [ ] **`/dh` scene navigation / cell sync** — generate
+      `dh/dhay/player/scenes/<file>.json` maps (`title → seconds`) from the
+      scene events. The player hook is already implemented and needs no code
+      changes; the text-score links (1–30) would then seek the videos.
+- [ ] **`/dh` recording/visualization overlay overlays switching during
+      playback** — driven by the same `>>set-scene` stream; works again once
+      the above maps exist.
+- [ ] **`/jbmf` `pm_player_01` cells (140 cells)** — resolve their video file
+      only via `vid=` from the API (no `file=` in the cell data). With the
+      mapping, port the `/dh` local-player treatment (HTML5 + Video.js) to
+      jbmf; the module itself also needs its Flash/RTMP engine and http-only
+      froogaloop (Vimeo bridge) replaced.
+
+### Blocked on assets
+
+- [ ] **CloudFront overlay images `/dh/app/cells/…` return 403** —
+      recording/visualization cells fall back to local poster images. Needs
+      re-hosted overlay PNGs (recover from an old deployment/archive) plus a
+      repoint in `dh/javascripts/app-extend.js`.
+- [ ] **Private Vimeo videos (HTTP 401)** in `/jbmf` — embed-restricted;
+      needs updated video IDs or public embeds in the data.
+- [ ] **Unity-Web-Player mocap cells in `/two`** — plugin dead; needs a
+      WebAssembly/three.js-style rebuild of the mocap viewers (larger project).
+
+### Data cleanup (low risk, no blockers)
+
+- [ ] **Junk/test cells in the data** — e.g. `two` cells with
+      `iframe-src: "asdjahsd kjashd kjashd kajsdhk"`, `/foo/fah`,
+      `test/example-iframe` — decide whether to hide/remove them.
+- [ ] **Remaining remote embeds on `lab.motionbank.org`** (`moba/logo`,
+      `data_inspect_tracks_01`, jbmf performer/generator modules) — alive and
+      https-capable; optionally vendor for full self-containment.
+
+### Infra / housekeeping
+
+- [ ] **Commit `docker/ssl/` (self-signed-TLS image for local testing) and
+      the matching `.dockerignore` exception** — currently uncommitted.
+- [ ] **Framework modernization** (jQuery 2.0.3 / Backbone / Chaplin in the
+      bundles) — deliberately out of scope so far; works in current browsers
+      for what the scores use.
+- [ ] **Deploy-time verification on a real https host** — local testing ran
+      on self-signed TLS; a check against the production domain (and its
+      certificate chain / CDN headers) is still recommended.
+
 ## Running
 
 ### Locally (any static file server)
