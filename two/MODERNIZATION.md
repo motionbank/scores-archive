@@ -159,9 +159,28 @@ now served by a self-hosted three.js viewer at `/modules/two/mocap/`:
   only the moving deform skeletons. (Drawing the whole scene root also drew
   the static MotionBuilder control rigs and effectors that ship in the
   bundles.)
-- **Camera fit**: robust world-space framing (median center + trimmed
-  radius over the dancers' bind-mapped vertices), so figures start framed
-  in every scene from tight solos to the Phrasing Landscape's shard terrain.
+- **Camera fit**: robust world-space framing computed from **animated** joint
+  positions — never the rest pose (the serialized T-pose sprawls across
+  hundreds of units, which drags any median/cluster fit onto a hand or
+  spine). Joint samples accumulate over the first ~1.5 s of playback for an
+  immediate view, with one silent reframe at ~12 s once the dancers' roam
+  area is covered (skipped if the user has already orbited); the densest
+  joint cluster becomes the orbit target, so MotionBuilder rig bones and
+  props don't skew it. Works from tight solos to the Phrasing Landscape's
+  shard terrain.
+- **Original scene fidelity**: the bundles' real materials (colors, shader
+  families, textures), lights, fog, ambient light and camera (FOV, clear
+  color) are extracted and restored in the viewer — e.g. Mocap 47's
+  signature teal stage and Recall08's green room come from the original
+  `RenderSettings`/camera background, not guesses. Script names in the
+  bundles (CameraControl, MakeDancerDoStuffWithMouse, SmudgeDancer,
+  TrailRenderControl, BoxDropControl, AddOtherCameraImgs) prove the original
+  had mouse-orbit, mouse-dancer interactions, trail rendering, box-dropping
+  and stage-camera imagery — but their logic is unrecoverable (Unity 4
+  bundles ship no embedded assembly, no TextAssets, and typeless
+  MonoBehaviours), and no post-effects are enabled in any bundle. The
+  rebuild is therefore data-faithful; the interactive extras would have to
+  be re-invented, not restored.
 - **The remaining Unity InterAct scenes are ported too**: `Recall08`
   (InterAct 24), `Redux19` (25) and `PhrasingLandscapeBoth02` (31) go through
   the same viewer. Caveat: these were interactive games — mocap playback and

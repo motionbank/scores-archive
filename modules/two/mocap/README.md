@@ -35,6 +35,12 @@ with [UnityPy](https://github.com/K0lb3/UnityPy):
    keyframes per bone
 3. `Mesh` + `SkinnedMeshRenderer` → positions, triangle indices, 4 bone
    weights/indices per vertex, bind poses
+4. `Material`/`Texture2D` → material name, shader family, `_Color`,
+   `_MainTex` (PNGs extracted to `data/<name>.tex/`); meshes carry their
+   material index
+5. `Light`, `Camera` and `RenderSettings` → light type/color/intensity/range
+   + scene-graph position, camera path/FOV/background, fog (mode/color/
+   density/linear range) and ambient light
 
 Notes on the Unity specifics that matter:
 
@@ -48,6 +54,36 @@ Notes on the Unity specifics that matter:
 - Bundles 44a/46/47 also contain MotionBuilder **control rigs**
   (`*_Ctrl:*` hierarchies with their own curves); the rendered deform
   skeletons have their own baked curves, so the rigs are ignored at runtime.
+
+## Scene fidelity & camera framing
+
+The viewer restores what is recoverable from the scene data: material
+colors (with a hash-color fallback for missing textures), background color,
+lights, fog and the original camera's **FOV and viewpoint direction**. The
+dancers' flat colors and the stage tints (Mocap 47 teal, Recall08 green)
+come from the original data.
+
+What is **not** recoverable: script behaviour. The bundles contain no
+embedded assembly, no TextAssets, and their MonoBehaviours are typeless —
+so feature scripts (CameraControl, MakeDancerDoStuffWithMouse,
+SmudgeDancer, TrailRenderControl, BoxDropControl, AddOtherCameraImgs) exist
+as names only. No post-effect is enabled in any bundle. The two UI buttons
+(skeleton/x-ray, reset view) are additions of this rebuild.
+
+Camera framing specifics (learned the hard way):
+
+- Frame from **animated** joints, never the rest pose — the serialized
+  T-pose sprawls across hundreds of units (arms out), dragging medians and
+  clusters onto hands/spines.
+- Joint samples accumulate over the first ~1.5 s of playback, with one
+  silent reframe at ~12 s to cover a solo dancer's roam (skipped if the
+  user has orbited already).
+- The orbit target is the **densest joint cluster** (candidate centres,
+  neighbour counts within 12% of the samples' bounding-sphere diagonal),
+  which ignores MotionBuilder rig bones (`/ctrl/i` names) and props.
+- Camera distance = 96th-percentile cluster radius × 1.45 × 2, keeping the
+  original camera's direction; the original position itself framed the
+  whole stage and left the dancers too small.
 
 ## Remaining Unity content
 
