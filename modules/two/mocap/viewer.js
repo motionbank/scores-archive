@@ -458,7 +458,7 @@ for (const mesh of skinnedMeshes) {
     geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     geo.setDrawRange(0, 0);
     const line = new THREE.Line(geo, new THREE.LineBasicMaterial({
-      color: trailColor, transparent: true, opacity: 0.28,
+      color: trailColor, transparent: true, opacity: 0.5,
     }));
     line.renderOrder = 9;
     line.frustumCulled = false;
@@ -510,11 +510,14 @@ let fitSmearOverlay = null;
 if (noiseOverlay) {
   scene.add(camera); // the quad follows the camera, as in the original
   const geo = new THREE.PlaneGeometry(1, 1);
-  // Full-strength grunge backdrop: renders in the opaque pass nearest the
-  // camera (front-to-back) and writes no depth, so the dancers draw over
-  // it — the texture simply replaces the flat background colour.
+  // Multiply blend against the background colour: keeps the original
+  // stage hue while the white/gray hatch texture only darkens it where
+  // the grain sits. The quad renders in the opaque pass nearest the
+  // camera (front-to-back) and writes no depth, so the dancers draw
+  // over it — the grain stays in the BACKGROUND.
   const mat = new THREE.MeshBasicMaterial({
     map: loadTex(noiseOverlay.tex),
+    blending: THREE.MultiplyBlending,
     depthWrite: false, depthTest: false,
     toneMapped: false, side: THREE.DoubleSide, fog: false,
   });
