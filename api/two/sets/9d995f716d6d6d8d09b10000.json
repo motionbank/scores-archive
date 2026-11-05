@@ -45,7 +45,7 @@
    "type": "iframe",
    "additional_fields": {
     "css-border-color": "white",
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_27_AttenAgentLightTouch/27_AttenAgentLightTouch.html",
+    "iframe-src": "/modules/two/interact/InterAct_27_AttenAgentLightTouch/27_AttenAgentLightTouch.html",
     "css-border-left-width": "0px",
     "css-border-style": "solid",
     "css-border-top-width": "0px",
@@ -188,7 +188,7 @@
     "css-border-style": "solid",
     "css-border-left-width": "0px",
     "css-border-top-width": "0px",
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_28_AttenAgentResistance/28_AttenAgentResist.html",
+    "iframe-src": "/modules/two/interact/InterAct_28_AttenAgentResistance/28_AttenAgentResist.html",
     "solo": "1",
     "autoload": "false"
    },
@@ -216,7 +216,7 @@
     "css-border-color": "white",
     "css-border-top-width": "0px",
     "css-border-style": "solid",
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_29_AttenAgentPushShove/29_AttenAgentPushShove.html",
+    "iframe-src": "/modules/two/interact/InterAct_29_AttenAgentPushShove/29_AttenAgentPushShove.html",
     "solo": "1",
     "autoload": "false"
    },
@@ -758,7 +758,7 @@
     "css-border-style": "solid",
     "css-border-bottom-width": "3px",
     "css-border-left-width": "3px",
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_30_UserAssistSolo/30_UserAssistSolo.html",
+    "iframe-src": "/modules/two/interact/InterAct_30_UserAssistSolo/30_UserAssistSolo.html",
     "autoload": "false"
    },
    "id": "3fb6c5806d30343b59170000",

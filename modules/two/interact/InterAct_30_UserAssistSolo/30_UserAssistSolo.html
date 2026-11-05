@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div { 
+  overflow: hidden;
+}
+canvas {
+  position: absolute; 
+  top: 0px;
+  left: 0px;
+  #width: 768px;
+  #height: 288px;
+  width: 100%;
+  background-image:url('images/BackgroundForAssistSolo.jpg');
+  background-repeat:no-repeat;
+  background-size:cover; #contain;
+  background-position: left top;
+}
+</style>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="js/paper/paper.js"></script>
+
+<!-- Define PaperScript associate it with myCanvas -->
+<script type="text/paperscript" canvas="myCanvas" src="js/play2dMocap.js"></script>
+</head>
+<body>
+	<canvas id="myCanvas" resize="false"></canvas>
+	<img id="LeftFoot_loc" src="images/LLowerLeg.png" style="visibility:hidden;"/>
+	<img id="RightFoot_loc" src="images/RLowerLeg.png" style="visibility:hidden;"/>
+	<img id="Head_End_loc" src="images/Head.png" style="visibility:hidden;"/>
+	<img id="LeftLeg_loc" src="images/LUpperLeg.png" style="visibility:hidden;"/>
+	<img id="RightLeg_loc" src="images/RUpperLeg.png" style="visibility:hidden;"/>
+	<img id="LeftForeArm_loc" src="images/LUpperArm.png" style="visibility:hidden;"/>
+	<img id="LeftHand_loc" src="images/LForeArm.png" style="visibility:hidden;"/>
+	<img id="RightForeArm_loc" src="images/RUpperArm.png" style="visibility:hidden;"/>
+	<img id="RightHand_loc" src="images/RForeArm.png" style="visibility:hidden;"/>
+	<img id="LeftToeBase_loc" src="images/LFoot.png" style="visibility:hidden;"/>
+	<img id="RightToeBase_loc" src="images/RFoot.png" style="visibility:hidden;"/>
+	<img id="Head_loc" src=	"images/Spine.png" style="visibility:hidden;"/>
+	<img id="Head_End_loc" src=	"images/Head.png" style="visibility:hidden;"/>
+	<img id="Hips_loc" src="images/Hips.png" style="visibility:hidden;"/>
+	<img id="Spine_loc" src="images/Hips.png" style="visibility:hidden;"/>
+	<img id="RightHandEnd_loc" src="images/RHand.png" style="visibility:hidden;"/>
+	<img id="LeftHandEnd_loc" src="images/LHand.png" style="visibility:hidden;"/>
+	<img id="touch" src="images/TouchSymbolDancer.png" style="visibility:hidden;"/>
+	<img id="userTouch" src="images/TouchSymbolUser.png" style="visibility:hidden;"/>
+	
+</body>
+</html>

@@ -1,0 +1,28 @@
+svg {
+    background-color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+text {
+    pointer-events: none;
+}
+text.id {
+    fill: white;
+    font: 14px sans-serif;
+    text-anchor: middle;
+    font-weight: bold;
+}
+text.debug {
+    font: 24px sans-serif;
+    fill: black;
+}

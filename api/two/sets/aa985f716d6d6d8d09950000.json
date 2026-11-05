@@ -622,7 +622,7 @@
     "css-border-color": "white",
     "css-border-bottom-width": "3px",
     "css-border-left-width": "3px",
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_31_PhrasingLandscape/31_PhrasingLandscape.html",
+    "iframe-src": "/modules/two/mocap/index.html?data=PhrasingLandscapeBoth02",
     "autoload": "false",
     "solo": "1"
    },

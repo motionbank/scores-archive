@@ -817,7 +817,7 @@
    "css-border-style": "solid",
    "css-border-left-width": "0px",
    "css-border-top-width": "0px",
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_28_AttenAgentResistance/28_AttenAgentResist.html"
+   "iframe-src": "/modules/two/interact/InterAct_28_AttenAgentResistance/28_AttenAgentResist.html"
   },
   "id": "e7955f716d6d6d8d09330000",
   "poster_image": {
@@ -1003,7 +1003,7 @@
   "type": "iframe",
   "additional_fields": {
    "css-border-color": "white",
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_27_AttenAgentLightTouch/27_AttenAgentLightTouch.html",
+   "iframe-src": "/modules/two/interact/InterAct_27_AttenAgentLightTouch/27_AttenAgentLightTouch.html",
    "css-border-left-width": "0px",
    "css-border-style": "solid",
    "css-border-top-width": "0px"
@@ -1029,7 +1029,7 @@
    "css-border-color": "white",
    "css-border-top-width": "0px",
    "css-border-style": "solid",
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_29_AttenAgentPushShove/29_AttenAgentPushShove.html"
+   "iframe-src": "/modules/two/interact/InterAct_29_AttenAgentPushShove/29_AttenAgentPushShove.html"
   },
   "id": "eb955f716d6d6d8d09340000",
   "poster_image": {
@@ -1542,7 +1542,7 @@
    "css-border-style": "solid",
    "css-border-bottom-width": "3px",
    "css-border-left-width": "3px",
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_30_UserAssistSolo/30_UserAssistSolo.html",
+   "iframe-src": "/modules/two/interact/InterAct_30_UserAssistSolo/30_UserAssistSolo.html",
    "autoload": "false"
   },
   "id": "93945f716d6d6d8d09000000",
@@ -3467,7 +3467,7 @@
   "description": "Test your own short term memory in this clip by watching and identifying individual movement segments. The recall aspect of human memory is an important part of the Bebe Miller Company's Redux structure for choreographic improvisation. ",
   "type": "iframe",
   "additional_fields": {
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_24_RecallGame/24_RecallGame.html",
+   "iframe-src": "/modules/two/mocap/index.html?data=Recall08",
    "css-border-bottom-width": "3px",
    "css-border-left-width": "3px",
    "css-border-style": "solid",
@@ -3775,7 +3775,7 @@
    "css-border-style": "solid",
    "css-border-bottom-width": "3px",
    "css-border-left-width": "3px",
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_24_RecallGame/24_RecallGame.html",
+   "iframe-src": "/modules/two/mocap/index.html?data=Recall08",
    "autoload": "false"
   },
   "id": "d1945f716d6d6d8d09040000",
@@ -3799,7 +3799,7 @@
    "css-border-style": "solid",
    "css-border-bottom-width": "3px",
    "css-border-left-width": "3px",
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_25_ReduxGame/25_ReduxGame.html",
+   "iframe-src": "/modules/two/mocap/index.html?data=Redux19",
    "autoload": "false"
   },
   "id": "c6955f716d6d6d8d092b0000",
@@ -3823,7 +3823,7 @@
    "css-border-color": "white",
    "css-border-bottom-width": "3px",
    "css-border-left-width": "3px",
-   "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_31_PhrasingLandscape/31_PhrasingLandscape.html"
+   "iframe-src": "/modules/two/mocap/index.html?data=PhrasingLandscapeBoth02"
   },
   "id": "3a965f716d6d6d8d09460000",
   "poster_image": {
