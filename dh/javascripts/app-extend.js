@@ -51,7 +51,7 @@
       };
     t.require = l, t.require.define = c, t.require.register = c, t.require.list = u, t.require.brunch = !0
   }
-})(), require.register("config/config", function(t, e, n) {
+})(), require.register("config/config", function(_t, _e, n) {
   n.exports = {
     debug: !1,
     islocal: !1,
@@ -74,7 +74,7 @@
       title: "Using The Sky"
     }
   }
-}), require.register("views/cell-types/cell-recording-view", function(t, e, n) {
+}), require.register("views/cell-types/cell-recording-view", function(_t, e, n) {
   var i = e("views/cell-types/cell-iframe-view"),
     r = e("postmessenger"),
     s = e("config/config");
@@ -90,7 +90,7 @@
       i.prototype.initialize.apply(this, arguments), this.template = e("views/templates/cell-types/cell-iframe");
       var t = this;
       r.on(">>set-scene", function(e) {
-        var n = s.cloudFront.fileHost + s.cloudFront.baseUrl + "/cells/recording/full/" + t.getURLParameter("file") + "-" + e.data.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-") + ".png",
+        var n = "https://" + s.cloudFront.fileHost + s.cloudFront.baseUrl + "/cells/recording/full/" + t.getURLParameter("file") + "-" + e.data.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-") + ".png",
           i = new Image;
         i.onload = function() {
           t.$el.css("background-image", "url(" + n + ")")
@@ -109,7 +109,7 @@
       i.prototype.close.apply(this, arguments), this.$el.css("background-image", t)
     }
   })
-}), require.register("views/cell-types/cell-visualization-view", function(t, e, n) {
+}), require.register("views/cell-types/cell-visualization-view", function(_t, e, n) {
   var i = e("views/cell-view"),
     r = (e("postmessenger"), e("config/config"));
   n.exports = i.extend({
@@ -134,9 +134,9 @@
         e = i ? i : "D01T01"
       }
       this.currentRecording = e, t = t.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-");
-      var s = r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("base-path"),
+      var s = "https://" + r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("base-path"),
         o = [];
-      this.model.getFlag("per-recording") && o.push(e), "false" !== this.model.get("per-scene") && o.push(t), s += o.join("_"), s += ".png", "false" === this.model.get("per-scene") && "false" === this.model.get("per-recording") && (s = "http://motionbank.meso.net" + this.model.get("poster_image").url), this.model.get("fixed-image") && (s = r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("fixed-image"));
+      this.model.getFlag("per-recording") && o.push(e), "false" !== this.model.get("per-scene") && o.push(t), s += o.join("_"), s += ".png", "false" === this.model.get("per-scene") && "false" === this.model.get("per-recording") && (s = this.model.get("poster_image").url), this.model.get("fixed-image") && (s = "https://" + r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("fixed-image"));
       var a = new Image,
         l = this;
       a.onload = function() {
@@ -145,13 +145,13 @@
         })
       }, a.onerror = function() {
         l.$el.css({
-          "background-image": 'url("http://' + r.cloudFront.fileHost + r.cloudFront.baseUrl + '/cells/poster/full/missing.jpg")'
+          "background-image": 'url("https://' + r.cloudFront.fileHost + r.cloudFront.baseUrl + '/cells/poster/full/missing.jpg")'
         })
       }, a.src = s
     }
   })
-}), require.register("views/templates/cover", function(t, e, n) {
-  n.exports = Handlebars.template(function(t, e, n, i, r) {
-    return this.compilerInfo = [4, ">= 1.0.0"], n = this.merge(n, t.helpers), r = r || {}, '<h1><a href="#/set/sets">USING THE SKY</a></h1>\n<p><a href="#/set/sets">An exploration of Deborah Hay\'s solo \'No Time To Fly\' by Motion Bank.</a></p>\n\n<div id="portal">\n	<style>\n		#portal .error { background-color:white; color:black; padding:1em; }\n		#portal .hidden { display:none; }\n\n		@-webkit-keyframes fade { from {opacity: 1;} to {opacity: 0;} }\n		@keyframes fade { from {opacity: 1;} to {opacity: 0;} }\n		#portal .loading { -webkit-animation: fade 1s infinite alternate; animation: fade 1s infinite alternate; }\n	</style>\n\n	<p class="enter">\n		<a href="#/set/sets">» Enter here</a><br />\n		<small>(Use most recent version of: Chrome, Firefox or Safari)</small>\n	</p>\n\n	<p class="loading hidden">\n		Loading<span id="wait">...</span>\n	</p>\n	\n	<p class="error hidden">\n	</p>\n\n</div>\n\n<!-- <p></p>\n<p><a href="mailto:feedback@motionbank.org">Send us feedback!</a></p> -->'
+}), require.register("views/templates/cover", function(_t, _e, n) {
+  n.exports = Handlebars.template(function(t, _e, n, _i, _r) {
+    return this.compilerInfo = [4, ">= 1.0.0"], n = this.merge(n, t.helpers), _r = _r || {}, '<h1><a href="#/set/sets">USING THE SKY</a></h1>\n<p><a href="#/set/sets">An exploration of Deborah Hay\'s solo \'No Time To Fly\' by Motion Bank.</a></p>\n\n<div id="portal">\n	<style>\n		#portal .error { background-color:white; color:black; padding:1em; }\n		#portal .hidden { display:none; }\n\n		@-webkit-keyframes fade { from {opacity: 1;} to {opacity: 0;} }\n		@keyframes fade { from {opacity: 1;} to {opacity: 0;} }\n		#portal .loading { -webkit-animation: fade 1s infinite alternate; animation: fade 1s infinite alternate; }\n	</style>\n\n	<p class="enter">\n		<a href="#/set/sets">» Enter here</a><br />\n		<small>(Use most recent version of: Chrome, Firefox or Safari)</small>\n	</p>\n\n	<p class="loading hidden">\n		Loading<span id="wait">...</span>\n	</p>\n	\n	<p class="error hidden">\n	</p>\n\n</div>\n\n<!-- <p></p>\n<p><a href="mailto:feedback@motionbank.org">Send us feedback!</a></p> -->'
   })
 });
