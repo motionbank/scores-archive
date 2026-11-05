@@ -1,0 +1,153 @@
+<!doctype>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>YouTube annotation test</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.animate-colors.js"></script>
+		<script type="text/javascript" src="js/postmessenger.js"></script>
+		<script type="text/javascript" src="js/api.js"></script>
+		<script type="text/javascript" src="js/animframe.js"></script>
+		<script type="text/javascript" src="js/timer.js"></script>
+		<script type="text/javascript" src="js/locparams.js"></script>
+		<script type="text/javascript">
+			jQuery(function(){
+
+				console.log( window.PieceMakerApi );
+				
+				var location_params = LocationParams();
+
+				if ( location_params.style ) {
+					$(document.head).append('<link href="css/style-'+(+(location_params.style))+'.css" rel="stylesheet" />');
+				}
+
+				var parentWindow = null;
+				var postmessenger = new PostMessenger(window);
+				var listener_id = null;
+
+				if ( location_params && 'domain' in location_params ) {
+					postmessenger.accept( location_params.domain );
+				}
+
+				var ytId = location_params.ytid || null;
+				var vId = +(location_params.vid) || null;
+
+				if ( !(ytId || vId) ) {
+					$(document.body).html( 'Need YT-ID or video ID!' );
+					return;
+				}
+
+				var speed = location_params.speed || 1.0;
+
+				// console.log( ytId, vId );
+
+				var group = null, video = null;
+
+				postmessenger.on('connect?',function(req,res){
+					parentWindow = req.source;
+					listener_id = req.data.listener_id;
+					res.send('connect!');
+				});
+
+				postmessenger.on(/^>>.+/,function(req, res){
+				});
+
+				var pm = new PieceMakerApi({
+					context: {
+						piecemakerError : function piecemakerError () {
+							console.log( arguments );
+						}
+					},
+					host : 'http://jbmf-pm2.herokuapp.com',
+					api_key : "CU0iF/d9zSVfasI0Oyk9J6iBrX0="
+				});
+
+				pm.getGroup( 41, function(group){
+					if ( group ) {
+						pm.listEventsOfType( group.id, 'video', function(videos){
+							for ( var i = 0; i < videos.length; i++ ) {
+								var v = videos[i];
+								//console.log(v.id,vId);
+								if ( (ytId && v.fields.vid_service_id === ytId) || 
+									 (vId && v.id === vId) ) {
+									video = v;
+									$(document.body).html( video.fields.title );
+									pm.findEvents( 
+										group.id, 
+										{
+											from: (v.utc_timestamp.getTime() / 1000.0),
+											to:   (v.utc_timestamp.getTime() / 1000.0)+v.duration,
+											type: 'annotation'
+										},
+										function(events_found){
+											events = events_found;
+											pmFullyLoaded();
+										}
+									);
+									return;
+								}
+							}
+							$(document.body).html( 'No video!' );
+						});
+					} else {
+						$(document.body).html( 'No group!' );
+					}
+				});
+				
+				var timer = new Timer(25);
+
+				var pmFullyLoaded = function pmFullyLoaded () {
+
+					var lastEventTime  = events[events.length-1].utc_timestamp.getTime() 
+									     - video.utc_timestamp.getTime();
+					
+					var firstEventTime = events[0].utc_timestamp.getTime() 				
+										 - video.utc_timestamp.getTime();
+					
+					var last_event = null, last_i = 0;
+
+					timer.start(function(t){
+						for ( var i = last_i; i < events.length; i++ ) {
+							var e = events[i];
+							if ( Math.abs(((e.utc_timestamp.getTime() - video.utc_timestamp.getTime())-firstEventTime)-(t*speed)) < 50 ) {
+								if ( e !== last_event ) {
+									//console.log( e.fields.title );
+									postmessenger.send(
+										'>>ping',
+										{title:e.fields.title},
+										parentWindow,
+										location_params.domain);
+									last_event = e;
+									last_i = i;
+									// $(document.body).css({
+									// 	backgroundColor: '#ff0000'
+									// }).animate({
+									// 	backgroundColor: '#ffffff'
+									// },70);
+								}
+								break;
+							}
+						}
+						if ( ((t*speed)+firstEventTime) > (lastEventTime + (events[events.length-1].duration * 1000.0)) ) {
+							last_event = null;
+							last_i = 0;
+							timer.reset();
+						}
+					});
+				}
+			});
+		</script>
+		<link href="css/style.css" rel="stylesheet" />
+		<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41625019-1', 'motionbank.org');
+  ga('send', 'pageview');
+
+</script>
+	</head>
+	<body>...</body>
+</html>

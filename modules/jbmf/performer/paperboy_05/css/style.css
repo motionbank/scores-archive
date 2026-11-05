@@ -1,0 +1,31 @@
+body {
+	overflow: hidden;
+	background-color: transparent !important;
+	margin:0;
+	padding:0;
+}
+
+#Stage,
+.performer {
+	margin: 0px auto;
+}
+
+body {
+}
+
+* {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0);
+
+  -moz-backface-visibility: hidden;
+  -moz-transform: translate3d(0,0,0);
+
+  -o-backface-visibility: hidden;
+  -o-transform: translate3d(0,0,0);
+
+  -ms-backface-visibility: hidden;
+  -ms-transform: translate3d(0,0,0);
+
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Ebene_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="800px" height="852.568px"
+	 viewBox="0 0 800 852.568" enable-background="new 0 0 800 852.568" xml:space="preserve">
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  x="322.259" y="-12.792" height="437.317" width="378.482" bottomLeftOrigin="true"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<g>
+	<path fill="#FFFFFF" d="M292.755,386.259v67.119c-37.84,18.537-53.636,58.021-53.636,58.021v-58.021h-25.86v152.881v160.049
+		c0,30.248,83.606,54.77,186.741,54.77c103.134,0,186.741-24.521,186.741-54.768V606.258V453.377H560.88v58.021
+		c0,0-15.795-39.484-53.636-58.021v-67.118"/>
+	<path fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" d="M213.259,453.377v152.881v160.049
+		c0,30.248,83.606,54.77,186.741,54.77c103.134,0,186.741-24.521,186.741-54.768V606.258V453.377"/>
+	<path fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" d="M292.755,386.259v67.119
+		c-37.84,18.537-53.636,58.021-53.636,58.021v-58.021"/>
+	<path fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" d="M560.88,453.377v58.021
+		c0,0-15.795-39.484-53.636-58.021v-67.118"/>
+</g>
+</svg>

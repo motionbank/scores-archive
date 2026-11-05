@@ -1,0 +1,73 @@
+html {
+	/*background: url("http://scores.wp10610991.server-he.de/jbmf/imgs/backgrounds/stage_tile_03.jpg") no-repeat center center fixed; 
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	background-repeat: repeat-x;*/
+}
+
+body 
+{
+	color: black;
+	font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
+	font-size: 11px; 
+	font-weight: normal; 
+	text-decoration: none;
+	line-height: 1.5em;
+	margin: 0px;
+	padding: 0px;
+
+	background-color: transparent !important;
+	overflow: hidden;
+}
+
+a img 
+{ 
+	border: 0px solid transparent;
+}
+
+a, a:link, a:visited, a:active, a:hover 
+{ 
+	color: #cdcdcd; 
+	text-decoration: underline;
+}
+
+div {
+	background-color: transparent;
+}
+
+canvas 
+{ 
+	width: 300px;
+	height: 800px;
+	display: block;
+	outline: 0px;
+	background-color: transparent;
+}
+
+#content 
+{
+	width: 300px;
+	overflow: auto;
+	margin: 0px auto;
+}
+
+.sequence-item
+{
+	padding: 5px;
+	border: 1px solid #333;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+#sequences
+{
+	display: none;
+}
+
+#sequences .template
+{
+	display: none;
+}

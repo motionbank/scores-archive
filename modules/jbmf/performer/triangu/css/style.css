@@ -1,0 +1,21 @@
+body { 
+	background-color: transparent;
+	height: 100%;
+	width: 100%;
+	padding: 0px; 
+	margin: 0px;
+}
+
+.edgeLoad-PAGE_A { display:none; }
+.edgeLoad-PAGE_B { display:none; }
+.edgeLoad-PAGE_C { display:none; }
+
+#StageA, #StageB, #StageC {
+	position: absolute;
+	background-color: transparent !important;
+	margin: 0px auto;
+}
+
+#StageB, #StageC {
+	display:none;
+}

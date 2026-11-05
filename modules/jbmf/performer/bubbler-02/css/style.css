@@ -1,0 +1,8 @@
+body {
+	background-color: transparent !important;
+	overflow: hidden;
+}
+#Stage,
+.performer {
+	margin: 0px auto;
+}

@@ -1,0 +1,13 @@
+body {
+	overflow: hidden;
+	background-color: transparent !important;
+}
+
+#Stage,
+.performer {
+	margin: 0px auto;
+}
+
+.ani_sym {
+	display: none;
+}

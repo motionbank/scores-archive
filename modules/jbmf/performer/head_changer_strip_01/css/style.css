@@ -1,0 +1,26 @@
+body, html {
+  overflow: hidden;
+}
+
+body {
+  position: absolute;
+  top: 0px; right: 0px; 
+  left: 0px; bottom: 0px;
+}
+
+#frame {
+  position: absolute;
+  overflow: hidden;
+}
+
+#frame img {
+  position: absolute;
+}
+
+img.strip {
+  display: none;
+}
+
+img.strip.show {
+  display: block !important;
+}

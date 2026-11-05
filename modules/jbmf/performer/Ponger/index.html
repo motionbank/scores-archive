@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>Untitled</title>
+
+	<script type="text/javascript" src="edge_includes/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/iframe-resize.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/postmessenger.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/locparams.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/messaging.js"></script>
+
+<!--Adobe Edge Runtime-->
+    <script type="text/javascript" charset="utf-8" src="Ponger_edgePreload.js"></script>
+    <style>
+        .edgeLoad-EDGE-94320482 { visibility:hidden; }
+    </style>
+<!--Adobe Edge Runtime End-->
+
+    <script type="text/javascript">
+    $(function(){
+    	$('#Stage').click(function(){
+	    	window.App.nextScene();
+	    });
+	    window.messaging = $.extend(window.messaging,{
+			'>>ping' : function (req, res) {
+				window.App.nextScene();
+			}
+		});
+		AdobeEdge.bootstrapCallback(function(compId){
+			var comp = AdobeEdge.getComposition(compId);
+			var stage = comp.getStage();
+			var children = stage.getChildSymbols();
+			$.each(children,function(i,c){
+				var instanceName = stage.idLookup['#'+c.element.attr('id')];
+				AdobeEdge.Symbol.bindTimelineAction(compId,instanceName,'Default Timeline','complete',function(sym,e){
+					window.messaging.send('>>ping',{'scene':instanceName});
+				});
+			});
+			var lp = new LocationParams();
+			if ( lp.starter ) {
+				setTimeout( window.App.nextScene, parseInt( 3000 + Math.random() * 3000, 10) );
+			}
+		});
+    });
+    </script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+</head>
+<body style="margin:0;padding:0;">
+	<div id="Stage" class="EDGE-94320482">
+	</div>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41625019-1', 'motionbank.org');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

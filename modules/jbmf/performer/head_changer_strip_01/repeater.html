@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Animated Star</title>
+	
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	
+	<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+	
+  <script type="text/javascript" src="js/postmessenger.js"></script>
+  <script type="text/javascript" src="js/locparams.js"></script>
+  <script type="text/javascript" src="js/messaging.js"></script>
+  <script type="text/javascript" src="js/animframe.js"></script>
+  <script type="text/javascript" src="js/timer.js"></script>
+  
+</head>
+<body>
+  <script type="text/javascript">
+  
+  function  randomFrom(_ar) {
+    return _ar[Math.floor(Math.random()*_ar.length)];
+  };
+  
+  jQuery(function($) {
+
+    var params = LocationParams();
+
+    var strip = null;
+    
+    var offsetTop = 0;
+    var offsetLeft = 0;
+    
+    var frame = 0;
+    var isRunning = false;
+    var timer = null;
+    
+    $.prototype.random = function() {
+      return $( this[Math.floor(Math.random()*this.length)] );
+    };
+    
+    $(window).resize(function() {
+      resize();
+    });
+    
+    window.messaging['>>ping'] = function (req, res) {
+      if (!isRunning) run();
+      else {
+        //console.log( 'ignored ping!' );
+      }
+    };
+    
+    function setup() {
+
+      if (timer) timer.stop();
+
+      if (strip) strip.removeClass("show");
+      strip = $("img.strip").
+              random().
+              //css({top:'0px',left:'0px'}).
+              addClass("show");
+      
+      config = {
+        duration:     parseInt( strip.data("duration") ),
+        frameWidth:   parseInt( strip.data("frame-width") ),
+        frameHeight:  parseInt( strip.data("frame-height") ),
+        count:        parseInt( strip.data("frames") ),
+        columns:      parseInt( strip.data("columns") ),
+        random:       parseInt( strip.data("random") )
+      };
+
+      config.padding_horz = parseInt( strip.data("padding_horz") ) || 30;
+      config.padding_vert = parseInt( strip.data("padding_vert") ) || 30;
+      
+      config.stripWidth = config.frameWidth * config.columns;
+
+      //var ts = 1000.0 / ( config.duration + ((Math.random()*config.random)-(config.random/2.0)));
+      var ts = 1000.0 / config.duration;
+      timer = new Timer( ts );
+    };
+
+    function resize() {
+
+      var $doc = $(document.body);
+      var docWidth  = $doc.width();
+      var docHeight = $doc.height();
+
+      var scale = Math.min(
+            (docWidth-config.padding_horz)  / config.frameWidth,
+            (docHeight-config.padding_vert) / config.frameHeight );
+      
+      $('#frame').css({
+          top:  ((config.padding_vert / 2) + ((docHeight-config.padding_vert) / 2) - 
+                ((config.frameHeight*scale) / 2)) + 'px',
+          left: ((config.padding_horz / 2) + ((docWidth-config.padding_horz) / 2) - 
+                ((config.frameWidth*scale) / 2)) + 'px',
+          width:  (config.frameWidth*scale) +"px",
+          height: (config.frameHeight*scale)+"px"
+      });
+      
+      $('#frame img').css({
+        width: (config.stripWidth*scale)+'px'
+      });
+      
+      offsetLeft = -config.frameWidth*scale;
+      offsetTop  = -config.frameHeight*scale;
+
+    };
+    
+    function moveStrip() {
+      
+      var left = (frame % config.columns) * offsetLeft;
+      var top = Math.floor( frame / config.columns ) * offsetTop;
+      
+      strip.css({
+        "left": left+"px",
+        "top":  top+"px"
+      });
+    };
+    
+    function run() {
+            
+      setup();
+      
+      isRunning = true;
+      frame = 0;
+      
+      timer.start(function(){
+        frame += (config.frame_step || 1);
+        if ( frame > config.count-1 ){
+          timer.stop();
+          isRunning = false;
+          frame = config.count-1;
+          window.messaging.send('>>ping');
+          //console.log( 'sent ping!' );
+        }
+        moveStrip();
+      });
+    };
+
+    var animations = [{
+      frames : [
+        'Legman_ding-10x8_330x340.png',
+        'Legman_Lamp-10x8_330x340.png',
+        'Legman_sick-10x8_330x340.png',
+        'Legman_stripes-10x8_330x340.png',
+        'Legman_veggies-10x8_330x340.png',
+        'LegmanDance_trans-10x8_330x340.png'
+      ], 
+      width : 330,
+      height : 340,
+      total : 80,
+      columns : 10,
+      duration : (1000 / 60),
+      frame_step : 1,
+      random : (1000 / 20)
+    },{
+      frames : [
+        'Head_01_R10C05_50f_330x360.png',
+        'Head_02_R10C05_50f_330x360.png',
+        'Head_03_R10C05_50f_330x360.png',
+        'Head_04_R10C05_50f_330x360.png',
+        'Head_05_R10C05_50f_330x360.png',
+        'Head_06_R10C05_50f_330x360.png',
+        'Head_07_R10C05_50f_330x360.png'
+      ], 
+      width : 330,
+      height : 360,
+      total : 50,
+      columns : 10,
+      duration : (1000 / 25),
+      frame_step : 1,
+      random : (1000 / 20)
+    },{
+      frames : [
+        {frame:'D04_T02_RH_Single_MF_ShouldersT01__180x320_15x6_79f.jpg', total:79},
+        {frame:'D04_T02_RH_Single_MF_Read_T03__180x320_15x5_62f.jpg',     total:62},
+        {frame:'D04_T02_RH_Single_MF_Flick_T02__180x320_15x6_76f.jpg',    total:76},
+        {frame:'D04_T02_RH_Single_MF_Drumming_T06__180x320_15x9_99f.jpg', total:99},
+        {frame:'D04_T02_RH_Single_MF_Chicken_T08__180x320_15x4_59f.jpg',  total:59}
+      ], 
+      width : 180,
+      height : 320,
+      total : 50,
+      columns : 15,
+      duration : (1000 / 60),
+      frame_step : 1,
+      random : (1000 / 10),
+      padding_horz : 0,
+      padding_vert : 0
+    },{
+      frames : [
+        {frame:'D04_T02_LH_Single_JB_TwoRings_T01__180x320_15x6_79f.jpg',  total:79},
+        {frame:'D04_T02_LH_Single_JB_PintchRip_T07__180x320_15x5_73f.jpg', total:73},
+        {frame:'D04_T02_LH_Single_JB_No_T06__180x320_15x4_54f.jpg',        total:54},
+        {frame:'D04_T02_LH_Single_JB_Hymns02_T04__180x320_15x4_55f.jpg',   total:55},
+        {frame:'D04_T02_LH_Single_JB_FistRead_T06__180x320_15x7_92f.jpg',  total:92}
+      ], 
+      width : 180,
+      height : 320,
+      total : 50,
+      columns : 15,
+      duration : (1000 / 60),
+      frame_step : 1,
+      random : (1000 / 10),
+      padding_horz : 0,
+      padding_vert : 0
+    },{
+      frames : [
+        'Legman_dance_trans__330x360_8x5_40f.png',
+        'Legman_ding_trans__330x360_8x5_40f.png',
+        'Legman_Lamp_trans__330x360_8x5_40f.png',
+        'Legman_sick_trans__330x360_8x5_40f-copy.png',
+        'Legman_stripes_trans__330x360_8x5_40f.png',
+        'Legman_veggies_trans__330x360_8x5_40f.png',
+      ], 
+      width : 330,
+      height : 360,
+      total : 40,
+      columns : 8,
+      duration : (1000 / 25),
+      frame_step : 1,
+      random : (1000 / 10)
+    },{
+      frames : [
+        {frame: 'Pongbot_blind__320x180_8x7_50f.png',       total:50},
+        {frame: 'Pongbot_catch__320x180_8x7_55f.png',       total:55},
+        {frame: 'Pongbot_Double__320x180_8x12_90f.png',     total:90},
+        {frame: 'Pongbot_Fly__320x180_8x13_100f.png',       total:100},
+        {frame: 'Pongbot_Simpleplay__320x180_8x10_80f.png', total:80}
+      ], 
+      width : 320,
+      height : 180,
+      total : 40,
+      columns : 8,
+      duration : (1000 / 90),
+      frame_step : 1,
+      random : (1000 / 5)
+    }];
+
+    (function(a){
+      var dur = a.duration; //parseInt(a.duration+((Math.random()*a.random)-(a.random/2.0)));
+      $(a.frames).each(
+        function(i,e){
+          var tmpl = '<img class="strip" '+
+              'data-frame-width="'+a.width+'" '+
+              'data-frame-height="'+a.height+'" '+
+              'data-frames="'+(e.total || a.total)+'" '+
+              'data-columns="'+a.columns+'" '+
+              'data-padding_vert="'+(a.padding_vert || 30)+'" '+
+              'data-padding_horz="'+(a.padding_horz || 30)+'" '+
+              'data-random="'+a.random+'" '+
+              'data-duration="'+dur+'" ';
+          $('#frame').append(tmpl + 'src="assets/'+(e.frame || e)+'"  />');
+      });
+    })(animations[params.animation || 0]);
+
+    setup();
+    resize();
+
+  });
+  
+  </script>
+  
+    <div id="frame"></div>
+</body>
+</html>

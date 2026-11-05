@@ -1,0 +1,34 @@
+body {
+	font-family: Lato, "Lucida Grande", Helvetica, Arial, sans serif;
+	font-size: 12px;
+}
+
+#page {
+	width: 1024px;
+	margin: 50px auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+	font-size: 18px;
+	letter-spacing: 0.2em;
+	word-spacing: 0.3em;
+}
+
+#generator {
+	width: 100%;
+	height: 500px;
+}
+
+#menu {
+	margin-top: 1em;
+	padding: 0px;
+}
+
+#saves {
+	margin-top: 1em;
+}
+
+#footer {
+	font-size: 9px;
+}

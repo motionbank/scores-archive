@@ -1,0 +1,98 @@
+html {
+  overflow: hidden;
+}
+
+body {
+/*        -webkit-transform: scale(0.5);
+*//*        -webkit-transform-origin: top left;
+  -webkit-transform: scale(1);
+  -moz-transform-origin: top left;
+  -moz-transform: scale(1);
+  transform-origin: top left;
+  transform: scale(1);*/
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+#wrapper {
+  width: 400px;
+  height: 500px;
+  /*margin: 0 auto;*/
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -200px;
+  
+  position: fixed;
+}
+.text-container {
+  position: relative;
+  font-size: 50px;
+  display: block;
+  width: 400px;
+}
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: black;
+  -webkit-transition-property: top, left, width, height;
+     -moz-transition-property: top, left, width, height;
+      -ms-transition-property: top, left, width, height;
+       -o-transition-property: top, left, width, height;
+          transition-property: top, left, width, height;
+  -webkit-transition-duration: 100ms;
+     -moz-transition-duration: 100ms;
+      -ms-transition-duration: 100ms;
+       -o-transition-duration: 100ms;
+          transition-duration: 100ms;
+  
+/*  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0);
+
+  -moz-backface-visibility: hidden;
+  -moz-transform: translate3d(0,0,0);
+
+  -o-backface-visibility: hidden;
+  -o-transform: translate3d(0,0,0);
+
+  -ms-backface-visibility: hidden;
+  -ms-transform: translate3d(0,0,0);
+
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);*/
+}
+
+.word {
+  float:left;
+  display: block;
+  color: white;
+  margin-bottom: 5px;
+  padding: 0 10px 0 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  opacity: 1;
+}
+
+#canvas {
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+/*@media (max-width: 1280px) {
+  #wrapper {
+    width: 250px;
+    height: 300px;
+    margin: -150px 0 0 -125px;
+  }
+  .text-container {
+    font-size: 30px;
+    width: 250px;
+  }
+}*/
