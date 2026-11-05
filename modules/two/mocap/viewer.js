@@ -515,11 +515,28 @@ if (noiseOverlay) {
   // the grain sits. The quad renders in the opaque pass nearest the
   // camera (front-to-back) and writes no depth, so the dancers draw
   // over it — the grain stays in the BACKGROUND.
+  // A third-strength multiply: opacity has no effect on MultiplyBlending,
+  // so the texture itself is mixed 2/3 toward white on a canvas — the
+  // grain then darkens the background only a third as much.
   const mat = new THREE.MeshBasicMaterial({
-    map: loadTex(noiseOverlay.tex),
     blending: THREE.MultiplyBlending,
     depthWrite: false, depthTest: false,
     toneMapped: false, side: THREE.DoubleSide, fog: false,
+  });
+  const grainUrl = `./data/${noiseOverlay.tex}`;
+  new THREE.TextureLoader().load(grainUrl, (raw) => {
+    const cv = document.createElement("canvas");
+    cv.width = raw.image.width; cv.height = raw.image.height;
+    const ctx = cv.getContext("2d");
+    ctx.drawImage(raw.image, 0, 0);
+    ctx.globalAlpha = 2 / 3;
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, cv.width, cv.height);
+    ctx.globalAlpha = 1;
+    const tex = new THREE.CanvasTexture(cv);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    mat.map = tex;
+    mat.needsUpdate = true;
   });
   const quad = new THREE.Mesh(geo, mat);
   quad.renderOrder = -1; // always the first opaque draw: a backdrop
