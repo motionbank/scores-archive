@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mocap Viewer (three.js port)</title>
+<style>
+  html, body { margin:0; height:100%; background:#111; color:#eee;
+    font-family:"Open Sans", Helvetica, Arial, sans-serif; overflow:hidden; }
+  #stage { position:absolute; inset:0; }
+  #hud { position:absolute; top:8px; left:10px; right:10px; display:flex;
+    justify-content:space-between; align-items:center; pointer-events:none; }
+  #title { font-size:13px; opacity:.75; }
+  #status { font-size:12px; opacity:.55; }
+  #ui { position:absolute; bottom:0; left:0; right:0; padding:10px 12px 12px;
+    background:linear-gradient(transparent, rgba(0,0,0,.65)); display:flex;
+    gap:10px; align-items:center; }
+  #timeline { flex:1; accent-color:#e63946; }
+  button, select { background:#2a2a2a; color:#eee; border:1px solid #444;
+    border-radius:4px; padding:4px 10px; font-size:12px; cursor:pointer; }
+  button:hover { background:#3a3a3a; }
+  #time { font-size:11px; opacity:.7; min-width:96px; text-align:center; }
+  #err { position:absolute; inset:0; display:none; place-items:center;
+    color:#f88; font-size:14px; text-align:center; padding:0 40px; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="hud">
+  <span id="title">Motion Bank — mocap viewer</span>
+  <span id="status">loading…</span>
+</div>
+<div id="err"></div>
+<div id="ui">
+  <button id="play">⏸</button>
+  <select id="speed">
+    <option value="0.25">0.25×</option>
+    <option value="0.5">0.5×</option>
+    <option value="1" selected>1×</option>
+    <option value="2">2×</option>
+  </select>
+  <input id="timeline" type="range" min="0" max="1000" value="0" step="1">
+  <span id="time">0:00 / 0:00</span>
+  <button id="reset">camera</button>
+  <button id="bones">skeleton</button>
+</div>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js" } }
+</script>
+<script type="module" src="./viewer.js"></script>
+</body>
+</html>
