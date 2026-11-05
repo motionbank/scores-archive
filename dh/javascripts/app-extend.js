@@ -106,7 +106,11 @@
     },
     close: function() {
       var t = this.$el.css("background-image");
-      i.prototype.close.apply(this, arguments), this.$el.css("background-image", t)
+      i.prototype.close.apply(this, arguments);
+      // re-apply a scene overlay that was set during playback — but never
+      // "none" (the state open() leaves us in), which would wipe the poster
+      // image that the base close() just restored (dark grey cell bug)
+      "none" !== t && this.$el.css("background-image", t);
     }
   })
 }), require.register("views/cell-types/cell-visualization-view", function(_t, e, n) {
