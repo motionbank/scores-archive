@@ -1,1 +1,23 @@
-{"title":"Assisted, Solo Pressure (Motion Capture)","description":"In this motion capture data, you are able to see the soloist alone and then watch the results of the input from assistants on the soloist's actions. Assisted Solos are a creative tool and training exercise Zoo Company uses where partners or assistants determine the chain of places where motion can happen in the actions of a soloist. Dancer: Sara Ludi","type":"iframe","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/MocapView_48_AssistSoloResist/48_AssistSoloResistMocap.html"},"id":"85955f716d6d6d8d09270000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/48_AssistSoloResistMocap.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/48_AssistSoloResistMocap.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/48_AssistSoloResistMocap.jpg"}},"css_class_name":"cell-1157"}
+{
+ "title": "Assisted, Solo Pressure (Motion Capture)",
+ "description": "In this motion capture data, you are able to see the soloist alone and then watch the results of the input from assistants on the soloist's actions. Assisted Solos are a creative tool and training exercise Zoo Company uses where partners or assistants determine the chain of places where motion can happen in the actions of a soloist. Dancer: Sara Ludi",
+ "type": "iframe",
+ "additional_fields": {
+  "css-border-color": "white",
+  "css-border-style": "solid",
+  "css-border-bottom-width": "3px",
+  "css-border-left-width": "3px",
+  "iframe-src": "/modules/two/mocap/index.html?data=MocapView_48"
+ },
+ "id": "85955f716d6d6d8d09270000",
+ "poster_image": {
+  "url": "/system/uploads/two/Cell/poster_image/full/48_AssistSoloResistMocap.jpg",
+  "small": {
+   "url": "/system/uploads/two/Cell/poster_image/small/48_AssistSoloResistMocap.jpg"
+  },
+  "medium": {
+   "url": "/system/uploads/two/Cell/poster_image/medium/48_AssistSoloResistMocap.jpg"
+  }
+ },
+ "css_class_name": "cell-1157"
+}

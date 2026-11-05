@@ -1,1 +1,857 @@
-{"title":"3 - TENDENCY","description":"","path":"tendency","grid_cols":31,"grid_rows":5,"cell_width":256,"cell_height":144,"css_class_name":"set-118 white-background","published":true,"id":"aa985f716d6d6d8d09950000","poster":"tendency.jpg","cells":[{"title":"Tendency CallOut Text 3_b","description":" “Our work together depends on sharing a language. It also holds the paradox of describing something from both the inside and the outside.” \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"html-content":" “Our work together depends on sharing a language. It also holds the paradox of describing something from both the inside and the outside.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-font-size":"150%","css-color":"rgba(255,255,255,0.8)","css-background-color":"rgba(0,0,0,0.8)","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","css-overflow":"auto"},"id":"b0985f716d6d6d8d09960000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":28,"y":4,"width":3,"height":1},{"title":"Story State Difference Lines","description":"Angie Hauser's motion is detected at each moment in one Story State improvisation. The center of motion is computed and a line is drawn using movement center locations.","type":"vimeo","additional_fields":{"vimeo-id":"79403921","css-border-style":"solid","css-border-left-width":"3px","autoplay":"true","autoload":"false","css-border-bottom-width":"3px","css-border-color":"white"},"id":"b5985f716d6d6d8d09970000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/40d-storystatelines.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/40d-storystatelines.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/40d-storystatelines.jpg"}},"x":18,"y":3,"width":2,"height":2},{"title":"Contrasting States Duet (Motion Capture) ","description":"View motion capture data of the duet using Story State and Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancers: Angie Hauser and Darrell Jones","type":"iframe","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/MocapView_44_BMC/44a_BMCOpeningDuet.html","autoload":"false","solo":"1"},"id":"b9985f716d6d6d8d09980000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/44a_BMCOpeningDuet.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/44a_BMCOpeningDuet.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/44a_BMCOpeningDuet.jpg"}},"x":15,"y":3,"width":2,"height":2},{"title":"Drive State Difference Lines","description":"Motion is detected at each moment and its center is computed. A line is drawn using movement center locations to show Darrell's twisting and turning pathway as he performs the Drive State improvisation. Dancer: Darrell Jones","type":"vimeo","additional_fields":{"css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-style":"solid","css-border-color":"white","autoplay":"true","autoload":"false","vimeo-id":"79306866"},"id":"c4985f716d6d6d8d099a0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/40e-drivestatelines.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/40e-drivestatelines.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/40e-drivestatelines.jpg"}},"x":26,"y":3,"width":2,"height":2},{"title":"Drive State Difference Forms","description":"Movement locations in one improvised performance of the Drive State are made visible and maintained for a short time before fading. Dancer: Darrell Jones","type":"vimeo","additional_fields":{"css-border-style":"solid","css-border-color":"white","autoplay":"true","vimeo-id":"79403920","autoload":"false","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"c8985f716d6d6d8d099b0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/40b_DriveStateDiffForms.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/40b_DriveStateDiffForms.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/40b_DriveStateDiffForms.jpg"}},"x":22,"y":3,"width":1,"height":1},{"title":"Story State Motion Study","description":"Animator Vita Berezina-Blackburn brings her history of working with the Bebe Miller Company to this motion study of the Story State using motion capture data from an improvisation by Angie Hauser. ","type":"vimeo","additional_fields":{"css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","vimeo-id":"79495113"},"id":"cd985f716d6d6d8d099c0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/43_StoryStateAnim.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/43_StoryStateAnim.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/43_StoryStateAnim.jpg"}},"x":20,"y":3,"width":2,"height":2},{"title":"Story State Difference Forms","description":"Movement locations in one improvised performance of the Story State are made visible and maintained for a short time before fading. Dancer: Angie Hauser","type":"vimeo","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-left-width":"3px","css-border-bottom-width":"3px","autoplay":"true","autoload":"false","vimeo-id":"79403919"},"id":"d3985f716d6d6d8d099d0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/40a_StoryStateDiffForms.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/40a_StoryStateDiffForms.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/40a_StoryStateDiffForms.jpg"}},"x":20,"y":2,"width":1,"height":1},{"title":"Tendency CallOut Text 3","description":"“The specifics of the body’s action have always been my focus, particularly the dynamic and rhythm of attention in the body: where does the impulse travel, how can that be interrupted and redirected, what’s the change of sensation as it travels, what might it remind you of (which is where context and memory begin), who is doing it to/with whom, can one kind of action be sustained in the presence of another?” \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"html-content":"“The specifics of the body’s action have always been my focus, particularly the dynamic and rhythm of attention in the body: where does the impulse travel, how can that be interrupted and redirected, what’s the change of sensation as it travels, what might it remind you of (which is where context and memory begin), who is doing it to/with whom, can one kind of action be sustained in the presence of another?”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-font-size":"150%","css-color":"rgba(255,255,255,0.8)","css-background-color":"rgba(0,0,0,0.8)","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","css-overflow":"auto"},"id":"d8985f716d6d6d8d099e0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":15,"y":2,"width":4,"height":1},{"title":"Contrasting States Duet Difference Forms ","description":"Movement locations in one improvised performance of the two contrasting states together are made visible and maintained for a short time before fading. Top View. ","type":"vimeo","additional_fields":{"autoload":"false","css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-style":"solid","css-border-color":"white","autoplay":"true","vimeo-id":"79306499"},"id":"dd985f716d6d6d8d099f0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/40c_DuetDiffForms.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/40c_DuetDiffForms.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/40c_DuetDiffForms.jpg"}},"x":15,"y":0,"width":1,"height":1},{"title":"Tendency Body Text 2","description":"Bebe Miller pays great attention to interesting tendencies and feeds these back to the dancers in rehearsal. For example, she might identify the way Darrell tends to rock his head and pelvis to maintain an internal rhythm or the way Angie often initiates with her focus and creates stops and starts in time that generate a sense of alertness.","type":"text","additional_fields":{"text-content":"Bebe Miller pays great attention to interesting tendencies and feeds these back to the dancers in rehearsal. For example, she might identify the way Darrell tends to rock his head and pelvis to maintain an internal rhythm or the way Angie often initiates with her focus and creates stops and starts in time that generate a sense of alertness.","css-font-size":"125%","css-color":"rgba(0,0,0,0.8)","css-background-color":"rgba(0,0,0,0.15)","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","css-overflow":"auto"},"id":"e2985f716d6d6d8d09a00000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":9,"y":3,"width":1,"height":2},{"title":"Risky Weight within Drive State (Slow-Motion, Top View)","description":"Performance of Drive State that also incorporates Risky Weight, an ongoing movement interest of Bebe Miller's and part of the embodied vocabulary of the Bebe Miller Company. Dancer: Darrell Jones","type":"vimeo","additional_fields":{"css-border-left-width":"3px","css-border-style":"solid","autoplay":"true","css-border-bottom-width":"3px","css-border-color":"white","vimeo-id":"78743974","autoload":"false"},"id":"e7985f716d6d6d8d09a10000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-23b-driveslomobtop.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-23b-driveslomobtop.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-23b-driveslomobtop.jpg"}},"x":7,"y":3,"width":2,"height":2},{"title":"Risky Weight within Drive State (Slow-Motion)","description":"Performance of the Drive State that also incorporates Risky Weight. The slow-motion reveals the subtle complexity of Darrell’s actions. Dancer: Darrell Jones","type":"vimeo","additional_fields":{"css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","autoplay":"true","autoload":"false","vimeo-id":"78744840"},"id":"eb985f716d6d6d8d09a20000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-23a-driveslomoawide.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-23a-driveslomoawide.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-23a-driveslomoawide.jpg"}},"x":5,"y":3,"width":2,"height":2},{"title":"Tendency CallOut Text 1","description":"“We often work with furthering and risky weight, where weight (either standing or in floor work) is shifted at the last minute. The feeling is similar to finding that there’s one more step down unexpectedly, or the weight at risk as you step on a banana peel.”  \r\n<br> \r\n<div style=\"color:rgba(255,255,255,0.35)\"> \r\n----- Bebe Miller \r\n</div>","type":"html","additional_fields":{"html-content":"“We often work with furthering and risky weight, where weight (either standing or in floor work) is shifted at the last minute. The feeling is similar to finding that there’s one more step down unexpectedly, or the weight at risk as you step on a banana peel.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","css-background-color":"rgba(0,0,0,0.8)","css-color":"rgba(255,255,255,0.8)","css-font-size":"150%","css-overflow":"auto"},"id":"19995f716d6d6d8d09a40000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":7,"y":2,"width":3,"height":1},{"title":"Drive State (Motion Capture)","description":"View motion capture data of the Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancer: Darrell Jones","type":"iframe","additional_fields":{"css-border-color":"white","css-border-solid":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/MocapView_44_BMC/44b_BMCDarrellSolo1_2_3.html","autoload":"false","solo":"1"},"id":"1f995f716d6d6d8d09a50000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/44b_BMCDarrellSolo1_2_3.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/44b_BMCDarrellSolo1_2_3.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/44b_BMCDarrellSolo1_2_3.jpg"}},"x":28,"y":1,"width":3,"height":3},{"title":"Tendency Body Text 5","description":"Drive State:\r\n<br>\r\n“Darrell’s own work during the 2000’s (two works with Ralph Lemon, his research on Forsythe’s Improvisation Technologies, and his own choreography) greatly informs the dynamic of what became this Drive State. The physical directives that produce the Drive State are a set of tasks pushed to high velocity. He is tracing the periphery of the room, moving with a repeated rhythm in the lower body, creating opposition between the pelvic and limb gestures, and covering space through recovering his weight. All of it is done at full velocity, however, pushed to a high speed while looking for his physical edge, his exhaustion point.”\r\n<br>\r\n<div style=\"color:rgba(0,0,0,0.6)\">\r\n----- Bebe Miller\r\n</div>\r\n","type":"html","additional_fields":{"css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","css-background-color":"rgba(0,0,0,0.15)","css-color":"rgba(0,0,0,0.8)","css-font-size":"125%","html-content":"Drive State: <br> “Darrell’s own work during the 2000’s (two works with Ralph Lemon, his research on Forsythe’s Improvisation Technologies, and his own choreography) greatly informs the dynamic of what became this Drive State. The physical directives that produce the Drive State are a set of tasks pushed to high velocity. He is tracing the periphery of the room, moving with a repeated rhythm in the lower body, creating opposition between the pelvic and limb gestures, and covering space through recovering his weight. All of it is done at full velocity, however, pushed to a high speed while looking for his physical edge, his exhaustion point.” <br> <div style=\"color:rgba(0,0,0,0.6)\"> ----- Bebe Miller </div>","css-overflow":"auto"},"id":"26995f716d6d6d8d09a60000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":26,"y":1,"width":2,"height":2},{"title":"Tendency Body Text 4","description":"Story State: \r\n<br>\r\n“When I watch Angie, I notice how her focus precedes, follows, and drifts out of sync with the kinetics of the moment, so Angie carries with her an impression of being elsewhere and then suddenly deep inside the present moment. On the inside, from her point of view, she is keeping her weight at risk, actively solving level changes past the expected resolve, or tracing an exterior point and then shifting to a more visceral, torso-centered engagement. On the outside we follow her focus and intelligence, which seems to bring context to what she is doing, a sense that whatever room she is imagining is giving her tangible stories and obstacles to deal with. She may not be imagining anything, but we get to play what that might be.” \r\n<br>\r\n<div style=\"color:rgba(0,0,0,0.6)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","css-background-color":"rgba(0,0,0,0.15)","css-color":"rgba(0,0,0,0.8)","css-font-size":"125%","html-content":"Story State:  <br> “When I watch Angie, I notice how her focus precedes, follows, and drifts out of sync with the kinetics of the moment, so Angie carries with her an impression of being elsewhere and then suddenly deep inside the present moment. On the inside, from her point of view, she is keeping her weight at risk, actively solving level changes past the expected resolve, or tracing an exterior point and then shifting to a more visceral, torso-centered engagement. On the outside we follow her focus and intelligence, which seems to bring context to what she is doing, a sense that whatever room she is imagining is giving her tangible stories and obstacles to deal with. She may not be imagining anything, but we get to play what that might be.”  <br> <div style=\"color:rgba(0,0,0,0.6)\"> ----- Bebe Miller </div>","css-overflow":"auto"},"id":"2c995f716d6d6d8d09a70000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":18,"y":0,"width":2,"height":2},{"title":"Story State Improvisation","description":"Performance of Story State improvisation, which was derived from several of Angie's tendencies as distilled by Bebe in their working process together. Dancer: Angie Hauser","type":"vimeo","additional_fields":{"vimeo-id":"68873712","css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-solid":"solid","css-border-color":"white","autoplay":"true","autoload":"false"},"id":"33995f716d6d6d8d09a80000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-19-storystate.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-19-storystate.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-19-storystate.jpg"}},"x":20,"y":0,"width":2,"height":2},{"title":"Tendency Body Text 3","description":"The Story State is derived from Angie Hauser’s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Darrell Jones. Bebe highlights the way Angie uses her gaze actively, reading and responding to the environment both real and imagined and to the others in the space.\r\n<br><br>\r\nThe Drive State is derived from Darrell Jones’s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Angie Hauser. Bebe highlights Darrell’s tendency to use more internal sensing forms of attention, responding through touch and cues caught in the periphery of his vision.\r\n<br><br>\r\nThe Risky Weight State can be seen in the two previous states and is derived from Bebe Miller’s movement tendencies. It relates to her interest in “interrupting the inevitable,” which can mean stopping, furthering, or redirecting an action unexpectedly.\r\n<br><br>","type":"html","additional_fields":{"css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","css-background-color":"rgba(0,0,0,0.15)","css-color":"rgba(0,0,0,0.8)","css-font-size":"125%","html-content":"The Story State is derived from Angie Hauser’s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Darrell Jones. Bebe highlights the way Angie uses her gaze actively, reading and responding to the environment both real and imagined and to the others in the space. <br><br> The Drive State is derived from Darrell Jones’s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Angie Hauser. Bebe highlights Darrell’s tendency to use more internal sensing forms of attention, responding through touch and cues caught in the periphery of his vision. <br><br> The Risky Weight State can be seen in the two previous states and is derived from Bebe Miller’s movement tendencies. It relates to her interest in “interrupting the inevitable,” which can mean stopping, furthering, or redirecting an action unexpectedly. <br><br>","css-overflow":"auto"},"id":"3a995f716d6d6d8d09a90000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":14,"y":1,"width":1,"height":4},{"title":"Contrasting States Duet","description":"Performance of Story State and Drive State combined in a duet of contrasting tendencies and forms of attention. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"css-border-left-width":"3px","css-border-style":"solid","css-border-color":"white","autoplay":"true","autoload":"false","vimeo-id":"70337249","css-border-bottom-width":"3px"},"id":"40995f716d6d6d8d09aa0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-21-contrastangieanddarrell.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-21-contrastangieanddarrell.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-21-contrastangieanddarrell.jpg"}},"x":10,"y":1,"width":4,"height":4},{"title":"Drive State Improvisation","description":"Performance of Drive State improvisation, which was derived from Darrell's tendencies as distilled by Bebe in their working process together. Dancer: Darrell Jones","type":"vimeo","additional_fields":{"autoplay":"true","autoload":"false","vimeo-id":"68873557","css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"45995f716d6d6d8d09ab0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-20-drivestate.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-20-drivestate.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-20-drivestate.jpg"}},"x":23,"y":0,"width":3,"height":3},{"title":"Tendency CallOut Text 4","description":"“On the outside, Talvin Wilks (dramaturge) and I follow the dancers’ attention and I identify the specificities of their action. I find myself drawn to the pull of attention, the sweep of action, the arrested moment, the pressure between people.”\r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"html-content":"“On the outside, Talvin Wilks (dramaturge) and I follow the dancers’ attention and I identify the specificities of their action. I find myself drawn to the pull of attention, the sweep of action, the arrested moment, the pressure between people.” <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-font-size":"150%","css-color":"rgba(255,255,255,0.8)","css-background-color":"rgba(0,0,0,0.8)","css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-color":"white","css-border-style":"solid","css-overflow":"auto"},"id":"4c995f716d6d6d8d09ac0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":22,"y":0,"width":1,"height":3},{"title":"Phrasing Landscape of Movement Tendencies","description":"The dancers’ personal recipes for performing are influenced and distilled through the lens of the director. This visualization traces the actions of each dancer’s head and pelvis to create a landscape from their individual choices. ","type":"iframe","additional_fields":{"css-border-style":"solid","css-border-color":"white","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/InterAct_31_PhrasingLandscape/31_PhrasingLandscape.html","autoload":"false","solo":"1"},"id":"7d995f716d6d6d8d09ad0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/31_PhrasingLandscape.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/31_PhrasingLandscape.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/31_PhrasingLandscape.jpg"}},"x":16,"y":0,"width":2,"height":2},{"title":"Risky Weight (Slow-Motion, Top View)","description":"Performance of Risky Weight improvisation, which was derived from Bebe Miller’s own movement tendencies. Shot in slow-motion, the top camera view shows the twists and falls required to keep the weight at risk. Dancer: Angie Hauser","type":"vimeo","additional_fields":{"css-border-style":"solid","css-border-color":"white","autoplay":"true","autoload":"false","vimeo-id":"78739448","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"88995f716d6d6d8d09ae0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-22b-riskyweightbtop.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-22b-riskyweightbtop.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-22b-riskyweightbtop.jpg"}},"x":7,"y":0,"width":2,"height":2},{"title":"Risky Weight (Slow-Motion)","description":"Performance of Risky Weight improvisation, which was derived from Bebe Miller’s own tendencies. Over time this state has become a part of the embodied vocabulary of the Bebe Miller Company. Shot in slow-motion. Dancer: Angie Hauser","type":"vimeo","additional_fields":{"css-border-color":"white","autoplay":"true","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","vimeo-id":"78740259","autoload":"false"},"id":"8f995f716d6d6d8d09af0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-22a-riskyweightawide.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-22a-riskyweightawide.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-22a-riskyweightawide.jpg"}},"x":4,"y":0,"width":3,"height":3},{"title":"TENDENCY Attention Gradient Text","description":"*No Rollover","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/TEND-AttentionText.html","autoload":"true","sticky":"1"},"id":"833e97716d30340763070000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":22,"y":4,"width":4,"height":1},{"title":"TENDENCY Contrast Gradient Cell","description":"*No Rollover","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/TEND-ContrastText.html","sticky":"1","autoload":"true"},"id":"24479a716d30340766030000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":9,"y":0,"width":6,"height":1},{"title":"TENDENCY Sensation Gradient Text","description":"*No Rollover","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/TEND-SensationText.html","sticky":"1","autoload":"true"},"id":"957a9a716d30340766040000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":26,"y":0,"width":5,"height":1},{"title":"Tendency Title Block","description":"use .PNG file","type":"image","additional_fields":{"css-background-color":"#3E5FAB","background-size":"contain","class":"hide-info"},"id":"4e5f87866d30343b564b0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/TENDENCY.png","small":{"url":"/system/uploads/two/Cell/poster_image/small/TENDENCY.png"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/TENDENCY.png"}},"x":0,"y":0,"width":4,"height":5},{"title":"Tendency CallOut Text 2","description":"“The two dancers featured in this project (Angie Hauser and Darrell Jones) have the immediacy of their 15-year history as dance partners, along with their inescapable interior landscapes to work with. And Talvin Wilks (Dramaturge) and I have a 15-year history of watching them meet the various situations we’ve built, along with our own agendas that we bring to the table.”  \r\n<div style=\"color:rgba(255,255,255,0.35)\"> \r\n----- Bebe Miller \r\n</div>","type":"html","additional_fields":{"html-content":"“The two dancers featured in this project (Angie Hauser and Darrell Jones) have the immediacy of their 15-year history as dance partners, along with their inescapable interior landscapes to work with. And Talvin Wilks (Dramaturge) and I have a 15-year history of watching them meet the various situations we’ve built, along with our own agendas that we bring to the table.”  <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","css-background-color":"rgba(0,0,0,0.8)","css-color":"rgba(255,255,255,0.8)","css-font-size":"150%","css-overflow":"auto"},"id":"84c599906d30343b537b0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":23,"y":3,"width":3,"height":1},{"title":"Tendency Body Text 1","description":"One way that Bebe Miller investigates the thinking body and dancing mind is by heightening and distilling her dancers’ movement tendencies and ways of giving attention into states for improvisation. These states also emerge from Miller’s own tendencies and from the many years of working together as a company. The three states we feature here are Story, Drive, and Risky Weight.","type":"text","additional_fields":{"text-content":"One way that Bebe Miller investigates the thinking body and dancing mind is by heightening and distilling her dancers’ movement tendencies and ways of giving attention into states for improvisation. These states also emerge from Miller’s own tendencies and from the many years of working together as a company. The three states we feature here are Story, Drive, and Risky Weight.","css-background-color":"rgba(0,0,0,0.15)","css-color":"rgba(0,0,0,0.8)","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","css-font-size":"125%","css-overflow":"auto"},"id":"bbfd60956d30343b5c700000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":4,"y":3,"width":1,"height":2}]}
+{
+ "title": "3 - TENDENCY",
+ "description": "",
+ "path": "tendency",
+ "grid_cols": 31,
+ "grid_rows": 5,
+ "cell_width": 256,
+ "cell_height": 144,
+ "css_class_name": "set-118 white-background",
+ "published": true,
+ "id": "aa985f716d6d6d8d09950000",
+ "poster": "tendency.jpg",
+ "cells": [
+  {
+   "title": "Tendency CallOut Text 3_b",
+   "description": " \u201cOur work together depends on sharing a language. It also holds the paradox of describing something from both the inside and the outside.\u201d \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": " \u201cOur work together depends on sharing a language. It also holds the paradox of describing something from both the inside and the outside.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-font-size": "150%",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-overflow": "auto"
+   },
+   "id": "b0985f716d6d6d8d09960000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 28,
+   "y": 4,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Story State Difference Lines",
+   "description": "Angie Hauser's motion is detected at each moment in one Story State improvisation. The center of motion is computed and a line is drawn using movement center locations.",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "79403921",
+    "css-border-style": "solid",
+    "css-border-left-width": "3px",
+    "autoplay": "true",
+    "autoload": "false",
+    "css-border-bottom-width": "3px",
+    "css-border-color": "white"
+   },
+   "id": "b5985f716d6d6d8d09970000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/40d-storystatelines.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/40d-storystatelines.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/40d-storystatelines.jpg"
+    }
+   },
+   "x": 18,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Contrasting States Duet (Motion Capture) ",
+   "description": "View motion capture data of the duet using Story State and Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancers: Angie Hauser and Darrell Jones",
+   "type": "iframe",
+   "additional_fields": {
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "iframe-src": "/modules/two/mocap/index.html?data=MocapView_44a",
+    "autoload": "false",
+    "solo": "1"
+   },
+   "id": "b9985f716d6d6d8d09980000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/44a_BMCOpeningDuet.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/44a_BMCOpeningDuet.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/44a_BMCOpeningDuet.jpg"
+    }
+   },
+   "x": 15,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Drive State Difference Lines",
+   "description": "Motion is detected at each moment and its center is computed. A line is drawn using movement center locations to show Darrell's twisting and turning pathway as he performs the Drive State improvisation. Dancer: Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "autoload": "false",
+    "vimeo-id": "79306866"
+   },
+   "id": "c4985f716d6d6d8d099a0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/40e-drivestatelines.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/40e-drivestatelines.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/40e-drivestatelines.jpg"
+    }
+   },
+   "x": 26,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Drive State Difference Forms",
+   "description": "Movement locations in one improvised performance of the Drive State are made visible and maintained for a short time before fading. Dancer: Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "vimeo-id": "79403920",
+    "autoload": "false",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "c8985f716d6d6d8d099b0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/40b_DriveStateDiffForms.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/40b_DriveStateDiffForms.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/40b_DriveStateDiffForms.jpg"
+    }
+   },
+   "x": 22,
+   "y": 3,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Story State Motion Study",
+   "description": "Animator Vita Berezina-Blackburn brings her history of working with the Bebe Miller Company to this motion study of the Story State using motion capture data from an improvisation by Angie Hauser. ",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "vimeo-id": "79495113"
+   },
+   "id": "cd985f716d6d6d8d099c0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/43_StoryStateAnim.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/43_StoryStateAnim.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/43_StoryStateAnim.jpg"
+    }
+   },
+   "x": 20,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Story State Difference Forms",
+   "description": "Movement locations in one improvised performance of the Story State are made visible and maintained for a short time before fading. Dancer: Angie Hauser",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "autoplay": "true",
+    "autoload": "false",
+    "vimeo-id": "79403919"
+   },
+   "id": "d3985f716d6d6d8d099d0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/40a_StoryStateDiffForms.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/40a_StoryStateDiffForms.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/40a_StoryStateDiffForms.jpg"
+    }
+   },
+   "x": 20,
+   "y": 2,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Tendency CallOut Text 3",
+   "description": "\u201cThe specifics of the body\u2019s action have always been my focus, particularly the dynamic and rhythm of attention in the body: where does the impulse travel, how can that be interrupted and redirected, what\u2019s the change of sensation as it travels, what might it remind you of (which is where context and memory begin), who is doing it to/with whom, can one kind of action be sustained in the presence of another?\u201d \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cThe specifics of the body\u2019s action have always been my focus, particularly the dynamic and rhythm of attention in the body: where does the impulse travel, how can that be interrupted and redirected, what\u2019s the change of sensation as it travels, what might it remind you of (which is where context and memory begin), who is doing it to/with whom, can one kind of action be sustained in the presence of another?\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-font-size": "150%",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-overflow": "auto"
+   },
+   "id": "d8985f716d6d6d8d099e0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 15,
+   "y": 2,
+   "width": 4,
+   "height": 1
+  },
+  {
+   "title": "Contrasting States Duet Difference Forms ",
+   "description": "Movement locations in one improvised performance of the two contrasting states together are made visible and maintained for a short time before fading. Top View. ",
+   "type": "vimeo",
+   "additional_fields": {
+    "autoload": "false",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "vimeo-id": "79306499"
+   },
+   "id": "dd985f716d6d6d8d099f0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/40c_DuetDiffForms.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/40c_DuetDiffForms.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/40c_DuetDiffForms.jpg"
+    }
+   },
+   "x": 15,
+   "y": 0,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Tendency Body Text 2",
+   "description": "Bebe Miller pays great attention to interesting tendencies and feeds these back to the dancers in rehearsal. For example, she might identify the way Darrell tends to rock his head and pelvis to maintain an internal rhythm or the way Angie often initiates with her focus and creates stops and starts in time that generate a sense of alertness.",
+   "type": "text",
+   "additional_fields": {
+    "text-content": "Bebe Miller pays great attention to interesting tendencies and feeds these back to the dancers in rehearsal. For example, she might identify the way Darrell tends to rock his head and pelvis to maintain an internal rhythm or the way Angie often initiates with her focus and creates stops and starts in time that generate a sense of alertness.",
+    "css-font-size": "125%",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-overflow": "auto"
+   },
+   "id": "e2985f716d6d6d8d09a00000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 9,
+   "y": 3,
+   "width": 1,
+   "height": 2
+  },
+  {
+   "title": "Risky Weight within Drive State (Slow-Motion, Top View)",
+   "description": "Performance of Drive State that also incorporates Risky Weight, an ongoing movement interest of Bebe Miller's and part of the embodied vocabulary of the Bebe Miller Company. Dancer: Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-style": "solid",
+    "autoplay": "true",
+    "css-border-bottom-width": "3px",
+    "css-border-color": "white",
+    "vimeo-id": "78743974",
+    "autoload": "false"
+   },
+   "id": "e7985f716d6d6d8d09a10000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-23b-driveslomobtop.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-23b-driveslomobtop.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-23b-driveslomobtop.jpg"
+    }
+   },
+   "x": 7,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Risky Weight within Drive State (Slow-Motion)",
+   "description": "Performance of the Drive State that also incorporates Risky Weight. The slow-motion reveals the subtle complexity of Darrell\u2019s actions. Dancer: Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "autoload": "false",
+    "vimeo-id": "78744840"
+   },
+   "id": "eb985f716d6d6d8d09a20000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-23a-driveslomoawide.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-23a-driveslomoawide.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-23a-driveslomoawide.jpg"
+    }
+   },
+   "x": 5,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Tendency CallOut Text 1",
+   "description": "\u201cWe often work with furthering and risky weight, where weight (either standing or in floor work) is shifted at the last minute. The feeling is similar to finding that there\u2019s one more step down unexpectedly, or the weight at risk as you step on a banana peel.\u201d  \r\n<br> \r\n<div style=\"color:rgba(255,255,255,0.35)\"> \r\n----- Bebe Miller \r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cWe often work with furthering and risky weight, where weight (either standing or in floor work) is shifted at the last minute. The feeling is similar to finding that there\u2019s one more step down unexpectedly, or the weight at risk as you step on a banana peel.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-font-size": "150%",
+    "css-overflow": "auto"
+   },
+   "id": "19995f716d6d6d8d09a40000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 7,
+   "y": 2,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Drive State (Motion Capture)",
+   "description": "View motion capture data of the Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancer: Darrell Jones",
+   "type": "iframe",
+   "additional_fields": {
+    "css-border-color": "white",
+    "css-border-solid": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "iframe-src": "/modules/two/mocap/index.html?data=MocapView_44b",
+    "autoload": "false",
+    "solo": "1"
+   },
+   "id": "1f995f716d6d6d8d09a50000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/44b_BMCDarrellSolo1_2_3.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/44b_BMCDarrellSolo1_2_3.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/44b_BMCDarrellSolo1_2_3.jpg"
+    }
+   },
+   "x": 28,
+   "y": 1,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "Tendency Body Text 5",
+   "description": "Drive State:\r\n<br>\r\n\u201cDarrell\u2019s own work during the 2000\u2019s (two works with Ralph Lemon, his research on Forsythe\u2019s Improvisation Technologies, and his own choreography) greatly informs the dynamic of what became this Drive State. The physical directives that produce the Drive State are a set of tasks pushed to high velocity. He is tracing the periphery of the room, moving with a repeated rhythm in the lower body, creating opposition between the pelvic and limb gestures, and covering space through recovering his weight. All of it is done at full velocity, however, pushed to a high speed while looking for his physical edge, his exhaustion point.\u201d\r\n<br>\r\n<div style=\"color:rgba(0,0,0,0.6)\">\r\n----- Bebe Miller\r\n</div>\r\n",
+   "type": "html",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-font-size": "125%",
+    "html-content": "Drive State: <br> \u201cDarrell\u2019s own work during the 2000\u2019s (two works with Ralph Lemon, his research on Forsythe\u2019s Improvisation Technologies, and his own choreography) greatly informs the dynamic of what became this Drive State. The physical directives that produce the Drive State are a set of tasks pushed to high velocity. He is tracing the periphery of the room, moving with a repeated rhythm in the lower body, creating opposition between the pelvic and limb gestures, and covering space through recovering his weight. All of it is done at full velocity, however, pushed to a high speed while looking for his physical edge, his exhaustion point.\u201d <br> <div style=\"color:rgba(0,0,0,0.6)\"> ----- Bebe Miller </div>",
+    "css-overflow": "auto"
+   },
+   "id": "26995f716d6d6d8d09a60000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 26,
+   "y": 1,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Tendency Body Text 4",
+   "description": "Story State: \r\n<br>\r\n\u201cWhen I watch Angie, I notice how her focus precedes, follows, and drifts out of sync with the kinetics of the moment, so Angie carries with her an impression of being elsewhere and then suddenly deep inside the present moment. On the inside, from her point of view, she is keeping her weight at risk, actively solving level changes past the expected resolve, or tracing an exterior point and then shifting to a more visceral, torso-centered engagement. On the outside we follow her focus and intelligence, which seems to bring context to what she is doing, a sense that whatever room she is imagining is giving her tangible stories and obstacles to deal with. She may not be imagining anything, but we get to play what that might be.\u201d \r\n<br>\r\n<div style=\"color:rgba(0,0,0,0.6)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-font-size": "125%",
+    "html-content": "Story State:  <br> \u201cWhen I watch Angie, I notice how her focus precedes, follows, and drifts out of sync with the kinetics of the moment, so Angie carries with her an impression of being elsewhere and then suddenly deep inside the present moment. On the inside, from her point of view, she is keeping her weight at risk, actively solving level changes past the expected resolve, or tracing an exterior point and then shifting to a more visceral, torso-centered engagement. On the outside we follow her focus and intelligence, which seems to bring context to what she is doing, a sense that whatever room she is imagining is giving her tangible stories and obstacles to deal with. She may not be imagining anything, but we get to play what that might be.\u201d  <br> <div style=\"color:rgba(0,0,0,0.6)\"> ----- Bebe Miller </div>",
+    "css-overflow": "auto"
+   },
+   "id": "2c995f716d6d6d8d09a70000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 18,
+   "y": 0,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Story State Improvisation",
+   "description": "Performance of Story State improvisation, which was derived from several of Angie's tendencies as distilled by Bebe in their working process together. Dancer: Angie Hauser",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "68873712",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-solid": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "autoload": "false"
+   },
+   "id": "33995f716d6d6d8d09a80000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-19-storystate.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-19-storystate.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-19-storystate.jpg"
+    }
+   },
+   "x": 20,
+   "y": 0,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Tendency Body Text 3",
+   "description": "The Story State is derived from Angie Hauser\u2019s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Darrell Jones. Bebe highlights the way Angie uses her gaze actively, reading and responding to the environment both real and imagined and to the others in the space.\r\n<br><br>\r\nThe Drive State is derived from Darrell Jones\u2019s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Angie Hauser. Bebe highlights Darrell\u2019s tendency to use more internal sensing forms of attention, responding through touch and cues caught in the periphery of his vision.\r\n<br><br>\r\nThe Risky Weight State can be seen in the two previous states and is derived from Bebe Miller\u2019s movement tendencies. It relates to her interest in \u201cinterrupting the inevitable,\u201d which can mean stopping, furthering, or redirecting an action unexpectedly.\r\n<br><br>",
+   "type": "html",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-font-size": "125%",
+    "html-content": "The Story State is derived from Angie Hauser\u2019s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Darrell Jones. Bebe highlights the way Angie uses her gaze actively, reading and responding to the environment both real and imagined and to the others in the space. <br><br> The Drive State is derived from Darrell Jones\u2019s ways of moving and giving attention when working with Bebe Miller Company and, in particular, in duet work with Angie Hauser. Bebe highlights Darrell\u2019s tendency to use more internal sensing forms of attention, responding through touch and cues caught in the periphery of his vision. <br><br> The Risky Weight State can be seen in the two previous states and is derived from Bebe Miller\u2019s movement tendencies. It relates to her interest in \u201cinterrupting the inevitable,\u201d which can mean stopping, furthering, or redirecting an action unexpectedly. <br><br>",
+    "css-overflow": "auto"
+   },
+   "id": "3a995f716d6d6d8d09a90000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 14,
+   "y": 1,
+   "width": 1,
+   "height": 4
+  },
+  {
+   "title": "Contrasting States Duet",
+   "description": "Performance of Story State and Drive State combined in a duet of contrasting tendencies and forms of attention. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "autoload": "false",
+    "vimeo-id": "70337249",
+    "css-border-bottom-width": "3px"
+   },
+   "id": "40995f716d6d6d8d09aa0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-21-contrastangieanddarrell.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-21-contrastangieanddarrell.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-21-contrastangieanddarrell.jpg"
+    }
+   },
+   "x": 10,
+   "y": 1,
+   "width": 4,
+   "height": 4
+  },
+  {
+   "title": "Drive State Improvisation",
+   "description": "Performance of Drive State improvisation, which was derived from Darrell's tendencies as distilled by Bebe in their working process together. Dancer: Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "autoplay": "true",
+    "autoload": "false",
+    "vimeo-id": "68873557",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "45995f716d6d6d8d09ab0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-20-drivestate.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-20-drivestate.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-20-drivestate.jpg"
+    }
+   },
+   "x": 23,
+   "y": 0,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "Tendency CallOut Text 4",
+   "description": "\u201cOn the outside, Talvin Wilks (dramaturge) and I follow the dancers\u2019 attention and I identify the specificities of their action. I find myself drawn to the pull of attention, the sweep of action, the arrested moment, the pressure between people.\u201d\r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cOn the outside, Talvin Wilks (dramaturge) and I follow the dancers\u2019 attention and I identify the specificities of their action. I find myself drawn to the pull of attention, the sweep of action, the arrested moment, the pressure between people.\u201d <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-font-size": "150%",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-overflow": "auto"
+   },
+   "id": "4c995f716d6d6d8d09ac0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 22,
+   "y": 0,
+   "width": 1,
+   "height": 3
+  },
+  {
+   "title": "Phrasing Landscape of Movement Tendencies",
+   "description": "The dancers\u2019 personal recipes for performing are influenced and distilled through the lens of the director. This visualization traces the actions of each dancer\u2019s head and pelvis to create a landscape from their individual choices. ",
+   "type": "iframe",
+   "additional_fields": {
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_31_PhrasingLandscape/31_PhrasingLandscape.html",
+    "autoload": "false",
+    "solo": "1"
+   },
+   "id": "7d995f716d6d6d8d09ad0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/31_PhrasingLandscape.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/31_PhrasingLandscape.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/31_PhrasingLandscape.jpg"
+    }
+   },
+   "x": 16,
+   "y": 0,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Risky Weight (Slow-Motion, Top View)",
+   "description": "Performance of Risky Weight improvisation, which was derived from Bebe Miller\u2019s own movement tendencies. Shot in slow-motion, the top camera view shows the twists and falls required to keep the weight at risk. Dancer: Angie Hauser",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "autoload": "false",
+    "vimeo-id": "78739448",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "88995f716d6d6d8d09ae0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-22b-riskyweightbtop.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-22b-riskyweightbtop.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-22b-riskyweightbtop.jpg"
+    }
+   },
+   "x": 7,
+   "y": 0,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Risky Weight (Slow-Motion)",
+   "description": "Performance of Risky Weight improvisation, which was derived from Bebe Miller\u2019s own tendencies. Over time this state has become a part of the embodied vocabulary of the Bebe Miller Company. Shot in slow-motion. Dancer: Angie Hauser",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-color": "white",
+    "autoplay": "true",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "vimeo-id": "78740259",
+    "autoload": "false"
+   },
+   "id": "8f995f716d6d6d8d09af0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-22a-riskyweightawide.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-22a-riskyweightawide.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-22a-riskyweightawide.jpg"
+    }
+   },
+   "x": 4,
+   "y": 0,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "TENDENCY Attention Gradient Text",
+   "description": "*No Rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/TEND-AttentionText.html",
+    "autoload": "true",
+    "sticky": "1"
+   },
+   "id": "833e97716d30340763070000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 22,
+   "y": 4,
+   "width": 4,
+   "height": 1
+  },
+  {
+   "title": "TENDENCY Contrast Gradient Cell",
+   "description": "*No Rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/TEND-ContrastText.html",
+    "sticky": "1",
+    "autoload": "true"
+   },
+   "id": "24479a716d30340766030000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 9,
+   "y": 0,
+   "width": 6,
+   "height": 1
+  },
+  {
+   "title": "TENDENCY Sensation Gradient Text",
+   "description": "*No Rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/TEND-SensationText.html",
+    "sticky": "1",
+    "autoload": "true"
+   },
+   "id": "957a9a716d30340766040000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 26,
+   "y": 0,
+   "width": 5,
+   "height": 1
+  },
+  {
+   "title": "Tendency Title Block",
+   "description": "use .PNG file",
+   "type": "image",
+   "additional_fields": {
+    "css-background-color": "#3E5FAB",
+    "background-size": "contain",
+    "class": "hide-info"
+   },
+   "id": "4e5f87866d30343b564b0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/TENDENCY.png",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/TENDENCY.png"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/TENDENCY.png"
+    }
+   },
+   "x": 0,
+   "y": 0,
+   "width": 4,
+   "height": 5
+  },
+  {
+   "title": "Tendency CallOut Text 2",
+   "description": "\u201cThe two dancers featured in this project (Angie Hauser and Darrell Jones) have the immediacy of their 15-year history as dance partners, along with their inescapable interior landscapes to work with. And Talvin Wilks (Dramaturge) and I have a 15-year history of watching them meet the various situations we\u2019ve built, along with our own agendas that we bring to the table.\u201d  \r\n<div style=\"color:rgba(255,255,255,0.35)\"> \r\n----- Bebe Miller \r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cThe two dancers featured in this project (Angie Hauser and Darrell Jones) have the immediacy of their 15-year history as dance partners, along with their inescapable interior landscapes to work with. And Talvin Wilks (Dramaturge) and I have a 15-year history of watching them meet the various situations we\u2019ve built, along with our own agendas that we bring to the table.\u201d  <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-font-size": "150%",
+    "css-overflow": "auto"
+   },
+   "id": "84c599906d30343b537b0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 23,
+   "y": 3,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Tendency Body Text 1",
+   "description": "One way that Bebe Miller investigates the thinking body and dancing mind is by heightening and distilling her dancers\u2019 movement tendencies and ways of giving attention into states for improvisation. These states also emerge from Miller\u2019s own tendencies and from the many years of working together as a company. The three states we feature here are Story, Drive, and Risky Weight.",
+   "type": "text",
+   "additional_fields": {
+    "text-content": "One way that Bebe Miller investigates the thinking body and dancing mind is by heightening and distilling her dancers\u2019 movement tendencies and ways of giving attention into states for improvisation. These states also emerge from Miller\u2019s own tendencies and from the many years of working together as a company. The three states we feature here are Story, Drive, and Risky Weight.",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-font-size": "125%",
+    "css-overflow": "auto"
+   },
+   "id": "bbfd60956d30343b5c700000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 4,
+   "y": 3,
+   "width": 1,
+   "height": 2
+  }
+ ]
+}

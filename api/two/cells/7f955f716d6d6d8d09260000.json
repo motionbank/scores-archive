@@ -1,1 +1,23 @@
-{"title":"Assisted Solo, Mixed Strategies (Motion Capture)","description":"The Assisted Solo strategy works to short circuit habitual patterns of coordination by giving a solo dancer several external impulses from assistant dancers. The exercise emphasizes the inputs and actions of the soloist but, as this motion capture data shows, the assistants' motion also reveals interesting patterns. Dancers: Thomas Hauert and Mat Voorter","type":"iframe","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/MocapView_47_AssistSoloMixed/47_AssistSoloMixedMocap.html"},"id":"7f955f716d6d6d8d09260000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/47_AssistSoloMixedMocap.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/47_AssistSoloMixedMocap.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/47_AssistSoloMixedMocap.jpg"}},"css_class_name":"cell-1156"}
+{
+ "title": "Assisted Solo, Mixed Strategies (Motion Capture)",
+ "description": "The Assisted Solo strategy works to short circuit habitual patterns of coordination by giving a solo dancer several external impulses from assistant dancers. The exercise emphasizes the inputs and actions of the soloist but, as this motion capture data shows, the assistants' motion also reveals interesting patterns. Dancers: Thomas Hauert and Mat Voorter",
+ "type": "iframe",
+ "additional_fields": {
+  "css-border-color": "white",
+  "css-border-style": "solid",
+  "css-border-bottom-width": "3px",
+  "css-border-left-width": "3px",
+  "iframe-src": "/modules/two/mocap/index.html?data=MocapView_47"
+ },
+ "id": "7f955f716d6d6d8d09260000",
+ "poster_image": {
+  "url": "/system/uploads/two/Cell/poster_image/full/47_AssistSoloMixedMocap.jpg",
+  "small": {
+   "url": "/system/uploads/two/Cell/poster_image/small/47_AssistSoloMixedMocap.jpg"
+  },
+  "medium": {
+   "url": "/system/uploads/two/Cell/poster_image/medium/47_AssistSoloMixedMocap.jpg"
+  }
+ },
+ "css_class_name": "cell-1156"
+}

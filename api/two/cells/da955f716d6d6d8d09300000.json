@@ -1,1 +1,23 @@
-{"title":"Drive State (Motion Capture)","description":"View motion capture data of the Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancer: Darrell Jones","type":"iframe","additional_fields":{"css-border-color":"white","css-border-solid":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/MocapView_44_BMC/44b_BMCDarrellSolo1_2_3.html"},"id":"da955f716d6d6d8d09300000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/44b_BMCDarrellSolo1_2_3.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/44b_BMCDarrellSolo1_2_3.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/44b_BMCDarrellSolo1_2_3.jpg"}},"css_class_name":"cell-1152"}
+{
+ "title": "Drive State (Motion Capture)",
+ "description": "View motion capture data of the Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancer: Darrell Jones",
+ "type": "iframe",
+ "additional_fields": {
+  "css-border-color": "white",
+  "css-border-solid": "solid",
+  "css-border-bottom-width": "3px",
+  "css-border-left-width": "3px",
+  "iframe-src": "/modules/two/mocap/index.html?data=MocapView_44b"
+ },
+ "id": "da955f716d6d6d8d09300000",
+ "poster_image": {
+  "url": "/system/uploads/two/Cell/poster_image/full/44b_BMCDarrellSolo1_2_3.jpg",
+  "small": {
+   "url": "/system/uploads/two/Cell/poster_image/small/44b_BMCDarrellSolo1_2_3.jpg"
+  },
+  "medium": {
+   "url": "/system/uploads/two/Cell/poster_image/medium/44b_BMCDarrellSolo1_2_3.jpg"
+  }
+ },
+ "css_class_name": "cell-1152"
+}

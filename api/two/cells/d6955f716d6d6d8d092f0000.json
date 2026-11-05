@@ -1,1 +1,23 @@
-{"title":"Contrasting States Duet (Motion Capture) ","description":"View motion capture data of the duet using Story State and Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancers: Angie Hauser and Darrell Jones","type":"iframe","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/MocapView_44_BMC/44a_BMCOpeningDuet.html"},"id":"d6955f716d6d6d8d092f0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/44a_BMCOpeningDuet.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/44a_BMCOpeningDuet.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/44a_BMCOpeningDuet.jpg"}},"css_class_name":"cell-1151"}
+{
+ "title": "Contrasting States Duet (Motion Capture) ",
+ "description": "View motion capture data of the duet using Story State and Drive State. Change perspective, zoom in, watch, and analyze with this interactive viewer. Dancers: Angie Hauser and Darrell Jones",
+ "type": "iframe",
+ "additional_fields": {
+  "css-border-color": "white",
+  "css-border-style": "solid",
+  "css-border-bottom-width": "3px",
+  "css-border-left-width": "3px",
+  "iframe-src": "/modules/two/mocap/index.html?data=MocapView_44a"
+ },
+ "id": "d6955f716d6d6d8d092f0000",
+ "poster_image": {
+  "url": "/system/uploads/two/Cell/poster_image/full/44a_BMCOpeningDuet.jpg",
+  "small": {
+   "url": "/system/uploads/two/Cell/poster_image/small/44a_BMCOpeningDuet.jpg"
+  },
+  "medium": {
+   "url": "/system/uploads/two/Cell/poster_image/medium/44a_BMCOpeningDuet.jpg"
+  }
+ },
+ "css_class_name": "cell-1151"
+}

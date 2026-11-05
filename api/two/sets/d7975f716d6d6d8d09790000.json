@@ -1,1 +1,744 @@
-{"title":"2 - HABIT","description":"","path":"habit","grid_cols":28,"grid_rows":5,"cell_width":256,"cell_height":144,"css_class_name":"set-117 white-background","published":true,"id":"d7975f716d6d6d8d09790000","poster":"","cells":[{"title":"Habit CallOutText3","description":" “Somehow it comes down to tricking the body into inventing new movements rather than following inscribed patterns.”","type":"html","additional_fields":{"html-content":"“Somehow it comes down to tricking the body into inventing new movements rather than following inscribed patterns.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>","css-font-size":"150%","css-color":"rgba(255,255,255,0.8)","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"dc975f716d6d6d8d097a0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":14,"y":1,"width":2,"height":1},{"title":"Habit CallOutText2","description":"“I’m interested in opening up the possibilities we access as performers when improvising. The Careful Scientist task is designed to challenge habitual patterns of coordination and attention as are many of our training exercises. But this one focuses on working alone without an external trigger and performing different actions simultaneously on two sides of the body.” Thomas Hauert","type":"html","additional_fields":{"html-content":"“I’m interested in opening up the possibilities we access as performers when improvising. The Careful Scientist task is designed to challenge habitual patterns of coordination and attention, as are many of our training exercises. But this one focuses on working alone without an external trigger and performing different actions simultaneously on two sides of the body.”   <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>","css-font-size":"150%","css-color":"rgba(255,255,255,0.8)","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"df975f716d6d6d8d097b0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":14,"y":4,"width":4,"height":1},{"title":"Careful Scientist Exercise: Action 4","description":"Rotating forearm.","type":"vimeo","additional_fields":{"vimeo-id":"79332844","css-border-style":"solid","css-border-color":"white","autoplay":"true","autoload":"false","css-border-bottom-width":"3px","css-border-left-width":"0px","loop":"true"},"id":"e3975f716d6d6d8d097c0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/38d_CSRuleDemo4.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/38d_CSRuleDemo4.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/38d_CSRuleDemo4.jpg"}},"x":12,"y":4,"width":1,"height":1},{"title":"Careful Scientist Exercise: Action 3","description":"Extending or flexing elbow.","type":"vimeo","additional_fields":{"css-border-left-width":"0px","autoplay":"true","css-border-style":"solid","css-border-color":"white","css-border-bottom-width":"3px","autoload ":"false","vimeo-id":"79332841","loop":"true"},"id":"e7975f716d6d6d8d097d0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/38c_CSRuleDemo3.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/38c_CSRuleDemo3.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/38c_CSRuleDemo3.jpg"}},"x":11,"y":4,"width":1,"height":1},{"title":"Careful Scientist Exercise: Action 2","description":"Maintaining direction of upper arm in space with rotation at the shoulder.","type":"vimeo","additional_fields":{"css-border-left-width":"0px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","autoload":"false","autoplay":"true","vimeo-id":"79332842","loop":"true"},"id":"16985f716d6d6d8d097e0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/38b_CSRuleDemo2.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/38b_CSRuleDemo2.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/38b_CSRuleDemo2.jpg"}},"x":10,"y":4,"width":1,"height":1},{"title":"Careful Scientist Exercise: Action 1","description":"Changing direction upper arm points in space.","type":"vimeo","additional_fields":{"css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","vimeo-id":"79333219","css-border-left-width":"3px","autoload":"false","autoplay":"true","loop":"true"},"id":"1b985f716d6d6d8d097f0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/38a_CSRuleDemo1.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/38a_CSRuleDemo1.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/38a_CSRuleDemo1.jpg"}},"x":9,"y":4,"width":1,"height":1},{"title":"Habit CallOutText1","description":"“The body has a tendency to follow known paths. In order to increase our movement vocabularies to include as many of the countless possibilities that the human body allows, we have devised exercises to surpass the movement patterns that have become habitual.”","type":"html","additional_fields":{"html-content":"“The body has a tendency to follow known paths. In order to increase our movement vocabularies to include as many of the countless possibilities that the human body allows, we have devised exercises to surpass the movement patterns that have become habitual.” <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>","css-font-size":"150%","css-color":"rgba(255,255,255,0.8)","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-style":"solid","css-border-color":"white","css-border-bottom-width":"3px","css-border-left-width":"3px","css-padding-top":"1em"},"id":"22985f716d6d6d8d09800000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":4,"y":4,"width":3,"height":1},{"title":"Habit BodyText 6","description":" “The body has a tendency to stop one action when starting a new action. With this exercise and others, we are interested in training ourselves to continue a particular task even while our attention is busy initiating another movement, something like juggling.”","type":"html","additional_fields":{"html-content":"“All of our strategies to practice and invent movement are somehow about priming the intuition. I understand intuition as a neuro-physiological phenomenon that relies on our experience and our memory, enabling us to act without needing to process it first.” <br>  <div style=\"color:rgba(0,0,0,0.6)\"> ----- Thomas Hauert </div>","css-font-size":"125%","css-color":"rgba(0,0,0,0.8)","css-background-color":"rgba(0,0,0,0.15)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"2b985f716d6d6d8d09820000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":24,"y":1,"width":1,"height":3},{"title":"Habit Body Text 2","description":"Thomas Hauert and Zoo Company’s have developed an exercise they call the Careful Scientist that uses a very tight set of rules to complicate the coordination between limbs across the two sides of the body. The ultimate goal of this exercise is to translate the intricate combinations it produces to any joint of the body including the joints in the fingers, toes, and the chain of the spine.","type":"html","additional_fields":{"css-color":"rgba(0,0,0,0.8)","css-font-size":"125%","html-content":"<p>Thomas Hauert and Zoo Company have developed an exercise they call the Careful Scientist, which uses a very tight set of rules to complicate the coordination between limbs across the two sides of the body. The ultimate goal of this exercise is to translate the intricate combinations it produces to any joint of the body, including the fingers, toes, and the chain of the spine.</p>","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","css-background-color":"rgba(0,0,0,0.15)","sticky":"true"},"id":"34985f716d6d6d8d09840000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":9,"y":0,"width":3,"height":1},{"title":"Solo Generated from Careful Scientist Strategy, Mat","description":"Mat performs a solo after using the Careful Scientist strategy to prime his attention and generate complex coordinations on the two sides of the body. Dancer: Mat Voorter","type":"vimeo","additional_fields":{"css-border-left-width":"3px","autoplay":"true","autoload":"false","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","vimeo-id":"76708468"},"id":"39985f716d6d6d8d09850000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-13c-carefulscimat-1.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-13c-carefulscimat-1.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-13c-carefulscimat-1.jpg"}},"x":7,"y":3,"width":2,"height":2},{"title":"Solos by all Three Dancers Consecutively","description":"Solos by all three dancers, consecutively, which were generated using the Careful Scientist training exercise to prime their attention and activate overlapping timing and irregular coordination on the two sides of the body. Dancers: Thomas Hauert, Sara Ludi, Mat Voorter","type":"vimeo","additional_fields":{"css-border-bottom-width":"3px","css-border-left-width":"3px","autoplay":"true","css-border-color":"white","autoload":"false","css-border-style":"solid","vimeo-id":"79430538"},"id":"4f985f716d6d6d8d09880000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-13d-carefulsciall.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-13d-carefulsciall.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-13d-carefulsciall.jpg"}},"x":25,"y":1,"width":3,"height":3},{"title":"Careful Scientist Exercise Four Dancers (Motion Capture)","description":"View motion capture data of four dancers performing the Careful Scientist exercise.  Change perspective, zoom in, watch, and analyze with this interactive viewer.  Dancers: Thomas Hauert, Sara Ludi, Samantha van Wissen, Mat Voorter","type":"iframe","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/MocapView_45_CarefulScientist/45_CarefulScientistMocap.html","autoload":"false"},"id":"60985f716d6d6d8d098a0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/45_CarefulScientistMocap.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/45_CarefulScientistMocap.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/45_CarefulScientistMocap.jpg"}},"x":17,"y":0,"width":2,"height":2},{"title":"Solo Generated from Careful Scientist Strategy, Sara","description":"Sara performs a solo after using the Careful Scientist strategy to prime her attention and generate complex coordinations on the two sides of the body. Dancer: Sara Ludi","type":"vimeo","additional_fields":{"css-border-left-width":"3px","autoload":"false","autoplay":"true","vimeo-id":"76640758","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"65985f716d6d6d8d098b0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-13b-carefulscisara.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-13b-carefulscisara.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-13b-carefulscisara.jpg"}},"x":7,"y":0,"width":2,"height":2},{"title":"Habit CallOutText4","description":" “My fascination with dance has to do with how motion feels and what one can feel watching it.”","type":"html","additional_fields":{"html-content":"“My fascination with dance has to do with how motion feels and what one can feel watching it.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>","css-font-size":"150%","css-color":"rgba(255,255,255,0.8)","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"72985f716d6d6d8d098d0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":24,"y":4,"width":3,"height":1},{"title":"Habit Body Text 4","description":"The Careful Scientist Exercise consists of a very limited set of four actions in certain joints of the upper body. Usually it is practiced lying on the floor, but it can also be done standing. \r\nThe goal is to teach the body to execute two of these four movements simultaneously in the left and right arm using the following constraints:\r\n\r\nAvoid symmetry and opposites in the two arms to:\r\n\r\nExecute different actions on the left and right simultaneously\r\n\r\nBuild up to overlapping timing on the two sides of the body by initially starting and stopping both sides at the same time and then eventually working up to overlapping motion (change the actions in both arms at different times, so that the action in one arm continues while the other changes). \r\n\r\nWork to add complexity by changing durations and amplitudes for the different movements, trying to separate all these parameters left and right.\r\n\r\nAfter practicing the upper body, movements in the legs, hips and knees can be added for a greater challenge.\r\n\r\n","type":"html","additional_fields":{"html-content":"<b>Rules for the Careful Scientist Exercise</b> <br> The Careful Scientist Exercise consists of a very limited set of four actions in certain joints of the upper body. Usually it is practiced lying on the floor, but it can also be done standing.  The goal is to teach the body to execute two of these four movements simultaneously in the left and right arm using the following constraints. <br><br> Avoid symmetry and opposites in the two arms to: <br><br> 1.  Execute different actions on the left and right simultaneously.<br><br> 2.  Build up to overlapping timing on the two sides of the body by initially starting and stopping both sides at the same time and then eventually working up to overlapping motion (change the actions in both arms at different times, so that the action in one arm continues while the other changes). <br><br> 3.  Work to add complexity by changing durations and amplitudes for the different movements, trying to separate all these parameters left and right.<br><br> 4.  After practicing the upper body, movements in the legs, hips, and knees can be added for a greater challenge. <br><br>","css-font-size":"125%","css-color":"rgba(0,0,0,0.8)","css-background-color":"rgba(0,0,0,0.15)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"86985f716d6d6d8d09900000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":12,"y":1,"width":2,"height":3},{"title":"Careful Scientist Demonstration by All Three Dancers","description":"Demonstration of the Careful Scientist task, one of many training exercises Thomas Hauert and Zoo Company have designed to challenge habitual patterns of coordination and attention. Dancers: Thomas Hauert, Sara Ludi, Mat Voorter","type":"vimeo","additional_fields":{"css-border-color":"white","css-border-style":"solid","autoload":"false","vimeo-id":"79434388","css-border-bottom-width":"3px","css-border-left-width":"3px","autoplay":"true"},"id":"8d985f716d6d6d8d09910000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-12-carefulsciall.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-12-carefulsciall.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-12-carefulsciall.jpg"}},"x":13,"y":4,"width":1,"height":1},{"title":"Careful Scientist Demonstration","description":"Demonstration of the Careful Scientist training exercise. This task uses a very tight set of rules to complicate the coordination between limbs across the two sides of the body and to keep one movement going while another is initiated. In this demo, Thomas builds up to overlapping timing. Dancer: Thomas Hauert","type":"vimeo","additional_fields":{"autoload":"false","vimeo-id":"66762114","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white","autoplay":"true"},"id":"95985f716d6d6d8d09920000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-11-carefulscidemo.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-11-carefulscidemo.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-11-carefulscidemo.jpg"}},"x":9,"y":1,"width":3,"height":3},{"title":"Solo Generated from Careful Scientist Strategy, Thomas","description":"Thomas performs a solo after using the Careful Scientist strategy to prime his attention and generate complex coordinations on the two sides of the body. Dancer: Thomas Hauert","type":"vimeo","additional_fields":{"css-border-left-width":"3px","autoplay":"true","autoload":"false","css-border-bottom-width":"3px","css-border-color":"white","css-border-style":"solid","vimeo-id":"76720235"},"id":"a2985f716d6d6d8d09940000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-13a-carefulscithomas-1.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-13a-carefulscithomas-1.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-13a-carefulscithomas-1.jpg"}},"x":4,"y":1,"width":3,"height":3},{"title":"HABIT Possibilities Gradient Text","description":"*No rollover","type":"iframe","additional_fields":{"iframe-src":"\t http://s3.amazonaws.com/motionbank-media/two/data/TextCells/HABIT-PossibilitiesText.html","sticky":"1"},"id":"fdd480766d303421930f0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":12,"y":0,"width":5,"height":1},{"title":"HABIT Intuition Gradient Text","description":"*No Rollover","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/HABIT-IntuitionText.html","sticky":"1"},"id":"b2f780766d303421990d0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":18,"y":4,"width":5,"height":1},{"title":"HABIT Invention Gradient Text","description":"*No Rollover","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/HABIT-InventionText.html","sticky":"1"},"id":"631681766d303421990e0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":24,"y":0,"width":4,"height":1},{"title":"Habit Green Block","description":"","type":"image","additional_fields":{"css-background-color":"#7E794B","css-background-size":"contain","class":"hide-info"},"id":"d70187856d30343b5c260000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/HABIT.png","small":{"url":"/system/uploads/two/Cell/poster_image/small/HABIT.png"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/HABIT.png"}},"x":0,"y":0,"width":4,"height":5},{"title":"Habit Body Text 1","description":"Thomas Hauert’s creative process often begins from an investigation of the workings of the locomotor system and, in particular, the joints, those points of articulation between bones that allow changes in spatial relationship to occur. In this aspect of his work, Thomas is focusing his investigations on the way our joints move, their ranges of motion, and the programmed coordinations between them. He and his dancers work to become aware of habits from daily life or training and to devise tasks to retrain or restrain those habits and expand the palette of possibilities.  ","type":"html","additional_fields":{"css-background-color":"rgba(0,0,0,0.15)","css-color":"rgba(0,0,0,0.8)","css-font-size":"125%","html-content":"Thomas Hauert’s creative process often begins from an investigation of the workings of the locomotor system and, in particular, the joints, those points of articulation between bones that allow changes in spatial relationship to occur. In this aspect of his work, Thomas is focusing his investigations on the way our joints move, their ranges of motion, and the programmed coordinations between them. He and his dancers work to become aware of habits from daily life or training and to devise tasks to retrain or restrain those habits and expand the palette of possibilities.  ","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","css-padding-top":"1em"},"id":"339b31956d30343b53940000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":4,"y":0,"width":3,"height":1},{"title":"Habit Body Text 5","description":"“The body has a tendency to stop one action when starting a new action. With this exercise and others, we are interested in training ourselves to continue a particular task even while our attention is busy initiating another movement, something like juggling.” \r\n<br> \r\n<div style=\"color:rgba(0,0,0,0.6)\">\r\n----- Thomas Hauert \r\n</div>","type":"html","additional_fields":{"html-content":"“The body has a tendency to stop one action when starting a new action. With this exercise and others, we are interested in training ourselves to continue a particular task even while our attention is busy initiating another movement, something like juggling.”  <br>  <div style=\"color:rgba(0,0,0,0.6)\"> ----- Thomas Hauert  </div>","css-overflow":"auto","css-font-size":"125%","css-color":"rgba(0,0,0,0.8)","css-background-color":"rgba(0,0,0,0.15)","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"2d4241966d3034429d020000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":18,"y":2,"width":1,"height":2},{"title":"Algorithmic Distribution Diagram (Pop Out Image)","description":"","type":"html","additional_fields":{"html-content":"<a href=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_36_CSAlgorDistribution/AlgorithmicDistributionInverted_Large.html\" onclick=\"window.open(this.href, 'mywin','left=20,top=20,width=2160,height=720,toolbar=0,resizable=0'); return false;\" > \t\t\t<img src=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_36_CSAlgorDistribution/AlgorithmicDistributionInverted.jpg\" height=\"100%\"></a>","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"52fa8a956d30347960150000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/36_CSAlgorDistributionBlack_Cropped.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/36_CSAlgorDistributionBlack_Cropped.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/36_CSAlgorDistributionBlack_Cropped.jpg"}},"x":14,"y":2,"width":4,"height":2},{"title":"Action Sequence and Timing in the Careful Scientist (Pop Out Image)","description":"","type":"html","additional_fields":{"html-content":"<a href=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_34_CSActionTimingScore/CSActionTimingScore_Large.html\" onclick=\"window.open(this.href, 'mywin','left=20,top=20,width=2160,height=720,toolbar=0,resizable=0'); return false;\" > \t\t\t<img src=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_34_CSActionTimingScore/34_CSActionTimingScore.jpg\" height=\"100%\"> </a>","css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-color":"white","css-border-style":"solid"},"id":"5303c5c26d303479661c0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/34_CSActionTimingScore.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/34_CSActionTimingScore.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/34_CSActionTimingScore.jpg"}},"x":19,"y":0,"width":5,"height":4}]}
+{
+ "title": "2 - HABIT",
+ "description": "",
+ "path": "habit",
+ "grid_cols": 28,
+ "grid_rows": 5,
+ "cell_width": 256,
+ "cell_height": 144,
+ "css_class_name": "set-117 white-background",
+ "published": true,
+ "id": "d7975f716d6d6d8d09790000",
+ "poster": "",
+ "cells": [
+  {
+   "title": "Habit CallOutText3",
+   "description": " \u201cSomehow it comes down to tricking the body into inventing new movements rather than following inscribed patterns.\u201d",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cSomehow it comes down to tricking the body into inventing new movements rather than following inscribed patterns.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>",
+    "css-font-size": "150%",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "dc975f716d6d6d8d097a0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 14,
+   "y": 1,
+   "width": 2,
+   "height": 1
+  },
+  {
+   "title": "Habit CallOutText2",
+   "description": "\u201cI\u2019m interested in opening up the possibilities we access as performers when improvising. The Careful Scientist task is designed to challenge habitual patterns of coordination and attention as are many of our training exercises. But this one focuses on working alone without an external trigger and performing different actions simultaneously on two sides of the body.\u201d Thomas Hauert",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cI\u2019m interested in opening up the possibilities we access as performers when improvising. The Careful Scientist task is designed to challenge habitual patterns of coordination and attention, as are many of our training exercises. But this one focuses on working alone without an external trigger and performing different actions simultaneously on two sides of the body.\u201d   <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>",
+    "css-font-size": "150%",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "df975f716d6d6d8d097b0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 14,
+   "y": 4,
+   "width": 4,
+   "height": 1
+  },
+  {
+   "title": "Careful Scientist Exercise: Action 4",
+   "description": "Rotating forearm.",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "79332844",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "autoload": "false",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "0px",
+    "loop": "true"
+   },
+   "id": "e3975f716d6d6d8d097c0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/38d_CSRuleDemo4.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/38d_CSRuleDemo4.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/38d_CSRuleDemo4.jpg"
+    }
+   },
+   "x": 12,
+   "y": 4,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Careful Scientist Exercise: Action 3",
+   "description": "Extending or flexing elbow.",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "0px",
+    "autoplay": "true",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-border-bottom-width": "3px",
+    "autoload ": "false",
+    "vimeo-id": "79332841",
+    "loop": "true"
+   },
+   "id": "e7975f716d6d6d8d097d0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/38c_CSRuleDemo3.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/38c_CSRuleDemo3.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/38c_CSRuleDemo3.jpg"
+    }
+   },
+   "x": 11,
+   "y": 4,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Careful Scientist Exercise: Action 2",
+   "description": "Maintaining direction of upper arm in space with rotation at the shoulder.",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "0px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoload": "false",
+    "autoplay": "true",
+    "vimeo-id": "79332842",
+    "loop": "true"
+   },
+   "id": "16985f716d6d6d8d097e0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/38b_CSRuleDemo2.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/38b_CSRuleDemo2.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/38b_CSRuleDemo2.jpg"
+    }
+   },
+   "x": 10,
+   "y": 4,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Careful Scientist Exercise: Action 1",
+   "description": "Changing direction upper arm points in space.",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "vimeo-id": "79333219",
+    "css-border-left-width": "3px",
+    "autoload": "false",
+    "autoplay": "true",
+    "loop": "true"
+   },
+   "id": "1b985f716d6d6d8d097f0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/38a_CSRuleDemo1.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/38a_CSRuleDemo1.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/38a_CSRuleDemo1.jpg"
+    }
+   },
+   "x": 9,
+   "y": 4,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Habit CallOutText1",
+   "description": "\u201cThe body has a tendency to follow known paths. In order to increase our movement vocabularies to include as many of the countless possibilities that the human body allows, we have devised exercises to surpass the movement patterns that have become habitual.\u201d",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cThe body has a tendency to follow known paths. In order to increase our movement vocabularies to include as many of the countless possibilities that the human body allows, we have devised exercises to surpass the movement patterns that have become habitual.\u201d <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>",
+    "css-font-size": "150%",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-padding-top": "1em"
+   },
+   "id": "22985f716d6d6d8d09800000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 4,
+   "y": 4,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Habit BodyText 6",
+   "description": " \u201cThe body has a tendency to stop one action when starting a new action. With this exercise and others, we are interested in training ourselves to continue a particular task even while our attention is busy initiating another movement, something like juggling.\u201d",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cAll of our strategies to practice and invent movement are somehow about priming the intuition. I understand intuition as a neuro-physiological phenomenon that relies on our experience and our memory, enabling us to act without needing to process it first.\u201d <br>  <div style=\"color:rgba(0,0,0,0.6)\"> ----- Thomas Hauert </div>",
+    "css-font-size": "125%",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "2b985f716d6d6d8d09820000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 24,
+   "y": 1,
+   "width": 1,
+   "height": 3
+  },
+  {
+   "title": "Habit Body Text 2",
+   "description": "Thomas Hauert and Zoo Company\u2019s have developed an exercise they call the Careful Scientist that uses a very tight set of rules to complicate the coordination between limbs across the two sides of the body. The ultimate goal of this exercise is to translate the intricate combinations it produces to any joint of the body including the joints in the fingers, toes, and the chain of the spine.",
+   "type": "html",
+   "additional_fields": {
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-font-size": "125%",
+    "html-content": "<p>Thomas Hauert and Zoo Company have developed an exercise they call the Careful Scientist, which uses a very tight set of rules to complicate the coordination between limbs across the two sides of the body. The ultimate goal of this exercise is to translate the intricate combinations it produces to any joint of the body, including the fingers, toes, and the chain of the spine.</p>",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "sticky": "true"
+   },
+   "id": "34985f716d6d6d8d09840000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 9,
+   "y": 0,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Solo Generated from Careful Scientist Strategy, Mat",
+   "description": "Mat performs a solo after using the Careful Scientist strategy to prime his attention and generate complex coordinations on the two sides of the body. Dancer: Mat Voorter",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "autoplay": "true",
+    "autoload": "false",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "vimeo-id": "76708468"
+   },
+   "id": "39985f716d6d6d8d09850000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-13c-carefulscimat-1.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-13c-carefulscimat-1.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-13c-carefulscimat-1.jpg"
+    }
+   },
+   "x": 7,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Solos by all Three Dancers Consecutively",
+   "description": "Solos by all three dancers, consecutively, which were generated using the Careful Scientist training exercise to prime their attention and activate overlapping timing and irregular coordination on the two sides of the body. Dancers: Thomas Hauert, Sara Ludi, Mat Voorter",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "autoplay": "true",
+    "css-border-color": "white",
+    "autoload": "false",
+    "css-border-style": "solid",
+    "vimeo-id": "79430538"
+   },
+   "id": "4f985f716d6d6d8d09880000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-13d-carefulsciall.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-13d-carefulsciall.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-13d-carefulsciall.jpg"
+    }
+   },
+   "x": 25,
+   "y": 1,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "Careful Scientist Exercise Four Dancers (Motion Capture)",
+   "description": "View motion capture data of four dancers performing the Careful Scientist exercise.  Change perspective, zoom in, watch, and analyze with this interactive viewer.  Dancers: Thomas Hauert, Sara Ludi, Samantha van Wissen, Mat Voorter",
+   "type": "iframe",
+   "additional_fields": {
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "iframe-src": "/modules/two/mocap/index.html?data=MocapView_45",
+    "autoload": "false"
+   },
+   "id": "60985f716d6d6d8d098a0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/45_CarefulScientistMocap.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/45_CarefulScientistMocap.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/45_CarefulScientistMocap.jpg"
+    }
+   },
+   "x": 17,
+   "y": 0,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Solo Generated from Careful Scientist Strategy, Sara",
+   "description": "Sara performs a solo after using the Careful Scientist strategy to prime her attention and generate complex coordinations on the two sides of the body. Dancer: Sara Ludi",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "autoload": "false",
+    "autoplay": "true",
+    "vimeo-id": "76640758",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "65985f716d6d6d8d098b0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-13b-carefulscisara.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-13b-carefulscisara.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-13b-carefulscisara.jpg"
+    }
+   },
+   "x": 7,
+   "y": 0,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Habit CallOutText4",
+   "description": " \u201cMy fascination with dance has to do with how motion feels and what one can feel watching it.\u201d",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cMy fascination with dance has to do with how motion feels and what one can feel watching it.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Thomas Hauert </div>",
+    "css-font-size": "150%",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "72985f716d6d6d8d098d0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 24,
+   "y": 4,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Habit Body Text 4",
+   "description": "The Careful Scientist Exercise consists of a very limited set of four actions in certain joints of the upper body. Usually it is practiced lying on the floor, but it can also be done standing. \r\nThe goal is to teach the body to execute two of these four movements simultaneously in the left and right arm using the following constraints:\r\n\r\nAvoid symmetry and opposites in the two arms to:\r\n\r\nExecute different actions on the left and right simultaneously\r\n\r\nBuild up to overlapping timing on the two sides of the body by initially starting and stopping both sides at the same time and then eventually working up to overlapping motion (change the actions in both arms at different times, so that the action in one arm continues while the other changes). \r\n\r\nWork to add complexity by changing durations and amplitudes for the different movements, trying to separate all these parameters left and right.\r\n\r\nAfter practicing the upper body, movements in the legs, hips and knees can be added for a greater challenge.\r\n\r\n",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "<b>Rules for the Careful Scientist Exercise</b> <br> The Careful Scientist Exercise consists of a very limited set of four actions in certain joints of the upper body. Usually it is practiced lying on the floor, but it can also be done standing.  The goal is to teach the body to execute two of these four movements simultaneously in the left and right arm using the following constraints. <br><br> Avoid symmetry and opposites in the two arms to: <br><br> 1.  Execute different actions on the left and right simultaneously.<br><br> 2.  Build up to overlapping timing on the two sides of the body by initially starting and stopping both sides at the same time and then eventually working up to overlapping motion (change the actions in both arms at different times, so that the action in one arm continues while the other changes). <br><br> 3.  Work to add complexity by changing durations and amplitudes for the different movements, trying to separate all these parameters left and right.<br><br> 4.  After practicing the upper body, movements in the legs, hips, and knees can be added for a greater challenge. <br><br>",
+    "css-font-size": "125%",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "86985f716d6d6d8d09900000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 12,
+   "y": 1,
+   "width": 2,
+   "height": 3
+  },
+  {
+   "title": "Careful Scientist Demonstration by All Three Dancers",
+   "description": "Demonstration of the Careful Scientist task, one of many training exercises Thomas Hauert and Zoo Company have designed to challenge habitual patterns of coordination and attention. Dancers: Thomas Hauert, Sara Ludi, Mat Voorter",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "autoload": "false",
+    "vimeo-id": "79434388",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "autoplay": "true"
+   },
+   "id": "8d985f716d6d6d8d09910000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-12-carefulsciall.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-12-carefulsciall.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-12-carefulsciall.jpg"
+    }
+   },
+   "x": 13,
+   "y": 4,
+   "width": 1,
+   "height": 1
+  },
+  {
+   "title": "Careful Scientist Demonstration",
+   "description": "Demonstration of the Careful Scientist training exercise. This task uses a very tight set of rules to complicate the coordination between limbs across the two sides of the body and to keep one movement going while another is initiated. In this demo, Thomas builds up to overlapping timing. Dancer: Thomas Hauert",
+   "type": "vimeo",
+   "additional_fields": {
+    "autoload": "false",
+    "vimeo-id": "66762114",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoplay": "true"
+   },
+   "id": "95985f716d6d6d8d09920000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-11-carefulscidemo.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-11-carefulscidemo.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-11-carefulscidemo.jpg"
+    }
+   },
+   "x": 9,
+   "y": 1,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "Solo Generated from Careful Scientist Strategy, Thomas",
+   "description": "Thomas performs a solo after using the Careful Scientist strategy to prime his attention and generate complex coordinations on the two sides of the body. Dancer: Thomas Hauert",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "autoplay": "true",
+    "autoload": "false",
+    "css-border-bottom-width": "3px",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "vimeo-id": "76720235"
+   },
+   "id": "a2985f716d6d6d8d09940000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-13a-carefulscithomas-1.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-13a-carefulscithomas-1.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-13a-carefulscithomas-1.jpg"
+    }
+   },
+   "x": 4,
+   "y": 1,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "HABIT Possibilities Gradient Text",
+   "description": "*No rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "\t http://s3.amazonaws.com/motionbank-media/two/data/TextCells/HABIT-PossibilitiesText.html",
+    "sticky": "1"
+   },
+   "id": "fdd480766d303421930f0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 12,
+   "y": 0,
+   "width": 5,
+   "height": 1
+  },
+  {
+   "title": "HABIT Intuition Gradient Text",
+   "description": "*No Rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/HABIT-IntuitionText.html",
+    "sticky": "1"
+   },
+   "id": "b2f780766d303421990d0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 18,
+   "y": 4,
+   "width": 5,
+   "height": 1
+  },
+  {
+   "title": "HABIT Invention Gradient Text",
+   "description": "*No Rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/HABIT-InventionText.html",
+    "sticky": "1"
+   },
+   "id": "631681766d303421990e0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 24,
+   "y": 0,
+   "width": 4,
+   "height": 1
+  },
+  {
+   "title": "Habit Green Block",
+   "description": "",
+   "type": "image",
+   "additional_fields": {
+    "css-background-color": "#7E794B",
+    "css-background-size": "contain",
+    "class": "hide-info"
+   },
+   "id": "d70187856d30343b5c260000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/HABIT.png",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/HABIT.png"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/HABIT.png"
+    }
+   },
+   "x": 0,
+   "y": 0,
+   "width": 4,
+   "height": 5
+  },
+  {
+   "title": "Habit Body Text 1",
+   "description": "Thomas Hauert\u2019s creative process often begins from an investigation of the workings of the locomotor system and, in particular, the joints, those points of articulation between bones that allow changes in spatial relationship to occur. In this aspect of his work, Thomas is focusing his investigations on the way our joints move, their ranges of motion, and the programmed coordinations between them. He and his dancers work to become aware of habits from daily life or training and to devise tasks to retrain or restrain those habits and expand the palette of possibilities.  ",
+   "type": "html",
+   "additional_fields": {
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-font-size": "125%",
+    "html-content": "Thomas Hauert\u2019s creative process often begins from an investigation of the workings of the locomotor system and, in particular, the joints, those points of articulation between bones that allow changes in spatial relationship to occur. In this aspect of his work, Thomas is focusing his investigations on the way our joints move, their ranges of motion, and the programmed coordinations between them. He and his dancers work to become aware of habits from daily life or training and to devise tasks to retrain or restrain those habits and expand the palette of possibilities.  ",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-padding-top": "1em"
+   },
+   "id": "339b31956d30343b53940000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 4,
+   "y": 0,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Habit Body Text 5",
+   "description": "\u201cThe body has a tendency to stop one action when starting a new action. With this exercise and others, we are interested in training ourselves to continue a particular task even while our attention is busy initiating another movement, something like juggling.\u201d \r\n<br> \r\n<div style=\"color:rgba(0,0,0,0.6)\">\r\n----- Thomas Hauert \r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cThe body has a tendency to stop one action when starting a new action. With this exercise and others, we are interested in training ourselves to continue a particular task even while our attention is busy initiating another movement, something like juggling.\u201d  <br>  <div style=\"color:rgba(0,0,0,0.6)\"> ----- Thomas Hauert  </div>",
+    "css-overflow": "auto",
+    "css-font-size": "125%",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "2d4241966d3034429d020000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 18,
+   "y": 2,
+   "width": 1,
+   "height": 2
+  },
+  {
+   "title": "Algorithmic Distribution Diagram (Pop Out Image)",
+   "description": "",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "<a href=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_36_CSAlgorDistribution/AlgorithmicDistributionInverted_Large.html\" onclick=\"window.open(this.href, 'mywin','left=20,top=20,width=2160,height=720,toolbar=0,resizable=0'); return false;\" > \t\t\t<img src=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_36_CSAlgorDistribution/AlgorithmicDistributionInverted.jpg\" height=\"100%\"></a>",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "52fa8a956d30347960150000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/36_CSAlgorDistributionBlack_Cropped.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/36_CSAlgorDistributionBlack_Cropped.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/36_CSAlgorDistributionBlack_Cropped.jpg"
+    }
+   },
+   "x": 14,
+   "y": 2,
+   "width": 4,
+   "height": 2
+  },
+  {
+   "title": "Action Sequence and Timing in the Careful Scientist (Pop Out Image)",
+   "description": "",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "<a href=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_34_CSActionTimingScore/CSActionTimingScore_Large.html\" onclick=\"window.open(this.href, 'mywin','left=20,top=20,width=2160,height=720,toolbar=0,resizable=0'); return false;\" > \t\t\t<img src=\"https://s3.amazonaws.com/motionbank-media/two/data/InfoGraphic_34_CSActionTimingScore/34_CSActionTimingScore.jpg\" height=\"100%\"> </a>",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-color": "white",
+    "css-border-style": "solid"
+   },
+   "id": "5303c5c26d303479661c0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/34_CSActionTimingScore.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/34_CSActionTimingScore.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/34_CSActionTimingScore.jpg"
+    }
+   },
+   "x": 19,
+   "y": 0,
+   "width": 5,
+   "height": 4
+  }
+ ]
+}

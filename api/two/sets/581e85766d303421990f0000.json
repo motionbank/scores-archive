@@ -1,1 +1,624 @@
-{"title":"5 - MEMORY","description":"","path":"memory","grid_cols":26,"grid_rows":5,"cell_width":256,"cell_height":144,"css_class_name":"set-aeca84766d3034219c180000 white-background","published":true,"id":"581e85766d303421990f0000","poster":null,"cells":[{"title":"Redux Demonstration","description":"Performance of the Verge Redux strategy by the dancers with Bebe Miller's commentary. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"vimeo-id":"70788635","autoload":"false","autoplay":"true","css-border-color":"white","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid"},"id":"bf8c86766d3034219c190000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-14-reduxdemo.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-14-reduxdemo.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-14-reduxdemo.jpg"}},"x":4,"y":1,"width":3,"height":3},{"title":"Verge Redux Improvisation, Performance 1","description":"Verge Redux performance 1, in which the dancers use recall and redux strategies to create a new dance using past material. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"css-border-left-width":"3px","css-border-color":"white","autoplay":"true","autoload":"false","vimeo-id":"73236805","css-border-style":"solid","css-border-bottom-width":"3px"},"id":"7ac786766d30342199100000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-15-vergereduxmultit1.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-15-vergereduxmultit1.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-15-vergereduxmultit1.jpg"}},"x":7,"y":0,"width":2,"height":2},{"title":"Verge Redux Improvisation, Performance 2","description":"Verge Redux performance 2, in which the dancers use recall and redux strategies to create a new dance using past material. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"vimeo-id":"73247306","autoload":"false","autoplay":"true","css-border-color":"white","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid"},"id":"fff486766d3034219c1a0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-16-vergereduxmultit3.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-16-vergereduxmultit3.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-16-vergereduxmultit3.jpg"}},"x":9,"y":3,"width":2,"height":2},{"title":"Verge Redux (Motion Capture)","description":"View one performance of Verge Redux. Change perspective, zoom in on a performer, watch, or analyze the motion as it unfolds with the interactive viewer. Dancers: Angie Hauser, Darrell Jones","type":"iframe","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"\t https://s3.amazonaws.com/motionbank-media/two/data/MocapView_46_VergeRedux/46_VergeReduxMocap.html","autoload":"false"},"id":"c99991766d3034219c1c0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/46_VergeReduxMocap.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/46_VergeReduxMocap.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/46_VergeReduxMocap.jpg"}},"x":9,"y":0,"width":3,"height":3},{"title":"Redux Interactive","description":"Watch and interact as the system creates new Redux performances of the Contrasting States Duet using an algorithmic translation of Bebe Miller Company's Redux choreographic structure. Dancers: Angie Hauser, Darrell Jones","type":"iframe","additional_fields":{"css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px","iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/InterAct_25_ReduxGame/25_ReduxGame.html","autoload":"false"},"id":"ff5492766d303421960d0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/25_ReduxGame.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/25_ReduxGame.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/25_ReduxGame.jpg"}},"x":23,"y":1,"width":3,"height":3},{"title":"MEMORY Present Gradient Text","description":"*No Rollover","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-PresentText.html","sticky":"1"},"id":"99b694766d3034219c200000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":22,"y":4,"width":4,"height":1},{"title":"MEMORY Intentions Gradient Text","description":"*No Rollover","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-IntentionsText.html","autoload":"true","sticky":"1"},"id":"49e994766d3034219c210000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":5,"y":4,"width":4,"height":1},{"title":"Memory Body Text 1","description":"The Bebe Miller Company works with memory as a resource for improvisation in performance. One way they do this is through a state they have devised called Redux. In a Redux, they actively work to recall a piece of set choreography they have performed in the past and reference aspects of it in the new performance. ","type":"text","additional_fields":{"text-content":"The Bebe Miller Company works with memory as a resource for improvisation in performance. One way they do this is through a state they have devised called Redux. In a Redux, they actively work to recall a piece of set choreography they have performed in the past and reference aspects of it in the new performance. ","css-font-size":"125%","css-color":"rgba(0,0,0,0.8)","css-background-color":"rgba(0,0,0,0.15)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"49dbfd766d30342193170000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":7,"y":2,"width":2,"height":1},{"title":"Memory CallOut Text 1","description":"“We are actively mining the history that is in the present, looking to interrupt and further what we’ve set in motion over 15 years of working together.” \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"html-content":"“We are actively mining the history that is in the present, looking to interrupt and further what we’ve set in motion over 15 years of working together.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-color":"rgba(255,255,255,0.8)","css-font-size":"150%","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-left-width":"3px","css-border-bottom-width":"3px"},"id":"11fafd766d30342193180000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":4,"y":0,"width":3,"height":1},{"title":"Memory CallOut Text 2","description":"“There is an aspect of improvisation that asks you to shuffle through the various layers of right now in order to respond directly to the situation. We as a company have invested many years in researching this relationship between memory and the dynamics of body/mind/place/time. Redux is one example of this.” \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"html-content":"“There is an aspect of improvisation that asks you to shuffle through the various layers of right now in order to respond directly to the situation. We as a company have invested many years in researching this relationship between memory and the dynamics of body/mind/place/time. Redux is one example of this.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-color":"rgba(255,255,255,0.8)","css-font-size":"150%","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"8119fe766d30342193190000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":12,"y":0,"width":4,"height":1},{"title":"Memory Body Text 2","description":"The Redux structure for improvisation is a way of consciously accessing embodied history or memory by recalling a set dance performed in the past and referencing it to create a new one. This creative process involves several strategies, including:\r\n<br><br>\r\n1.  Quoting and resequencing choreographed actions <br><br>\r\n2.  Transposing an action in time, space, shape, body part <br><br>\r\n3.  Changing roles <br><br>\r\n4.  Recalling the choreographed timing and sequence but not exact actions <br><br>\r\n5.  Offering beginnings or endings of actions, waiting, and finding new solutions <br><br>\r\n6.  Echoing the quality of touch from the past in a new action <br><br>\r\n","type":"html","additional_fields":{"html-content":"The Redux structure for improvisation is a way of consciously accessing embodied history or memory by recalling a set dance performed in the past and referencing it to create a new one. This creative process involves several strategies, including: <br><br> 1.  Quoting and resequencing choreographed actions <br><br> 2.  Transposing an action in time, space, shape, body part <br><br> 3.  Changing roles <br><br> 4.  Recalling the choreographed timing and sequence but not exact actions <br><br> 5.  Offering beginnings or endings of actions, waiting, and finding new solutions <br><br> 6.  Echoing the quality of touch from the past in a new action <br><br>","css-color":"rgba(0,0,0,0.8)","css-font-size":"125%","css-background-color":"rgba(0,0,0,0.15)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-left-width":"3px","css-border-bottom-width":"3px"},"id":"c13efe766d303421931a0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":18,"y":2,"width":2,"height":3},{"title":"Memory CallOut Text 3","description":" “We are calling on and opening up to things firing in deep embodied memory. Maybe it is a neurological unconscious score. We say yes to imagining the physical manifestation. We flow and then catch a remembered action before it completes and glides into something that's interesting at that time. Memory is always a fiction, the more we do it the more we remember the remembering.” \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Angie Hauser\r\n</div>","type":"html","additional_fields":{"html-content":" “We are calling on and opening up to things firing in deep embodied memory. Maybe it is a neurological unconscious score. We say yes to imagining the physical manifestation. We flow and then catch a remembered action before it completes and glides into something that's interesting at that time. Memory is always a fiction, the more we do it the more we remember the remembering.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Angie Hauser </div>","css-color":"rgba(255,255,255,0.8)","css-font-size":"150%","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-left-width":"3px","css-border-bottom-width":"3px"},"id":"dc7bfe766d303421931b0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":20,"y":3,"width":2,"height":2},{"title":"Memory CallOut Text 4","description":"\"Redux is a choreographic improvisation structure based on recall of existing material. The interplay between what’s remembered, what’s recalled, and what’s new is the basis of Redux.” \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"html-content":"\"Redux is a choreographic improvisation structure based on recall of existing material. The interplay between what’s remembered, what’s recalled, and what’s new is the basis of Redux.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-color":"rgba(255,255,255,0.8)","css-font-size":"150%","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"1aa6fe766d303421931c0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":21,"y":0,"width":3,"height":1},{"title":"Memory CallOut Text 5","description":"“We have recognized that the power of the choreographed moment has much to do with the live intentions that are set on various vectors, and with improvisation we are interested in how we (and an audience) might respond to that reality. We are arriving at the level of exquisite detail in repeated actions—but making them new each time.” \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>","type":"html","additional_fields":{"html-content":"“We have recognized that the power of the choreographed moment has much to do with the live intentions that are set on various vectors, and with improvisation we are interested in how we (and an audience) might respond to that reality. We are arriving at the level of exquisite detail in repeated actions—but making them new each time.”  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>","css-color":"rgba(255,255,255,0.8)","css-font-size":"150%","css-background-color":"rgba(0,0,0,0.8)","css-overflow":"auto","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"cac6fe766d303421931d0000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":11,"y":4,"width":3,"height":1},{"title":"MEMORY Title Block","description":"use .PNG","type":"image","additional_fields":{"css-background-color":"#573540","css-background-size":"contain","class":"hide-info"},"id":"0f277c866d30343b593f0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/MEMORY.png","small":{"url":"/system/uploads/two/Cell/poster_image/small/MEMORY.png"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/MEMORY.png"}},"x":0,"y":0,"width":4,"height":5},{"title":"Verge Redux Improvisation, Performance 1 (Wide Shot)","description":"Compare different performances of the Verge Redux improvisation. In a Redux, the dancers create a new dance using references from past material. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"vimeo-id":"72917167","autoload":"false","autoplay":"true","css-border-color":"white","css-border-style":"solid","css-border-bottom-width":"3px","css-border-left-width":"3px"},"id":"bfd41d956d30343b53840000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-17-vergereduxwidet1.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-17-vergereduxwidet1.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-17-vergereduxwidet1.jpg"}},"x":14,"y":1,"width":2,"height":2},{"title":"Verge Redux Improvisation, Performance 2 (Wide Shot)","description":"Compare different performances of the Verge Redux improvisation. In a Redux, the dancers create a new dance using references from past material. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"autoload":"false","vimeo-id":"72917166","css-border-left-width":"3px","autoplay":"true","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"f5ec1d956d30343b5c5f0000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/video-18-vergereduxwidet3-2.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/video-18-vergereduxwidet3-2.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/video-18-vergereduxwidet3-2.jpg"}},"x":16,"y":1,"width":2,"height":2},{"title":"Verge Redux Segment from 'A History' (Columbus, OH 2012)","description":"View the Verge Redux duet performed in the premiere of ‘A History’ by the Bebe Miller Company at the Wexner Center for the Arts. Compare this performance to the other three versions. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"vimeo-id":"77708580","autoload":"false","autoplay":"true","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"e68526956d30343b53920000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/VergeRedux_History_Wexner.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/VergeRedux_History_Wexner.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/VergeRedux_History_Wexner.jpg"}},"x":14,"y":3,"width":2,"height":2},{"title":"Verge Redux Segment from 'A History' (Frankfurt, Germany 2012)","description":"View the Verge Redux duet performed in a preview performance of ‘A History’ by the Bebe Miller Company for Motion Bank in Frankfurt, Germany. Compare this performance to the other three versions. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"vimeo-id":"77232475","autoload":"false","autoplay":"true","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"4c5228956d30343b59a60000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/VergeRedux_Frankfurt.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/VergeRedux_Frankfurt.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/VergeRedux_Frankfurt.jpg"}},"x":16,"y":3,"width":2,"height":2},{"title":"Verge Original Duet (The Bebe Miller Company, 2001)","description":"View the original duet performed as part of an evening length quartet called Verge (2001). This duet serves as the memory resource for all of the Verge Redux improvisations. Compare to the four Redux improvisations and note how the dancers draw from this original material. Dancers: Angie Hauser, Darrell Jones","type":"vimeo","additional_fields":{"vimeo-id":"72917759","autoload":"false","autoplay":"true","css-border-left-width":"3px","css-border-bottom-width":"3px","css-border-style":"solid","css-border-color":"white"},"id":"c0932a956d30343b56a00000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/OriginalVerge.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/OriginalVerge.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/OriginalVerge.jpg"}},"x":12,"y":2,"width":2,"height":2},{"title":"Recall Game","description":"Test your own short term memory in this clip by watching and identifying individual movement segments. The recall aspect of human memory is an important part of the Bebe Miller Company's Redux structure for choreographic improvisation. ","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/InterAct_24_RecallGame/24_RecallGame.html","css-border-bottom-width":"3px","css-border-left-width":"3px","css-border-style":"solid","css-border-color":"white","autoload":"false"},"id":"642d1d966d3034429d010000","poster_image":{"url":"/system/uploads/two/Cell/poster_image/full/24_Recall.jpg","small":{"url":"/system/uploads/two/Cell/poster_image/small/24_Recall.jpg"},"medium":{"url":"/system/uploads/two/Cell/poster_image/medium/24_Recall.jpg"}},"x":20,"y":1,"width":2,"height":2},{"title":"MEMORY Past Gradient Text","description":"","type":"iframe","additional_fields":{"iframe-src":"https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-PastText.html","sticky":"1"},"id":"38d927966d303442a3000000","poster_image":{"url":"/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png","small":{"url":"/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"},"medium":{"url":"/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"}},"x":17,"y":0,"width":3,"height":1}]}
+{
+ "title": "5 - MEMORY",
+ "description": "",
+ "path": "memory",
+ "grid_cols": 26,
+ "grid_rows": 5,
+ "cell_width": 256,
+ "cell_height": 144,
+ "css_class_name": "set-aeca84766d3034219c180000 white-background",
+ "published": true,
+ "id": "581e85766d303421990f0000",
+ "poster": null,
+ "cells": [
+  {
+   "title": "Redux Demonstration",
+   "description": "Performance of the Verge Redux strategy by the dancers with Bebe Miller's commentary. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "70788635",
+    "autoload": "false",
+    "autoplay": "true",
+    "css-border-color": "white",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid"
+   },
+   "id": "bf8c86766d3034219c190000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-14-reduxdemo.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-14-reduxdemo.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-14-reduxdemo.jpg"
+    }
+   },
+   "x": 4,
+   "y": 1,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "Verge Redux Improvisation, Performance 1",
+   "description": "Verge Redux performance 1, in which the dancers use recall and redux strategies to create a new dance using past material. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "css-border-left-width": "3px",
+    "css-border-color": "white",
+    "autoplay": "true",
+    "autoload": "false",
+    "vimeo-id": "73236805",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px"
+   },
+   "id": "7ac786766d30342199100000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-15-vergereduxmultit1.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-15-vergereduxmultit1.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-15-vergereduxmultit1.jpg"
+    }
+   },
+   "x": 7,
+   "y": 0,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Verge Redux Improvisation, Performance 2",
+   "description": "Verge Redux performance 2, in which the dancers use recall and redux strategies to create a new dance using past material. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "73247306",
+    "autoload": "false",
+    "autoplay": "true",
+    "css-border-color": "white",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid"
+   },
+   "id": "fff486766d3034219c1a0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-16-vergereduxmultit3.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-16-vergereduxmultit3.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-16-vergereduxmultit3.jpg"
+    }
+   },
+   "x": 9,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Verge Redux (Motion Capture)",
+   "description": "View one performance of Verge Redux. Change perspective, zoom in on a performer, watch, or analyze the motion as it unfolds with the interactive viewer. Dancers: Angie Hauser, Darrell Jones",
+   "type": "iframe",
+   "additional_fields": {
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "iframe-src": "/modules/two/mocap/index.html?data=MocapView_46",
+    "autoload": "false"
+   },
+   "id": "c99991766d3034219c1c0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/46_VergeReduxMocap.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/46_VergeReduxMocap.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/46_VergeReduxMocap.jpg"
+    }
+   },
+   "x": 9,
+   "y": 0,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "Redux Interactive",
+   "description": "Watch and interact as the system creates new Redux performances of the Contrasting States Duet using an algorithmic translation of Bebe Miller Company's Redux choreographic structure. Dancers: Angie Hauser, Darrell Jones",
+   "type": "iframe",
+   "additional_fields": {
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_25_ReduxGame/25_ReduxGame.html",
+    "autoload": "false"
+   },
+   "id": "ff5492766d303421960d0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/25_ReduxGame.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/25_ReduxGame.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/25_ReduxGame.jpg"
+    }
+   },
+   "x": 23,
+   "y": 1,
+   "width": 3,
+   "height": 3
+  },
+  {
+   "title": "MEMORY Present Gradient Text",
+   "description": "*No Rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-PresentText.html",
+    "sticky": "1"
+   },
+   "id": "99b694766d3034219c200000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 22,
+   "y": 4,
+   "width": 4,
+   "height": 1
+  },
+  {
+   "title": "MEMORY Intentions Gradient Text",
+   "description": "*No Rollover",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-IntentionsText.html",
+    "autoload": "true",
+    "sticky": "1"
+   },
+   "id": "49e994766d3034219c210000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 5,
+   "y": 4,
+   "width": 4,
+   "height": 1
+  },
+  {
+   "title": "Memory Body Text 1",
+   "description": "The Bebe Miller Company works with memory as a resource for improvisation in performance. One way they do this is through a state they have devised called Redux. In a Redux, they actively work to recall a piece of set choreography they have performed in the past and reference aspects of it in the new performance. ",
+   "type": "text",
+   "additional_fields": {
+    "text-content": "The Bebe Miller Company works with memory as a resource for improvisation in performance. One way they do this is through a state they have devised called Redux. In a Redux, they actively work to recall a piece of set choreography they have performed in the past and reference aspects of it in the new performance. ",
+    "css-font-size": "125%",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "49dbfd766d30342193170000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 7,
+   "y": 2,
+   "width": 2,
+   "height": 1
+  },
+  {
+   "title": "Memory CallOut Text 1",
+   "description": "\u201cWe are actively mining the history that is in the present, looking to interrupt and further what we\u2019ve set in motion over 15 years of working together.\u201d \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cWe are actively mining the history that is in the present, looking to interrupt and further what we\u2019ve set in motion over 15 years of working together.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-font-size": "150%",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px"
+   },
+   "id": "11fafd766d30342193180000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 4,
+   "y": 0,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Memory CallOut Text 2",
+   "description": "\u201cThere is an aspect of improvisation that asks you to shuffle through the various layers of right now in order to respond directly to the situation. We as a company have invested many years in researching this relationship between memory and the dynamics of body/mind/place/time. Redux is one example of this.\u201d \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cThere is an aspect of improvisation that asks you to shuffle through the various layers of right now in order to respond directly to the situation. We as a company have invested many years in researching this relationship between memory and the dynamics of body/mind/place/time. Redux is one example of this.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-font-size": "150%",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "8119fe766d30342193190000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 12,
+   "y": 0,
+   "width": 4,
+   "height": 1
+  },
+  {
+   "title": "Memory Body Text 2",
+   "description": "The Redux structure for improvisation is a way of consciously accessing embodied history or memory by recalling a set dance performed in the past and referencing it to create a new one. This creative process involves several strategies, including:\r\n<br><br>\r\n1.  Quoting and resequencing choreographed actions <br><br>\r\n2.  Transposing an action in time, space, shape, body part <br><br>\r\n3.  Changing roles <br><br>\r\n4.  Recalling the choreographed timing and sequence but not exact actions <br><br>\r\n5.  Offering beginnings or endings of actions, waiting, and finding new solutions <br><br>\r\n6.  Echoing the quality of touch from the past in a new action <br><br>\r\n",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "The Redux structure for improvisation is a way of consciously accessing embodied history or memory by recalling a set dance performed in the past and referencing it to create a new one. This creative process involves several strategies, including: <br><br> 1.  Quoting and resequencing choreographed actions <br><br> 2.  Transposing an action in time, space, shape, body part <br><br> 3.  Changing roles <br><br> 4.  Recalling the choreographed timing and sequence but not exact actions <br><br> 5.  Offering beginnings or endings of actions, waiting, and finding new solutions <br><br> 6.  Echoing the quality of touch from the past in a new action <br><br>",
+    "css-color": "rgba(0,0,0,0.8)",
+    "css-font-size": "125%",
+    "css-background-color": "rgba(0,0,0,0.15)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px"
+   },
+   "id": "c13efe766d303421931a0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 18,
+   "y": 2,
+   "width": 2,
+   "height": 3
+  },
+  {
+   "title": "Memory CallOut Text 3",
+   "description": " \u201cWe are calling on and opening up to things firing in deep embodied memory. Maybe it is a neurological unconscious score. We say yes to imagining the physical manifestation. We flow and then catch a remembered action before it completes and glides into something that's interesting at that time. Memory is always a fiction, the more we do it the more we remember the remembering.\u201d \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Angie Hauser\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": " \u201cWe are calling on and opening up to things firing in deep embodied memory. Maybe it is a neurological unconscious score. We say yes to imagining the physical manifestation. We flow and then catch a remembered action before it completes and glides into something that's interesting at that time. Memory is always a fiction, the more we do it the more we remember the remembering.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Angie Hauser </div>",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-font-size": "150%",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px"
+   },
+   "id": "dc7bfe766d303421931b0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 20,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Memory CallOut Text 4",
+   "description": "\"Redux is a choreographic improvisation structure based on recall of existing material. The interplay between what\u2019s remembered, what\u2019s recalled, and what\u2019s new is the basis of Redux.\u201d \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\"Redux is a choreographic improvisation structure based on recall of existing material. The interplay between what\u2019s remembered, what\u2019s recalled, and what\u2019s new is the basis of Redux.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-font-size": "150%",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "1aa6fe766d303421931c0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 21,
+   "y": 0,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "Memory CallOut Text 5",
+   "description": "\u201cWe have recognized that the power of the choreographed moment has much to do with the live intentions that are set on various vectors, and with improvisation we are interested in how we (and an audience) might respond to that reality. We are arriving at the level of exquisite detail in repeated actions\u2014but making them new each time.\u201d \r\n<br>\r\n<div style=\"color:rgba(255,255,255,0.35)\">\r\n----- Bebe Miller\r\n</div>",
+   "type": "html",
+   "additional_fields": {
+    "html-content": "\u201cWe have recognized that the power of the choreographed moment has much to do with the live intentions that are set on various vectors, and with improvisation we are interested in how we (and an audience) might respond to that reality. We are arriving at the level of exquisite detail in repeated actions\u2014but making them new each time.\u201d  <br> <div style=\"color:rgba(255,255,255,0.35)\"> ----- Bebe Miller </div>",
+    "css-color": "rgba(255,255,255,0.8)",
+    "css-font-size": "150%",
+    "css-background-color": "rgba(0,0,0,0.8)",
+    "css-overflow": "auto",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "cac6fe766d303421931d0000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 11,
+   "y": 4,
+   "width": 3,
+   "height": 1
+  },
+  {
+   "title": "MEMORY Title Block",
+   "description": "use .PNG",
+   "type": "image",
+   "additional_fields": {
+    "css-background-color": "#573540",
+    "css-background-size": "contain",
+    "class": "hide-info"
+   },
+   "id": "0f277c866d30343b593f0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/MEMORY.png",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/MEMORY.png"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/MEMORY.png"
+    }
+   },
+   "x": 0,
+   "y": 0,
+   "width": 4,
+   "height": 5
+  },
+  {
+   "title": "Verge Redux Improvisation, Performance 1 (Wide Shot)",
+   "description": "Compare different performances of the Verge Redux improvisation. In a Redux, the dancers create a new dance using references from past material. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "72917167",
+    "autoload": "false",
+    "autoplay": "true",
+    "css-border-color": "white",
+    "css-border-style": "solid",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px"
+   },
+   "id": "bfd41d956d30343b53840000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-17-vergereduxwidet1.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-17-vergereduxwidet1.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-17-vergereduxwidet1.jpg"
+    }
+   },
+   "x": 14,
+   "y": 1,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Verge Redux Improvisation, Performance 2 (Wide Shot)",
+   "description": "Compare different performances of the Verge Redux improvisation. In a Redux, the dancers create a new dance using references from past material. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "autoload": "false",
+    "vimeo-id": "72917166",
+    "css-border-left-width": "3px",
+    "autoplay": "true",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "f5ec1d956d30343b5c5f0000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/video-18-vergereduxwidet3-2.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/video-18-vergereduxwidet3-2.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/video-18-vergereduxwidet3-2.jpg"
+    }
+   },
+   "x": 16,
+   "y": 1,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Verge Redux Segment from 'A History' (Columbus, OH 2012)",
+   "description": "View the Verge Redux duet performed in the premiere of \u2018A History\u2019 by the Bebe Miller Company at the Wexner Center for the Arts. Compare this performance to the other three versions. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "77708580",
+    "autoload": "false",
+    "autoplay": "true",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "e68526956d30343b53920000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/VergeRedux_History_Wexner.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/VergeRedux_History_Wexner.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/VergeRedux_History_Wexner.jpg"
+    }
+   },
+   "x": 14,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Verge Redux Segment from 'A History' (Frankfurt, Germany 2012)",
+   "description": "View the Verge Redux duet performed in a preview performance of \u2018A History\u2019 by the Bebe Miller Company for Motion Bank in Frankfurt, Germany. Compare this performance to the other three versions. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "77232475",
+    "autoload": "false",
+    "autoplay": "true",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "4c5228956d30343b59a60000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/VergeRedux_Frankfurt.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/VergeRedux_Frankfurt.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/VergeRedux_Frankfurt.jpg"
+    }
+   },
+   "x": 16,
+   "y": 3,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Verge Original Duet (The Bebe Miller Company, 2001)",
+   "description": "View the original duet performed as part of an evening length quartet called Verge (2001). This duet serves as the memory resource for all of the Verge Redux improvisations. Compare to the four Redux improvisations and note how the dancers draw from this original material. Dancers: Angie Hauser, Darrell Jones",
+   "type": "vimeo",
+   "additional_fields": {
+    "vimeo-id": "72917759",
+    "autoload": "false",
+    "autoplay": "true",
+    "css-border-left-width": "3px",
+    "css-border-bottom-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white"
+   },
+   "id": "c0932a956d30343b56a00000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/OriginalVerge.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/OriginalVerge.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/OriginalVerge.jpg"
+    }
+   },
+   "x": 12,
+   "y": 2,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "Recall Game",
+   "description": "Test your own short term memory in this clip by watching and identifying individual movement segments. The recall aspect of human memory is an important part of the Bebe Miller Company's Redux structure for choreographic improvisation. ",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/InterAct_24_RecallGame/24_RecallGame.html",
+    "css-border-bottom-width": "3px",
+    "css-border-left-width": "3px",
+    "css-border-style": "solid",
+    "css-border-color": "white",
+    "autoload": "false"
+   },
+   "id": "642d1d966d3034429d010000",
+   "poster_image": {
+    "url": "/system/uploads/two/Cell/poster_image/full/24_Recall.jpg",
+    "small": {
+     "url": "/system/uploads/two/Cell/poster_image/small/24_Recall.jpg"
+    },
+    "medium": {
+     "url": "/system/uploads/two/Cell/poster_image/medium/24_Recall.jpg"
+    }
+   },
+   "x": 20,
+   "y": 1,
+   "width": 2,
+   "height": 2
+  },
+  {
+   "title": "MEMORY Past Gradient Text",
+   "description": "",
+   "type": "iframe",
+   "additional_fields": {
+    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-PastText.html",
+    "sticky": "1"
+   },
+   "id": "38d927966d303442a3000000",
+   "poster_image": {
+    "url": "/assets/fallback/default-cdee06016c3ca15e5810fcda0a4c5e44.png",
+    "small": {
+     "url": "/assets/fallback/small_default-b553e49f4bf6795c93d62ecc6a576ac4.png"
+    },
+    "medium": {
+     "url": "/assets/fallback/medium_default-cdee06016c3ca15e5810fcda0a4c5e44.png"
+    }
+   },
+   "x": 17,
+   "y": 0,
+   "width": 3,
+   "height": 1
+  }
+ ]
+}
