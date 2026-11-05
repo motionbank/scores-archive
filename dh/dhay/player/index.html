@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Motion Bank - recording module (Video.js)</title>
+<!--
+  Replacement for the former lab.motionbank.org/dhay/flowplayer/ iframe module.
+
+  Why this exists:
+  - the old module used Flowplayer 5.4.3 with the Flash/RTMP engine (removed
+    from all current browsers) and pulled scene timings from the PieceMaker 2
+    API at deborah-hay-pm2.herokuapp.com, which no longer exists.
+  - this module plays the MP4 renditions directly from CloudFront via
+    Video.js 10 (self-hosted in vendor/), implements the score's
+    PostMessenger wire protocol (JSON {name,data} messages), and degrades
+    gracefully: without scene timing data, scene navigation messages are
+    logged instead of crashing the module.
+
+  Protocol (compatible with app-base.js PostMessenger):
+  - parent -> child 'connect?' {listener_id}  =>  child replies 'connect!'
+    and asks 'get-config'; parent answers 'set-config' with cloudFront/pieceMaker.
+  - parent broadcasts '>>set-scene' <title> and answers
+    'set>fetch-answer' {key,value}; child reports 'flowplayer:finish' on end.
+  - The iframe is same-origin, so messages can only come from our own origin
+    (plus an optional 'domain=' URL param, as sent by the score app).
+-->
+<script type="module" src="vendor/video.js"></script>
+<style>
+  html, body { margin:0; padding:0; width:100%; height:100%; background:#000; overflow:hidden; }
+  video-player, video-skin { display:block; width:100%; height:100%; }
+  video { width:100%; height:100%; background:#000; }
+</style>
+</head>
+<body>
+<video-player>
+  <video-skin>
+    <video id="video" playsinline preload="auto"></video>
+  </video-skin>
+</video-player>
+
+<script type="module">
+(function () {
+  'use strict';
+
+  var params = new URLSearchParams(window.location.search);
+  var file = params.get('file');
+
+  var ownOrigin = window.location.protocol + '//' + window.location.host;
+  var allowedOrigins = [ ownOrigin ];
+  if ( params.get('domain') ) {
+    try { allowedOrigins.push(new URL(params.get('domain')).origin); } catch (e) { /* ignore */ }
+  }
+
+  var parentWindow = null, parentOrigin = null;
+  var config = null;
+  var sceneTimes = null;          // optional map: title -> seconds
+  var warnedNoSceneMap = false;
+
+  var video = document.getElementById('video');
+
+  function send (name, data) {
+    if ( !parentWindow || !parentOrigin ) return;
+    parentWindow.postMessage(JSON.stringify({ name: name, data: data }), parentOrigin);
+  }
+
+  window.addEventListener('message', function (e) {
+    if ( allowedOrigins.indexOf(e.origin) === -1 ) return;
+    var msg;
+    try { msg = JSON.parse(e.data); } catch (err) { return; }
+    if ( !msg || typeof msg.name !== 'string' ) return;
+
+    parentWindow = e.source;
+    parentOrigin = e.origin;
+
+    switch ( msg.name ) {
+      case 'connect?':
+        // mirror the old module: confirm handshake, then request config
+        send('connect!');
+        send('get-config');
+        break;
+      case 'set-config':
+        config = msg.data;
+        initVideo();
+        break;
+      case '>>set-scene':
+        setToScene(msg.data);
+        break;
+      case 'set>fetch-answer':
+        if ( msg.data && msg.data.key === 'currentScene' && msg.data.value ) {
+          setToScene(msg.data.value);
+        }
+        break;
+    }
+  });
+
+  function initVideo () {
+    if ( !file ) {
+      console.warn('player: no "file" URL parameter, cannot build media URL');
+      return;
+    }
+    var fileHost = (config && config.cloudFront && config.cloudFront.fileHost) || 'd35vpnmjdsiejq.cloudfront.net';
+    var basePath = (config && config.pieceMaker && config.pieceMaker.basePath) || '/dh/piecemaker';
+    video.src = 'https://' + fileHost + basePath + '/' + file + '.mp4';
+
+    // scene timings are optional (PieceMaker API is gone); if a scenes file
+    // exists for this video we can honour '>>set-scene' seeks
+    fetch('scenes/' + file + '.json', { method: 'GET' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (map) { sceneTimes = map || null; })
+      .catch(function () { sceneTimes = null; });
+
+    video.addEventListener('ended', function () {
+      send('flowplayer:finish');
+    });
+
+    var attemptPlay = function () {
+      var p = video.play();
+      if ( p && p.catch ) {
+        p.catch(function () {
+          // autoplay blocked (no user activation yet): show controls so the
+          // user can start playback inside the cell
+          video.controls = true;
+        });
+      }
+    };
+    if ( video.readyState >= 2 ) {
+      attemptPlay();
+    } else {
+      video.addEventListener('loadeddata', attemptPlay, { once: true });
+    }
+  }
+
+  function setToScene (title) {
+    if ( typeof title !== 'string' ) return;
+    if ( sceneTimes && (title in sceneTimes) ) {
+      video.currentTime = sceneTimes[title];
+      var p = video.play();
+      if ( p && p.catch ) p.catch(function () {});
+    } else if ( !warnedNoSceneMap ) {
+      warnedNoSceneMap = true;
+      console.log('player: scene navigation unavailable for "' + file +
+                  '" (no scene timing data; PieceMaker 2 API is offline). Playback continues.');
+    }
+  }
+})();
+</script>
+</body>
+</html>
