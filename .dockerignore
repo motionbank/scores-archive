@@ -1,0 +1,8 @@
+# Keep build context small — only the site itself is needed in the image.
+.git
+.idea
+*.md
+Dockerfile
+.dockerignore
+docker/*
+!docker/nginx-default.conf

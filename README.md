@@ -30,6 +30,8 @@ api/<score>/            score data as static JSON
                         (sets.json, sets/<id>.json, cells/<id>.json)
 system/uploads/         poster/upload images referenced by the JSON
 assets/                 shared landing-page assets, Open Sans fonts
+Dockerfile              nginx-based container image for the whole site
+docker/                 nginx site configuration used by the image
 ```
 
 Each score folder contains a `MODERNIZATION.md` chronicle documenting the
@@ -63,7 +65,7 @@ data scrape, and Unity-Web-Player-based mocap content in `/two`).
 
 ## Running
 
-Any static file server pointed at the repository root, e.g.:
+### Locally (any static file server)
 
 ```sh
 python3 -m http.server 8765
@@ -73,6 +75,21 @@ python3 -m http.server 8765
 #   http://localhost:8765/jbmf/
 #   http://localhost:8765/two/
 ```
+
+### Docker (nginx)
+
+```sh
+docker build -t motionbank-scores .
+docker run --rm -p 8080:80 motionbank-scores
+# → http://localhost:8080/  (landing page; scores under /dh, /jbmf, /two)
+```
+
+The image is based on `nginx:1.27-alpine` and serves the whole site (score
+front-ends, `api/` JSON data, `system/` images) with gzip compression,
+sane cache headers, and a health check on `/`. Deploy it to any host or
+container platform and put your TLS termination in front (or use the TLS
+support of your ingress/reverse proxy) — the scores work from any
+`https://` origin.
 
 No build step is required — the `javascripts/` bundles are pre-built Brunch
 output (`vendor.js`, `app-base.js`, `app-extend.js`) and the data lives in
