@@ -58,10 +58,22 @@ worked in modern browsers. All three were modernized to run from **any
   Google Analytics snippet
 - repaired a corrupted `two/index.html` tail
 
+A second pass (also 2026) fixed the data and playback layer:
+
+- restored the 192 corrupted cell JSON files (nginx "502 Bad Gateway" bodies
+  from the original scrape) from a February 2020 database export, with the
+  conversion verified by round-trip-diffing all intact files
+- replaced the Flash-era `/dh` flowplayer iframe module with a local
+  Video.js 10.3.0 player module (`/dh/dhay/player/`) that speaks the score's
+  PostMessenger protocol and plays the still-hosted CloudFront MP4s on the
+  first click — no dead Heroku API calls
+- vendored the `/dh` text/notes iframe modules locally and upgraded every
+  remaining `http://` iframe embed across all three scores to `https`
+
 See the per-score chronicles for details, verification results, and the
-known remaining limitations (dead external data sources such as the
-PieceMaker API, private Vimeo videos, corrupt cell JSONs from the original
-data scrape, and Unity-Web-Player-based mocap content in `/two`).
+known remaining limitations (jbmf's `pm_player_01` cells and scene timings
+need a PieceMaker 2 database dump, private Vimeo videos, and
+Unity-Web-Player-based mocap content in `/two`).
 
 ## Running
 

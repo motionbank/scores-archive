@@ -178,19 +178,16 @@ Headless Chromium (Playwright) against a local static server, before/after:
    their poster images. Fixing this requires either reviving a PieceMaker API
    or exporting the scene events as static JSON — a data problem, not a
    front-end one.
-2. **The embedded `lab.motionbank.org` pages still have their own legacy
-   issues** (their hard-coded `http://` Google-Fonts link is blocked under
-   https — cosmetic only; flowplayer is configured for a Flash/RTMP engine
-   that no longer exists; a couple of their replies are sent with a default
-   target origin that modern browsers reject). Those pages live outside this
-   repository; a follow-up could vendor (copy + patch) the `/dhay/` modules
-   into this repo and fix them there.
+2. ~~The embedded `lab.motionbank.org` pages still have their own legacy
+   issues…~~ **Fixed in the second pass** — the flowplayer module was replaced
+   by a local player (section 6) and the text modules were vendored and patched
+   (section 6.3).
 3. **CloudFront overlay images (`/dh/app/cells/...`) return 403.** The
    recording/visualization cells gracefully fall back to their poster images,
    which are served locally from `system/uploads/`.
-4. **71 of the 252 exported cell JSON files contain "502 Bad Gateway" HTML**
-   instead of JSON — the original API scrape was incomplete for those cells.
-   They render as "missing" cells.
+4. ~~71 of the 252 exported cell JSON files contain "502 Bad Gateway" HTML…~~
+   **Fixed in the second pass** — all 192 corrupted cell JSONs across the three
+   scores were restored from a February 2020 database export (section 6.1).
 5. `vendor.js` still contains jQuery 2.0.3 / Chaplin 1.x. They work in current
    browsers for what the score uses; a full framework migration was
    deliberately out of scope for this pass.
@@ -201,7 +198,117 @@ Headless Chromium (Playwright) against a local static server, before/after:
 
 ---
 
-## 6. How to run
+## 6. Second pass (video playback, data repair, self-hosted child modules)
+
+A later pass fixed what the first pass could only document: broken video
+cells, the corrupted JSON data, and the runtime dependency on
+`lab.motionbank.org`.
+
+### 6.1 Cell data restored from a 2020 database export
+
+A mongodump-style export of the old mosys/Rails backend (Feb 2020) surfaced in
+`~/Downloads/mosys-meso-assets` — NDJSON with one Mongo document per cell, in
+Mongo extended JSON (`$oid`, `$symbol`, `$numberInt`). It covers all 252
+`deborah_hay` cells (plus `jbmf` and `two`), and the repo's intact cell files
+are an exact conversion of it, which pinned the mapping:
+
+- `_id.$oid` → `id`, `type.$symbol` → `type`, everything else passthrough;
+- `poster_image.{url,small.url,medium.url}` rebuilt from
+  `poster_image_filename` as `/system/uploads/<score>/Cell/poster_image/<size>/<fn>`;
+- cells without a filename get the `/assets/fallback/…` poster set.
+
+Round-trip-diffing this conversion against **all 569 previously intact** cell
+JSONs across the three scores matched 100%, so the same mapping was used to
+regenerate the corrupted ones:
+
+| score | corrupted cells (nginx "502 Bad Gateway" HTML) | restored |
+|---|---|---|
+| deborah_hay | 71 | 71 |
+| jbmf | 99 | 99 |
+| two | 22 | 22 |
+
+Git history keeps the quarantine step (commit `fc0dc5a` renames them to
+`*.json.corrupt`) separate from the restore (commit `775e478`), so the original
+scrape damage stays traceable. Sets (`sets/*.json`) were not corrupted and were
+left untouched — their format merges grid cells with cell data and was not
+regenerated. The export's `assets/` folders proved redundant: every upload the
+JSON references already exists under `system/uploads/` (2736 refs, 0 missing).
+
+### 6.2 Local recording player module (`/dh/dhay/player/`)
+
+The remote `lab.motionbank.org/dhay/flowplayer/` module was the reason video
+cells were dead: it drove Flowplayer 5.4.3 in `engine: 'flash'` + RTMP (Flash
+is gone from all browsers) and resolved everything else through the dead
+`deborah-hay-pm2.herokuapp.com` PieceMaker 2 API. It was replaced by a new
+local module, `dh/dhay/player/index.html`:
+
+- **Video.js 10.3.0** (the current major, built on HTML custom elements —
+  `<video-player><video-skin><video …>`), self-hosted under
+  `dh/dhay/player/vendor/` (ES module chunks mirrored from `@videojs/cdn`),
+  so the score has no player CDN dependency.
+- Plays the MP4 renditions directly from the still-alive CloudFront host over
+  https (`/dh/piecemaker/<file>.mp4`, taken from `set-config`, with a sane
+  fallback), via the plain HTML5 media element — no Flash, no RTMP.
+- **Implements the score's PostMessenger wire protocol** with ~70 lines of
+  plain `postMessage` code: answers `connect?` with `connect!`, requests
+  `get-config`, consumes `set-config`, handles `>>set-scene` /
+  `set>fetch-answer`, reports `flowplayer:finish` on `ended`. Same-origin
+  iframe, so the origin allow-list is the page's own origin plus the optional
+  `domain=` parameter.
+- **Scene navigation degrades gracefully**: scene timings lived only in the
+  dead PieceMaker API (no Wayback captures exist), so `>>set-scene` is logged
+  and playback continues. If a `scenes/<file>.json` map (`title → seconds`)
+  is ever recovered, the module will honour it without code changes.
+- The cell JSON's `iframe-src` params (`rec`, `vid`, `file`, `gid`, `perf`)
+  are preserved verbatim, so the parent's `cell-recording-view` overlay logic
+  keeps parsing them unchanged.
+
+Verified headless-Chromium against the Docker image: the big "Overlays" cell
+plays **on the first click** (`paused:false`, `currentTime` advancing), zero
+Heroku/API requests, no exceptions; previously the first click threw and only
+the second click (sometimes) started playback.
+
+All 302 recording-cell `iframe-src` values in the deborah_hay data now point
+to `/dh/dhay/player/`.
+
+### 6.3 Text/notes modules vendored (`/dh/dhay/text/`)
+
+The five text modules (`score-text`, `score-text-notes`, `score-notes`,
+`ros-insights`, `jeanine-insights`) are copied from `lab.motionbank.org/dhay/text/`
+with minimal patches: the Google Fonts link upgraded to https (it was the last
+mixed-content offender), `style.css` font URLs repointed to the repo's
+`/assets/open-sans/`, and their shared `js/` (PostMessenger, messaging,
+locparams, app) vendored unchanged to pin the wire protocol. All 60 text-cell
+`iframe-src` values now point to `/dh/dhay/text/` — **the /dh score no longer
+requests anything from lab.motionbank.org at runtime**. Remaining remote
+embeds (YouTube, Vimeo, moba logo, track inspector) were probed alive over
+https.
+
+### 6.4 https for all iframe embeds (all three scores)
+
+Every remaining `http://` `iframe-src` in `api/{deborah_hay,jbmf,two}` was
+upgraded to `https://` after probing each unique child URL (all hosts
+https-capable). Mixed-content iframes are hard-blocked by modern browsers, so
+these cells were dead under https hosting regardless of the child modules'
+health. Six `two` cells also had a leading tab+space inside the `iframe-src`
+value, breaking iframe resolution outright — trimmed. Aggregate
+`cells.json`/`sets.json` indexes updated too (125 files, 1-line diffs).
+
+### 6.5 What still needs source data
+
+- **jbmf `pm_player_01` cells (140)**: that module resolves its video file via
+  `vid=` from the dead `jbmf-pm2.herokuapp.com` API; the `vid → file` mapping
+  is unrecoverable from public sources (no Wayback captures of either PM2
+  API). If a PM2 database dump (events with `fields.file`, `fields.vid_service*`,
+  `fields['alt-angle-*']`, scene events) ever becomes available, the same
+  local-player treatment applied here can be extended to jbmf, and scene
+  timing maps for `/dh` can be generated as `scenes/<file>.json`.
+- CloudFront overlay images (`/dh/app/cells/…`) still 403; cells fall back to
+  local poster images.
+
+---
+
+## 7. How to run
 
 Any static file server pointed at the repository root, e.g.:
 
@@ -209,6 +316,8 @@ Any static file server pointed at the repository root, e.g.:
 python3 -m http.server 8765
 # open http://localhost:8765/dh/
 ```
+
+or the Docker image (see the repository README).
 
 Data is fetched from `api/deborah_hay/` (configured in
 `dh/javascripts/app-extend.js` → `config.apiBaseUrl`, `apiHost` empty =

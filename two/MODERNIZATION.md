@@ -114,11 +114,27 @@ Goal: make the score work when hosted under **any `https://` domain**.
 
 ---
 
-## 6. How to run
+## 6. Second pass (2026-11-05)
+
+- **All `http://` `iframe-src` values upgraded to `https://`** (the S3 media
+  bucket `s3.amazonaws.com/motionbank-media/…`, the only http host besides
+  YouTube, serves https). Mixed-content iframes are hard-blocked by modern
+  browsers, so those cells were dead under https hosting before.
+- **Six cells had a leading tab+space inside the `iframe-src` value**
+  (whitespace corruption in the original export), which broke iframe
+  resolution outright — trimmed. Every unique child URL was re-probed alive
+  over https.
+- **22 corrupt cell JSON files restored** from a February 2020 database
+  export; see [`dh/MODERNIZATION.md` § 6.1](../dh/MODERNIZATION.md).
+
+---
+
+## 7. How to run
 
 ```sh
 python3 -m http.server 8765
 # open http://localhost:8765/two/
 ```
 
-Fully self-contained on any https domain (data from `api/two/`, same origin).
+or the Docker image (see the repository README). Fully self-contained on any
+https domain (data from `api/two/`, same origin).

@@ -108,18 +108,41 @@ player URL and dual-origin allow-list.
 2. **Some Vimeo videos return HTTP 401** (private / embed-restricted), e.g.
    `70788635`. They will not play regardless of hosting; the data would need
    updating.
-3. **99 corrupt cell JSON files** ("502 Bad Gateway" bodies) from the
-   original data export — those cells cannot render.
+3. ~~**99 corrupt cell JSON files**…~~ **Fixed in the second pass** — all 99
+   corrupted cell JSONs were restored from a February 2020 database export;
+   see [`dh/MODERNIZATION.md` § 6.1](../dh/MODERNIZATION.md) for the verified
+   conversion mapping and git-traceable quarantine/restore commits.
 4. WebGL/console noise seen in headless tests comes from the embedded
    modules' own telemetry, not from the score shell.
 
 ---
 
-## 6. How to run
+## 6. Second pass (2026-11-05)
+
+- **All `http://` `iframe-src` values upgraded to `https://`** across cells,
+  sets and the aggregate indexes (every unique child URL probed alive over
+  https). Mixed-content iframes are hard-blocked by modern browsers, so these
+  cells were dead under https hosting regardless of the child modules.
+- **`pm_player_01` cells (140) remain broken for a data reason**: the module
+  resolves its video file from the dead `jbmf-pm2.herokuapp.com` PieceMaker 2
+  API (`vid=` URL parameter only, no `file=`), and also used the Flash/RTMP
+  engine plus an http-only Vimeo bridge (froogaloop). No Wayback captures of
+  the API exist; the `vid → file` mapping and scene timings are only
+  recoverable from a PM2 database dump. With one, the local-player treatment
+  used for `/dh` (see [`dh/MODERNIZATION.md` § 6.2](../dh/MODERNIZATION.md))
+  can be extended here.
+- The remaining performer/generator modules on `lab.motionbank.org` are alive
+  over https and now load as mixed-content-free iframes.
+
+---
+
+## 7. How to run
 
 ```sh
 python3 -m http.server 8765
 # open http://localhost:8765/jbmf/
 ```
 
-Fully self-contained on any https domain (data from `api/jbmf/`, same origin).
+or the Docker image (see the repository README). Fully self-contained on any
+https domain (data from `api/jbmf/`, same origin) — except the `pm_player_01`
+cells noted above.
