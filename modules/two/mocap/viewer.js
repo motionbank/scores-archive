@@ -458,7 +458,7 @@ for (const mesh of skinnedMeshes) {
     geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     geo.setDrawRange(0, 0);
     const line = new THREE.Line(geo, new THREE.LineBasicMaterial({
-      color: trailColor, transparent: true, opacity: 0.55, depthTest: false,
+      color: trailColor, transparent: true, opacity: 0.28,
     }));
     line.renderOrder = 9;
     line.frustumCulled = false;
@@ -510,21 +510,16 @@ let fitSmearOverlay = null;
 if (noiseOverlay) {
   scene.add(camera); // the quad follows the camera, as in the original
   const geo = new THREE.PlaneGeometry(1, 1);
-  // Screen blend (lightens, like a Photoshop 'screen' layer), with the
-  // source scaled down via .color for subtlety. The quad renders in the
-  // opaque pass nearest the camera (front-to-back) and writes no depth,
-  // so the dancers draw over it: the grain sits in the BACKGROUND.
+  // Full-strength grunge backdrop: renders in the opaque pass nearest the
+  // camera (front-to-back) and writes no depth, so the dancers draw over
+  // it — the texture simply replaces the flat background colour.
   const mat = new THREE.MeshBasicMaterial({
     map: loadTex(noiseOverlay.tex),
-    blending: THREE.CustomBlending,
-    blendEquation: THREE.AddEquation,
-    blendSrc: THREE.OneMinusDstColorFactor, // screen: src*(1-dst) + dst
-    blendDst: THREE.OneFactor,
-    color: 0x9a9a9a,
     depthWrite: false, depthTest: false,
     toneMapped: false, side: THREE.DoubleSide, fog: false,
   });
   const quad = new THREE.Mesh(geo, mat);
+  quad.renderOrder = -1; // always the first opaque draw: a backdrop
   quad.visible = true; // on by default
   camera.add(quad);
   fitSmearOverlay = function () {
