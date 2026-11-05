@@ -17,8 +17,12 @@
     gap:10px; align-items:center; }
   #timeline { flex:1; accent-color:#e63946; }
   button, select { background:#2a2a2a; color:#eee; border:1px solid #444;
-    border-radius:4px; padding:4px 10px; font-size:12px; cursor:pointer; }
+    border-radius:4px; padding:4px 10px; font-size:12px; cursor:pointer;
+    display:inline-flex; align-items:center; gap:5px; }
   button:hover { background:#3a3a3a; }
+  button img { width:18px; height:18px; image-rendering:auto; }
+  button.on { border-color:#e63946; color:#fff; }
+  #speedVal { font-size:12px; min-width:26px; text-align:center; opacity:.85; }
   #time { font-size:11px; opacity:.7; min-width:96px; text-align:center; }
   #err { position:absolute; inset:0; display:none; place-items:center;
     color:#f88; font-size:14px; text-align:center; padding:0 40px; }
@@ -32,17 +36,20 @@
 </div>
 <div id="err"></div>
 <div id="ui">
-  <button id="play">⏸</button>
-  <select id="speed">
-    <option value="0.25">0.25×</option>
-    <option value="0.5">0.5×</option>
-    <option value="1" selected>1×</option>
-    <option value="2">2×</option>
-  </select>
+  <button id="play" title="Play / pause">⏸</button>
+  <button id="slower" title="Slower (original −1 button)"><img alt="−"></button>
+  <span id="speedVal">1×</span>
+  <button id="faster" title="Faster (original +1 button)"><img alt="+"></button>
   <input id="timeline" type="range" min="0" max="1000" value="0" step="1">
   <span id="time">0:00 / 0:00</span>
+  <button id="camera" title="Save a screenshot of the scene (original camera button)"><img alt="camera"></button>
+  <button id="fs" title="Fullscreen (original fullscreen button)"><img alt="fullscreen"></button>
   <button id="reset" title="Reset the camera to the starting view">
     reset view</button>
+  <button id="trails" title="Motion trails behind hands/feet/head (re-creation of
+    the original TrailRenderControl behaviour)">trails</button>
+  <button id="smear" title="Cross-hatch noise overlay from the original scene
+    (FadedNoiseFilter camera quad)">smear</button>
   <button id="bones" title="X-ray: show the mocap skeleton through a
     translucent body (analysis extra — not in the original Unity player)">skeleton</button>
 </div>

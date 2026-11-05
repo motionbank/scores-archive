@@ -173,6 +173,9 @@ for (const m of data.meshes) {
     const parent = (m.path && nodes.get(m.path)) || root;
     const mesh = new THREE.Mesh(geo, matFor(m.name, false, m.material));
     mesh.frustumCulled = false;
+    // meshes whose material was assigned at runtime by the scene scripts
+    // (FadePlane, FadedNoiseFilter …) are invisible in the original scene
+    if (m.hidden) mesh.visible = false;
     parent.add(mesh);
     staticMeshes.push(mesh);
   }
@@ -344,17 +347,65 @@ function frameCamera() {
 }
 
 // ---------- UI ----------
+// The original player's screen UI was created at runtime as GUITextures
+// (the icon PNGs ship in the bundles: play/pause, ±1 speed, fullscreen,
+// camera). The buttons below reuse those actual icons; their behaviour is
+// inferred from the icon semantics since the scripts are unrecoverable.
 const playBtn = document.getElementById("play");
 const timeline = document.getElementById("timeline");
 const timeLbl = document.getElementById("time");
-const speedSel = document.getElementById("speed");
 let playing = true, t = 0, speed = 1, last = performance.now();
+
+const iconUrl = (name) => (data.textures || []).find((t) => t.includes(`/${name}_`)) || null;
+function setIcon(btn, name, fallback) {
+  const url = iconUrl(name);
+  btn.innerHTML = url ? `<img src="./data/${url}" alt="${fallback}">` : fallback;
+}
 
 playBtn.onclick = () => {
   playing = !playing;
-  playBtn.textContent = playing ? "⏸" : "▶";
+  setIcon(playBtn, playing ? "pause" : "play", playing ? "⏸" : "▶");
 };
-speedSel.onchange = () => { speed = parseFloat(speedSel.value); };
+setIcon(playBtn, "pause", "⏸");
+
+const SPEEDS = [0.25, 0.5, 1, 2, 4];
+const speedVal = document.getElementById("speedVal");
+function setSpeed(s) {
+  speed = s;
+  speedVal.textContent = `${s}×`;
+}
+document.getElementById("slower").onclick = () =>
+  setSpeed(SPEEDS[Math.max(0, SPEEDS.indexOf(speed) - 1)]);
+document.getElementById("faster").onclick = () =>
+  setSpeed(SPEEDS[Math.min(SPEEDS.length - 1, SPEEDS.indexOf(speed) + 1)]);
+setIcon(document.getElementById("slower"), "minus1", "−");
+setIcon(document.getElementById("faster"), "plus1", "+");
+
+// original fullscreen button (FullScreen / NotFullScreen icons)
+const fsBtn = document.getElementById("fs");
+fsBtn.onclick = () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  else document.documentElement.requestFullscreen().catch(() => {});
+};
+document.addEventListener("fullscreenchange", () =>
+  setIcon(fsBtn, document.fullscreenElement ? "NotFullScreen" : "FullScreen", "⛶"));
+setIcon(fsBtn, "FullScreen", "⛶");
+
+// original camera button → save a screenshot of the scene
+const camBtn = document.getElementById("camera");
+camBtn.onclick = () => {
+  renderer.render(scene, camera); // fresh frame in case the tab was hidden
+  renderer.domElement.toBlob((blob) => {
+    if (!blob) return;
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `${name}-${Math.round(t * 1000)}ms.png`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  }, "image/png");
+};
+setIcon(camBtn, "camera", "📷");
+
 timeline.oninput = () => { t = (timeline.value / 1000) * duration; };
 document.getElementById("reset").onclick = () => {
   if (!window.__home) return;
@@ -387,6 +438,89 @@ document.getElementById("bones").onclick = (e) => {
   e.target.classList.toggle("on", showBones);
 };
 
+// ---------- motion trails (re-creation of TrailRenderControl) ----------
+// The original bundle ships a TrailRenderControl script but no logic, so
+// this is an inferred re-creation: fading ribbons behind the extremities
+// (hands, feet, head) — the classic mocap-display look of the era.
+const TRAIL_LEN = 45;
+const trails = [];
+for (const mesh of skinnedMeshes) {
+  for (const b of mesh.skeleton.bones) {
+    if (!/:?(LeftHand|RightHand|LeftFoot|RightFoot|Head|Head_End)$/.test(b.name)) continue;
+    const pos = new Float32Array(TRAIL_LEN * 3);
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    geo.setDrawRange(0, 0);
+    const line = new THREE.Line(geo, new THREE.LineBasicMaterial({
+      color: 0xffffff, transparent: true, opacity: 0.32, depthTest: false,
+    }));
+    line.renderOrder = 9;
+    line.frustumCulled = false;
+    scene.add(line);
+    trails.push({ bone: b, pos, geo, line, n: 0 });
+  }
+}
+let showTrails = trails.length > 0; // on by default, like the original
+function updateTrails() {
+  for (const tr of trails) {
+    tr.line.visible = showTrails;
+    if (!showTrails) continue;
+    const e = tr.bone.matrixWorld.elements;
+    // shift back and append the current joint position
+    tr.pos.copyWithin(3, 0, (tr.n * 3) - 3);
+    if (tr.n < TRAIL_LEN) tr.n++;
+    tr.pos[0] = e[12]; tr.pos[1] = e[13]; tr.pos[2] = e[14];
+    tr.geo.setDrawRange(0, tr.n);
+    tr.geo.attributes.position.needsUpdate = true;
+  }
+}
+const trailsBtn = document.getElementById("trails");
+trailsBtn.onclick = (e) => {
+  showTrails = !showTrails;
+  e.target.classList.toggle("on", showTrails);
+};
+trailsBtn.classList.toggle("on", showTrails);
+trailsBtn.style.display = trails.length ? "" : "none";
+
+// ---------- cross-hatch noise overlay (FadedNoiseFilter) ----------
+// A full-screen quad parented to the original Main Camera; the scripts
+// assigned its material at runtime, using the CrossHatchSaga texture that
+// ships in the bundle. Re-created here as a subtle multiply overlay.
+const noiseOverlay = (data.overlays || []).find((o) => o.name === "FadedNoiseFilter" && o.tex);
+let smearEnabled = false;
+let fitSmearOverlay = null;
+if (noiseOverlay) {
+  scene.add(camera); // the quad follows the camera, as in the original
+  const geo = new THREE.PlaneGeometry(1, 1);
+  const mat = new THREE.MeshBasicMaterial({
+    map: loadTex(noiseOverlay.tex),
+    blending: THREE.MultiplyBlending,
+    transparent: true, opacity: 0.18, depthWrite: false, depthTest: false,
+    toneMapped: false, side: THREE.DoubleSide,
+  });
+  const quad = new THREE.Mesh(geo, mat);
+  quad.renderOrder = 20;
+  quad.visible = false;
+  camera.add(quad);
+  fitSmearOverlay = function () {
+    const z = noiseOverlay.pos[2] || 6;
+    const h = 2 * z * Math.tan((camera.fov * Math.PI) / 360);
+    quad.position.set(0, 0, -z); // three.js cameras look down -Z
+    quad.scale.set(h * camera.aspect * 1.02, h * 1.02, 1);
+  };
+  fitSmearOverlay();
+  window.addEventListener("resize", fitSmearOverlay);
+  const smearBtn = document.getElementById("smear");
+  smearBtn.onclick = (e) => {
+    smearEnabled = !smearEnabled;
+    if (smearEnabled && fitSmearOverlay) fitSmearOverlay();
+    quad.visible = smearEnabled;
+    e.target.classList.toggle("on", smearEnabled);
+  };
+} else {
+  document.getElementById("smear").style.display = "none";
+}
+
 function loop(now) {
   const dt = Math.min((now - last) / 1000, 0.1);
   last = now;
@@ -395,11 +529,13 @@ function loop(now) {
     timeline.value = Math.round((t / duration) * 1000);
   }
   applyRot(t);
+  root.updateMatrixWorld(true);
+  updateTrails();
+  if (smearEnabled && fitSmearOverlay) fitSmearOverlay(); // track FOV changes
   // Accumulate animated joint samples, then frame the performance area:
   // a quick fit at ~1.5 s for an immediate view, one silent reframe at
   // ~12 s once the dancers' roam is covered (skipped if the user has
   // already orbited the camera themselves).
-  root.updateMatrixWorld(true);
   if (playing) sampleFitPose();
   if (!window.__home) {
     fitElapsed += dt;

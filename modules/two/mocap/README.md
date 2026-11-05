@@ -67,8 +67,25 @@ What is **not** recoverable: script behaviour. The bundles contain no
 embedded assembly, no TextAssets, and their MonoBehaviours are typeless —
 so feature scripts (CameraControl, MakeDancerDoStuffWithMouse,
 SmudgeDancer, TrailRenderControl, BoxDropControl, AddOtherCameraImgs) exist
-as names only. No post-effect is enabled in any bundle. The two UI buttons
-(skeleton/x-ray, reset view) are additions of this rebuild.
+as names only. No post-effect is enabled in any bundle.
+
+What **was** recovered from the data (plus how the rest is inferred):
+
+- **Original screen buttons**: the bundles ship the actual icon PNGs
+  (play/pause, minus1/plus1, FullScreen/NotFullScreen, camera) — the
+  viewer's toolbar uses them; behaviours are inferred from the icons.
+- **Motion trails** (`TrailRenderControl`): re-created as fading white
+  ribbons behind hands/feet/head, on by default, toggleable.
+- **Smear/noise overlay** (`FadedNoiseFilter`): every MocapView bundle has
+  a full-screen `FadedNoiseFilter` quad parented to the Main Camera with a
+  runtime-assigned material; 44a/44b/44c/46 ship the CrossHatchSaga
+  cross-hatch texture it used. Re-created as an opt-in "smear" multiply
+  overlay at low opacity. `FadePlane` (transition fade) and other meshes
+  whose materials the scripts assigned at runtime stay invisible, matching
+  the original scene graphs.
+- Mouse-dancer interactions (`SmudgeDancer`, `BoxDropControl`) and stage-
+  camera imagery (`AddOtherCameraImgs`) remain name-only — no data to
+  reconstruct them from.
 
 Camera framing specifics (learned the hard way):
 

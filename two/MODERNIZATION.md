@@ -181,6 +181,21 @@ now served by a self-hosted three.js viewer at `/modules/two/mocap/`:
   MonoBehaviours), and no post-effects are enabled in any bundle. The
   rebuild is therefore data-faithful; the interactive extras would have to
   be re-invented, not restored.
+- **Recovered runtime UI and effects**: the bundles' screen-space pieces are
+  reconstructed from the shipped data:
+  - The icon textures (play/pause, ±1, FullScreen/NotFullScreen, camera) are
+    the original player's GUITexture buttons — the viewer's toolbar now uses
+    those actual PNGs. Behaviour (play/pause, speed steps, fullscreen,
+    screenshot download) is inferred from the icon semantics since the
+    scripts are unrecoverable.
+  - `TrailRenderControl` is re-created as inferred motion trails behind the
+    hands/feet/head (toggle, on by default).
+  - `FadedNoiseFilter` — a full-screen quad parented to the original Main
+    Camera with the bundle's CrossHatchSaga cross-hatch texture (44a/44b/
+    44c/46) — is re-created as an opt-in "smear" grain overlay; `FadePlane`
+    (transition fade, material runtime-assigned) stays hidden, and scene
+    meshes whose materials were runtime-assigned are invisible as in the
+    original (the exporter flags them).
 - **The remaining Unity InterAct scenes are ported too**: `Recall08`
   (InterAct 24), `Redux19` (25) and `PhrasingLandscapeBoth02` (31) go through
   the same viewer. Caveat: these were interactive games — mocap playback and
