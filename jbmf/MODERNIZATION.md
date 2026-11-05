@@ -132,7 +132,13 @@ player URL and dual-origin allow-list.
   used for `/dh` (see [`dh/MODERNIZATION.md` § 6.2](../dh/MODERNIZATION.md))
   can be extended here.
 - The remaining performer/generator modules on `lab.motionbank.org` are alive
-  over https and now load as mixed-content-free iframes.
+  over https and now load as mixed-content-free iframes. **They have since
+  been vendored**: every child module is mirrored under `/modules/` and all
+  `iframe-src`s resolve same-origin — see
+  [`dh/MODERNIZATION.md` § 6.7](../dh/MODERNIZATION.md). The score no longer
+  requests anything from `lab.motionbank.org` (the `pm_player_01` cells stay
+  broken for the data reason above; their module is preserved as a historic
+  record).
 
 ---
 

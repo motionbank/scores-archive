@@ -322,6 +322,24 @@ value, breaking iframe resolution outright — trimmed. Aggregate
   text-score links visibly "jump" the cell to the scene's frame grab; the
   video itself still cannot seek without timing data (see 6.5).
 
+### 6.7 Full self-containment: lab.motionbank.org vendored away
+
+A final pass mirrored every still-referenced `lab.motionbank.org` child
+module into `/modules/` (356 files: jbmf generators and performers,
+score-books, the dhay track inspector, the moba logo, test/example-iframe)
+and rewrote every `iframe-src` to same-origin paths. A recursive crawler
+followed module-relative html/css/js references; URLs built at runtime by
+the modules themselves cannot be mirrored statically. The scores no longer
+request anything from `lab.motionbank.org`; what remains remote are third-
+party embeds (YouTube, Vimeo) and CDN libraries referenced inside the
+mirrored modules.
+
+Mechanical, behavior-safe lint fixes were applied to the vendored
+PostMessenger copies and `yt_annot_01/js/api.js` (throw strings → Error
+objects, guarded `JSON.parse` in the message handler, `hasOwnProperty` via
+`call`). Vendored frozen mirrors (this one and the video.js chunk mirror)
+are excluded from lint analysis via `.pi-lens.json`.
+
 ---
 
 ## 7. How to run

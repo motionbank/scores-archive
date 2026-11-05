@@ -118,14 +118,18 @@ would unblock everything below:
 - [ ] **Junk/test cells in the data** — e.g. `two` cells with
       `iframe-src: "asdjahsd kjashd kjashd kajsdhk"`, `/foo/fah`,
       `test/example-iframe` — decide whether to hide/remove them.
-- [ ] **Remaining remote embeds on `lab.motionbank.org`** (`moba/logo`,
-      `data_inspect_tracks_01`, jbmf performer/generator modules) — alive and
-      https-capable; optionally vendor for full self-containment.
+- [x] **Remaining remote embeds on `lab.motionbank.org`** (`moba/logo`,
+      `data_inspect_tracks_01`, jbmf performer/generator modules) — **done**:
+      all mirrored under `/modules/` and every `iframe-src` rewritten
+      same-origin. The score sites no longer request anything from
+      `lab.motionbank.org`.
 
 ### Infra / housekeeping
 
-- [ ] **Commit `docker/ssl/` (self-signed-TLS image for local testing) and
-      the matching `.dockerignore` exception** — currently uncommitted.
+- [x] **Commit `docker/ssl/` (self-signed-TLS image for local testing) and
+      the matching `.dockerignore` exception** — **done**, including a fix
+      for the healthcheck (dedicated plain-HTTP `/health` endpoint; the
+      server-level 301 used to hijack it).
 - [ ] **Framework modernization** (jQuery 2.0.3 / Backbone / Chaplin in the
       bundles) — deliberately out of scope so far; works in current browsers
       for what the scores use.
