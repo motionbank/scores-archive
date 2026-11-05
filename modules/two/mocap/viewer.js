@@ -442,7 +442,13 @@ document.getElementById("bones").onclick = (e) => {
 // The original bundle ships a TrailRenderControl script but no logic, so
 // this is an inferred re-creation: fading ribbons behind the extremities
 // (hands, feet, head) — the classic mocap-display look of the era.
-const TRAIL_LEN = 45;
+const TRAIL_LEN = 360; // ~6 s at 60 fps: long sweeping ribbons
+// dark trails like the dancer outline (lambert2/BodyOutlineMaterial) —
+// high contrast against the stage colours
+const outlineMat = (data.materials || []).find((m) => /outline/i.test(m.shader));
+const trailColor = outlineMat
+  ? new THREE.Color().setRGB(outlineMat.color[0], outlineMat.color[1], outlineMat.color[2], THREE.LinearSRGBColorSpace)
+  : new THREE.Color(0x111111);
 const trails = [];
 for (const mesh of skinnedMeshes) {
   for (const b of mesh.skeleton.bones) {
@@ -452,7 +458,7 @@ for (const mesh of skinnedMeshes) {
     geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     geo.setDrawRange(0, 0);
     const line = new THREE.Line(geo, new THREE.LineBasicMaterial({
-      color: 0xffffff, transparent: true, opacity: 0.32, depthTest: false,
+      color: trailColor, transparent: true, opacity: 0.55, depthTest: false,
     }));
     line.renderOrder = 9;
     line.frustumCulled = false;
