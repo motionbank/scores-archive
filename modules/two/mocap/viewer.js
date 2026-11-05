@@ -26,6 +26,7 @@ camera.position.set(2.5, 2, 4);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
+controls.addEventListener("start", () => { userOrbited = true; });
 
 scene.add(new THREE.HemisphereLight(0xdfe8f0, 0x33302a, 2.2));
 const sun = new THREE.DirectionalLight(0xffffff, 2.0);
@@ -73,8 +74,63 @@ const root = new THREE.Group();
 roots.forEach((b) => root.add(b));
 scene.add(root);
 
-// ---------- materials ----------
-function matFor(meshName, skinned) {
+// ---------- original scene lighting / fog / background ----------
+const L = data.lights || [], R = data.renderSettings || {};
+let haveLights = false;
+for (const l of L) {
+  const col = new THREE.Color().setRGB(l.color[0], l.color[1], l.color[2], THREE.LinearSRGBColorSpace);
+  if (l.type === 1) {              // directional
+    const dl = new THREE.DirectionalLight(col, l.intensity ?? 1);
+    const n = nodes.get(l.path);
+    if (n) dl.position.setFromMatrixPosition(n.matrixWorld);
+    else dl.position.set(4, 8, 6);
+    scene.add(dl);
+    haveLights = true;
+  } else if (l.type === 2) {       // point
+    const pl = new THREE.PointLight(col, l.intensity ?? 1, l.range || 0);
+    const n = nodes.get(l.path);
+    if (n) pl.position.setFromMatrixPosition(n.matrixWorld);
+    scene.add(pl);
+    haveLights = true;
+  }
+}
+if (R.ambient) {
+  const a = R.ambient;
+  scene.add(new THREE.AmbientLight(
+    new THREE.Color().setRGB(a[0], a[1], a[2], THREE.LinearSRGBColorSpace), 1));
+  haveLights = true;
+}
+if (!haveLights) {
+  scene.add(new THREE.HemisphereLight(0xdfe8f0, 0x33302a, 2.2));
+}
+if (R.fog) {
+  const fc = R.fogColor || [1, 1, 1, 1];
+  const fogC = new THREE.Color().setRGB(fc[0], fc[1], fc[2], THREE.LinearSRGBColorSpace);
+  if (R.fogMode === 1) scene.fog = new THREE.Fog(fogC, R.fogLinearStart || 0, R.fogLinearEnd || 1000);
+  else scene.fog = new THREE.FogExp2(fogC, R.fogDensity || 0.01);
+}
+if (data.camera && data.camera.backgroundColor) {
+  const bc = data.camera.backgroundColor;
+  scene.background = new THREE.Color().setRGB(bc[0], bc[1], bc[2], THREE.LinearSRGBColorSpace);
+}
+
+// ---------- materials (original colors/textures, hash fallback) ----------
+const texLoader = new THREE.TextureLoader();
+function loadTex(rel) {
+  const t = texLoader.load(`./data/${rel}`);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+function matFor(meshName, skinned, matIdx) {
+  const dm = (matIdx != null && data.materials && data.materials[matIdx]) || null;
+  if (dm) {
+    const c = dm.color;
+    return new THREE.MeshStandardMaterial({
+      color: new THREE.Color().setRGB(c[0], c[1], c[2], THREE.LinearSRGBColorSpace),
+      map: dm.tex ? loadTex(dm.tex) : null,
+      roughness: 0.85, metalness: 0.02, side: THREE.DoubleSide,
+    });
+  }
   const hue = [...meshName].reduce((a, c) => (a * 31 + c.charCodeAt(0)) % 360, 7);
   const sat = skinned ? 0.18 : 0.25;
   return new THREE.MeshStandardMaterial({
@@ -98,7 +154,6 @@ for (const m of data.meshes) {
     const skinW = new Float32Array(m.skinWeight.flat());
     geo.setAttribute("skinIndex", new THREE.Uint16BufferAttribute(skinIdx, 4));
     geo.setAttribute("skinWeight", new THREE.Float32BufferAttribute(skinW, 4));
-
     // File bindPoses are the true bind-time inverses (the serialized scene
     // pose is mid-motion, NOT the bind pose). With correct skin weights these
     // reproduce Unity's deformation exactly: vertex' = Σ w·W_bone(t)·bindPose·v.
@@ -108,7 +163,7 @@ for (const m of data.meshes) {
       a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7],
       a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15]));
     const skeleton = new THREE.Skeleton(bones, inverses);
-    const mesh = new THREE.SkinnedMesh(geo, matFor(m.name, true));
+    const mesh = new THREE.SkinnedMesh(geo, matFor(m.name, true, m.material));
     mesh.frustumCulled = false;
     mesh.bind(skeleton, new THREE.Matrix4());
     mesh.userData.bindInverses = inverses;
@@ -116,7 +171,7 @@ for (const m of data.meshes) {
     skinnedMeshes.push(mesh);
   } else {
     const parent = (m.path && nodes.get(m.path)) || root;
-    const mesh = new THREE.Mesh(geo, matFor(m.name, false));
+    const mesh = new THREE.Mesh(geo, matFor(m.name, false, m.material));
     mesh.frustumCulled = false;
     parent.add(mesh);
     staticMeshes.push(mesh);
@@ -192,12 +247,20 @@ function bracket(ts, t) {
 }
 
 // ---------- camera fit (robust, world-space) ----------
-{
-  root.updateMatrixWorld(true);
+// Framing must run on ANIMATED poses, not the serialized rest pose: the
+// T-pose sprawls across hundreds of units (arms out), dragging any
+// median/cluster fit onto a hand or spine. Joint samples are accumulated
+// over the first ~1.5 s of playback (the performance area), then the
+// densest joint cluster becomes the orbit target. The original scene
+// camera's viewpoint is kept, pulled in to frame the dancers.
+const fitSamples = [];
+let fitElapsed = 0;
+let pendingReframe = false;
+let userOrbited = false;
+
+function sampleFitPose() {
   const _m = new THREE.Matrix4();
-  const samples = [];
-  const push = (x, y, z) => { if (samples.length < 200000) samples.push(x, y, z); };
-  // Frame the DANCERS when present; static props/floors would skew the fit.
+  const push = (x, y, z) => { if (fitSamples.length < 2000000) fitSamples.push(x, y, z); };
   if (!skinnedMeshes.length) {
     for (const mesh of staticMeshes) {
       const pos = mesh.geometry.getAttribute("position");
@@ -206,44 +269,77 @@ function bracket(ts, t) {
         push(_v.x, _v.y, _v.z);
       }
     }
-  }
-  // skinned: bind-space vertices mapped through the dominant bone's
-  // bind-time world matrix (= inverse of its bindPose)
-  for (const mesh of skinnedMeshes) {
-    const pos = mesh.geometry.getAttribute("position");
-    const si = mesh.geometry.getAttribute("skinIndex");
-    const sw = mesh.geometry.getAttribute("skinWeight");
-    const inv = mesh.userData.bindInverses;
-    for (let i = 0; i < pos.count; i += 1) {
-      let best = 0;
-      for (let k = 1; k < 4; k++) if (sw.getComponent(i, k) > sw.getComponent(i, best)) best = k;
-      _m.copy(inv[si.getComponent(i, best)]).invert();
-      _v.fromBufferAttribute(pos, i).applyMatrix4(_m);
-      push(_v.x, _v.y, _v.z);
+  } else {
+    const seen = new Set();
+    for (const mesh of skinnedMeshes) {
+      for (const b of mesh.skeleton.bones) {
+        if (seen.has(b) || /ctrl/i.test(b.name)) continue; // MotionBuilder rig bones bunch off-stage
+        seen.add(b);
+        const p = new THREE.Vector3().setFromMatrixPosition(b.matrixWorld);
+        push(p.x, p.y, p.z);
+      }
     }
   }
-  // median center + trimmed radius: immune to stray vertices/bones
+}
+
+function frameCamera() {
+  const samples = fitSamples;
   const n = samples.length / 3;
-  const med = (arr) => {
-    const s = [...arr].sort((a, b) => a - b);
-    return s[s.length >> 1];
-  };
-  const xs = [], ys = [], zs = [];
-  for (let i = 0; i < samples.length; i += 3) { xs.push(samples[i]); ys.push(samples[i + 1]); zs.push(samples[i + 2]); }
-  const cx = med(xs), cy = med(ys), cz = med(zs);
-  const d = new Array(n);
+  if (!n) return;
+  const cx3 = (i) => samples[i * 3], cy3 = (i) => samples[i * 3 + 1], cz3 = (i) => samples[i * 3 + 2];
+  let minX = Infinity, minY = Infinity, minZ = Infinity, maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
   for (let i = 0; i < n; i++) {
-    const dx = xs[i] - cx, dy = ys[i] - cy, dz = zs[i] - cz;
-    d[i] = Math.sqrt(dx * dx + dy * dy + dz * dz);
+    minX = Math.min(minX, cx3(i)); maxX = Math.max(maxX, cx3(i));
+    minY = Math.min(minY, cy3(i)); maxY = Math.max(maxY, cy3(i));
+    minZ = Math.min(minZ, cz3(i)); maxZ = Math.max(maxZ, cz3(i));
   }
+  const diag = Math.sqrt((maxX - minX) ** 2 + (maxY - minY) ** 2 + (maxZ - minZ) ** 2) || 1;
+  const rad = diag * 0.12;
+  let bestI = 0, bestCount = -1;
+  for (let c = 0; c < n; c += Math.max(1, Math.floor(n / 400))) {
+    let cnt = 0;
+    for (let i = 0; i < n; i++) {
+      const dx = cx3(i) - cx3(c), dy = cy3(i) - cy3(c), dz = cz3(i) - cz3(c);
+      if (dx * dx + dy * dy + dz * dz <= rad * rad) cnt++;
+    }
+    if (cnt > bestCount) { bestCount = cnt; bestI = c; }
+  }
+  let sx = 0, sy = 0, sz = 0, cnt2 = 0;
+  for (let i = 0; i < n; i++) {
+    const dx = cx3(i) - cx3(bestI), dy = cy3(i) - cy3(bestI), dz = cz3(i) - cz3(bestI);
+    if (dx * dx + dy * dy + dz * dz <= rad * rad) { sx += cx3(i); sy += cy3(i); sz += cz3(i); cnt2++; }
+  }
+  const cx = sx / cnt2, cy = sy / cnt2, cz = sz / cnt2;
+  const d = new Array(cnt2);
+  let k = 0;
+  for (let i = 0; i < n; i++) {
+    const dx = cx3(i) - cx, dy = cy3(i) - cy, dz = cz3(i) - cz;
+    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+    if (dist <= rad * 2.2) d[k++] = dist;
+  }
+  d.length = k;
   d.sort((a, b) => a - b);
-  const r = Math.max((d[Math.floor(n * 0.96)] || 1) * 1.45, 1);
+  const r = Math.max((d[Math.floor(k * 0.96)] || 1) * 1.45, 1);
   camera.far = Math.max(500, r * 60);
   camera.updateProjectionMatrix();
-  // slightly elevated vantage: keeps the subject framed while clearing props
-  camera.position.set(cx + r * 0.6, cy + r * 0.5, cz + r * 0.95);
   controls.target.set(cx, cy, cz);
+  const camNode = data.camera && nodes.get(data.camera.path);
+  if (camNode && data.camera.fov) camera.fov = data.camera.fov;
+  camera.updateProjectionMatrix();
+  let placed = false;
+  if (camNode) {
+    camNode.updateWorldMatrix(true, false);
+    const p = new THREE.Vector3().setFromMatrixPosition(camNode.matrixWorld);
+    if (p.lengthSq() > 1e-6) {
+      const dir = p.sub(controls.target).normalize();
+      camera.position.copy(controls.target).addScaledVector(dir, r * 2.0);
+      placed = true;
+    }
+  }
+  if (!placed) camera.position.set(cx + r * 0.6, cy + r * 0.5, cz + r * 0.95);
   controls.update();
+  window.__fit = { r, cx, cy, cz, camPath: data.camera && data.camera.path };
+  window.__viewer = { skinnedMeshes, staticMeshes, camera, controls, root };
   window.__home = { pos: camera.position.clone(), target: controls.target.clone() };
 }
 
@@ -261,6 +357,7 @@ playBtn.onclick = () => {
 speedSel.onchange = () => { speed = parseFloat(speedSel.value); };
 timeline.oninput = () => { t = (timeline.value / 1000) * duration; };
 document.getElementById("reset").onclick = () => {
+  if (!window.__home) return;
   camera.position.copy(window.__home.pos);
   controls.target.copy(window.__home.target);
   controls.update();
@@ -298,6 +395,19 @@ function loop(now) {
     timeline.value = Math.round((t / duration) * 1000);
   }
   applyRot(t);
+  // Accumulate animated joint samples, then frame the performance area:
+  // a quick fit at ~1.5 s for an immediate view, one silent reframe at
+  // ~12 s once the dancers' roam is covered (skipped if the user has
+  // already orbited the camera themselves).
+  root.updateMatrixWorld(true);
+  if (playing) sampleFitPose();
+  if (!window.__home) {
+    fitElapsed += dt;
+    if (fitElapsed >= 1.5 || t > 2) { frameCamera(); pendingReframe = true; }
+  } else if (pendingReframe && !userOrbited && t >= 12) {
+    frameCamera();
+    pendingReframe = false;
+  }
   timeLbl.textContent = `${fmt(t)} / ${fmt(duration)}`;
   controls.update();
   renderer.render(scene, camera);
