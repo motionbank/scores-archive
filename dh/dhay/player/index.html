@@ -54,7 +54,6 @@
   var parentWindow = null, parentOrigin = null;
   var config = null;
   var sceneTimes = null;          // optional map: title -> seconds
-  var warnedNoSceneMap = false;
 
   var video = document.getElementById('video');
 
@@ -102,11 +101,20 @@
     var basePath = (config && config.pieceMaker && config.pieceMaker.basePath) || '/dh/piecemaker';
     video.src = 'https://' + fileHost + basePath + '/' + file + '.mp4';
 
-    // scene timings are optional (PieceMaker API is gone); if a scenes file
-    // exists for this video we can honour '>>set-scene' seeks
-    fetch('scenes/' + file + '.json', { method: 'GET' })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (map) { sceneTimes = map || null; })
+    // scene timings are optional (PieceMaker API is gone): scenes/index.json
+    // lists which videos have a timing map; if this video is listed, the
+    // per-video map is loaded and '>>set-scene' seeks. Shipping the (empty)
+    // index file keeps the console free of 404 noise.
+    fetch('scenes/index.json', { method: 'GET' })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (index) {
+        if ( file && index[file] ) {
+          return fetch('scenes/' + file + '.json')
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (map) { sceneTimes = map || null; })
+            .catch(function () { sceneTimes = null; });
+        }
+      })
       .catch(function () { sceneTimes = null; });
 
     video.addEventListener('ended', function () {
@@ -136,10 +144,11 @@
       video.currentTime = sceneTimes[title];
       var p = video.play();
       if ( p && p.catch ) p.catch(function () {});
-    } else if ( !warnedNoSceneMap ) {
-      warnedNoSceneMap = true;
-      console.log('player: scene navigation unavailable for "' + file +
-                  '" (no scene timing data; PieceMaker 2 API is offline). Playback continues.');
+    } else {
+      // log every unmatched navigation so clicks never fail silently
+      console.log('player: no timing for scene "' + title + '" in "' + file + '"' +
+                  (sceneTimes ? '' : ' (no scene timing map; PieceMaker 2 API is offline)') +
+                  ' \u2014 playback continues');
     }
   }
 })();
