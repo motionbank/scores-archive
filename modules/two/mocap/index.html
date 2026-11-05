@@ -41,8 +41,10 @@
   </select>
   <input id="timeline" type="range" min="0" max="1000" value="0" step="1">
   <span id="time">0:00 / 0:00</span>
-  <button id="reset">camera</button>
-  <button id="bones">skeleton</button>
+  <button id="reset" title="Reset the camera to the starting view">
+    reset view</button>
+  <button id="bones" title="X-ray: show the mocap skeleton through a
+    translucent body (analysis extra — not in the original Unity player)">skeleton</button>
 </div>
 <script type="importmap">
 { "imports": { "three": "./vendor/three.module.js" } }

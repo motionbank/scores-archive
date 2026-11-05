@@ -16,8 +16,13 @@ original mocap data — skeleton, skinning, and animation — extracted from the
 `PhrasingLandscapeBoth02` (the InterAct Unity scenes). The score cells
 reference these directly.
 
-UI: play/pause, timeline scrub, playback speed, camera reset (orbit with the
-mouse), skeleton overlay toggle.
+UI: play/pause, timeline scrub, playback speed, "reset view" (orbit/zoom is
+mouse control at any time), and a "skeleton" x-ray toggle (translucent body +
+visible bones). Both buttons are additions — the original Unity app exposed
+no UI; it had a mouse-orbit camera and mouse-driven dancer interactions
+(`CameraControl`, `MakeDancerDoStuffWithMouse`, `SmudgeDancer`,
+`TrailRenderControl`, `BoxDropControl` script names in the bundles) and no
+skeleton view.
 
 ## Data pipeline
 

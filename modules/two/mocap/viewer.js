@@ -237,11 +237,11 @@ function bracket(ts, t) {
     d[i] = Math.sqrt(dx * dx + dy * dy + dz * dz);
   }
   d.sort((a, b) => a - b);
-  const r = Math.max((d[Math.floor(n * 0.97)] || 1) * 1.7, 1);
+  const r = Math.max((d[Math.floor(n * 0.96)] || 1) * 1.45, 1);
   camera.far = Math.max(500, r * 60);
   camera.updateProjectionMatrix();
   // slightly elevated vantage: keeps the subject framed while clearing props
-  camera.position.set(cx + r * 0.8, cy + r * 1.1, cz + r * 1.3);
+  camera.position.set(cx + r * 0.6, cy + r * 0.5, cz + r * 0.95);
   controls.target.set(cx, cy, cz);
   controls.update();
   window.__home = { pos: camera.position.clone(), target: controls.target.clone() };
@@ -269,15 +269,24 @@ let showBones = false;
 // One helper per skinned mesh: draws only the deform skeleton bones that
 // actually move (a helper over the whole scene root would also draw the
 // static MotionBuilder control rigs / effectors that ship in the bundles).
+// In x-ray mode the meshes turn translucent so the bones are readable —
+// (the original Unity app had no skeleton view; this is an analysis extra).
 const helpers = skinnedMeshes.map((m) => {
   const h = new THREE.SkeletonHelper(m);
   h.visible = false;
+  h.material.depthTest = false;
+  h.renderOrder = 10;
   scene.add(h);
   return h;
 });
 document.getElementById("bones").onclick = (e) => {
   showBones = !showBones;
   helpers.forEach((h) => (h.visible = showBones));
+  for (const m of skinnedMeshes) {
+    m.material.transparent = showBones;
+    m.material.opacity = showBones ? 0.3 : 1;
+    m.material.needsUpdate = true;
+  }
   e.target.classList.toggle("on", showBones);
 };
 
