@@ -6,3 +6,4 @@ Dockerfile
 .dockerignore
 docker/*
 !docker/nginx-default.conf
+!docker/ssl
