@@ -1,0 +1,6 @@
+{
+  "ignore": [
+    "modules/**",
+    "dh/dhay/player/vendor/**"
+  ]
+}
