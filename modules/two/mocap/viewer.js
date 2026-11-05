@@ -442,7 +442,7 @@ document.getElementById("bones").onclick = (e) => {
 // The original bundle ships a TrailRenderControl script but no logic, so
 // this is an inferred re-creation: fading ribbons behind the extremities
 // (hands, feet, head) — the classic mocap-display look of the era.
-const TRAIL_LEN = 360; // ~6 s at 60 fps: long sweeping ribbons
+const TRAIL_LEN = 180; // ~3 s at 60 fps
 // dark trails like the dancer outline (lambert2/BodyOutlineMaterial) —
 // high contrast against the stage colours
 const outlineMat = (data.materials || []).find((m) => /outline/i.test(m.shader));
@@ -467,15 +467,27 @@ for (const mesh of skinnedMeshes) {
   }
 }
 let showTrails = trails.length > 0; // on by default, like the original
+function resetTrails() { // on loop wrap: no hard streaks across the cut
+  for (const tr of trails) { tr.n = 0; tr.geo.setDrawRange(0, 0); }
+}
 function updateTrails() {
   for (const tr of trails) {
     tr.line.visible = showTrails;
     if (!showTrails) continue;
     const e = tr.bone.matrixWorld.elements;
+    if (tr.n === 0) {
+      // seed the whole buffer so empty points never connect to the origin
+      for (let i = 0; i < TRAIL_LEN; i++) {
+        tr.pos[i * 3] = e[12]; tr.pos[i * 3 + 1] = e[13]; tr.pos[i * 3 + 2] = e[14];
+      }
+      tr.n = 1;
+      tr.geo.attributes.position.needsUpdate = true;
+      continue;
+    }
     // shift back and append the current joint position
-    tr.pos.copyWithin(3, 0, (tr.n * 3) - 3);
-    if (tr.n < TRAIL_LEN) tr.n++;
+    tr.pos.copyWithin(3, 0, (TRAIL_LEN - 1) * 3);
     tr.pos[0] = e[12]; tr.pos[1] = e[13]; tr.pos[2] = e[14];
+    if (tr.n < TRAIL_LEN) tr.n++;
     tr.geo.setDrawRange(0, tr.n);
     tr.geo.attributes.position.needsUpdate = true;
   }
@@ -493,20 +505,27 @@ trailsBtn.style.display = trails.length ? "" : "none";
 // assigned its material at runtime, using the CrossHatchSaga texture that
 // ships in the bundle. Re-created here as a subtle multiply overlay.
 const noiseOverlay = (data.overlays || []).find((o) => o.name === "FadedNoiseFilter" && o.tex);
-let smearEnabled = false;
+let smearEnabled = true;
 let fitSmearOverlay = null;
 if (noiseOverlay) {
   scene.add(camera); // the quad follows the camera, as in the original
   const geo = new THREE.PlaneGeometry(1, 1);
+  // Screen blend (lightens, like a Photoshop 'screen' layer), with the
+  // source scaled down via .color for subtlety. The quad renders in the
+  // opaque pass nearest the camera (front-to-back) and writes no depth,
+  // so the dancers draw over it: the grain sits in the BACKGROUND.
   const mat = new THREE.MeshBasicMaterial({
     map: loadTex(noiseOverlay.tex),
-    blending: THREE.MultiplyBlending,
-    transparent: true, opacity: 0.18, depthWrite: false, depthTest: false,
-    toneMapped: false, side: THREE.DoubleSide,
+    blending: THREE.CustomBlending,
+    blendEquation: THREE.AddEquation,
+    blendSrc: THREE.OneMinusDstColorFactor, // screen: src*(1-dst) + dst
+    blendDst: THREE.OneFactor,
+    color: 0x9a9a9a,
+    depthWrite: false, depthTest: false,
+    toneMapped: false, side: THREE.DoubleSide, fog: false,
   });
   const quad = new THREE.Mesh(geo, mat);
-  quad.renderOrder = 20;
-  quad.visible = false;
+  quad.visible = true; // on by default
   camera.add(quad);
   fitSmearOverlay = function () {
     const z = noiseOverlay.pos[2] || 6;
@@ -517,6 +536,7 @@ if (noiseOverlay) {
   fitSmearOverlay();
   window.addEventListener("resize", fitSmearOverlay);
   const smearBtn = document.getElementById("smear");
+  smearBtn.classList.add("on");
   smearBtn.onclick = (e) => {
     smearEnabled = !smearEnabled;
     if (smearEnabled && fitSmearOverlay) fitSmearOverlay();
@@ -531,7 +551,9 @@ function loop(now) {
   const dt = Math.min((now - last) / 1000, 0.1);
   last = now;
   if (playing) {
+    const prev = t;
     t = (t + dt * speed) % duration;
+    if (t < prev) resetTrails(); // looped — don't streak across the cut
     timeline.value = Math.round((t / duration) * 1000);
   }
   applyRot(t);
