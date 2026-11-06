@@ -253,6 +253,24 @@ Headless Chromium against a local static server
   `pm_player_01?vid=29727&gid=41` iframe cleanly (no 404s from the player
   itself; the only 404s come from the pre-existing `bubbler-02` Edge-Animate
   module, untouched by this round).
+- **Fourth pass addendum (2026-11-06): performer assets recovered.** The
+  "large holes" in the /jbmf grid had a systemic cause: the original module
+  vendoring had only copied `index.html` + partial directories — **every
+  Edge-Animate performer was missing its entire animation program**
+  (`*_edge.js`, `*_edgeActions.js`, `edge_includes/`) and most `images/`.
+  A recursive reference-crawling mirror from the still-alive
+  `lab.motionbank.org/jbmf/` recovered 300+ files: complete Edge projects
+  for 17 performer modules (triangu, paperboy_05, Vase_refined, Tree, Eye,
+  Fishlike, Burner, AniPuzzle, bubbler-01/02, flobber-02/04, Greenbear-1,
+  Guitarhero_05, Ponger, headchanger03b, liner-01), the 05_clap hand
+  sprites, head_changer_strip_01's 34 animation frames, audio-01's piece
+  audio, and 100 score-book page scans. Re-audit afterwards: **zero module
+  asset 404s**. Remaining gaps are dead upstream (verified 404 on
+  lab.motionbank.org): a few `gen_mash_01` SVG variants, alternate
+  audio-01 `.aiff` variants, `skeleton_sequencer` (needs the dead PM1 API),
+  12 Vimeo 401s (private/deleted) and 4 dh overlay combinations never
+  uploaded; plus one `pages/undefined` request caused by a missing page
+  name in `score-books/data/books.json` (upstream data bug, harmless).
 - `dh/dhay/player/scenes/index.json`: 49 maps present; a sample map
   (`D05T01_Janine_sync_AJA_1.json`) exposes the expected scene titles
   ("1 minute turn", "beckett quote", …).
