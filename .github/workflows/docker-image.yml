@@ -61,14 +61,19 @@ jobs:
       # The tarball may contain media/... entries (extract at repo root)
       # or the media/ contents directly (extract into ./media/).
       - name: Extract media into ./media/
+        env:
+          # GNU tar on Linux warns about the macOS pax headers (SCHILY.fflags,
+          # com.apple.FinderInfo xattrs) the archive carries — harmless, mute.
+          TAR_OPTIONS: --warning=no-unknown-keyword
         run: |
-          first_entry=$(tar -tzf /tmp/motionbank-scores-media.tar.gz | head -1)
+          ARCHIVE=/tmp/motionbank-scores-media.tar.gz
+          first_entry=$(tar -tzf "$ARCHIVE" 2>/dev/null | head -n1 || true)
           echo "first archive entry: $first_entry"
           if [[ "$first_entry" == media/* ]]; then
-            tar -xzf /tmp/motionbank-scores-media.tar.gz -C "$GITHUB_WORKSPACE"
+            tar -xzf "$ARCHIVE" -C "$GITHUB_WORKSPACE"
           else
             mkdir -p media
-            tar -xzf /tmp/motionbank-scores-media.tar.gz -C media
+            tar -xzf "$ARCHIVE" -C media
           fi
           du -sh media
           test -d media/dh/piecemaker
