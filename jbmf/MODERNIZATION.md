@@ -134,18 +134,23 @@ player URL and dual-origin allow-list.
 - **Private Vimeo cells — cause precisely identified (2026-11-07)**: the
   294 `vimeo` cells in the current `api/jbmf` data are intact and their
   videos are alive — they are **domain-locked, not deleted**. The Vimeo
-  player returns 403 with no referer or an arbitrary referer, and 200 with
+  player returned 403 with no referer or an arbitrary referer, and 200 with
   a `*.motionbank.org` referer **or `https://localhost`** (verified against
-  e.g. vimeo.com/78808311, "jonathan-burrows interview 00-21-35"). So these
-  cells play today from any `*.motionbank.org` domain or from localhost,
-  but not from arbitrary self-hosted domains. Fix on the Vimeo side: the
-  videos belong to the Motion Bank account — add the hosting domain to the
-  embed allowlist (or lift the privacy restriction). Historical note: the
-  2013 CMS Mongo dump (`motion_bank_score_for_archive`, db/dump
-  `20131119_1823_all_scores_reimported`) shows the original jbmf score was
-  built entirely on these same Vimeo cells (293 of them) before the
-  Piecemaker-based cells were added; the vimeo-id set is identical to
+  e.g. vimeo.com/78808311, "jonathan-burrows interview 00-21-35"). Fix on
+  the Vimeo side: the videos belong to the Motion Bank account — add the
+  hosting domain to the embed allowlist (or lift the privacy restriction).
+  Historical note: the 2013 CMS Mongo dump (`motion_bank_score_for_archive`,
+  db/dump `20131119_1823_all_scores_reimported`) shows the original jbmf
+  score was built entirely on these same Vimeo cells (293 of them) before
+  the Piecemaker-based cells were added; the vimeo-id set is identical to
   today's data.
+- **Vimeo allowlist update (2026-11-06)**: the allowlist on Motion Bank's
+  Vimeo account was reportedly changed; at re-verification on the same day
+  **all** tested referers return 403 (arbitrary domains, `motionbank.org`
+  variants, `localhost` — previously 200). Either the change has not
+  propagated through Vimeo's edge caches yet or the privacy setting needs
+  another look in the Vimeo admin. Root README tracks this as an open
+  item with the exact verification command.
 - The remaining performer/generator modules on `lab.motionbank.org` are alive
   over https and now load as mixed-content-free iframes. **They have since
   been vendored**: every child module is mirrored under `/modules/` and all
@@ -155,9 +160,103 @@ player URL and dual-origin allow-list.
   broken for the data reason above; their module is preserved as a historic
   record).
 
+## 7. Third pass — PieceMaker 2 data restoration (2026-11-06)
+
+The missing input identified in § 6 was found: the **original Heroku
+`pg_dump`s** still exist in the local archive
+(`~/Motion Bank Heroku/`), including `jbmf-pm2-….pgdump` — the complete
+`jbmf-pm2.herokuapp.com` database. It was restored into a throwaway
+Postgres 15 container and inspected:
+
+- **6,105 events in 3 groups**: `40 jbmf_all` (678 videos, 2,091 scenes,
+  743 markers, 67 data events, 101 dev notes), `41 jbmf_yta` (YouTube
+  annotation videos + annotations), `42 jbmf_interviews_2` — exactly the
+  groups the `pm_player_01` config (`gid=40` default, `gid=41` for the
+  YouTube annotator) addressed.
+- **All 123 `vid=` values referenced by the score resolve to real video
+  events** (ids 23584–30037, e.g. `28689` = `D01_T03_C_Single_MF_Come_T02`,
+  a 2.77 s micro-duet take; `23584` = the "Marble machine" YouTube
+  annotation video with 343 annotations).
+- PM2 data model (as consumed by the score): events carry an absolute
+  `utc_timestamp` (Unix epoch seconds), `duration`, a `type`
+  (`video`/`scene`/`marker`/`annotation`/…) and a `fields` hash. A cell's
+  `vid=` is the **video event id**; a video's annotation set is
+  `findEvents(group, {from: video.utc, to: video.utc + video.duration})`,
+  and the seek offset is `event.utc_timestamp − video.utc_timestamp`.
+
+### Export
+
+A one-off script (querying the restored dump) wrote:
+
+- `api/jbmf/pm2/<vid>.json` (123 files + `index.json`) — `{ video, events }`
+  per referenced video, covering all groups and event types in the window
+  so the module-side type/performer filtering works unchanged.
+- `modules/jbmf/generators/yt_annot_01/pm2-data/yt-lookup.json` —
+  `vid_service_id` (YouTube id) → vid for all 52 group-41 videos, for the
+  cells linked by `&ytid=`.
+
+### Module changes
+
+- **`pm_player_01`**: the `PieceMakerApi` chain (`getGroup` → `getEvent` →
+  `findEvents`) was replaced by a single `$.getJSON('pm2-data/<vid>.json')`
+  that re-shapes the data to what the API returned (`utc_timestamp` wrapped
+  back into `Date` objects), so the event filtering, `from/to`, `fixFromTo`,
+  `>>ping` seeking and all downstream code are **byte-identical in
+  behaviour**. The dead `http://jbmf-pm2.herokuapp.com` host and API key are
+  gone from the config.
+- **`pm_player_01` player class**: the Flash/RTMP stack
+  (flowplayer-5.4.3 + `rtmp://s12vlv7g59gljg.cloudfront.net/cfx/st`) is
+  replaced by a **native HTML5 `<video>` implementation** of the same
+  player interface (Backbone events `player:ready` / `player:time-change` /
+  `player:playing` / `player:finished` plus the `player.api` methods:
+  `currentTime`, `duration`, `seekTo`, `play/pause`, `volume`, `mute`,
+  `speed`). Media URL: `/media/jbmf/piecemaker/<file>.mp4` (self-hosted,
+  see below).
+- **`yt_annot_01`**: `listEventsOfType(41,'video')` + `findEvents` replaced
+  by the static JSON (`vid=` directly, `ytid=` via the lookup file);
+  annotations filtered client-side; the module now also degrades gracefully
+  ("No annotations!") instead of crashing on an empty event list.
+  The Google-CDN jQuery and http-only `a.vimeocdn.com` froogaloop script
+  were vendored.
+- **`config` broadcast**: the score shell's `cloudFront.fileHost` (sent to
+  all iframe modules via `get-config`/`set-config`) now points at `/media`
+  so modules resolve media same-origin.
+
+### Media
+
+The filming MP4s referenced by the score — 116 `fields.file` names plus 377
+alternate camera angles used via `&angle=` — are **all still on CloudFront**
+(542 files, ~7 GB) and were mirrored to `media/jbmf/piecemaker/`
+(shipped as a separate archive outside git; see root README). Only
+Vimeo/YouTube embeds remain external.
+
+### Verification
+
+Headless Chromium against a local static server
+(`/tmp/pwtest/test-pm2.js`, 2026-11-06):
+
+- `pm_player_01?vid=28689` (filming take, `angle=` free): PM2 JSON loads
+  from `api/jbmf/pm2/`, body gets `pm-connected`, native `<video>` element
+  created with `src=/media/jbmf/piecemaker/D01_T03_C_Single_MF_Come_T02.mp4`,
+  `readyState 4` (media loaded from the self-hosted mirror).
+- `pm_player_01?vid=23584` (YouTube service): `pm-connected`; the only
+  external requests are YouTube's own player assets.
+- `yt_annot_01?vid=24646` and `?ytid=eglrs4r5kzk` (via the lookup file):
+  both render the video title and start the annotation timer; no heroku
+  calls.
+- In-score: `/jbmf/#/set/…` loads `api/jbmf/sets.json` same-origin, opens a
+  `pm_player_01?vid=29727&gid=41` iframe cleanly (no 404s from the player
+  itself; the only 404s come from the pre-existing `bubbler-02` Edge-Animate
+  module, untouched by this round).
+- `dh/dhay/player/scenes/index.json`: 49 maps present; a sample map
+  (`D05T01_Janine_sync_AJA_1.json`) exposes the expected scene titles
+  ("1 minute turn", "beckett quote", …).
+- `modules/dhay/data_inspect_tracks_01/videos.json`: 22 videos with data
+  events; track files served from the vendored `data/` dir.
+
 ---
 
-## 7. How to run
+## 8. How to run
 
 ```sh
 python3 -m http.server 8765

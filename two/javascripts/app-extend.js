@@ -62,7 +62,7 @@
     assetHost: "",
     cloudFront: {
       baseUrl: "/two/app",
-      fileHost: "d35vpnmjdsiejq.cloudfront.net",
+      fileHost: "/media",
       streamer: "s12vlv7g59gljg.cloudfront.net"
     },
     title: {

@@ -111,16 +111,14 @@
 })();
 require.register("config/config", function(exports, require, module) {
 module.exports = {
-	piecemaker : {
-		host : 'http://jbmf-pm2.herokuapp.com',
-		//host : 'http://localhost:9292',
-		api_key : "HE/Z7cHdqXGaWxw14lAhWdpYthrH9BzrLp3ZiSVkhi4="
-	},
+	// PieceMaker 2 event data is served from static JSON extracted from the
+	// restored heroku pg dump (api/jbmf/pm2/<vid>.json). The live API and its
+	// host are gone; see jbmf/MODERNIZATION.md §6.
 	flowplayer : {
-		//file_host : 'http://motionbank-media.s3.amazonaws.com',
-		file_host : 'http://d35vpnmjdsiejq.cloudfront.net',
-		base_url : 'jbmf/piecemaker',
-		streamer : 's12vlv7g59gljg.cloudfront.net'
+		// filming MP4s are self-hosted (mirrored from CloudFront);
+		// see media/README.md
+		file_host : '/media',
+		base_url : 'jbmf/piecemaker'
 	},
 	analytics : {
 		id : 'UA-41625019-1'
@@ -203,29 +201,20 @@ module.exports = {
 ;require.register("js/classes/player.flowplayer", function(exports, require, module) {
 module.exports = (function(){
 
-	var html_tpl = require('js/templates/player/flowplayer');
+	// Native HTML5 implementation replacing the flowplayer-5.4.3/Flash-RTMP
+	// stack. Keeps the exact interface the pm_player app code expects:
+	// Backbone events (player:ready, player:time-change, player:playing,
+	// player:finished) plus the player.api methods (currentTime, duration,
+	// play/pause, seekTo, volume, mute, speed...). Media is self-hosted
+	// (config.flowplayer.file_host, mirrored from CloudFront into /media).
 
-	var types = {
-		'mp4' : 'video/mp4', 
-		'ogv' : 'video/ogg',
-		'webm' : 'video/webm',
-		'flash' : 'video/flash'
-	};
-	
-	if ( !( 'flowplayer' in window ) ) {
-		$(document.head).append('<script src="libs/flowplayer-5.4.3/flowplayer.min.js"></script>');
-	}
-	$(document.head).append('<link href="libs/flowplayer-5.4.3/skin/minimalist.css" type="text/css" rel="stylesheet"/>');
+	var html_tpl = require('js/templates/player/flowplayer');
 
 	var FlowplayerPlayer = function () {
 
 		var self = this;
 
 		_.extend(this, Backbone.Events);
-
-		if ( !( 'flowplayer' in window ) ) {
-			throw( 'Flowplayer missing!' );
-		}
 
 		var video_dat 	= arguments[0];
 		var video_obj 	= video_dat.raw;
@@ -236,130 +225,127 @@ module.exports = (function(){
 		var $parent = $( arguments[1] );
 		var config = require('config/config').flowplayer;
 
-		var video_urls = [];
-		video_urls.push({ mp4   : config.file_host + '/' + config.base_url + '/' + vimeo_file + '.mp4' });
-		video_urls.push({ ogg   : config.file_host + '/' + config.base_url + '/' + vimeo_file + '.ogv' });
-		video_urls.push({ webm  : config.file_host + '/' + config.base_url + '/' + vimeo_file + '.webm'});
-		video_urls.push({ flash : 'mp4:' + config.base_url + '/' + vimeo_file });
-
 		var $element = $( html_tpl );
 		var is_vertical = $('body.vertical').get(0) ? true : false;
 
+		var player = self.player = document.createElement('video');
+		player.setAttribute('playsinline', 'playsinline');
+		player.setAttribute('webkit-playsinline', 'webkit-playsinline');
+		player.preload = 'auto';
+		player.src = config.file_host + '/' + config.base_url + '/' + encodeURIComponent(vimeo_file) + '.mp4';
+
+		$element.append( player ).appendTo( $parent );
+
+		var player_speed = 1, player_muted = false, player_volume = 1, player_time = 0;
+
 		var setPlayerSize = function () {
-			var v = player.video;
-			if ( is_vertical ) {
-				var fn = function(){
-					if ( !player ) return $(window).unbind('resize',fn);
-					var r = $(window).height() / v.height;
-					$('.flowplayer').css({
-						width:(r*v.width)+'px',
-					});
-				};
-				$(window).resize(fn);
-				fn();
+			var v = { width: player.videoWidth, height: player.videoHeight };
+			if ( v.width && v.height ) {
+				$('.fp-ratio').css({
+					'padding-top' : (100.0 / ( v.width / v.height )) + '%'
+				});
+				if ( is_vertical ) {
+					var fn = function(){
+						if ( !player ) return $(window).unbind('resize',fn);
+						var r = $(window).height() / v.height;
+						$('.flowplayer-container').css({
+							width:(r*v.width)+'px',
+						});
+					};
+					$(window).resize(fn);
+					fn();
+				}
 			}
-			$('.fp-ratio').css({
-				'padding-top' : (100.0 / ( v.width / v.height )) + '%'
-			});
 			$(document.body).css({
 				overflow: 'hidden'
 			});
 		}
 
-		$element.flowplayer({
-			playlist : [ video_urls ],
-			engine : 'flash',
-			swf : 'libs/flowplayer-5.4.3/flowplayer.swf',
-			rtmp : 'rtmp://'+config.streamer+'/cfx/st',
-			//poster : false,
-			embed : false,
-			fullscreen : false,
-			analytics : require('config/config').analytics.id
-		}).appendTo( $parent );
-
-		var player = self.player = flowplayer( $element );
-
-		player.bind('load',function(){
-			// not fired?
-		});
-		player.bind('ready',function(){
+		var ready = false;
+		player.addEventListener('loadedmetadata', function(){
+			if ( ready ) return;
+			ready = true;
 			_.extend(self,PlayerApiImpl);
 			setPlayerSize();
 			self.trigger( 'player:ready', self );
 		});
-		player.bind('error',function(){
-			console.log( 'Error occured!', arguments );
+		player.addEventListener('error', function(){
+			console.log( 'Error occured!', player.error );
 		});
-		player.bind('progress',function(){
-			player_time = player.video.time;
-			self.trigger( 'player:time-change', player.video.time );
+		player.addEventListener('timeupdate', function(){
+			player_time = player.currentTime;
+			self.trigger( 'player:time-change', player_time );
 		});
-		player.bind('volume',function(){
-			player_volume = arguments[2];
+		player.addEventListener('volumechange', function(){
+			player_volume = player.volume;
+			player_muted = player.muted;
 		});
-		player.bind('play',function(){
+		player.addEventListener('play',function(){
 			self.trigger('player:playing');
-		})	
-		player.bind('finish',function(){
-			self.trigger('player:finished');
 		})
-
-		var player_speed = 1, player_muted = false, player_volume = 1, player_time = 0;
+		player.addEventListener('ended',function(){
+			self.trigger('player:finished');
+		});
 
 		var PlayerApiImpl = 
 			_.extend( require('js/classes/player.api'), {
 						
 			play : function () {
-				player.play();
+				var p = player.play();
+				if ( p && p.catch ) p.catch(function(){});
 			},
-			seekTo : function () {
-				player.seek.apply(this, arguments);
+			seekTo : function ( sec ) {
+				this.currentTime( sec );
 			},
 			pause : function () {
 				player.pause();
 			},
 			stop : function () {
-				player.stop();
+				player.pause();
+				this.currentTime( 0 );
 			},
 			currentTime : function ( sec ) {
 				if ( sec !== undefined ) {
-					player.seek( sec, function(){
-						player_time = sec;
-						self.trigger('player:time-change',player_time); // sometimes triggered twice!
-					});
+					if ( ready ) {
+						player.currentTime = sec;
+					} else {
+						player.addEventListener('loadedmetadata', function(){
+							player.currentTime = sec;
+						}, { once: true });
+					}
+					player_time = sec;
+					self.trigger('player:time-change',player_time);
 				} else {
-					return player_time;
+					return player.currentTime;
 				};
 			},
 			fps : function () {
 				return 1.0 * (video_dat.fps || 25);
 			},
 			loop : function ( yesno ) {
-
+				if ( yesno !== undefined ) {
+					player.loop = !!yesno;
+				}
+				return player.loop;
 			},
 			playing : function () {
-				return this.state === YT.PlayerState.PLAYING;
+				return !player.paused && !player.ended;
 			},
 			paused : function () {
-				return this.state === YT.PlayerState.PAUSED;
+				return player.paused;
 			},
 			speed : function ( val ) {
 				if ( val !== undefined ) {
-					player.setPlaybackRate( val );
+					player.playbackRate = val;
+					player_speed = val;
 				}
-				return player.getPlaybackRate();
+				return player.playbackRate;
 			},
 			speeds : function () {
-				return player.getAvailablePlaybackRates();
+				return [0.5, 0.75, 1, 1.25, 1.5, 2];
 			},
 			quality : function ( q ) {
-				var qualities = player.getAvailableQualityLevels();
-				if ( q && qualities.indexOf(q) !== -1 ) {
-					player.speed( q, function () {
-						player_speed = q;
-					});
-				}
-				return player_speed;
+				return null;
 			},
 			qualities : function () {
 				return null;
@@ -370,10 +356,8 @@ module.exports = (function(){
 			// controlling sound
 
 			mute : function ( set ) {
-				player.mute( set ? true : false, function (s) {
-					console.log( 'Mute state', s );
-					player_muted = (set ? true : false);
-				});
+				player.muted = set ? true : false;
+				player_muted = player.muted;
 			},
 			muted : function () {
 				return player_muted;
@@ -381,9 +365,8 @@ module.exports = (function(){
 			volume : function ( val ) {
 				if ( val !== undefined ) {
 					var v = val < 0 ? 0 : (val > 1 ? 1 : val);
-					player.volume( v, function(){
-						player_volume = v;
-					});
+					player.volume = v;
+					player_volume = v;
 				}
 				return player_volume;
 			},
@@ -391,7 +374,7 @@ module.exports = (function(){
 			// getting information
 
 			duration : function () {
-				return player.video.duration;
+				return player.duration || 0;
 			}
 
 		});
@@ -1035,68 +1018,65 @@ module.exports = function(){
 
 	postmessenger.accept('https://www.youtube.com');
 
-	var pm = new PieceMakerApi(_.extend(config.piecemaker,{
-		context: {
-			piecemakerError : function piecemakerError (err) {
-				console.log( arguments );
-			}
-		}
-	}));
-
-	pm.getGroup( groupId, function(group){
-		if ( group ) {
-			pm.getEvent( group.id, videoId, function(v){
-				if (v) {
-					video = v;
-					$(document.body).addClass('pm-connected');
-					pm.findEvents(
-						group.id, 
-						{
-							from: (v.utc_timestamp.getTime() / 1000.0),
-							to:   (v.utc_timestamp.getTime() / 1000.0)+v.duration
-						},
-						function ( eventsRaw ) {
-							var events_filtered = _.filter(eventsRaw,function(e){
-								var has_perfs = true;
-								if ( performers ) {
-									if ( 'performers' in e.fields ) {
-										var eperfs = e.fields.performers.split(',');
-										if ( eperfs ) {
-											has_perfs = _.intersection(eperfs,performers).length > 0;
-										}
-									} else {
-										has_perfs = false;
-									}
-								}
-								var is_type = types && types.indexOf(e.type) !== -1;
-								return has_perfs && is_type;
-							});
-							if ( events_filtered && events_filtered.length > 0 ) {
-								pmFullyLoaded( events_filtered );
-								delete events;
-								events = events_filtered;
-							}
-
-							if ( from ) {
-								from = fixFromTo(from);
-								local_config.from = from;
-							}
-							if ( to ) {
-								to = fixFromTo(to,true);
-								if ( from && to <= from ) to = from + 0.34; // 1 frame?
-								local_config.to = to;
-							}
-
-							initPlayer();
-						}
-					);
+	// PieceMaker 2 data, pre-extracted from the restored heroku pg dump into
+	// static JSON (api/jbmf/pm2/<vid>.json): { video: {..}, events: [..] }.
+	// Shape matches what PieceMakerApi.getGroup/getEvent/findEvents returned
+	// (utc_timestamp as Date, fields dict), so all downstream code is unchanged.
+	var loadPm2Data = function ( vid, done ) {
+		$.getJSON( '/api/jbmf/pm2/' + vid + '.json' )
+			.done(function ( data ) {
+				if ( data && data.video ) {
+					var toDates = function ( e ) {
+						e.utc_timestamp = new Date( e.utc_timestamp * 1000.0 );
+						return e;
+					};
+					toDates( data.video );
+					data.events = ( data.events || [] ).map( toDates );
+					done( data.video, data.events );
 				} else {
 					console.log( 'No video!' );
 				}
+			})
+			.fail(function ( jqxhr, status, err ) {
+				console.log( 'No PM2 data for vid ' + vid + ':', status, err );
 			});
-		} else {
-			console.log( 'No group!' );
+	};
+
+	loadPm2Data( videoId, function ( v, eventsRaw ) {
+		video = v;
+		$(document.body).addClass('pm-connected');
+		var events_filtered = _.filter(eventsRaw,function(e){
+			var has_perfs = true;
+			if ( performers ) {
+				if ( 'performers' in e.fields ) {
+					var eperfs = e.fields.performers.split(',');
+					if ( eperfs ) {
+						has_perfs = _.intersection(eperfs,performers).length > 0;
+					}
+				} else {
+					has_perfs = false;
+				}
+			}
+			var is_type = types && types.indexOf(e.type) !== -1;
+			return has_perfs && is_type;
+		});
+		if ( events_filtered && events_filtered.length > 0 ) {
+			pmFullyLoaded( events_filtered );
+			delete events;
+			events = events_filtered;
 		}
+
+		if ( from ) {
+			from = fixFromTo(from);
+			local_config.from = from;
+		}
+		if ( to ) {
+			to = fixFromTo(to,true);
+			if ( from && to <= from ) to = from + 0.34; // 1 frame?
+			local_config.to = to;
+		}
+
+		initPlayer();
 	});
 
 	var $player_container = $('.player-container');

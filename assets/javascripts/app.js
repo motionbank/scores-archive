@@ -79,7 +79,7 @@
   globals.require.brunch = true;
 })();
 
-window.require.register("config/config-default", function(exports, require, module) {
+window.require.register("config/config-default", function(_exports, _require, module) {
   module.exports = {
   	debug : false,
   	islocal : false,
@@ -89,7 +89,7 @@ window.require.register("config/config-default", function(exports, require, modu
   	baseUrl : '/dh',
   	cloudFront : {
   		baseUrl : '/dh/app',
-  		fileHost : 'd35vpnmjdsiejq.cloudfront.net',
+  		fileHost : '/media',
   		//fileHost : 'motionbank-media.s3.amazonaws.com',
   		streamer : 's12vlv7g59gljg.cloudfront.net'
   	},
@@ -104,7 +104,7 @@ window.require.register("config/config-default", function(exports, require, modu
   	}
   };
 });
-window.require.register("config/config-example", function(exports, require, module) {
+window.require.register("config/config-example", function(_exports, _require, module) {
   module.exports = {
   	debug : false,
   	islocal : false,
@@ -128,7 +128,7 @@ window.require.register("config/config-example", function(exports, require, modu
   	}
   };
 });
-window.require.register("config/config-local", function(exports, require, module) {
+window.require.register("config/config-local", function(_exports, _require, module) {
   module.exports = {
   	debug : false,
   	islocal : true,
@@ -138,7 +138,7 @@ window.require.register("config/config-local", function(exports, require, module
   	baseUrl : '',
   	cloudFront : {
   		baseUrl : '/dh/app',
-  		fileHost : 'd35vpnmjdsiejq.cloudfront.net',
+  		fileHost : '/media',
   		streamer : 's12vlv7g59gljg.cloudfront.net'
   	},
   	pieceMaker : {
@@ -152,7 +152,7 @@ window.require.register("config/config-local", function(exports, require, module
   	}
   };
 });
-window.require.register("config/config-test", function(exports, require, module) {
+window.require.register("config/config-test", function(_exports, _require, module) {
   module.exports = {
   	debug : false,
   	islocal : false,
@@ -162,7 +162,7 @@ window.require.register("config/config-test", function(exports, require, module)
   	baseUrl : '/dh',
   	cloudFront : {
   		baseUrl : '/dh/app',
-  		fileHost : 'd35vpnmjdsiejq.cloudfront.net',
+  		fileHost : '/media',
   		//fileHost : 'motionbank-media.s3.amazonaws.com',
   		streamer : 's12vlv7g59gljg.cloudfront.net'
   	},
@@ -177,7 +177,7 @@ window.require.register("config/config-test", function(exports, require, module)
   	}
   };
 });
-window.require.register("config/config", function(exports, require, module) {
+window.require.register("config/config", function(_exports, _require, module) {
   module.exports = {
   	debug : false,
   	islocal : false,
@@ -187,7 +187,7 @@ window.require.register("config/config", function(exports, require, module) {
   	baseUrl : '/dh',
   	cloudFront : {
   		baseUrl : '/dh/app',
-  		fileHost : 'd35vpnmjdsiejq.cloudfront.net',
+  		fileHost : '/media',
   		//fileHost : 'motionbank-media.s3.amazonaws.com',
   		streamer : 's12vlv7g59gljg.cloudfront.net'
   	},
@@ -202,7 +202,7 @@ window.require.register("config/config", function(exports, require, module) {
   	}
   };
 });
-window.require.register("init", function(exports, require, module) {
+window.require.register("init", function(_exports, require, _module) {
   /**
    *	
    */
@@ -241,7 +241,7 @@ window.require.register("init", function(exports, require, module) {
   });
   
 });
-window.require.register("js/app", function(exports, require, module) {
+window.require.register("js/app", function(_exports, require, module) {
   /**
    *	Main app.
    */
@@ -511,7 +511,7 @@ window.require.register("js/app", function(exports, require, module) {
   	return App;
   })();
 });
-window.require.register("js/models/appstate", function(exports, require, module) {
+window.require.register("js/models/appstate", function(_exports, _require, module) {
   /**
    *	
    */
@@ -528,7 +528,7 @@ window.require.register("js/models/appstate", function(exports, require, module)
 
   });
 });
-window.require.register("js/models/cell-model", function(exports, require, module) {
+window.require.register("js/models/cell-model", function(_exports, _require, module) {
   
   var CellModel = module.exports = Backbone.Model.extend({
 
@@ -565,7 +565,7 @@ window.require.register("js/models/cell-model", function(exports, require, modul
 
   });
 });
-window.require.register("js/models/set-model", function(exports, require, module) {
+window.require.register("js/models/set-model", function(_exports, _require, module) {
   
   var SetModel = module.exports = Backbone.Model.extend({
 
@@ -588,7 +588,7 @@ window.require.register("js/models/set-model", function(exports, require, module
 
   });
 });
-window.require.register("js/router", function(exports, require, module) {
+window.require.register("js/router", function(_exports, _require, module) {
   /*
    +	A quite standard backbone router .. 
    +
@@ -606,7 +606,7 @@ window.require.register("js/router", function(exports, require, module) {
   	
   });
 });
-window.require.register("js/slider", function(exports, require, module) {
+window.require.register("js/slider", function(_exports, _require, module) {
   
   var $mainMenuContainer 		= null,
   	$mainMenuSlider 		= null,
@@ -729,11 +729,11 @@ window.require.register("js/slider", function(exports, require, module) {
   module.exports = SliderController;
   
 });
-window.require.register("js/templates/cell-view-tmpl", function(exports, require, module) {
+window.require.register("js/templates/cell-view-tmpl", function(_exports, _require, module) {
   module.exports = "\n	<div class=\"info\">\n		<h1 class=\"title\"><% if ( link ) { %><a href=\"<%= link %>\"><% } %><%= title %></h1><% if ( link ) { %></a><% } %>\n		<div class=\"description\"><%= description %></div>\n	</div>\n\n<div class=\"content\"><%= content %></div>";
   
 });
-window.require.register("js/views/cell-view-context", function(exports, require, module) {
+window.require.register("js/views/cell-view-context", function(_exports, require, module) {
   
   var CellView = require('js/views/cell-view');
   var __super = CellView.prototype;
@@ -863,7 +863,7 @@ window.require.register("js/views/cell-view-context", function(exports, require,
   	}
   });
 });
-window.require.register("js/views/cell-view-recording", function(exports, require, module) {
+window.require.register("js/views/cell-view-recording", function(_exports, require, module) {
   
   var CellView = require('js/views/cell-view');
   var __super = CellView.prototype;
@@ -962,7 +962,7 @@ window.require.register("js/views/cell-view-recording", function(exports, requir
   	}
   });
 });
-window.require.register("js/views/cell-view-set-link", function(exports, require, module) {
+window.require.register("js/views/cell-view-set-link", function(_exports, require, module) {
   
   var CellView = require('js/views/cell-view');
   var __super = CellView.prototype;
@@ -1021,7 +1021,7 @@ window.require.register("js/views/cell-view-set-link", function(exports, require
 
   });
 });
-window.require.register("js/views/cell-view-text", function(exports, require, module) {
+window.require.register("js/views/cell-view-text", function(_exports, require, module) {
   
   var CellView = require('js/views/cell-view');
   var __super = CellView.prototype;
@@ -1081,7 +1081,7 @@ window.require.register("js/views/cell-view-text", function(exports, require, mo
   	}
   });
 });
-window.require.register("js/views/cell-view-visualization", function(exports, require, module) {
+window.require.register("js/views/cell-view-visualization", function(_exports, require, module) {
   
   var CellView = module.exports = require('js/views/cell-view').extend({
 
@@ -1143,7 +1143,7 @@ window.require.register("js/views/cell-view-visualization", function(exports, re
   	}
   });
 });
-window.require.register("js/views/cell-view", function(exports, require, module) {
+window.require.register("js/views/cell-view", function(_exports, require, module) {
   
   var CellModel = null;
   var app = null, config = null;
@@ -1307,7 +1307,7 @@ window.require.register("js/views/cell-view", function(exports, require, module)
   	}
   });
 });
-window.require.register("js/views/select-set-view", function(exports, require, module) {
+window.require.register("js/views/select-set-view", function(_exports, _require, module) {
   
   var app 		= null, 
   	rendered 	= false, 
@@ -1374,7 +1374,7 @@ window.require.register("js/views/select-set-view", function(exports, require, m
 
   });
 });
-window.require.register("js/views/set-view", function(exports, require, module) {
+window.require.register("js/views/set-view", function(_exports, require, module) {
   
   var cellData = {}, cellViews = {}, cellViewsArr = [];
   var categories = [];
@@ -1751,7 +1751,8 @@ window.require.register("js/views/set-view", function(exports, require, module) 
   				// app.getSlider().setPosition( r, false );
   				this.setPosition( r );
 
-  				if ( true /* app.getConfig().islocal */ ) {
+  				var autoplayOnLocal = true; /* app.getConfig().islocal */
+				if ( autoplayOnLocal ) {
   					autoPlayTid = setTimeout(function(){
   						var cellm 	= cell.cell,
   							key 	= cellm.get('play-next-key'),

@@ -62,7 +62,7 @@
     assetHost: "",
     cloudFront: {
       baseUrl: "/dh/app",
-      fileHost: "d35vpnmjdsiejq.cloudfront.net",
+      fileHost: "/media",
       streamer: "s12vlv7g59gljg.cloudfront.net"
     },
     pieceMaker: {
@@ -90,7 +90,7 @@
       i.prototype.initialize.apply(this, arguments), this.template = e("views/templates/cell-types/cell-iframe");
       var t = this;
       r.on(">>set-scene", function(e) {
-        var n = "https://" + s.cloudFront.fileHost + s.cloudFront.baseUrl + "/cells/recording/full/" + t.getURLParameter("file") + "-" + e.data.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-") + ".png",
+        var n = s.cloudFront.fileHost + s.cloudFront.baseUrl + "/cells/recording/full/" + t.getURLParameter("file") + "-" + e.data.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-") + ".png",
           i = new Image;
         i.onload = function() {
           t.$el.css("background-image", "url(" + n + ")")
@@ -138,9 +138,9 @@
         e = i ? i : "D01T01"
       }
       this.currentRecording = e, t = t.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-");
-      var s = "https://" + r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("base-path"),
+      var s = r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("base-path"),
         o = [];
-      this.model.getFlag("per-recording") && o.push(e), "false" !== this.model.get("per-scene") && o.push(t), s += o.join("_"), s += ".png", "false" === this.model.get("per-scene") && "false" === this.model.get("per-recording") && (s = this.model.get("poster_image").url), this.model.get("fixed-image") && (s = "https://" + r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("fixed-image"));
+      this.model.getFlag("per-recording") && o.push(e), "false" !== this.model.get("per-scene") && o.push(t), s += o.join("_"), s += ".png", "false" === this.model.get("per-scene") && "false" === this.model.get("per-recording") && (s = this.model.get("poster_image").url), this.model.get("fixed-image") && (s = r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/visualization/full/" + this.model.get("fixed-image"));
       var a = new Image,
         l = this;
       a.onload = function() {

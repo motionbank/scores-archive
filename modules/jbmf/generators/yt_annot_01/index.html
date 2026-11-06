@@ -3,18 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>YouTube annotation test</title>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.animate-colors.js"></script>
 		<script type="text/javascript" src="js/postmessenger.js"></script>
-		<script type="text/javascript" src="js/api.js"></script>
 		<script type="text/javascript" src="js/animframe.js"></script>
 		<script type="text/javascript" src="js/timer.js"></script>
 		<script type="text/javascript" src="js/locparams.js"></script>
 		<script type="text/javascript">
 			jQuery(function(){
 
-				console.log( window.PieceMakerApi );
-				
 				var location_params = LocationParams();
 
 				if ( location_params.style ) {
@@ -52,51 +49,73 @@
 				postmessenger.on(/^>>.+/,function(req, res){
 				});
 
-				var pm = new PieceMakerApi({
-					context: {
-						piecemakerError : function piecemakerError () {
-							console.log( arguments );
-						}
-					},
-					host : 'http://jbmf-pm2.herokuapp.com',
-					api_key : "CU0iF/d9zSVfasI0Oyk9J6iBrX0="
-				});
+				// PieceMaker 2 data, pre-extracted from the restored heroku pg dump
+				// into static JSON (pm2-data/<vid>.json = {video, events};
+				// pm2-data/yt-lookup.json maps a YouTube id to its vid).
+				// Shape matches what PieceMakerApi returned (utc_timestamp as Date).
+				var toDates = function ( e ) {
+					e.utc_timestamp = new Date( e.utc_timestamp * 1000.0 );
+					return e;
+				};
 
-				pm.getGroup( 41, function(group){
-					if ( group ) {
-						pm.listEventsOfType( group.id, 'video', function(videos){
-							for ( var i = 0; i < videos.length; i++ ) {
-								var v = videos[i];
-								//console.log(v.id,vId);
-								if ( (ytId && v.fields.vid_service_id === ytId) || 
-									 (vId && v.id === vId) ) {
-									video = v;
-									$(document.body).html( video.fields.title );
-									pm.findEvents( 
-										group.id, 
-										{
-											from: (v.utc_timestamp.getTime() / 1000.0),
-											to:   (v.utc_timestamp.getTime() / 1000.0)+v.duration,
-											type: 'annotation'
-										},
-										function(events_found){
-											events = events_found;
-											pmFullyLoaded();
-										}
-									);
-									return;
+				var loadVid = function ( vid, done ) {
+					$.getJSON( '/api/jbmf/pm2/' + vid + '.json' )
+						.done(function ( data ) {
+							if ( data && data.video ) {
+								data.video.utc_timestamp = new Date( data.video.utc_timestamp * 1000.0 );
+								var annos = [];
+								for ( var i = 0; i < (data.events||[]).length; i++ ) {
+									if ( data.events[i].type === 'annotation' ) {
+										annos.push( toDates( data.events[i] ) );
+									}
 								}
+								done( data.video, annos );
+							} else {
+								$(document.body).html( 'No video!' );
 							}
+						})
+						.fail(function ( jqxhr, status, err ) {
+							console.log( 'No PM2 data for vid ' + vid + ':', status, err );
 							$(document.body).html( 'No video!' );
 						});
+				};
+
+				var pmFullyLoaded;
+
+				var startWith = function ( v, events_found ) {
+					if ( events_found.length > 0 ) {
+						video = v;
+						events = events_found;
+						$(document.body).html( video.fields.title );
+						pmFullyLoaded();
 					} else {
-						$(document.body).html( 'No group!' );
+						$(document.body).html( 'No annotations!' );
 					}
-				});
-				
+				};
+
+				if ( vId ) {
+					loadVid( vId, startWith );
+				} else if ( ytId ) {
+					$.getJSON( '/api/jbmf/pm2/yt-lookup.json' )
+						.done(function ( lookup ) {
+							var vid = lookup && lookup[ytId];
+							if ( vid ) {
+								loadVid( vid, startWith );
+							} else {
+								$(document.body).html( 'No video!' );
+							}
+						})
+						.fail(function () {
+							$(document.body).html( 'No video!' );
+						});
+				} else {
+					$(document.body).html( 'Need YT-ID or video ID!' );
+					return;
+				}
+
 				var timer = new Timer(25);
 
-				var pmFullyLoaded = function pmFullyLoaded () {
+				pmFullyLoaded = function pmFullyLoaded () {
 
 					var lastEventTime  = events[events.length-1].utc_timestamp.getTime() 
 									     - video.utc_timestamp.getTime();

@@ -66,7 +66,7 @@ image until clicked.
 |---|---|
 | `lab.motionbank.org/dhay/...` (flowplayer video modules, text modules) | **alive, https-capable**; but internally still uses Flash-era settings |
 | `d35vpnmjdsiejq.cloudfront.net/dh/piecemaker/*.mp4` (videos) | **alive, works over https** |
-| `d35vpnmjdsiejq.cloudfront.net/dh/app/cells/...` (recording/visualization overlay PNGs, `missing.jpg`) | **dead (403)** – content no longer hosted |
+| `d35vpnmjdsiejq.cloudfront.net/dh/app/cells/...` (recording/visualization overlay PNGs, `missing.jpg`) | **alive** – recovered and self-hosted under `media/dh/app/cells/…` in 2026 (§ 7) |
 | `deborah-hay-pm2.herokuapp.com` (PieceMaker 2 API: scene/annotation events) | **dead ("No such app")** – scene timing data unavailable |
 | `motionbank.meso.net` (legacy fallback image host) | defunct |
 | `player.vimeo.com` (vimeo cells) | alive, https works |
@@ -182,9 +182,11 @@ Headless Chromium (Playwright) against a local static server, before/after:
    issues…~~ **Fixed in the second pass** — the flowplayer module was replaced
    by a local player (section 6) and the text modules were vendored and patched
    (section 6.3).
-3. **CloudFront overlay images (`/dh/app/cells/...`) return 403.** The
+3. ~~**CloudFront overlay images (`/dh/app/cells/...`) return 403.** The
    recording/visualization cells gracefully fall back to their poster images,
-   which are served locally from `system/uploads/`.
+   which are served locally from `system/uploads/`.~~ **Recovered in the
+   third pass** — 5,151 overlay PNGs mirrored to `media/dh/app/cells/…`
+   (section 7, "Overlay PNGs recovered from CloudFront").
 4. ~~71 of the 252 exported cell JSON files contain "502 Bad Gateway" HTML…~~
    **Fixed in the second pass** — all 192 corrupted cell JSONs across the three
    scores were restored from a February 2020 database export (section 6.1).
@@ -303,8 +305,8 @@ value, breaking iframe resolution outright — trimmed. Aggregate
   `fields['alt-angle-*']`, scene events) ever becomes available, the same
   local-player treatment applied here can be extended to jbmf, and scene
   timing maps for `/dh` can be generated as `scenes/<file>.json`.
-- CloudFront overlay images (`/dh/app/cells/…`) still 403; cells fall back to
-  local poster images.
+- ~~CloudFront overlay images (`/dh/app/cells/…`) still 403; cells fall back
+  to local poster images.~~ **Recovered in the third pass** — see § 7.
 
 ### 6.6 Follow-up fixes from user testing
 
@@ -342,7 +344,101 @@ are excluded from lint analysis via `.pi-lens.json`.
 
 ---
 
-## 7. How to run
+## 7. Third pass — PieceMaker 2 data restoration (2026-11-06)
+
+The PM2 dump blocking scene navigation (§ 6.2) was found: the local
+archive contains `deborah-hay-pm2-….pgdump` — the complete
+`deborah-hay-pm2.herokuapp.com` database. Restored into a throwaway
+Postgres 15 container it holds 6 groups; the score's material lives in
+**group 24 `notimetofly`** (159 videos, 5,765 markers, 1,487 scenes,
+844 `scene2`) and group 29 `fh-hof-2014-04` (159 videos, 5,759 markers),
+plus discussion/interview groups.
+
+### Scene timing maps
+
+All **21 distinct `vid=` values** in the 49 recording-cell URLs resolve to
+`video` events, and **every one has a complete scene set** — type `scene`
+events inside `[video.utc_timestamp, video.utc_timestamp + duration]`
+(avg 50.8 scenes per take, max 59). For each recording file (49 distinct,
+including the camera-angle pairs and the June 2013 compilation videos)
+the exporter wrote `dh/dhay/player/scenes/<file>.json` mapping
+**scene title → offset seconds** (`event.utc_timestamp − video.utc_timestamp`,
+first occurrence of each title wins — the original module's seek
+semantics), plus the `scenes/index.json` manifest the player already
+consumed. No player code changes were needed: `>>set-scene` from the text
+score and the scene-overlay switching work again.
+
+The same window logic confirmed the original module's data shape: the
+lab flowplayer fetched `findEvents(gid, {type:'scene', from, to})` and
+broadcast `currentScene.fields.title` during playback — the export is a
+faithful snapshot of that call.
+
+### Track-data inspection cell
+
+`data_inspect_tracks_01` ("Inspecting track data" cell) called the dead
+`notimetofly.herokuapp.com` PM1 API to list the NTTF videos, load a
+video's `data` event, and fetch `lab.motionbank.org/dhay/data/<file>_com.txt`
+(center-of-mass track files). Restoration:
+
+- the `notimetofly-….pgdump` was restored; its 22 `data` events
+  (motion-capture track references, e.g.
+  `Janine_D05T01_withBackgroundAdjustment_Corrected/Tracked3DPosition.txt`)
+  were exported to `modules/dhay/data_inspect_tracks_01/videos.json`
+  (video id + title + data events).
+- 20 of the 22 `_com.txt` track files were still on
+  `lab.motionbank.org` and are now vendored under
+  `modules/dhay/data_inspect_tracks_01/data/` (2 were already gone
+  upstream — those two selections log an error, as before).
+- `connect.js` now loads `videos.json` instead of the PM1 API and serves
+  the track data from the vendored `data/` dir; the PM1 `eval()` of event
+  descriptions was replaced by a strict parser.
+
+### Media + fonts
+
+The 49 recording MP4s (~1 GB) are mirrored from CloudFront to
+`media/dh/piecemaker/` (not in git — the media set ships as a separate
+archive, see root README), and the
+player's default `fileHost` now resolves same-origin (`/media`). Open Sans
+was self-hosted under `assets/fonts/` for the score shell and the text
+modules; the Google-CDN jQuery in the text modules is vendored.
+
+### Overlay PNGs recovered from CloudFront
+
+The "dead" CloudFront overlay host (§ 1, § 5, § 6.5) turned out to be
+alive after all — the earlier 403s were a misleading single-URL probe.
+Recovery, recorded step by step:
+
+1. **Filename space reconstruction** — `tools/list-overlay-pngs.py`
+   replays the URL building in `app-extend.js` over every recording and
+   visualization cell in the restored cell data, combined with the PM2
+   scene titles from the new `scenes/` maps:
+   `dh/tools/overlay-png-candidates.txt` holds every name the score can
+   possibly request.
+2. **First probe — 1,153 live** — a HEAD probe of all 7,661 candidates
+   against the original distribution found 1,153 returning HTTP 200.
+   Comparing probe misses against the cell data exposed a bug in the
+   candidate generator: the original code appends `join("_")` directly to
+   base-paths that already end in `_`, so the generator had produced
+   `path_D05T01__scene.png` (double underscore) instead of
+   `path_D05T01_scene.png`. Fixed and regenerated: 7,115 candidates.
+3. **Second probe — 5,151 live** — the corrected names were re-probed:
+   **5,151 of 7,115 candidates return HTTP 200** (the remaining 1,964 are
+   generated combinations that were never uploaded — e.g. per-scene
+   overlays for takes that only ever had a per-recording one).
+4. **Download + mirror** — all 5,151 PNGs (372 MB, zero failures) were
+   downloaded into `media/dh/app/cells/{recording,visualization}/full/…`
+   — exactly the path `fileHost + baseUrl` resolves to, so
+   `app-extend.js` needed no changes at all.
+5. **Verification** — in the live score page, a recording overlay
+   (`D04T02_Juliette_sync_AJA_1-1-minute-turn.png`, 640×360) and a
+   visualization path overlay (`path_D04T02_1-minute-turn.png`, 700×700)
+   both load from `/media/dh/app/…` with **zero CloudFront requests**;
+   the `>>set-scene` overlay switching of § 6.6 now works from the local
+   mirror.
+
+---
+
+## 8. How to run
 
 Any static file server pointed at the repository root, e.g.:
 

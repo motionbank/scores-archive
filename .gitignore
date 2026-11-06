@@ -134,3 +134,11 @@ Temporary Items
 
 # JetBrains IDE config
 .idea/
+
+# --- Motion Bank scores ---
+
+# Self-hosted media (~7 GB, mirrored from CloudFront/S3/lab): ships as a
+# separate archive, not in git. See README "Media self-hosting".
+/media/
+motionbank-media.tar
+motionbank-media.tar.gz

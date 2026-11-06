@@ -97,9 +97,11 @@
       console.warn('player: no "file" URL parameter, cannot build media URL');
       return;
     }
-    var fileHost = (config && config.cloudFront && config.cloudFront.fileHost) || 'd35vpnmjdsiejq.cloudfront.net';
+    // Recording MP4s are self-hosted (mirrored from CloudFront into /media);
+    // config override kept for flexibility.
+    var fileHost = (config && config.cloudFront && config.cloudFront.fileHost) || '/media';
     var basePath = (config && config.pieceMaker && config.pieceMaker.basePath) || '/dh/piecemaker';
-    video.src = 'https://' + fileHost + basePath + '/' + file + '.mp4';
+    video.src = fileHost + basePath + '/' + encodeURIComponent(file) + '.mp4';
 
     // scene timings are optional (PieceMaker API is gone): scenes/index.json
     // lists which videos have a timing map; if this video is listed, the

@@ -154,7 +154,7 @@
    "description": "*No Rollover",
    "type": "iframe",
    "additional_fields": {
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-PresentText.html",
+    "iframe-src": "/media/two/data/TextCells/MEMORY-PresentText.html",
     "sticky": "1"
    },
    "id": "99b694766d3034219c200000",
@@ -177,7 +177,7 @@
    "description": "*No Rollover",
    "type": "iframe",
    "additional_fields": {
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-IntentionsText.html",
+    "iframe-src": "/media/two/data/TextCells/MEMORY-IntentionsText.html",
     "autoload": "true",
     "sticky": "1"
    },
@@ -602,7 +602,7 @@
    "description": "",
    "type": "iframe",
    "additional_fields": {
-    "iframe-src": "https://s3.amazonaws.com/motionbank-media/two/data/TextCells/MEMORY-PastText.html",
+    "iframe-src": "/media/two/data/TextCells/MEMORY-PastText.html",
     "sticky": "1"
    },
    "id": "38d927966d303442a3000000",

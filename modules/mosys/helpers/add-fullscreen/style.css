@@ -1,0 +1,18 @@
+.cell.add-fullscreen .fs-icon {
+	background-color: rgba(59, 66, 65, 0.658824);
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-image: url('icon-fullscreen.svg');
+	display: none;
+}
+
+.cell.add-fullscreen:hover .fs-icon {
+	display: block;
+}
+
+.cell.add-fullscreen.is-fullscreen .fs-icon {
+	background-image: url('icon-fullscreen-minimise.svg');
+}

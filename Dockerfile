@@ -1,11 +1,17 @@
 # Motion Bank online scores — static site served by nginx
 #
-# Build:   docker build -t motionbank-scores .
+# Build:   # first fetch + extract the media archive (see README
+#          # "Media self-hosting"); it must exist as ./media/
+#          docker build -t motionbank-scores .
 # Run:     docker run --rm -p 8080:80 motionbank-scores
 #          → http://localhost:8080/            (landing page)
 #            http://localhost:8080/dh/         (Using the Sky)
 #            http://localhost:8080/jbmf/       (Seven Duets)
 #            http://localhost:8080/two/        (TWO)
+#
+# NOTE: ./media/ (~7 GB of self-hosted recordings, mirrored from CloudFront)
+# is gitignored and not part of a fresh clone — it ships as a separate
+# archive (see README). The docker build copies it into the image.
 
 FROM nginx:1.27-alpine
 
@@ -23,6 +29,7 @@ COPY assets /usr/share/nginx/html/assets
 COPY static /usr/share/nginx/html/static
 COPY system /usr/share/nginx/html/system
 COPY modules /usr/share/nginx/html/modules
+COPY media /usr/share/nginx/html/media
 
 EXPOSE 80
 

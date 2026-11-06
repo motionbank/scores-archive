@@ -1,6 +1,13 @@
 {
   "ignore": [
     "modules/**",
-    "dh/dhay/player/vendor/**"
+    "dh/dhay/player/vendor/**",
+    "assets/javascripts/**",
+    "dh/javascripts/app-base.js",
+    "jbmf/javascripts/app-base.js",
+    "two/javascripts/app-base.js",
+    "dh/javascripts/app-extend.js",
+    "jbmf/javascripts/app-extend.js",
+    "two/javascripts/app-extend.js"
   ]
 }

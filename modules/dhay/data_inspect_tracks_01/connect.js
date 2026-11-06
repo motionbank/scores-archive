@@ -6,7 +6,7 @@ var App = (function () {
      L + + + + + + + + + + + + */
      
     var app, sketch;
-    var pm, pieces, piece, videos, video;
+    var videos, video;
     
     /*
      + class definition
@@ -19,84 +19,83 @@ var App = (function () {
         onLocalhost = window.location.href.match(/^http:\/\/127\.0\.0\.1.*/) || 
                       window.location.href.match(/^http:\/\/localhost.*/)    ||
                       window.location.href.match(/^http:\/\/[^/]+\.local.*/);
-        pm = new PieceMakerApi({
-            api_key: "a79c66c0bb4864c06bc44c0233ebd2d2b1100fbe",
-            baseUrl: ( onLocalhost && false ? 'http://localhost:3000' : 'http://notimetofly.herokuapp.com' )
-        });
-        
-        pm.loadPieces(app.piecesLoaded);
+        // NTTF video list + per-video 'data' events, pre-extracted from the
+        // restored notimetofly heroku pg dump into videos.json. The PM1 API
+        // (notimetofly.herokuapp.com) is gone.
+        jQuery.getJSON('videos.json').done(app.videosLoaded);
     }
     App.prototype = {
-        piecesLoaded : function ( data ) {
-            if ( data.total == 1 ) {
-                piece = data.pieces[0];
-                pm.loadVideosForPiece( piece.id, app.videosLoaded );
-            }
-        },
 //        pieceLoaded : function ( p ) {
 //            if ( p ) {
 //                piece = p;
 //                pm.loadVideosForPiece( piece.id, app.videosLoaded );
 //            }
 //        },
-        videosLoaded : function ( data ) {
-            if ( data && data.total && data.total > 0 ) {
-                videos = data.videos;
+        videosLoaded : function ( videos_ ) {
+            videos = videos_ || [];
+            if ( videos.length > 0 ) {
                 var sel = document.createElement('select');
                 for ( var i = 0, k = videos.length; i < k; i++ ) {
                     var opt = document.createElement('option');
                     opt.setAttribute('value',videos[i].id);
-                    opt.innerHTML = videos[i].title;
+                    opt.textContent = videos[i].title;
                     sel.appendChild( opt );
                 }
                 jQuery(sel).change(function(){
-                    var videoId = jQuery(this).val();
-                    pm.loadVideo( videoId, app.videoLoaded );
+                    app.videoLoaded( videos[+jQuery(this).val()] || videos[0] );
                 });
                 if ( !window.appEmbedded ) {
                     var selBlock = jQuery( '#video-selection' ).get(0);
                     selBlock.appendChild( sel );
                 }
             }
-            pm.loadVideo( 80, app.videoLoaded );
+            app.videoLoaded( videos[0] );
         },
         videoLoaded : function ( v ) {
             video = v;
-            pm.loadEventsForVideo( video.id, app.eventsLoaded );
+            app.eventsLoaded( { events: video.data_events || [] } );
         },
         eventsLoaded : function ( data ) {
-            if ( data.total > 0 ) {
+            if ( data.events.length > 0 ) {
                 var eventsRaw = data.events;
                 var dataEvent = null;
                 for ( var i = 0, k = eventsRaw.length; i < k; i++ ) {
-                    if ( eventsRaw[i].event_type == 'data' ) {
+                    if ( eventsRaw[i].event_type === 'data' || eventsRaw[i].description ) {
                         dataEvent = eventsRaw[i];
                         break;
                     }
                 }
-                if ( dataEvent ) {
-                    dataEvent.happened_at = new Date( dataEvent.happened_at_float );
-                    dataEvent.data = eval( '(' + dataEvent.description + ')' );
+                if ( dataEvent && dataEvent.data && dataEvent.data.file ) {
+                    // PM1 stored tiny JS-object-literal descriptions ({file:"..", fps:50});
+                    // parse them safely instead of eval-ing them
+                    try {
+                        dataEvent.data = JSON.parse( dataEvent.description
+                            .replace( /([{,])\s*([A-Za-z_][A-Za-z0-9_]*)\s*:/g, '$1"$2":' )
+                            .replace( /'/g, '"' ) );
+                    } catch ( e ) {
+                        console.error( 'data_inspect: unparseable event description', dataEvent.description, e );
+                        dataEvent.data = null;
+                    }
 //                    app.loadDataEvent( dataEvent, dataEvent.data.file.replace( '.txt', '_25fps.txt' ) );
 //                    app.loadDataEvent( dataEvent, dataEvent.data.file.replace( '.txt', '_alt.txt' ) );
 //                    app.loadDataEvent( dataEvent, dataEvent.data.file.replace( '.txt', '_left_wrist.txt' ) );
                     //app.loadDataEvent( dataEvent, dataEvent.data.file );
-                    app.loadDataEvent( dataEvent, dataEvent.data.file.replace( '.txt', '_com.txt' ) );
+                    app.loadDataEvent( dataEvent.data.file.replace( '.txt', '_com.txt' ) );
                 }
             }
         },
-        loadDataEvent : function ( dataEvent, dataFile ) {
+        loadDataEvent : function ( dataFile ) {
             jQuery.ajax({
-                url: (onLocalhost ? 'http://moba-lab.local/' : 'http://lab.motionbank.org/') + 'dhay/data/' + dataFile,
+                url: 'data/' + dataFile,
                 success: function ( resp ) {
-                    app.eventDataLoaded( dataEvent, resp );
+                    app.eventDataLoaded( resp );
                 },
                 error: function () {
-                    console.log( arguments );
+                    console.error( 'data_inspect: failed to load track data', arguments );
                 }
             });
         },
-        eventDataLoaded : function ( event, data ) {
+        eventDataLoaded : function ( data ) {
             var trackData = [];
             data = data.split("\n");
             for ( var i = 0, k = data.length; i < k; i++ ) {

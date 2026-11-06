@@ -75,7 +75,7 @@
     assetHost: "",
     cloudFront: {
       baseUrl: "/jbmf/app",
-      fileHost: "d35vpnmjdsiejq.cloudfront.net",
+      fileHost: "/media",
       streamer: "s12vlv7g59gljg.cloudfront.net"
     },
     pieceMaker: {
