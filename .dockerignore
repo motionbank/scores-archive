@@ -5,9 +5,8 @@
 Dockerfile
 .dockerignore
 docker/*
-# Media (~7 GB) lives on an external drive; `media/` is a symlink to it.
-# It is NOT baked into the image — mount it at runtime:
-#   docker run -v "/Volumes/ScratchDiks/motionbank-media:/usr/share/nginx/html/media:ro" …
-media
 !docker/nginx-default.conf
 !docker/ssl
+# `media/` IS baked into the image (Dockerfile: COPY media ...).
+# It is gitignored; restore it from the motionbank-media.tar archive
+# (see root README "Media self-hosting") before `docker build`.
