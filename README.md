@@ -178,19 +178,24 @@ hosts were mirrored once and are no longer contacted at runtime:
 | jQuery / froogaloop2 CDNs | vendored in each module | complete |
 
 The `media/` directory (~7 GB, 542 MP4s + text cells) is **not stored in
-git** — 25 of the dh full-take recordings exceed GitHub's 100 MB file
+`git`** — 25 of the dh full-take recordings exceed GitHub's 100 MB file
 limit, and it would dominate the repository history. It ships as a
-separate archive instead:
+separate archive, published at a fixed URL:
+
+> **https://assets.motionbank.org/archive/motionbank-scores-media.tar.gz**
+> (gzip-compressed tar, ~7.8 GiB)
 
 ```sh
-# fetch the archive (uploaded alongside the repository release):
-#   motionbank-media.tar (~7.5 GB, contains the media/ directory)
-# verify the checksum:
-#   c6a4e76616a497dee7e2d58bcec0e8f901619108eb9adb2cb6d6e9449c6aea4a
-shasum -a 256 motionbank-media.tar
-# extract into the repository root (creates ./media/):
-tar -xf motionbank-media.tar -C /path/to/motionbank-scores-static
+# fetch and extract into the repository root (creates ./media/):
+curl -O https://assets.motionbank.org/archive/motionbank-scores-media.tar.gz
+tar -xzf motionbank-scores-media.tar.gz -C /path/to/motionbank-scores-static
+# verify integrity while downloading (optional):
+curl -sL <url> | shasum -a 256
 ```
+
+GitHub CI (`.github/workflows/docker-image.yml`) pulls the archive from
+that URL at build time, so the Docker image is built without any manual
+media setup.
 
 After extraction the directory contains:
 

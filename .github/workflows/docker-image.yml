@@ -1,0 +1,124 @@
+# Builds the motionbank-scores Docker image, pulling the ~7.8 GiB media
+# archive (not stored in git — see README "Media self-hosting") from the
+# public URL at build time, and smoke-tests the result.
+#
+# - push / PR        → build + smoke test
+# - workflow_dispatch with push_image=true → additionally push to GHCR
+#   (ghcr.io/<owner>/<repo>:latest — the image is ~9 GB; make the package
+#   public in the repo's package settings, or storage may be billed)
+name: docker-image
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      push_image:
+        description: 'Push the built image to GHCR (ghcr.io/<owner>/<repo>)'
+        type: boolean
+        default: false
+
+concurrency:
+  group: docker-image-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MEDIA_URL: >-
+    https://assets.motionbank.org/archive/
+    motionbank-scores-media.tar.gz
+  IMAGE_NAME: motionbank-scores
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # The runner needs ~18 GB free: 8.4 GB archive + ~7.7 GB extracted
+      # media + the ~9 GB image. Clear the preinstalled bloat first.
+      - name: Free disk space
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android \
+                      /opt/ghc /usr/local/.ghcup \
+                      /opt/hostedtoolcache/CodeQL \
+                      /usr/local/share/boost /usr/lib/jvm
+          docker image prune -af
+          df -h /
+
+      - name: Fetch media archive
+        run: |
+          curl --fail --retry 5 --retry-delay 3 --location \
+               --output /tmp/motionbank-scores-media.tar.gz \
+               "$MEDIA_URL"
+          ls -la /tmp/motionbank-scores-media.tar.gz
+
+      # The tarball may contain media/... entries (extract at repo root)
+      # or the media/ contents directly (extract into ./media/).
+      - name: Extract media into ./media/
+        run: |
+          first_entry=$(tar -tzf /tmp/motionbank-scores-media.tar.gz | head -1)
+          echo "first archive entry: $first_entry"
+          if [[ "$first_entry" == media/* ]]; then
+            tar -xzf /tmp/motionbank-scores-media.tar.gz -C "$GITHUB_WORKSPACE"
+          else
+            mkdir -p media
+            tar -xzf /tmp/motionbank-scores-media.tar.gz -C media
+          fi
+          du -sh media
+          test -d media/dh/piecemaker
+          test -d media/jbmf/piecemaker
+
+      - name: Build image (media baked in)
+        run: docker build -t "$IMAGE_NAME:latest" .
+
+      - name: Smoke test
+        run: |
+          docker run -d --name smoke-test -p 8080:80 "$IMAGE_NAME:latest"
+          sleep 3
+          set -e
+          for path in /dh/ /jbmf/ /two/ \
+                      /api/jbmf/pm2/28689.json \
+                      /dh/dhay/player/scenes/index.json \
+                      /modules/jbmf/generators/05_clap/img/01-04up.png; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' \
+                        "http://localhost:8080$path")
+            echo "$path -> $code"
+            if [ "$code" != "200" ]; then
+              echo "FAIL: $path"
+              docker logs smoke-test | tail -20
+              exit 1
+            fi
+          done
+          # a real video from the media archive must be served
+          media_code=$(curl -s -o /dev/null -w '%{http_code}' -r 0-1024 \
+            "http://localhost:8080/media/dh/piecemaker/D05T01_Janine_sync_AJA_1.mp4")
+          echo "media range request -> $media_code"
+          if [ "$media_code" != "200" ]; then
+            echo "FAIL: media not served"
+            exit 1
+          fi
+          docker rm -f smoke-test
+
+      - name: Log in to GHCR
+        if: github.event_name == 'workflow_dispatch' && inputs.push_image
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push image to GHCR
+        if: github.event_name == 'workflow_dispatch' && inputs.push_image
+        run: |
+          IMAGE="ghcr.io/${{ github.repository }}"
+          docker tag "$IMAGE_NAME:latest" "$IMAGE:latest"
+          docker tag "$IMAGE_NAME:latest" "$IMAGE:sha-${GITHUB_SHA::7}"
+          docker push "$IMAGE:latest"
+          docker push "$IMAGE:sha-${GITHUB_SHA::7}"
