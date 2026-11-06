@@ -493,12 +493,3 @@ Heroku database dumps, media scraping and self-hosting, player rewrites,
 Docker packaging and this documentation — was performed by **Pi Coding
 Agent using the GLM 5.3 Flash LLM hosted at JGU University Mainz by the
 KITeGG project at Mainz University of Applied Sciences**.
-
-## Per-score modernization chronicles
-
-The detailed history of every change — what was broken, why, and how it
-was restored — is documented score by score:
-
-- [`dh/MODERNIZATION.md`](dh/MODERNIZATION.md) — *Using the Sky* (Deborah Hay)
-- [`jbmf/MODERNIZATION.md`](jbmf/MODERNIZATION.md) — *Seven Duets* (Burrows/Fargion)
-- [`two/MODERNIZATION.md`](two/MODERNIZATION.md) — *TWO* (OSU ACCAD)
