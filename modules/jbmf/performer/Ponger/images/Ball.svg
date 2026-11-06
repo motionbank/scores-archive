@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="30.251px" height="30.25px" viewBox="0 0 30.251 30.25" enable-background="new 0 0 30.251 30.25" xml:space="preserve">
+<g>
+	<circle fill="#FFFFFF" cx="15.125" cy="15.125" r="14.125"/>
+	<radialGradient id="SVGID_1_" cx="15.1255" cy="15.1255" r="14.1252" gradientUnits="userSpaceOnUse">
+		<stop  offset="0.1674" style="stop-color:#FFFFFF;stop-opacity:0.62"/>
+		<stop  offset="0.3334" style="stop-color:#FAFBFB;stop-opacity:0.62"/>
+		<stop  offset="0.5579" style="stop-color:#EEEEEE;stop-opacity:0.62"/>
+		<stop  offset="0.8149" style="stop-color:#D9D9DA;stop-opacity:0.62"/>
+		<stop  offset="1" style="stop-color:#C5C6C6;stop-opacity:0.62"/>
+	</radialGradient>
+	<circle fill="url(#SVGID_1_)" cx="15.125" cy="15.125" r="14.125"/>
+	<circle fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="15.125" cy="15.125" r="14.125"/>
+</g>
+</svg>

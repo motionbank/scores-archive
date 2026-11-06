@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+<g>
+	<polygon fill="#261289" points="227.104,133.809 226.06,143.215 213.169,148.094 201.934,146.787 191.308,134.984 211.862,126.754 
+			"/>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="181.3789" y1="100.168" x2="267.2129" y2="100.168">
+		<stop  offset="0" style="stop-color:#F0CA00"/>
+		<stop  offset="0.3608" style="stop-color:#EDC700"/>
+		<stop  offset="0.6589" style="stop-color:#E5BC00"/>
+		<stop  offset="0.9339" style="stop-color:#D6AB00"/>
+		<stop  offset="1" style="stop-color:#D2A600"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M267.204,98.143c-0.374-21.85-19.44-39.455-42.908-39.455c-23.702,0-42.917,17.957-42.917,40.108
+		c0,2.39,0.225,4.729,0.652,7.003v29.186h1.046c0,3.68,18.834,6.663,42.067,6.663c23.234,0,42.068-2.983,42.068-6.663V98.143
+		H267.204z"/>
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="186.5742" y1="135.7246" x2="186.5742" y2="150.0087">
+		<stop  offset="0" style="stop-color:#FF2622"/>
+		<stop  offset="1" style="stop-color:#A52622"/>
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M229.952,141.647c-4.703,4.878-13.729,7.715-18.952,7.715c-5.224,0-22.822,0-37.234,0
+		c-20.772,0-30.569-9.405-30.569-29.002c0-19.595,5.878-35.665,35.665-35.665c29.785,0,27.695,40.761,27.695,56.829
+		c0,4.62,3.052,4.443,4.443,4.443c3.502,0,8.097-0.608,13.785-4.32"/>
+	<polygon fill="#00C150" stroke="#000000" stroke-width="2.6129" stroke-miterlimit="10" points="172.74,98.537 178.275,109.754 
+		190.653,111.553 181.697,120.283 183.812,132.611 172.74,126.791 161.669,132.611 163.783,120.283 154.826,111.553 
+		167.204,109.754 	"/>
+</g>
+</svg>
