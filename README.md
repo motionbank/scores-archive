@@ -185,17 +185,26 @@ separate archive, published at a fixed URL:
 > **https://assets.motionbank.org/archive/motionbank-scores-media.tar.gz**
 > (gzip-compressed tar, ~7.8 GiB)
 
+A SHA-256 checksum is published next to the archive
+(`…/archive/motionbank-scores-media.tar.gz.sha256`) — verify before
+extracting:
+
 ```sh
 # fetch and extract into the repository root (creates ./media/):
 curl -O https://assets.motionbank.org/archive/motionbank-scores-media.tar.gz
+curl -O https://assets.motionbank.org/archive/motionbank-scores-media.tar.gz.sha256
+
+# verify the download (macOS: replace sha256sum with shasum -a 256):
+sha256sum -c motionbank-scores-media.tar.gz.sha256
+# → motionbank-scores-media.tar.gz: OK
+
 tar -xzf motionbank-scores-media.tar.gz -C /path/to/motionbank-scores-static
-# verify integrity while downloading (optional):
-curl -sL <url> | shasum -a 256
 ```
 
 GitHub CI (`.github/workflows/docker-image.yml`) pulls the archive from
-that URL at build time, so the Docker image is built without any manual
-media setup.
+that URL at build time and verifies it against the published checksum
+(the build fails on mismatch), so the Docker image is built without any
+manual media setup.
 
 After extraction the directory contains:
 
