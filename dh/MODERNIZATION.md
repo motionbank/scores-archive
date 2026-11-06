@@ -348,7 +348,9 @@ are excluded from lint analysis via `.pi-lens.json`.
 
 The PM2 dump blocking scene navigation (§ 6.2) was found: the local
 archive contains `deborah-hay-pm2-….pgdump` — the complete
-`deborah-hay-pm2.herokuapp.com` database. Restored into a throwaway
+`deborah-hay-pm2.herokuapp.com` database (production data of
+[`piecemaker2-api`](https://github.com/motionbank/piecemaker2-api), the
+open-source PieceMaker 2 annotation backend). Restored into a throwaway
 Postgres 15 container it holds 6 groups; the score's material lives in
 **group 24 `notimetofly`** (159 videos, 5,765 markers, 1,487 scenes,
 844 `scene2`) and group 29 `fh-hof-2014-04` (159 videos, 5,759 markers),

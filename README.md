@@ -55,10 +55,14 @@ limitations):
 
 ### From score book to screen: cells and sets
 
-Each score is a **set**: a large canvas-like grid of *cells* laid out by
+Each score is a **set**: a large canvas-like grid of *cells*, laid out by
 `x`, `y`, `width`, `height` grid coordinates (set JSON) and navigated by
-horizontal paging. The compiled score front-end (`app-base.js` +
-`app-extend.js`, a Brunch/Chaplin/Backbone bundle) fetches
+horizontal paging. Sets and cells were authored in the MoSys CMS
+([`score-system-backend`](https://github.com/motionbank/score-system-backend),
+the original Rails publishing system) and are rendered by the
+[`score-system-frontend`](https://github.com/motionbank/score-system-frontend)
+Chaplin.js/Backbone single-page app. The compiled score front-end
+(`app-base.js` + `app-extend.js`, a Brunch/Chaplin/Backbone bundle) fetches
 `api/<score>/sets.json`, renders the cell grid, and lazily activates cells
 as they scroll into view.
 
@@ -75,7 +79,8 @@ load behaviour and styling.
 ### PostMessenger: the score's nervous system
 
 All cross-cell interaction runs through the `PostMessenger` wrapper around
-`postMessage`. The score shell acts as a hub:
+`postMessage` ([`postmessenger-js`](https://github.com/motionbank/postmessenger-js)).
+The score shell acts as a hub:
 
 - every iframe cell gets a `connect?` → `connect!` handshake on load;
   the `domain=` URL parameter (added by the shell at render time) pins the
@@ -100,6 +105,9 @@ The players themselves speak a small protocol:
 
 The 2013–2014 scores were driven by **PieceMaker 2 (PM2)**, a Ruby/
 Postgres research tool (The Forsythe Company) for annotating rehearsal
+— software now open-source as
+[`piecemaker2-api`](https://github.com/motionbank/piecemaker2-api) +
+[`piecemaker2-frontend`](https://github.com/motionbank/piecemaker2-frontend).
 documentation. Recordings of rehearsals/performances were ingested as
 *video events*, and researchers pressed keys while watching to create
 *annotation*/*marker*/*scene* events, timestamped in **absolute Unix epoch
@@ -270,6 +278,22 @@ the set's `grid_cols`×`grid_rows` canvas; the shell computes pixel sizes
 from `cell_width`/`cell_height` and the viewport, then pages horizontally
 through `grid_cols`. The pager, keyboard arrows and `scrollToCell`
 deep-links all work off those numbers.
+
+### Where the code lives: the original Motion Bank repositories
+
+Everything in this repository is a static snapshot of a live system whose
+source code is open on the [motionbank GitHub organisation](
+https://github.com/motionbank). The parts this site depends on:
+
+| Site component | Original repository |
+|---|---|
+| Score shells (`app-base.js` / `app-extend.js` brunch bundles, Chaplin.js + Backbone SPA, cell/set views, pager, PostMessenger wiring) | [`score-system-frontend`](https://github.com/motionbank/score-system-frontend) — its `app-base/` directory compiles to the `assets/javascripts/app.js` bundle vendored here |
+| Cell & set creation (the Rails CMS that produced every JSON under `api/` — cells, sets, grid placement, `additional_fields`) | [`score-system-backend`](https://github.com/motionbank/score-system-backend) — "MoSys", a »choreographic« publishing system |
+| Cell ↔ iframe messaging (`>>ping`, `>>set-scene`, `get-config`, …) | [`postmessenger-js`](https://github.com/motionbank/postmessenger-js) — middleware over `window.postMessage`; the protocol each vendored module speaks |
+| PieceMaker 2 (annotation of the video material; source of all `vid=`, scene and marker timing data, and of the restored dumps in § "PieceMaker 2: the timing database") | [`piecemaker2-api`](https://github.com/motionbank/piecemaker2-api) (Grape/Rack + Sequel) and [`piecemaker2-frontend`](https://github.com/motionbank/piecemaker2-frontend) (Backbone UI), wrapped by [`piecemaker2-app`](https://github.com/motionbank/piecemaker2-app) |
+| The `PieceMakerApi` client used by the original `pm_player_01`/`yt_annot_01` modules | [`piecemaker-api-client`](https://github.com/motionbank/piecemaker-api-client) (Java + JavaScript) |
+| Original per-score repositories (2013, pre-MoSys consolidation) | [`deborah-hay-online-score`](https://github.com/motionbank/deborah-hay-online-score), [`burrows-fargion-online-score`](https://github.com/motionbank/burrows-fargion-online-score), [`two-osu-online-score`](https://github.com/motionbank/two-osu-online-score) (built at OSU ACCAD) |
+| Related tools around the data | [`piecemaker1-tfc`](https://github.com/motionbank/piecemaker1-tfc) (PieceMaker 1, source of the PM1 `notimetofly` data), [`piecemaker2-api-migration`](https://github.com/motionbank/piecemaker2-api-migration) (PM1→PM2), [`piecemaker2-timeline`](https://github.com/motionbank/piecemaker2-timeline) and [`piecemaker2-live-annotator`](https://github.com/motionbank/piecemaker2-live-annotator) (annotation tools), [`bvh`](https://github.com/motionbank/bvh) (JS BVH mocap parser — same motion-capture material the track-data inspector shows), [`score-system-frontend-sample`](https://github.com/motionbank/score-system-frontend-sample) (example score front-end extension) |
 
 ## Modernization (2026)
 

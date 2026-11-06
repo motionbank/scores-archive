@@ -167,7 +167,10 @@ player URL and dual-origin allow-list.
 The missing input identified in § 6 was found: the **original Heroku
 `pg_dump`s** still exist in the local archive
 (`~/Motion Bank Heroku/`), including `jbmf-pm2-….pgdump` — the complete
-`jbmf-pm2.herokuapp.com` database. It was restored into a throwaway
+`jbmf-pm2.herokuapp.com` database — i.e. the production data of
+[`piecemaker2-api`](https://github.com/motionbank/piecemaker2-api), the
+open-source annotation backend ([`piecemaker2-frontend`](https://github.com/motionbank/piecemaker2-frontend)
+provided its annotation UI). It was restored into a throwaway
 Postgres 15 container and inspected:
 
 - **6,105 events in 3 groups**: `40 jbmf_all` (678 videos, 2,091 scenes,
