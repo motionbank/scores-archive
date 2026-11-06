@@ -141,9 +141,11 @@ per referenced video:
 - **/jbmf yt_annot_01 (7 cells)** — YouTube videos (interview excerpts,
   e.g. "Heads In Sets", "Marble machine") with time-stamped annotations
   that steer other cells; plays via the YouTube iframe API.
-- **/jbfm vimeo cells (294)** — the interview score proper. These are
-  **domain-locked on Vimeo's side** (HTTP 403 without a
-  `*.motionbank.org` referer); see `jbmf/MODERNIZATION.md` §6.
+- **/jbfm vimeo cells (294)** — the interview score proper. These play
+  directly from Vimeo's player (verified 2026-11-06: player + HLS segments
+  load and stream from any domain; the earlier "domain-locked" reading was
+  an artifact of Cloudflare bot-blocking curl, not referer enforcement).
+  See `jbmf/MODERNIZATION.md` §6.
 - **/dh recording cells (49)** — *No Time To Fly* rehearsal takes
   (camera-angle pairs: wide `*_sync_AJA_1` + center
   `*_sync_Center_Small`). Served from `/media/dh/piecemaker/` through the
@@ -192,8 +194,9 @@ media/two/data/                  TWO text cells + infographics (from S3)
 
 The Docker image copies `media/` in at build time, so extract the archive
 **before** `docker build`. Without it, everything except the recording/
-filming video cells works. The only remaining dead upstreams are private
-Vimeo embeds (domain allowlist); they fall back to local poster images.
+filming video cells works. The only external runtime dependencies are the
+Vimeo/YouTube embeds themselves (and the optional Google Analytics);
+occasional individual videos may still be private/deleted on Vimeo's side.
 
 ### Data structures: a field guide
 
@@ -297,7 +300,7 @@ A second pass (also 2026) fixed the data and playback layer:
   remaining `http://` iframe embed across all three scores to `https`
 
 See the per-score chronicles for details, verification results, and the
-known remaining limitations (domain-locked private Vimeo videos and
+known remaining limitations (occasionally private/deleted Vimeo videos and
 Unity InterAct scenes playing as viewers only).
 
 A third pass (2026) restored the timing data and finished the
@@ -331,13 +334,14 @@ What is still broken or unfinished, and what each item needs to move forward.
       `dh/dhay/player/scenes/`, `modules/dhay/data_inspect_tracks_01/`),
       and wired into all players. The restoration process is documented in
       `jbmf/MODERNIZATION.md` §7 and `dh/MODERNIZATION.md` §7.
-- [ ] **Private Vimeo videos (HTTP 403)** in `/jbmf` — as of 2026-11-06
-      **all** tested referers return 403 (arbitrary domains, `motionbank.org`
-      variants, `localhost`) — the earlier allowlist state
-      (`*.motionbank.org` → 200) is gone. The embed allowlist on Motion
-      Bank's Vimeo account was reportedly updated; re-verify once it has
-      propagated (test: `curl -e "https://<domain>/" -o /dev/null -w
-      "%{http_code}" https://player.vimeo.com/video/78808311/config`).
+- [x] **Vimeo videos play from any domain** — **resolved (2026-11-06)**:
+      the earlier `curl` 403s on `player.vimeo.com/…/config` that looked
+      like a domain allowlist were Cloudflare bot-blocking curl itself.
+      Verified in a real browser against `https://localhost:8443` (headless
+      Chromium): the vimeo cell iframe loads (HTTP 200), the player
+      modules load, and HLS segments stream from `skyfire.vimeocdn.com` —
+      and playback was confirmed manually across several `/jbmf` cells.
+      Individual videos may still be private/deleted on Vimeo's side.
 - [ ] **Two lost NTTF track-data files** — the data-inspect cell
       ("Inspecting track data") loads center-of-mass track files from the
       lab mirror; 20 of 22 were recovered, but these two already returned

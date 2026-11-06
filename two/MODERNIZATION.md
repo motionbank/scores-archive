@@ -34,7 +34,7 @@ Goal: make the score work when hosted under **any `https://` domain**.
 | Dependency | Status (Nov 2026) |
 |---|---|
 | `s3.amazonaws.com/motionbank-media/two/...` (text cells, mocap pages) | **alive, https-capable** (200 over https) |
-| `player.vimeo.com` videos | alive over https; **some videos return 401** (private/embed-restricted) |
+| `player.vimeo.com` videos | alive over https; plays from any domain (a few individual videos may be private/deleted → HTTP 401/404) |
 | Unity Web Player content | **dead technology** (see limitations) |
 
 ---
@@ -107,8 +107,9 @@ Goal: make the score work when hosted under **any `https://` domain**.
    text itself still renders (the scripts only drive a fit-to-size effect),
    but with fallback typography. Fix would require editing the files in the
    `motionbank-media` S3 bucket.
-3. **Some Vimeo videos return HTTP 401** (private / embed-restricted),
-   e.g. `79332844`; they cannot play regardless of hosting.
+3. **Some Vimeo videos return HTTP 401** (private / deleted),
+   e.g. `79332844`; they cannot play regardless of hosting. (Embeds
+   themselves are not domain-restricted — see `jbmf/MODERNIZATION.md` §6.)
 4. **22 corrupt cell JSON files** ("502 Bad Gateway" bodies) from the
    original data export.
 

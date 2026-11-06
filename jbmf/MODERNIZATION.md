@@ -34,7 +34,7 @@ score system (module names carry `.js` suffixes, a newer `require` shim):
 | Dependency | Status (Nov 2026) |
 |---|---|
 | `lab.motionbank.org/jbmf/...` (generator/performer/score-book modules) | **alive, https-capable** (200 over https) |
-| `player.vimeo.com` videos | alive over https; **some videos return 401** (private/embed-restricted) |
+| `player.vimeo.com` videos | alive over https; plays from any domain (a few individual videos may be private/deleted → HTTP 401/404) |
 | Google Fonts, jQuery CDN | alive, https-capable |
 
 ---
@@ -131,26 +131,28 @@ player URL and dual-origin allow-list.
   recoverable from a PM2 database dump. With one, the local-player treatment
   used for `/dh` (see [`dh/MODERNIZATION.md` § 6.2](../dh/MODERNIZATION.md))
   can be extended here.
-- **Private Vimeo cells — cause precisely identified (2026-11-07)**: the
-  294 `vimeo` cells in the current `api/jbmf` data are intact and their
-  videos are alive — they are **domain-locked, not deleted**. The Vimeo
-  player returned 403 with no referer or an arbitrary referer, and 200 with
-  a `*.motionbank.org` referer **or `https://localhost`** (verified against
-  e.g. vimeo.com/78808311, "jonathan-burrows interview 00-21-35"). Fix on
-  the Vimeo side: the videos belong to the Motion Bank account — add the
-  hosting domain to the embed allowlist (or lift the privacy restriction).
+- **Private Vimeo cells — resolved (2026-11-06)**: the 294 `vimeo` cells
+  in the current `api/jbmf` data are intact and their videos play from any
+  hosting domain. Earlier curl probes of `player.vimeo.com/…/config` that
+  returned 403 were **Cloudflare bot-blocking curl**, not a domain
+  allowlist: in a real browser the iframe loads (HTTP 200), player modules
+  load, and HLS segments stream from `skyfire.vimeocdn.com` — verified
+  headless against `https://localhost:8443` (cell 68204508, "both sitting
+  duet") and confirmed manually across several cells. Occasional single
+  videos may still be private/deleted on Vimeo's side.
   Historical note: the 2013 CMS Mongo dump (`motion_bank_score_for_archive`,
   db/dump `20131119_1823_all_scores_reimported`) shows the original jbmf
   score was built entirely on these same Vimeo cells (293 of them) before
   the Piecemaker-based cells were added; the vimeo-id set is identical to
   today's data.
-- **Vimeo allowlist update (2026-11-06)**: the allowlist on Motion Bank's
-  Vimeo account was reportedly changed; at re-verification on the same day
-  **all** tested referers return 403 (arbitrary domains, `motionbank.org`
-  variants, `localhost` — previously 200). Either the change has not
-  propagated through Vimeo's edge caches yet or the privacy setting needs
-  another look in the Vimeo admin. Root README tracks this as an open
-  item with the exact verification command.
+- **Vimeo "allowlist" update — diagnosis withdrawn (2026-11-06)**: the
+  same-day re-verification that showed 403 for *every* referer (including
+  `localhost` and `motionbank.org` variants) was measuring Cloudflare's
+  bot-blocking of `curl`, not Vimeo's embed settings. A real-browser test
+  the same day (headless Chromium against `https://localhost:8443`) shows
+  the player and HLS segments loading and **videos play from any domain** —
+  see "Private Vimeo cells — resolved" above. No Vimeo-side change is
+  needed.
 - The remaining performer/generator modules on `lab.motionbank.org` are alive
   over https and now load as mixed-content-free iframes. **They have since
   been vendored**: every child module is mirrored under `/modules/` and all
