@@ -100,11 +100,13 @@ jobs:
               exit 1
             fi
           done
-          # a real video from the media archive must be served
+          # a real video from the media archive must be served — nginx
+          # answers a byte-range request with 206 Partial Content (or 200
+          # without range support), both prove the media is in the image
           media_code=$(curl -s -o /dev/null -w '%{http_code}' -r 0-1024 \
             "http://localhost:8080/media/dh/piecemaker/D05T01_Janine_sync_AJA_1.mp4")
           echo "media range request -> $media_code"
-          if [ "$media_code" != "200" ]; then
+          if [ "$media_code" != "206" ] && [ "$media_code" != "200" ]; then
             echo "FAIL: media not served"
             exit 1
           fi
