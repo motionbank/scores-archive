@@ -30,6 +30,8 @@ COPY static /usr/share/nginx/html/static
 COPY system /usr/share/nginx/html/system
 COPY modules /usr/share/nginx/html/modules
 COPY media /usr/share/nginx/html/media
+# The /dh poster fallback is not part of the media archive — ship it from git.
+COPY assets/images/dh-missing-poster.jpg /usr/share/nginx/html/media/dh/app/cells/poster/full/missing.jpg
 
 EXPOSE 80
 

@@ -149,7 +149,7 @@
         })
       }, a.onerror = function() {
         l.$el.css({
-          "background-image": 'url("https://' + r.cloudFront.fileHost + r.cloudFront.baseUrl + '/cells/poster/full/missing.jpg")'
+          "background-image": 'url("/media/dh/app/cells/poster/full/missing.jpg")'
         })
       }, a.src = s
     }
