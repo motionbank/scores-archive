@@ -295,11 +295,17 @@ https://github.com/motionbank). The parts this site depends on:
 | Original per-score repositories (2013, pre-MoSys consolidation) | [`deborah-hay-online-score`](https://github.com/motionbank/deborah-hay-online-score), [`burrows-fargion-online-score`](https://github.com/motionbank/burrows-fargion-online-score), [`two-osu-online-score`](https://github.com/motionbank/two-osu-online-score) (built at OSU ACCAD) |
 | Related tools around the data | [`piecemaker1-tfc`](https://github.com/motionbank/piecemaker1-tfc) (PieceMaker 1, source of the PM1 `notimetofly` data), [`piecemaker2-api-migration`](https://github.com/motionbank/piecemaker2-api-migration) (PM1→PM2), [`piecemaker2-timeline`](https://github.com/motionbank/piecemaker2-timeline) and [`piecemaker2-live-annotator`](https://github.com/motionbank/piecemaker2-live-annotator) (annotation tools), [`bvh`](https://github.com/motionbank/bvh) (JS BVH mocap parser — same motion-capture material the track-data inspector shows), [`score-system-frontend-sample`](https://github.com/motionbank/score-system-frontend-sample) (example score front-end extension) |
 
-## Modernization (2026)
+## Modernization (November 5–6, 2026)
 
 The scores were built for `http://scores.motionbank.org` and no longer
-worked in modern browsers. All three were modernized to run from **any
-`https://` domain** with no hard-coded hosts:
+worked in modern browsers. This restoration stands on previous work by
+**Florian Jenett** (Motion Bank), who pulled the initial dump of the
+scores site — including the database export used to repair the data —
+from its previous hosting environment at MESO Frankfurt. All three
+modernization passes were then performed within roughly 24 hours:
+
+**First pass (Nov 5, 2026) — browser compatibility.** All three scores
+modernized to run from **any `https://` domain** with no hard-coded hosts:
 
 - removed mixed content (http font/CDN links, http iframe embeds → https)
 - the cross-frame messaging handshake (`domain=` URL parameter and
@@ -311,7 +317,7 @@ worked in modern browsers. All three were modernized to run from **any
   Google Analytics snippet
 - repaired a corrupted `two/index.html` tail
 
-A second pass (also 2026) fixed the data and playback layer:
+**Second pass (Nov 5–6, 2026) — data and playback layer:**
 
 - restored the 192 corrupted cell JSON files (nginx "502 Bad Gateway" bodies
   from the original scrape) from a February 2020 database export, with the
@@ -327,8 +333,7 @@ See the per-score chronicles for details, verification results, and the
 known remaining limitations (occasionally private/deleted Vimeo videos and
 Unity InterAct scenes playing as viewers only).
 
-A third pass (2026) restored the timing data and finished the
-self-hosting of all external resources:
+**Third pass (Nov 6, 2026) — timing data and full self-hosting:**
 
 - located and restored the original **Heroku `pg_dump`s** of the PM2
   databases (`jbmf-pm2`, `deborah-hay-pm2`, `notimetofly`) and exported
@@ -482,3 +487,18 @@ same-origin from `api/<score>/`).
 
 © The Forsythe Company / Motion Bank, 2013–2014. All rights reserved.
 Modernization changes: 2026.
+
+The entire modernization — analysis, data restoration from the archived
+Heroku database dumps, media scraping and self-hosting, player rewrites,
+Docker packaging and this documentation — was performed by **Pi Coding
+Agent using the GLM 5.3 Flash LLM hosted at JGU University Mainz by the
+KITeGG project at Mainz University of Applied Sciences**.
+
+## Per-score modernization chronicles
+
+The detailed history of every change — what was broken, why, and how it
+was restored — is documented score by score:
+
+- [`dh/MODERNIZATION.md`](dh/MODERNIZATION.md) — *Using the Sky* (Deborah Hay)
+- [`jbmf/MODERNIZATION.md`](jbmf/MODERNIZATION.md) — *Seven Duets* (Burrows/Fargion)
+- [`two/MODERNIZATION.md`](two/MODERNIZATION.md) — *TWO* (OSU ACCAD)
