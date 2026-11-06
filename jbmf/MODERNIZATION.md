@@ -131,6 +131,21 @@ player URL and dual-origin allow-list.
   recoverable from a PM2 database dump. With one, the local-player treatment
   used for `/dh` (see [`dh/MODERNIZATION.md` § 6.2](../dh/MODERNIZATION.md))
   can be extended here.
+- **Private Vimeo cells — cause precisely identified (2026-11-07)**: the
+  294 `vimeo` cells in the current `api/jbmf` data are intact and their
+  videos are alive — they are **domain-locked, not deleted**. The Vimeo
+  player returns 403 with no referer or an arbitrary referer, and 200 with
+  a `*.motionbank.org` referer **or `https://localhost`** (verified against
+  e.g. vimeo.com/78808311, "jonathan-burrows interview 00-21-35"). So these
+  cells play today from any `*.motionbank.org` domain or from localhost,
+  but not from arbitrary self-hosted domains. Fix on the Vimeo side: the
+  videos belong to the Motion Bank account — add the hosting domain to the
+  embed allowlist (or lift the privacy restriction). Historical note: the
+  2013 CMS Mongo dump (`motion_bank_score_for_archive`, db/dump
+  `20131119_1823_all_scores_reimported`) shows the original jbmf score was
+  built entirely on these same Vimeo cells (293 of them) before the
+  Piecemaker-based cells were added; the vimeo-id set is identical to
+  today's data.
 - The remaining performer/generator modules on `lab.motionbank.org` are alive
   over https and now load as mixed-content-free iframes. **They have since
   been vendored**: every child module is mirrored under `/modules/` and all
