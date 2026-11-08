@@ -149,11 +149,20 @@ per referenced video:
 - **/jbmf yt_annot_01 (7 cells)** — YouTube videos (interview excerpts,
   e.g. "Heads In Sets", "Marble machine") with time-stamped annotations
   that steer other cells; plays via the YouTube iframe API.
-- **/jbfm vimeo cells (294)** — the interview score proper. These play
-  directly from Vimeo's player (verified 2026-11-06: player + HLS segments
-  load and stream from any domain; the earlier "domain-locked" reading was
-  an artifact of Cloudflare bot-blocking curl, not referer enforcement).
-  See `jbmf/MODERNIZATION.md` §6.
+- **vimeo cells (381 across all scores; 294 in /jbmf)** — played
+  **locally** wherever the video could be recovered: 337 of the 379
+  referenced Vimeo ids (9 h of footage) were fetched into
+  `media/vimeo/<vimeo-id>.mp4` and play through the self-hosted bridge
+  module `modules/vimeo/local/` (Video.js player, same-origin, speaks the
+  old Vimeo API envelope: `ready`/`finish` events, `play`/
+  `addEventListener` methods — so the compiled shells only had their
+  `iframe-src` URL patched). The remaining 42 ids are gone from Vimeo
+  (40 × HTTP 401 private/deleted, 1 password-protected, 1 junk
+  placeholder); for those the bridge falls back to embedding the real
+  `player.vimeo.com` iframe and relays its events, preserving the old
+  behaviour. `on-finish` auto-advance chains (139 chained interview clips
+  in /jbmf) run entirely locally once the files are in `media/vimeo/`.
+  See `jbmf/MODERNIZATION.md` §8.
 - **/dh recording cells (49)** — *No Time To Fly* rehearsal takes
   (camera-angle pairs: wide `*_sync_AJA_1` + center
   `*_sync_Center_Small`). Served from `/media/dh/piecemaker/` through the
@@ -216,9 +225,10 @@ media/two/data/                  TWO text cells + infographics (from S3)
 
 The Docker image copies `media/` in at build time, so extract the archive
 **before** `docker build`. Without it, everything except the recording/
-filming video cells works. The only external runtime dependencies are the
-Vimeo/YouTube embeds themselves (and the optional Google Analytics);
-occasional individual videos may still be private/deleted on Vimeo's side.
+filming video cells works. The only external runtime dependencies left are
+the YouTube embeds, the real-Vimeo fallback for the 42 unrecoverable
+videos, and the optional Google Analytics (removed from all published
+pages — kept only in the archived original module sources).
 
 ### Data structures: a field guide
 
@@ -268,7 +278,7 @@ Cell types and who handles them:
 
 | Type | n | Handled by | Key fields / behaviour |
 |---|---|---|---|
-| `vimeo` | 381 | `cell-vimeo-view` | `vimeo-id` → builds the player.vimeo.com iframe; listens for Vimeo `finish` events to trigger `on-finish` links. |
+| `vimeo` | 381 | `cell-vimeo-view` | `vimeo-id` → iframe to the local bridge `modules/vimeo/local/` (Video.js; local MP4 from `media/vimeo/<id>.mp4`, real-Vimeo fallback with event relay); emits `ready`/`finish` in the old Vimeo API envelope so `on-finish` links fire unchanged. |
 | `context` | 86 | cell-image view | poster-image-only cells (background image, no interaction). |
 | `iframe` | 81 | `cell-iframe-view` + `cell-media-view` | `iframe-src` (Handlebars template, config-interpolated, gets `domain=<origin>` appended); opened lazily into an iframe; PostMessenger handshake. |
 | `visualization` | 53 | dh-specific view | `base-path`/`fixed-image`/`per-recording`/`per-scene` → builds the overlay PNG URL under `/media/dh/app/cells/visualization/…` (see `dh/MODERNIZATION.md` §7); switches with `>>set-scene`. |

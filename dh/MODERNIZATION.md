@@ -440,6 +440,16 @@ Recovery, recorded step by step:
 
 ---
 
+## Local Vimeo playback (2026-11-07)
+
+The dh vimeo cells (interview/context clips) now play through the shared
+local bridge `modules/vimeo/local/` (see `jbmf/MODERNIZATION.md` §8):
+local MP4 via Video.js with real-Vimeo fallback. The annotation→scene
+seeking flow (`>>set-scene` → `scenes/*.json` → Video.js `currentTime`)
+never involved Vimeo and is unchanged. The `play-next-*` fields on dh
+vimeo cells belong to the old landing-site bundle, which routes through
+the bridge as well.
+
 ## 8. How to run
 
 Any static file server pointed at the repository root, e.g.:

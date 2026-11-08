@@ -279,7 +279,47 @@ Headless Chromium against a local static server
 
 ---
 
-## 8. How to run
+## 8. Fourth pass, part 2 — local Vimeo playback (2026-11-07)
+
+The 294 vimeo cells (the interview score proper: auto-advancing chains of
+short Jonathan Burrows / Matteo Fargion clips) were the last large external
+dependency. They now play locally:
+
+- **Fetch**: all 379 referenced `vimeo-id`s were probed; 337 are still
+  public and were downloaded with `yt-dlp` into `media/vimeo/<id>.mp4`
+  (~9 h of footage, shipped in the media archive, not in git). 40 ids
+  return HTTP 401 (private/deleted on Vimeo's side), one is
+  password-protected (68520878), one is a junk placeholder (012345);
+  12 more were already known dead. These are unrecoverable without
+  Vimeo account access.
+- **Bridge module** `modules/vimeo/local/index.html`: an iframe page that
+  HEADs `/media/vimeo/<vimeo-id>.mp4`; if present it plays the local MP4
+  with the self-hosted Video.js stack (shared from `/dh/dhay/player/vendor/`),
+  if absent it embeds the real `player.vimeo.com` iframe (api=1) and
+  relays its events. It speaks the exact wire protocol the compiled
+  `cell-vimeo-view` expects from the old Vimeo player: child→parent events
+  `{"event":"ready"}` / `{"event":"finish"}` (PostMessenger
+  `nameAlias:'event'`), parent→child methods
+  `{"method":"addEventListener","value":"finish"}` / `{"method":"play"}`
+  (`nameAlias:'method'`). Loop semantics match Vimeo (looped clips never
+  emit `finish`).
+- **Shell patch** (one line each in `dh/`, `jbmf/`, `two/`
+  `javascripts/app-base.js`): the vimeo view's `iframe-src` now points at
+  `/modules/vimeo/local/?vimeo-id=…&autoplay=…&loop=…` instead of
+  `player.vimeo.com`; everything else (on-finish opening the next cell,
+  auto-advance chains) works unchanged. The root `index.html` trailer
+  embed was routed through the bridge as well.
+- **Verified** (headless Chromium, 14/14 + chain tests): local playback
+  with zero `player.vimeo.com` requests in jbmf/dh/two cells; real-Vimeo
+  fallback engages for dead ids; a chained clip finishing opens the next
+  chained cell, which then also plays locally.
+- **/dh note**: the annotation→scene seeking flow (`>>set-scene` →
+  `scenes/*.json` → Video.js `currentTime`) never involved Vimeo; the vimeo
+  cells in /dh are context clips. The `play-next-key/value` fields on dh
+  vimeo cells belong to the old landing-site bundle
+  (`assets/javascripts/app.js`), where they still work via the bridge.
+
+## 9. How to run
 
 ```sh
 python3 -m http.server 8765

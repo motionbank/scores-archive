@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Motion Bank - local Vimeo player (Video.js)</title>
+<!--
+  Local replacement for player.vimeo.com embeds across the three scores.
+
+  Why this exists:
+  - the score shells embed interview/context clips from Vimeo; as part of the
+    self-containment modernization these videos are fetched (where still
+    available) into /media/vimeo/<vimeo-id>.mp4 and played locally.
+  - this module keeps the exact wire protocol the compiled shells expect from
+    the old Vimeo player, so the shell bundles only need their iframe-src
+    URL changed, no other code touched:
+      * child -> parent events (nameAlias 'event'): {"event":"ready"}, {"event":"finish"}
+      * parent -> child methods (nameAlias 'method'): {"method":"addEventListener",
+        "value":"finish"|"ready"|...}, {"method":"play","value":""}
+    (dh/jbmf/two shells listen with PostMessenger nameAlias:'event' and react
+    to 'ready' and 'finish' to drive auto-advance chains / on-finish links.)
+  - local-first: if /media/vimeo/<vimeo-id>.mp4 exists it is played with the
+    self-hosted Video.js player stack (shared with the dhay recording player).
+    Otherwise the module falls back to embedding the real player.vimeo.com
+    iframe (with api=1) and relays its events to the parent, preserving the
+    previous behaviour for the videos that could not be recovered (401/private
+    upstream).
+
+  Query parameters:
+    vimeo-id  (required)  Vimeo numeric id; also the media file name stem.
+    autoplay  0|1 (default 1)
+    loop      0|1 (default 0)   looped videos never emit 'finish' (matches Vimeo)
+    domain    optional parent origin override; iframe is same-origin, so the
+              parent origin defaults to the module's own origin.
+
+  The iframe is same-origin, so messages can only come from our own origin
+  (plus an optional 'domain=' URL param, as sent by the score app).
+-->
+<script type="module" src="/dh/dhay/player/vendor/video.js"></script>
+<style>
+  html, body { margin:0; padding:0; width:100%; height:100%; background:#000; overflow:hidden; }
+  video-player, video-skin { display:block; width:100%; height:100%; }
+  video { width:100%; height:100%; background:#000; }
+  iframe { width:100%; height:100%; border:0; display:block; }
+</style>
+</head>
+<body>
+<video-player>
+  <video-skin>
+    <video id="video" playsinline preload="auto"></video>
+  </video-skin>
+</video-player>
+
+<script type="module">
+(function () {
+  'use strict';
+
+  var params = new URLSearchParams(window.location.search);
+  var vimeoId = params.get('vimeo-id');
+  var autoplay = params.get('autoplay') !== '0';
+  var loop = params.get('loop') === '1';
+
+  var ownOrigin = window.location.protocol + '//' + window.location.host;
+  var parentOrigin = ownOrigin;
+  if ( params.get('domain') ) {
+    try { parentOrigin = new URL(params.get('domain')).origin; } catch (e) { /* keep own */ }
+  }
+
+  var parentWindow = window.parent;
+  var finished = false;
+
+  // --- wire protocol: mirror the old Vimeo player envelopes -----------------
+
+  function sendEvent ( name, data ) {
+    // the shells listen with PostMessenger nameAlias:'event' (and default
+    // dataAlias:'data'); include both key shapes for maximal compatibility
+    var msg = { event: name, data: data === undefined ? '' : data,
+                method: name, value: data === undefined ? '' : data };
+    parentWindow.postMessage(JSON.stringify(msg), parentOrigin);
+  }
+
+  function sendMethod ( method, value ) {
+    parentWindow.postMessage(JSON.stringify({ method: method, value: value || '' }), parentOrigin);
+  }
+
+  window.addEventListener('message', function ( e ) {
+    if ( e.origin !== parentOrigin && e.origin !== ownOrigin ) return;
+    var msg;
+    try { msg = JSON.parse(e.data); } catch (err) { return; }
+    if ( !msg || typeof msg !== 'object' ) return;
+
+    var method = (typeof msg.method === 'string') ? msg.method
+               : (typeof msg.name === 'string') ? msg.name : null;
+    if ( !method ) return;
+    var value = (msg.value !== undefined) ? msg.value : msg.data;
+
+    switch ( method ) {
+      case 'addEventListener':
+        // we always emit ready/finish/play/pause; registering is a no-op,
+        // mirroring the behaviour the shells rely on
+        break;
+      case 'play':
+        playVideo();
+        break;
+      case 'pause':
+        video.pause();
+        break;
+      case 'seekTo':
+        if ( value !== undefined && value !== null && !isNaN(+value) ) video.currentTime = +value;
+        break;
+      case 'setVolume':
+        if ( !isNaN(+value) ) video.volume = Math.min(1, Math.max(0, +value));
+        break;
+    }
+  });
+
+  // --- local playback with the shared Video.js stack ------------------------
+
+  var video = document.getElementById('video');
+  var readySent = false;
+
+  function maybeReady () {
+    if ( readySent ) return;
+    readySent = true;
+    sendEvent('ready');
+    if ( autoplay ) playVideo();
+  }
+
+  function playVideo () {
+    var p = video.play();
+    if ( p && p.catch ) {
+      p.catch(function () {
+        // autoplay blocked (no user activation yet): show controls so the
+        // user can start playback inside the cell
+        video.controls = true;
+      });
+    }
+  }
+
+  function initLocal () {
+    video.src = '/media/vimeo/' + encodeURIComponent(vimeoId) + '.mp4';
+
+    video.addEventListener('loadeddata', maybeReady);
+    // if metadata arrives before our listener race-free: check on canplay too
+    video.addEventListener('canplay', maybeReady);
+
+    video.addEventListener('ended', function () {
+      if ( loop ) {
+        video.currentTime = 0;
+        playVideo();
+        return;
+      }
+      if ( finished ) return;
+      finished = true;
+      sendEvent('finish');
+    });
+
+    if ( video.readyState >= 2 ) maybeReady();
+  }
+
+  // --- fallback: embed the real Vimeo player and relay its events -----------
+
+  function initFallback () {
+    document.querySelector('video-player').style.display = 'none';
+    var iframe = document.createElement('iframe');
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('webkitallowfullscreen', '');
+    iframe.setAttribute('mozallowfullscreen', '');
+    iframe.src = 'https://player.vimeo.com/video/' + encodeURIComponent(vimeoId) +
+                 '?api=1&autoplay=' + (autoplay ? 1 : 0) + '&loop=' + (loop ? 1 : 0);
+    document.body.appendChild(iframe);
+
+    // the old Vimeo player posts {"event":...} / {"method":...} JSON to its
+    // direct parent (this page); forward everything to the shell unchanged
+    window.addEventListener('message', function ( e ) {
+      if ( e.source !== iframe.contentWindow ) return;
+      if ( e.origin !== 'https://player.vimeo.com' ) return;
+      var msg;
+      try { msg = JSON.parse(e.data); } catch (err) { return; }
+      if ( !msg || typeof msg !== 'object' ) return;
+      if ( msg.method === 'ready' && msg.event === undefined ) {
+        // some player versions use the method shape for events
+        msg.event = 'ready';
+      }
+      parentWindow.postMessage(e.data, parentOrigin);
+    });
+  }
+
+  // --- decide local vs fallback ----------------------------------------------
+
+  if ( !vimeoId ) {
+    console.warn('local vimeo player: missing "vimeo-id" parameter');
+    return;
+  }
+
+  fetch('/media/vimeo/' + encodeURIComponent(vimeoId) + '.mp4', { method: 'HEAD' })
+    .then(function ( r ) {
+      if ( r.ok ) { initLocal(); } else { initFallback(); }
+    })
+    .catch(function () { initFallback(); });
+})();
+</script>
+</body>
+</html>

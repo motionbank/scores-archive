@@ -211,6 +211,16 @@ https; vendoring them is optional future work).
 
 ---
 
+## 6c. Local Vimeo playback (2026-11-07)
+
+The vimeo cells in /two now play through the shared local bridge module
+`modules/vimeo/local/` (see `jbmf/MODERNIZATION.md` §8 for the full
+protocol rationale): local MP4 from `media/vimeo/<id>.mp4` via the
+self-hosted Video.js stack, with automatic fallback to the real
+`player.vimeo.com` embed for the ids that are gone from Vimeo
+(in /two most interview ids are private/deleted upstream — only 1 vimeo
+cell in the published sets is still recoverable, and it plays locally).
+
 ## 7. How to run
 
 ```sh
