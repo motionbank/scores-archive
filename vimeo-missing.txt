@@ -1,97 +1,101 @@
 Motion Bank Scores - missing / inaccessible Vimeo sources
-Generated 2026-11-07 (second revision). All 379 vimeo-id values referenced by
-the score cells were probed with yt-dlp twice: first without cookies, then
-again with browser session cookies (Firefox) after manual browser testing
-showed some 401s were cookie-gated, not dead.
+Generated 2026-11-07 (third revision). All 379 vimeo-id values referenced by
+the score cells were probed with yt-dlp in three passes:
+  1. without cookies              -> 337 playable
+  2. with Firefox session cookies ->  15 more playable (Vimeo 401s some
+     anonymous requests for videos that play fine in a browser)
+  3. cookies + matched user-agent ->   1 more playable (the Cloudflare
+     cf_clearance cookie is bound to the browser user-agent, so the UA
+     must match the browser the cookies came from)
 
-Summary: 379 referenced ids -> 352 playable (downloaded to media/vimeo/),
-         27 unavailable.
+Summary: 379 referenced ids -> 353 playable (downloaded to media/vimeo/),
+         26 unavailable.
 
-These 27 cannot be fetched anonymously even with session cookies. They are
-only recoverable through the Motion Bank Vimeo account (original-file
-export via the account owner or the Vimeo API "GET /me/videos?fields=download").
+These 26 cannot be fetched anonymously even with browser session cookies.
+A browser that solves the Cloudflare challenge MIGHT still play some of
+them; re-probe with cookies exported from that browser (UA-matched) if a
+video is known to play there. Otherwise they are only recoverable through
+the Motion Bank Vimeo account (original-file export via the account owner
+or the Vimeo API "GET /me/videos?fields=download").
 
 Note: for these ids the local player bridge (modules/vimeo/local/) falls
 back to embedding the real player.vimeo.com iframe, preserving the old
 behaviour (which shows a Vimeo error page for deleted/private videos).
 
 ==============================================================================
-1. HTTP 401 - private or deleted on Vimeo's side (25 ids)
+1. HTTP 401 - private or deleted on Vimeo's side (24 ids)
 ==============================================================================
 
- 1. vimeo-id 68713796
-    referenced by: /two cell 09965f716d6d6d8d093b0000 "Assisted Solo Performances, Mixed Responses"
-
- 2. vimeo-id 68873712
+ 1. vimeo-id 68873712
     referenced by: /two cell 39955f716d6d6d8d09180000 "Story State Improvisation"
 
- 3. vimeo-id 70337248
+ 2. vimeo-id 70337248
     referenced by: /two cell ff955f716d6d6d8d09390000 "Assisted Solos by All Three Dancers, Loose Impulse"
 
- 4. vimeo-id 70337250
+ 3. vimeo-id 70337250
     referenced by: /two cell 03965f716d6d6d8d093a0000 "Assisted Solo Demonstration"
 
- 5. vimeo-id 72917167
+ 4. vimeo-id 72917167
     referenced by: /two cell 31955f716d6d6d8d09160000 "Verge Redux Improvisation, Performance 1 (Wide Shot)"
 
- 6. vimeo-id 73247306
+ 5. vimeo-id 73247306
     referenced by: /two cell 29955f716d6d6d8d09150000 "Verge Redux Improvisation, Performance 2"
 
- 7. vimeo-id 76158457
+ 6. vimeo-id 76158457
     referenced by: /two cell 6ad90b726d30340763190000 "Solo Generated from Assisted Solos Exercise, Thomas"
 
- 8. vimeo-id 76171274
+ 7. vimeo-id 76171274
     referenced by: /two cell 59000a726d30340760190000 "Solo Generated from Assisted Solos Exercise, Sara"
 
- 9. vimeo-id 76171993
+ 8. vimeo-id 76171993
     referenced by: /two cell 951e07726d30340760170000 "Solo Generated from Assisted Solos Exercise, Mat"
 
-10. vimeo-id 76459471
+ 9. vimeo-id 76459471
     referenced by: /two cell 9a945f716d6d6d8d09010000 "Assisted Solo Performance, Mixed Strategies"
 
-11. vimeo-id 76640758
+10. vimeo-id 76640758
     referenced by: /two cell 1e965f716d6d6d8d09400000 "Solo Generated from Careful Scientist Strategy, Sara"
 
-12. vimeo-id 76708468
+11. vimeo-id 76708468
     referenced by: /two cell c2955f716d6d6d8d092a0000 "Solo Generated from Careful Scientist Strategy, Mat"
 
-13. vimeo-id 76720235
+12. vimeo-id 76720235
     referenced by: /two cell 22965f716d6d6d8d09410000 "Solo Generated from Careful Scientist Strategy, Thomas"
 
-14. vimeo-id 78740259
+13. vimeo-id 78740259
     referenced by: /two cell 45955f716d6d6d8d091b0000 "Risky Weight (Slow-Motion)"
 
-15. vimeo-id 78743974
+14. vimeo-id 78743974
     referenced by: /two cell 56955f716d6d6d8d091e0000 "Risky Weight within Drive State (Slow-Motion, Top View)"
 
-16. vimeo-id 79306499
+15. vimeo-id 79306499
     referenced by: /two cell 6e955f716d6d6d8d09220000 "Contrasting States Duet Difference Forms "
 
-17. vimeo-id 79332841
+16. vimeo-id 79332841
     referenced by: /two cell 4d965f716d6d6d8d094a0000 "Careful Scientist Exercise: Action 3"
 
-18. vimeo-id 79332842
+17. vimeo-id 79332842
     referenced by: /two cell 48965f716d6d6d8d09490000 "Careful Scientist Exercise: Action 2"
 
-19. vimeo-id 79332844
+18. vimeo-id 79332844
     referenced by: /two cell 5c955f716d6d6d8d091f0000 "Careful Scientist Exercise: Action 4"
 
-20. vimeo-id 79333219
+19. vimeo-id 79333219
     referenced by: /two cell 44965f716d6d6d8d09480000 "Careful Scientist Exercise: Action 1"
 
-21. vimeo-id 79403919
+20. vimeo-id 79403919
     referenced by: /two cell 61955f716d6d6d8d09200000 "Story State Difference Forms"
 
-22. vimeo-id 79403920
+21. vimeo-id 79403920
     referenced by: /two cell 69955f716d6d6d8d09210000 "Drive State Difference Forms"
 
-23. vimeo-id 79403921
+22. vimeo-id 79403921
     referenced by: /two cell 72955f716d6d6d8d09230000 "Story State Difference Lines"
 
-24. vimeo-id 79430538
+23. vimeo-id 79430538
     referenced by: /two cell ef955f716d6d6d8d09350000 "Solos by all Three Dancers Consecutively"
 
-25. vimeo-id 79434388
+24. vimeo-id 79434388
     referenced by: /two cell f3955f716d6d6d8d09360000 "Careful Scientist Demonstration by All Three Dancers"
 
 ==============================================================================
