@@ -150,17 +150,18 @@ per referenced video:
   e.g. "Heads In Sets", "Marble machine") with time-stamped annotations
   that steer other cells; plays via the YouTube iframe API.
 - **vimeo cells (381 across all scores; 294 in /jbmf)** — played
-  **locally** wherever the video could be recovered: 337 of the 379
-  referenced Vimeo ids (9 h of footage) were fetched into
+  **locally** wherever the video could be recovered: 352 of the 379
+  referenced Vimeo ids (~10.5 h of footage) were fetched into
   `media/vimeo/<vimeo-id>.mp4` and play through the self-hosted bridge
   module `modules/vimeo/local/` (Video.js player, same-origin, speaks the
   old Vimeo API envelope: `ready`/`finish` events, `play`/
   `addEventListener` methods — so the compiled shells only had their
-  `iframe-src` URL patched). The remaining 42 ids are gone from Vimeo
-  (40 × HTTP 401 private/deleted, 1 password-protected, 1 junk
-  placeholder); for those the bridge falls back to embedding the real
-  `player.vimeo.com` iframe and relays its events, preserving the old
-  behaviour. `on-finish` auto-advance chains (139 chained interview clips
+  `iframe-src` URL patched). The remaining 27 ids cannot be fetched
+  anonymously even with browser session cookies (25 × HTTP 401
+  private/deleted, 1 password-protected, 1 junk placeholder — see
+  `vimeo-missing.txt`); for those the bridge falls back to embedding the
+  real `player.vimeo.com` iframe and relays its events, preserving the
+  old behaviour. `on-finish` auto-advance chains (139 chained interview clips
   in /jbmf) run entirely locally once the files are in `media/vimeo/`.
   See `jbmf/MODERNIZATION.md` §8.
 - **/dh recording cells (49)** — *No Time To Fly* rehearsal takes

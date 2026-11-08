@@ -285,13 +285,16 @@ The 294 vimeo cells (the interview score proper: auto-advancing chains of
 short Jonathan Burrows / Matteo Fargion clips) were the last large external
 dependency. They now play locally:
 
-- **Fetch**: all 379 referenced `vimeo-id`s were probed; 337 are still
+- **Fetch**: all 379 referenced `vimeo-id`s were probed twice — first
+  without cookies, then again with browser session cookies after manual
+  browser testing showed some 401s were cookie-gated, not dead (same
+  class of false negative as the earlier Cloudflare-bot 403s). 352 are
   public and were downloaded with `yt-dlp` into `media/vimeo/<id>.mp4`
-  (~9 h of footage, shipped in the media archive, not in git). 40 ids
-  return HTTP 401 (private/deleted on Vimeo's side), one is
-  password-protected (68520878), one is a junk placeholder (012345);
-  12 more were already known dead. These are unrecoverable without
-  Vimeo account access.
+  (~10.5 h of footage, shipped in the media archive, not in git). The
+  27 that remain fail even with session cookies: 25 × HTTP 401
+  (private/deleted on Vimeo's side), one password-protected (68520878),
+  one junk placeholder (012345). Full list with referencing cells:
+  `vimeo-missing.txt`.
 - **Bridge module** `modules/vimeo/local/index.html`: an iframe page that
   HEADs `/media/vimeo/<vimeo-id>.mp4`; if present it plays the local MP4
   with the self-hosted Video.js stack (shared from `/dh/dhay/player/vendor/`),
