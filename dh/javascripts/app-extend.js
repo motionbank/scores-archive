@@ -148,9 +148,10 @@
           "background-image": 'url("' + s + '")'
         })
       }, a.onerror = function() {
-        l.$el.css({
-          "background-image": 'url("/media/dh/app/cells/poster/full/missing.jpg")'
-        })
+        // keep the last valid travel path (or the poster before the first
+        // one) — upstream never uploaded PNGs for a few scenes (e.g.
+        // "poem", "end"); blanking the cell to grey read as "broken"
+        console.log('visualization: no travel-path image for', s.split('/').pop());
       }, a.src = s
     }
   })

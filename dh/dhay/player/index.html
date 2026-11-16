@@ -54,6 +54,8 @@
   var parentWindow = null, parentOrigin = null;
   var config = null;
   var sceneTimes = null;          // optional map: title -> seconds
+  var sceneMarks = null;          // sorted [[seconds, title], ...] for tracking
+  var currentSceneTitle = null;   // last scene we announced to the shell
 
   var video = document.getElementById('video');
 
@@ -113,7 +115,18 @@
         if ( file && index[file] ) {
           return fetch('scenes/' + file + '.json')
             .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (map) { sceneTimes = map || null; })
+            .then(function (map) {
+        sceneTimes = map || null;
+        if ( sceneTimes ) {
+          // sorted mark list so timeupdate can track the current scene and
+          // announce scene changes to the shell (drives the travel-path
+          // visualization cells and the score text, as the old flowplayer
+          // module did via >>set-scene broadcasts)
+          sceneMarks = Object.keys(sceneTimes)
+            .map(function ( t ) { return [sceneTimes[t], t]; })
+            .sort(function ( a, b ) { return a[0] - b[0]; });
+        }
+      })
             .catch(function () { sceneTimes = null; });
         }
       })
@@ -142,6 +155,8 @@
 
   function setToScene (title) {
     if ( typeof title !== 'string' ) return;
+    // remember the announced scene so timeupdate won't re-announce it
+    currentSceneTitle = title;
     if ( sceneTimes && (title in sceneTimes) ) {
       video.currentTime = sceneTimes[title];
       var p = video.play();
@@ -153,6 +168,23 @@
                   ' \u2014 playback continues');
     }
   }
+
+  // announce scene changes to the shell while the video runs; the shell's
+  // dispatcher republishes this as dispatcher:>>set-scene (travel-path
+  // visualization cells) and forwards it to the other module iframes
+  // (score text follows playback)
+  video.addEventListener('timeupdate', function () {
+    if ( !sceneMarks || !sceneMarks.length ) return;
+    var t = video.currentTime, title = null;
+    for ( var i = 0; i < sceneMarks.length; i++ ) {
+      if ( sceneMarks[i][0] <= t ) title = sceneMarks[i][1];
+      else break;
+    }
+    if ( title && title !== currentSceneTitle ) {
+      currentSceneTitle = title;
+      send('>>set-scene', title);
+    }
+  });
 })();
 </script>
 </body>

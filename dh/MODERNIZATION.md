@@ -440,6 +440,22 @@ Recovery, recorded step by step:
 
 ---
 
+## Travel path follows playback (2026-11-09)
+
+Performer Insights-style sets pair recording cells with travel-path
+visualization cells (per-recording/per-scene PNGs). Two gaps closed:
+
+- The local Video.js player now announces scene changes during playback
+  (`>>set-scene` on `timeupdate`, driven by the `scenes/<file>.json`
+  timing map). The shell's dispatcher republishes these, so the travel
+  path updates as the video runs and the score text follows playback —
+  the behaviour the old flowplayer module provided. (Requires
+  Range-request serving for seeks; nginx does this, `python -m
+  http.server` does not.)
+- The visualization cell no longer blanks to the grey placeholder when a
+  scene PNG was never uploaded upstream (e.g. "poem", "end"); it keeps
+  the last valid travel path instead.
+
 ## Local Vimeo playback (2026-11-07)
 
 The dh vimeo cells (interview/context clips) now play through the shared
