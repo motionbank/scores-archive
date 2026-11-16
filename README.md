@@ -508,6 +508,21 @@ docker run --rm -p 8080:80 motionbank-scores
 # → http://localhost:8080/  (landing page; scores under /dh, /jbmf, /two)
 ```
 
+**Local development with externally stored media:** if `media/` is a
+symlink to another volume (it is ~14 GB with the vimeo footage),
+`docker build` cannot follow it out of the build context. Two helper
+scripts build a slim image *without* baked media and mount the symlink
+target read-only at runtime instead:
+
+```sh
+tools/docker-build-local.sh   # canonical Dockerfile minus the media layers
+tools/docker-run-local.sh     # runs :ssl with media mounted from the symlink target
+# → https://localhost:8443/  (SSL_PORT/HTTP_PORT env vars override 8443/8080)
+```
+
+CI/production builds are unaffected (there `media/` is a real directory
+extracted from the archive and baked into the image as before).
+
 The image is based on `nginx:1.27-alpine` and serves the whole site (score
 front-ends, `api/` JSON data, `system/` images) with gzip compression,
 sane cache headers, and a health check on `/`. Deploy it to any host or

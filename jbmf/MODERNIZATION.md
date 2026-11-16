@@ -281,6 +281,14 @@ Headless Chromium against a local static server
 
 ## 8. Fourth pass, part 2 — local Vimeo playback (2026-11-07)
 
+**Player UI note (2026-11-16):** the pm_player_01 cells shipped with no
+layout CSS (the old flowplayer stylesheet was never vendored), so videos
+letterboxed inside the cell. `modules/jbmf/generators/pm_player_01/
+stylesheets/app.css` now sizes html/body and the container full-bleed
+with `object-fit: cover`, matching the dhay player and the vimeo bridge
+(see `dh/MODERNIZATION.md` "Player cell UI" for the control-bar and
+rectangular-video fixes, which apply to the bridge too).
+
 The 294 vimeo cells (the interview score proper: auto-advancing chains of
 short Jonathan Burrows / Matteo Fargion clips) were the last large external
 dependency. They now play locally:

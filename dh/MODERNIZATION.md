@@ -466,6 +466,28 @@ visualization cells (per-recording/per-scene PNGs). Two gaps closed:
   their current overlay. If the manifest fails to load, views fall back
   to requesting blindly.
 
+## Player cell UI (2026-11-16)
+
+Three fixes to how videos sit inside score cells (dhay player and the
+shared vimeo bridge — same Video.js stack, fixes apply to both):
+
+- **Video fills the cell** (`object-fit: cover` on the `<video>` and,
+  for the old pm_player cells, the missing flowplayer layout CSS
+  re-added — see `jbmf/MODERNIZATION.md` §8).
+- **No playback-speed settings in the UI**: when autoplay is blocked the
+  players used to fall back to the browser's native controls, whose
+  Firefox menu exposes a speed item. Replaced by a minimal shared bar
+  (`dh/dhay/player/cell-controls.js`): play/pause, seek slider, time,
+  mute — no rate control. It is attached always (not only on autoplay
+  failure), auto-hides after ~2.5 s of playback and reappears on pointer
+  movement/pause.
+- **Rectangular video**: the vendored player skin rounds its container,
+  poster and video via `border-radius: 28px`. The skin exposes this as
+  `--media-video-border-radius: var(--media-border-radius, 28px)`, and
+  CSS custom properties inherit into the shadow root, so both player
+  pages zero it on the host element (`video-player, video-skin {
+  --media-border-radius: 0px }`).
+
 ## Local Vimeo playback (2026-11-07)
 
 The dh vimeo cells (interview/context clips) now play through the shared
