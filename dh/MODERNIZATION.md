@@ -453,8 +453,18 @@ visualization cells (per-recording/per-scene PNGs). Two gaps closed:
   Range-request serving for seeks; nginx does this, `python -m
   http.server` does not.)
 - The visualization cell no longer blanks to the grey placeholder when a
-  scene PNG was never uploaded upstream (e.g. "poem", "end"); it keeps
-  the last valid travel path instead.
+  scene PNG was never uploaded upstream; it keeps the last valid travel
+  path instead.
+- **Overlay availability manifest** (`dh/dhay/overlay-manifest.json`,
+  generated from the mirrored files): the recording and visualization
+  views consult it before requesting a scene overlay, so the 332 of 1246
+  (recording, scene) combinations Motion Bank never uploaded ("end" and
+  "joy + sorrow again" for nearly every take; D06T03 has 12/26, D06T04,
+  NTFF_A and 201306 have none — verified 404 on CloudFront *and* the
+  still-live lab.motionbank.org, i.e. the original site had the same
+  gaps) no longer produce a wall of console 404s. Cells simply keep
+  their current overlay. If the manifest fails to load, views fall back
+  to requesting blindly.
 
 ## Local Vimeo playback (2026-11-07)
 

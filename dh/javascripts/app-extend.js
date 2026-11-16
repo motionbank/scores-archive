@@ -74,10 +74,37 @@
       title: "Using The Sky"
     }
   }
+}), require.register("lib/overlay-manifest", function(_t, e, n) {
+  // Availability manifest for the dh scene-overlay PNGs. Motion Bank never
+  // uploaded 332 of the 1246 (recording, scene) combinations — mostly "end"
+  // and "joy + sorrow again" for every take, plus whole recordings (D06T03:
+  // 12/26, D06T04, NTTF_A, 201306: none). Checking the manifest first avoids
+  // a wall of 404s in the console and lets cells keep their last valid
+  // overlay instead of dead-requesting every scene change.
+  // Manifest: dh/dhay/overlay-manifest.json -> { recording: [...], visualization: [...] }
+  // (paths relative to /media/dh/app/cells/<key>/). If it cannot be loaded
+  // we fall back to requesting blindly (original behaviour).
+  var manifest = null;
+  var loading = null;
+  var load = function () {
+    if ( manifest || loading ) return loading;
+    loading = fetch('/dh/dhay/overlay-manifest.json')
+      .then(function ( r ) { return r.ok ? r.json() : null; })
+      .then(function ( j ) { manifest = j; return j; })
+      .catch(function () { manifest = null; return null; });
+    return loading;
+  };
+  load();
+  // returns true (exists), false (definitively missing) or null (unknown)
+  n.exports.has = function ( key, relpath ) {
+    if ( !manifest || !manifest[key] ) return null;
+    return manifest[key].indexOf(relpath) !== -1;
+  };
 }), require.register("views/cell-types/cell-recording-view", function(_t, e, n) {
   var i = e("views/cell-types/cell-iframe-view"),
     r = e("postmessenger"),
-    s = e("config/config");
+    s = e("config/config"),
+    ov = e("lib/overlay-manifest");
   n.exports = i.extend({
     getURLParameter: function(t) {
       t = t.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -90,13 +117,20 @@
       i.prototype.initialize.apply(this, arguments), this.template = e("views/templates/cell-types/cell-iframe");
       var t = this;
       r.on(">>set-scene", function(e) {
-        var n = s.cloudFront.fileHost + s.cloudFront.baseUrl + "/cells/recording/full/" + t.getURLParameter("file") + "-" + e.data.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-") + ".png",
-          i = new Image;
+        var slug = e.data.replace(/[^-a-z0-9]/gi, "-").replace(/-+/gi, "-"),
+          rel = "recording/full/" + t.getURLParameter("file") + "-" + slug + ".png",
+          url = s.cloudFront.fileHost + s.cloudFront.baseUrl + "/cells/" + rel;
+        if ( ov.has("recording", rel) === false ) {
+          // never uploaded upstream — keep the current overlay
+          console.log("recording: no overlay PNG for", rel.split("/").pop());
+          return;
+        }
+        var i = new Image;
         i.onload = function() {
-          t.$el.css("background-image", "url(" + n + ")")
+          t.$el.css("background-image", "url(" + url + ")")
         }, i.onerror = function() {
           t.$el.css("background-image", "url(" + t.model.getPosterImageURL() + ")")
-        }, i.src = n
+        }, i.src = url;
       }), r.on("set>fetch-answer", function(t) {
         console.log("recording: fetch-answer", t)
       })
@@ -115,7 +149,8 @@
   })
 }), require.register("views/cell-types/cell-visualization-view", function(_t, e, n) {
   var i = e("views/cell-view"),
-    r = (e("postmessenger"), e("config/config"));
+    r = (e("postmessenger"), e("config/config")),
+    ov = e("lib/overlay-manifest");
   n.exports = i.extend({
     currentRecording: null,
     currentScene: null,
@@ -152,7 +187,15 @@
         // one) — upstream never uploaded PNGs for a few scenes (e.g.
         // "poem", "end"); blanking the cell to grey read as "broken"
         console.log('visualization: no travel-path image for', s.split('/').pop());
-      }, a.src = s
+      };
+      var cellsPrefix = r.cloudFront.fileHost + r.cloudFront.baseUrl + "/cells/",
+        rel = 0 === s.indexOf(cellsPrefix) ? s.slice(cellsPrefix.length) : null;
+      if ( rel !== null && ov.has("visualization", rel) === false ) {
+        // never uploaded upstream — keep the current travel path, no request
+        console.log('visualization: no travel-path image for', s.split('/').pop());
+        return;
+      }
+      a.src = s
     }
   })
 }), require.register("views/templates/cover", function(_t, _e, n) {
