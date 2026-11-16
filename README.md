@@ -468,6 +468,18 @@ What is still broken or unfinished, and what each item needs to move forward.
       the matching `.dockerignore` exception** — **done**, including a fix
       for the healthcheck (dedicated plain-HTTP `/health` endpoint; the
       server-level 301 used to hijack it).
+- [ ] **Retrieve the 332 never-uploaded `/dh` scene overlays** — the PM2
+      dump *and* both original servers (CloudFront, lab.motionbank.org)
+      never had them: "end" and "joy + sorrow again" for nearly every
+      take, D06T03 only 12/26, and D06T04 / NTTF_A / the 201306 files
+      none at all. These must come from Motion Bank's original mocap
+      processing outputs (the render pipeline that produced
+      `travel-path/…` and `recording/full/…` PNGs). Non-blocking: the
+      overlay manifest (`dh/dhay/overlay-manifest.json`) makes the score
+      skip them and keep the last valid overlay, so playback and travel
+      paths work; only those scene transitions keep the previous image.
+      If obtained, drop them into `media/dh/app/cells/{recording,
+      visualization}/full/…` and regenerate the manifest.
 - [ ] **Framework modernization** (jQuery 2.0.3 / Backbone / Chaplin in the
       bundles) — deliberately out of scope so far; works in current browsers
       for what the scores use.
