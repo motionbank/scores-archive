@@ -25,10 +25,14 @@
     (plus an optional 'domain=' URL param, as sent by the score app).
 -->
 <script type="module" src="vendor/video.js"></script>
+<script type="module">
+  import { attachCellControls } from './cell-controls.js';
+  window.attachCellControls = attachCellControls;
+</script>
 <style>
   html, body { margin:0; padding:0; width:100%; height:100%; background:#000; overflow:hidden; }
   video-player, video-skin { display:block; width:100%; height:100%; }
-  video { width:100%; height:100%; background:#000; }
+  video { width:100%; height:100%; object-fit: cover; background:#000; }
 </style>
 </head>
 <body>
@@ -105,6 +109,11 @@
     var basePath = (config && config.pieceMaker && config.pieceMaker.basePath) || '/dh/piecemaker';
     video.src = fileHost + basePath + '/' + encodeURIComponent(file) + '.mp4';
 
+    // minimal control bar (play/pause, seek, time, mute — no playback-rate:
+    // the native Firefox controls would expose speed settings); auto-hides
+    // during playback, appears on hover/pause
+    window.attachCellControls(video);
+
     // scene timings are optional (PieceMaker API is gone): scenes/index.json
     // lists which videos have a timing map; if this video is listed, the
     // per-video map is loaded and '>>set-scene' seeks. Shipping the (empty)
@@ -138,13 +147,7 @@
 
     var attemptPlay = function () {
       var p = video.play();
-      if ( p && p.catch ) {
-        p.catch(function () {
-          // autoplay blocked (no user activation yet): show controls so the
-          // user can start playback inside the cell
-          video.controls = true;
-        });
-      }
+      if ( p && p.catch ) p.catch(function () {}); // stays controlled via the bar
     };
     if ( video.readyState >= 2 ) {
       attemptPlay();

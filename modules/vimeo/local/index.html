@@ -36,10 +36,14 @@
   (plus an optional 'domain=' URL param, as sent by the score app).
 -->
 <script type="module" src="/dh/dhay/player/vendor/video.js"></script>
+<script type="module">
+  import { attachCellControls } from '/dh/dhay/player/cell-controls.js';
+  window.attachCellControls = attachCellControls;
+</script>
 <style>
   html, body { margin:0; padding:0; width:100%; height:100%; background:#000; overflow:hidden; }
   video-player, video-skin { display:block; width:100%; height:100%; }
-  video { width:100%; height:100%; background:#000; }
+  video { width:100%; height:100%; object-fit: cover; background:#000; }
   iframe { width:100%; height:100%; border:0; display:block; }
 </style>
 </head>
@@ -129,15 +133,21 @@
     var p = video.play();
     if ( p && p.catch ) {
       p.catch(function () {
-        // autoplay blocked (no user activation yet): show controls so the
-        // user can start playback inside the cell
-        video.controls = true;
+        // autoplay blocked (no user activation yet): show the minimal
+        // control bar (no playback-rate UI — the native Firefox controls
+        // would expose speed settings)
+        window.attachCellControls(video);
       });
     }
   }
 
   function initLocal () {
     video.src = '/media/vimeo/' + encodeURIComponent(vimeoId) + '.mp4';
+
+    // minimal control bar (play/pause, seek, time, mute — no playback-rate:
+    // the native Firefox controls would expose speed settings); auto-hides
+    // during playback, appears on hover/pause
+    window.attachCellControls(video);
 
     video.addEventListener('loadeddata', maybeReady);
     // if metadata arrives before our listener race-free: check on canplay too
