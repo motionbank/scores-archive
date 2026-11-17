@@ -300,11 +300,13 @@ value, breaking iframe resolution outright — trimmed. Aggregate
 
 - **jbmf `pm_player_01` cells (140)**: that module resolves its video file via
   `vid=` from the dead `jbmf-pm2.herokuapp.com` API; the `vid → file` mapping
-  is unrecoverable from public sources (no Wayback captures of either PM2
-  API). If a PM2 database dump (events with `fields.file`, `fields.vid_service*`,
-  `fields['alt-angle-*']`, scene events) ever becomes available, the same
+  was unrecoverable from public sources (no Wayback captures of either PM2
+  API). ~~If a PM2 database dump ever becomes available, the same
   local-player treatment applied here can be extended to jbmf, and scene
-  timing maps for `/dh` can be generated as `scenes/<file>.json`.
+  timing maps for `/dh` can be generated as `scenes/<file>.json`.~~
+  **Resolved in the third pass (2026-11-06)**: the Heroku pg dumps were
+  found and restored; `pm_player_01` reads `api/jbmf/pm2/<vid>.json` and
+  `dh/dhay/player/scenes/<file>.json` exists (see § 7).
 - ~~CloudFront overlay images (`/dh/app/cells/…`) still 403; cells fall back
   to local poster images.~~ **Recovered in the third pass** — see § 7.
 
