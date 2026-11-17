@@ -39,9 +39,16 @@ rsync -a \
 rsync -a --exclude='.DS_Store' --exclude='._*' \
     "$SRC/app/imgs/" "$DEST/app/imgs/" 2>/dev/null || true
 
-echo ">> syncing piecemaker recordings"
-rsync -a --exclude='.DS_Store' --exclude='._*' \
-    "$SRC/piecemaker/" "$DEST/piecemaker/"
+echo ">> syncing piecemaker recordings (referenced takes only — the backup
+   also holds ~110 unreferenced camera variants / .ogv files, ~27 GB, that
+   the scores never request and that would bloat the archive)"
+for name in $(ls dh/dhay/player/scenes/*.json | xargs -n1 basename | grep -v '^index\.json$' | sed 's/\.json$//'); do
+    for f in "$SRC/piecemaker/$name.mp4"; do
+        [ -f "$f" ] || continue
+        dest="$DEST/piecemaker/$name.mp4"
+        [ -f "$dest" ] || { echo "   + $name.mp4"; cp "$f" "$dest"; }
+    done
+done
 
 echo ">> done. Regenerating the overlay availability manifest:"
 python3 dh/tools/regenerate-overlay-manifest.py "$DEST"

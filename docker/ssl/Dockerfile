@@ -25,4 +25,7 @@ EXPOSE 80 443
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
   CMD wget -qO- http://localhost/health >/dev/null 2>&1 || exit 1
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint-ssl.sh"]
+# The media entrypoint runs first (downloads/extracts media on first start
+# unless present or MEDIA_DOWNLOAD=0), then execs the SSL entrypoint.
+ENTRYPOINT ["/media-entrypoint.sh"]
+CMD ["/usr/local/bin/docker-entrypoint-ssl.sh"]

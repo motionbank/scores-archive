@@ -213,24 +213,30 @@ sha256sum -c motionbank-scores-media.tar.gz.sha256
 tar -xzf motionbank-scores-media.tar.gz -C /path/to/motionbank-scores-static
 ```
 
-GitHub CI (`.github/workflows/docker-image.yml`) pulls the archive from
-that URL at build time and verifies it against the published checksum
-(the build fails on mismatch), so the Docker image is built without any
-manual media setup.
+The Docker **container** pulls the archive from that URL on first start
+(`docker/media-entrypoint.sh`), verifies it against the published checksum
+(the container refuses to start on mismatch) and extracts it — no manual
+media setup needed. Mount a volume on `/usr/share/nginx/html/media` to
+persist the download across container recreation (see "Docker (nginx)"
+under *Running*); CI builds run with `MEDIA_DOWNLOAD=0` and assert the
+image ships media-free.
 
 After extraction the directory contains:
 
 ```
 media/dh/piecemaker/*.mp4        No Time To Fly recording takes + camera angles
+media/dh/app/cells/…             travel-path / recording overlay PNGs
+media/dh/vimeo/*.mp4             (via media/vimeo/) interview & context clips
 media/jbmf/piecemaker/*.mp4      Seven Duets filming takes + alternate angles
 media/two/data/                  TWO text cells + infographics (from S3)
+media/vimeo/*.mp4                all 464 referenced vimeo clips, local
 ```
 
-The Docker image copies `media/` in at build time, so extract the archive
-**before** `docker build`. Without it, everything except the recording/
-filming video cells works. The only external runtime dependencies left are
-the YouTube embeds, the real-Vimeo fallback for the 42 unrecoverable
-videos, and the optional Google Analytics (removed from all published
+Without media, everything except the video cells works. The only external
+runtime dependencies left are
+the YouTube embeds, the real-Vimeo fallback for the 21 third-party-owned
+videos (ACCAD OSU — see `vimeo-missing.txt`), and the optional Google
+Analytics (removed from all published
 pages — kept only in the archived original module sources).
 
 ### Data structures: a field guide
@@ -470,15 +476,21 @@ What is still broken or unfinished, and what each item needs to move forward.
       the matching `.dockerignore` exception** — **done**, including a fix
       for the healthcheck (dedicated plain-HTTP `/health` endpoint; the
       server-level 301 used to hijack it).
-- [ ] **Retrieve the 332 never-uploaded `/dh` scene overlays** — the PM2
-      dump *and* both original servers (CloudFront, lab.motionbank.org)
-      never had them: "end" and "joy + sorrow again" for nearly every
-      take, D06T03 only 12/26, and D06T04 / NTTF_A / the 201306 files
-      none at all. These must come from Motion Bank's original mocap
-      processing outputs (the render pipeline that produced
-      `travel-path/…` and `recording/full/…` PNGs). Non-blocking: the
-      overlay manifest (`dh/dhay/overlay-manifest.json`) makes the score
-      skip them and keep the last valid overlay, so playback and travel
+- [ ] **Retrieve the missing `/dh` scene overlays (~1,119 of 1,295
+      (recording, scene) pairs)** — the PM2 dump, both original servers
+      (CloudFront, lab.motionbank.org) and **the original production drive
+      backup** (`using_the_sky_media`, merged 2026-11-17, which also added
+      ~6,300 cell/poster assets and 26 previously-unavailable overlay
+      pairs) all lack the same scenes: "end" and "joy + sorrow again" for
+      the 20130601 mocap-session takes, most of D06T03/D06T04/NTTF_A —
+      strong evidence they were **never rendered** by the mocap pipeline.
+      Caveat: the production drive may not be the only backup — other
+      backups (deployment archives, render-farm outputs, Forsythe Company
+      / ACCAD archives) might still hold the missing PNGs, so this stays
+      open. Non-blocking: the overlay manifest
+      (`dh/dhay/overlay-manifest.json`, regenerate with
+      `dh/tools/regenerate-overlay-manifest.py`) makes the score skip
+      missing PNGs and keep the last valid overlay, so playback and travel
       paths work; only those scene transitions keep the previous image.
       If obtained, drop them into `media/dh/app/cells/{recording,
       visualization}/full/…` and regenerate the manifest.
@@ -506,24 +518,40 @@ python3 -m http.server 8765
 
 ```sh
 docker build -t motionbank-scores .
-docker run --rm -p 8080:80 motionbank-scores
+docker run -d -p 8080:80 -v motionbank-media:/usr/share/nginx/html/media motionbank-scores
 # → http://localhost:8080/  (landing page; scores under /dh, /jbmf, /two)
 ```
 
-**Local development with externally stored media:** if `media/` is a
-symlink to another volume (it is ~14 GB with the vimeo footage),
-`docker build` cannot follow it out of the build context. Two helper
-scripts build a slim image *without* baked media and mount the symlink
-target read-only at runtime instead:
+**The image ships without media** (the archive is ~20 GiB — baking it in
+broke CI build runners). On **first start** the container downloads the
+media archive from `MEDIA_URL` (default: the published URL above), verifies
+it against the published SHA-256 checksum, and extracts it into
+`/usr/share/nginx/html/media`. This happens **once** per container
+filesystem or volume — restarting the same container never re-downloads;
+recreated containers do, unless a persistent volume is mounted:
 
 ```sh
-tools/docker-build-local.sh   # canonical Dockerfile minus the media layers
+docker volume create motionbank-media
+docker run -d -p 8080:80 -v motionbank-media:/usr/share/nginx/html/media motionbank-scores
+```
+
+- The download takes a while on first start (~20 GiB); the site answers
+  once extraction is finished.
+- `MEDIA_DOWNLOAD=0` skips the download entirely (for offline smoke tests
+  or when you mount media from elsewhere).
+- `MEDIA_URL` points at a different archive if you mirror it yourself.
+- The checksum is verified against `$MEDIA_URL.sha256` before extraction;
+  a mismatch aborts the container.
+
+**Local development with externally stored media:** if `media/` in the
+repository is a symlink to another volume (it is ~14 GB with the vimeo
+footage), mounting it avoids the download entirely:
+
+```sh
+tools/docker-build-local.sh   # canonical media-free image
 tools/docker-run-local.sh     # runs :ssl with media mounted from the symlink target
 # → https://localhost:8443/  (SSL_PORT/HTTP_PORT env vars override 8443/8080)
 ```
-
-CI/production builds are unaffected (there `media/` is a real directory
-extracted from the archive and baked into the image as before).
 
 The image is based on `nginx:1.27-alpine` and serves the whole site (score
 front-ends, `api/` JSON data, `system/` images) with gzip compression,

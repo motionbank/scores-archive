@@ -6,7 +6,10 @@ Dockerfile
 .dockerignore
 docker/*
 !docker/nginx-default.conf
+!docker/media-entrypoint.sh
 !docker/ssl
-# `media/` IS baked into the image (Dockerfile: COPY media ...).
-# It is gitignored; restore it from the motionbank-media.tar archive
-# (see root README "Media self-hosting") before `docker build`.
+# `media/` is NOT baked into the image any more — the container's
+# entrypoint downloads/extracts it on first start (see README
+# "Media self-hosting"). Locally, media/ may be a symlink to an
+# external drive; Docker does not follow symlinks out of the build
+# context, which is fine since nothing copies it.
