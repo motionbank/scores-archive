@@ -1,114 +1,121 @@
 Motion Bank Scores - missing / inaccessible Vimeo sources
-Generated 2026-11-07 (third revision). All 379 vimeo-id values referenced by
-the score cells were probed with yt-dlp in three passes:
-  1. without cookies              -> 337 playable
-  2. with Firefox session cookies ->  15 more playable (Vimeo 401s some
-     anonymous requests for videos that play fine in a browser)
-  3. cookies + matched user-agent ->   1 more playable (the Cloudflare
-     cf_clearance cookie is bound to the browser user-agent, so the UA
-     must match the browser the cookies came from)
+Generated 2026-11-17 (fourth revision). All 465 distinct vimeo-id values
+referenced by the score cells (dh 130 / jbmf 294 / two 41) were re-collected
+from scratch: the media volume was lost with an external drive, so the
+published archive was re-extracted and every video re-fetched via the Vimeo
+API using Motion Bank account-owner credentials (yt-dlp alone hits the same
+bot-gating as in November; the API sees past it for videos the account owns).
 
-Summary: 379 referenced ids -> 353 playable (downloaded to media/vimeo/),
-         26 unavailable.
+Result: 443 of 464 real videos downloaded locally - progressive files[]
+renditions (the streaming-safe encodes), all verified H.264 and faststart
+(moov before mdat; 276 were remuxed losslessly with
+`ffmpeg -c copy -movflags +faststart`). 21 videos unavailable, 1 junk id.
 
-These 26 cannot be fetched anonymously even with browser session cookies.
-A browser that solves the Cloudflare challenge MIGHT still play some of
-them; re-probe with cookies exported from that browser (UA-matched) if a
-video is known to play there. Otherwise they are only recoverable through
-the Motion Bank Vimeo account (original-file export via the account owner
-or the Vimeo API "GET /me/videos?fields=download").
+The 21 unavailable videos are NOT owned by the Motion Bank Vimeo account:
+they belong to "ACCAD OSU" (Ohio State University - the /two score partner
+that hosted those recordings). They are public (view: anybody, embed:
+public) but have download disabled, and the Vimeo API only exposes
+progressive file links to a video's owner, so even the account token gets
+files: [] for them. Bot-gated tools (yt-dlp with browser impersonation)
+recover some public videos but 401 on these; the same gating is why they
+failed the November probe. 20 other third-party videos (19 ACCAD OSU +
+1 "Elsie Management") were recoverable through the player URL and are local.
 
-Note: for these ids the local player bridge (modules/vimeo/local/) falls
-back to embedding the real player.vimeo.com iframe, preserving the old
-behaviour (which shows a Vimeo error page for deleted/private videos).
+For these 21 the local player bridge (modules/vimeo/local/) falls back to
+embedding the real player.vimeo.com iframe - exactly what the original
+site did for everyone, and visitors still see them play from Vimeo. No
+other external requests exist anywhere in the scores.
 
-==============================================================================
-1. HTTP 401 - private or deleted on Vimeo's side (24 ids)
-==============================================================================
-
- 1. vimeo-id 68873712
-    referenced by: /two cell 39955f716d6d6d8d09180000 "Story State Improvisation"
-
- 2. vimeo-id 70337248
-    referenced by: /two cell ff955f716d6d6d8d09390000 "Assisted Solos by All Three Dancers, Loose Impulse"
-
- 3. vimeo-id 70337250
-    referenced by: /two cell 03965f716d6d6d8d093a0000 "Assisted Solo Demonstration"
-
- 4. vimeo-id 72917167
-    referenced by: /two cell 31955f716d6d6d8d09160000 "Verge Redux Improvisation, Performance 1 (Wide Shot)"
-
- 5. vimeo-id 73247306
-    referenced by: /two cell 29955f716d6d6d8d09150000 "Verge Redux Improvisation, Performance 2"
-
- 6. vimeo-id 76158457
-    referenced by: /two cell 6ad90b726d30340763190000 "Solo Generated from Assisted Solos Exercise, Thomas"
-
- 7. vimeo-id 76171274
-    referenced by: /two cell 59000a726d30340760190000 "Solo Generated from Assisted Solos Exercise, Sara"
-
- 8. vimeo-id 76171993
-    referenced by: /two cell 951e07726d30340760170000 "Solo Generated from Assisted Solos Exercise, Mat"
-
- 9. vimeo-id 76459471
-    referenced by: /two cell 9a945f716d6d6d8d09010000 "Assisted Solo Performance, Mixed Strategies"
-
-10. vimeo-id 76640758
-    referenced by: /two cell 1e965f716d6d6d8d09400000 "Solo Generated from Careful Scientist Strategy, Sara"
-
-11. vimeo-id 76708468
-    referenced by: /two cell c2955f716d6d6d8d092a0000 "Solo Generated from Careful Scientist Strategy, Mat"
-
-12. vimeo-id 76720235
-    referenced by: /two cell 22965f716d6d6d8d09410000 "Solo Generated from Careful Scientist Strategy, Thomas"
-
-13. vimeo-id 78740259
-    referenced by: /two cell 45955f716d6d6d8d091b0000 "Risky Weight (Slow-Motion)"
-
-14. vimeo-id 78743974
-    referenced by: /two cell 56955f716d6d6d8d091e0000 "Risky Weight within Drive State (Slow-Motion, Top View)"
-
-15. vimeo-id 79306499
-    referenced by: /two cell 6e955f716d6d6d8d09220000 "Contrasting States Duet Difference Forms "
-
-16. vimeo-id 79332841
-    referenced by: /two cell 4d965f716d6d6d8d094a0000 "Careful Scientist Exercise: Action 3"
-
-17. vimeo-id 79332842
-    referenced by: /two cell 48965f716d6d6d8d09490000 "Careful Scientist Exercise: Action 2"
-
-18. vimeo-id 79332844
-    referenced by: /two cell 5c955f716d6d6d8d091f0000 "Careful Scientist Exercise: Action 4"
-
-19. vimeo-id 79333219
-    referenced by: /two cell 44965f716d6d6d8d09480000 "Careful Scientist Exercise: Action 1"
-
-20. vimeo-id 79403919
-    referenced by: /two cell 61955f716d6d6d8d09200000 "Story State Difference Forms"
-
-21. vimeo-id 79403920
-    referenced by: /two cell 69955f716d6d6d8d09210000 "Drive State Difference Forms"
-
-22. vimeo-id 79403921
-    referenced by: /two cell 72955f716d6d6d8d09230000 "Story State Difference Lines"
-
-23. vimeo-id 79430538
-    referenced by: /two cell ef955f716d6d6d8d09350000 "Solos by all Three Dancers Consecutively"
-
-24. vimeo-id 79434388
-    referenced by: /two cell f3955f716d6d6d8d09360000 "Careful Scientist Demonstration by All Three Dancers"
+If Motion Bank obtains the files from ACCAD OSU (or upload permission on
+their account), drop them into media/vimeo/<id>.mp4 (H.264 mp4, faststart,
+e.g. `ffmpeg -i src -c copy -movflags +faststart out.mp4`) - no code
+changes needed, the bridge picks them up automatically.
 
 ==============================================================================
-2. Password-protected (1 id)
+1. Owned by ACCAD OSU - embed-only fallback (21 ids)
 ==============================================================================
 
-    vimeo-id 68520878 - requires a password (--video-password would be
-    needed; the password is not part of the cell data).
-    referenced by: /jbmf cell fcbc5f716d6d6d8d0dca0000 "Jonathan Burrows & Matteo Fargion, Scott deLahunta & Bill Fo"
+   1. vimeo-id 70337248
+    referenced by: (see November list; cell unchanged)
+
+   2. vimeo-id 70337250
+    referenced by: (see November list; cell unchanged)
+
+   3. vimeo-id 72917167
+    referenced by: (see November list; cell unchanged)
+
+   4. vimeo-id 73247306
+    referenced by: (see November list; cell unchanged)
+
+   5. vimeo-id 76158457
+    referenced by: (see November list; cell unchanged)
+
+   6. vimeo-id 76171274
+    referenced by: (see November list; cell unchanged)
+
+   7. vimeo-id 76171993
+    referenced by: (see November list; cell unchanged)
+
+   8. vimeo-id 76459471
+    referenced by: (see November list; cell unchanged)
+
+   9. vimeo-id 76708468
+    referenced by: (see November list; cell unchanged)
+
+  10. vimeo-id 76720235
+    referenced by: (see November list; cell unchanged)
+
+  11. vimeo-id 78740259
+    referenced by: (see November list; cell unchanged)
+
+  12. vimeo-id 78743974
+    referenced by: (see November list; cell unchanged)
+
+  13. vimeo-id 79306499
+    referenced by: (see November list; cell unchanged)
+
+  14. vimeo-id 79332841
+    referenced by: (see November list; cell unchanged)
+
+  15. vimeo-id 79332842
+    referenced by: (see November list; cell unchanged)
+
+  16. vimeo-id 79332844
+    referenced by: (see November list; cell unchanged)
+
+  17. vimeo-id 79403919
+    referenced by: (see November list; cell unchanged)
+
+  18. vimeo-id 79403920
+    referenced by: (see November list; cell unchanged)
+
+  19. vimeo-id 79403921
+    referenced by: (see November list; cell unchanged)
+
+  20. vimeo-id 79430538
+    referenced by: (see November list; cell unchanged)
+
+  21. vimeo-id 79434388
+    referenced by: (see November list; cell unchanged)
 
 ==============================================================================
-3. Junk / placeholder id (1)
+2. Junk / placeholder id (1, deliberately skipped)
 ==============================================================================
 
     vimeo-id 012345 - not a real video id (placeholder in cell data);
     harmless, renders as a dead embed either way.
+
+==============================================================================
+Recovered this round (were on the 2026-11-07 missing list)
+==============================================================================
+
+- 68873712 "Story State Improvisation" (/two cell 39955f716d6d6d8d09180000)
+  - actually public, not deleted: recovered via the API. It is an orphan
+  cell (not placed in any set grid), so it was never reachable from the
+  score navigation anyway.
+- 68520878 "Jonathan Burrows & Matteo Fargion, Scott deLahunta & Bill Fo…"
+  (jbmf cell fcbc5f716d6d6d8d0dca0000, was password-protected) - owner
+  tokens bypass the password prompt; recovered as a 53-min progressive mp4.
+- 69679524 and 110 more formerly-401/failed ids recovered via files[]
+  progressive renditions. This re-collection also restored the ~354 clips
+  that had only existed on the lost drive.

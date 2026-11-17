@@ -150,19 +150,22 @@ per referenced video:
   e.g. "Heads In Sets", "Marble machine") with time-stamped annotations
   that steer other cells; plays via the YouTube iframe API.
 - **vimeo cells (381 across all scores; 294 in /jbmf)** — played
-  **locally** wherever the video could be recovered: 353 of the 379
-  referenced Vimeo ids (~10.5 h of footage) were fetched into
+  **locally** wherever the video could be recovered: 443 of the 464
+  referenced Vimeo ids (~12 GB of footage) are fetched into
   `media/vimeo/<vimeo-id>.mp4` and play through the self-hosted bridge
   module `modules/vimeo/local/` (Video.js player, same-origin, speaks the
   old Vimeo API envelope: `ready`/`finish` events, `play`/
   `addEventListener` methods — so the compiled shells only had their
-  `iframe-src` URL patched). The remaining 26 ids cannot be fetched
-  anonymously even with browser session cookies (24 × HTTP 401
-  private/deleted, 1 password-protected, 1 junk placeholder — see
-  `vimeo-missing.txt`); for those the bridge falls back to embedding the
-  real `player.vimeo.com` iframe and relays its events, preserving the
-  old behaviour. `on-finish` auto-advance chains (139 chained interview clips
-  in /jbmf) run entirely locally once the files are in `media/vimeo/`.
+  `iframe-src` URL patched). All files are progressive-download-safe
+  (H.264, faststart; original/rendition quality via the Vimeo API with
+  account-owner credentials). The remaining 21 ids belong to third-party
+  accounts (ACCAD OSU, the /two score partner) that have download disabled
+  and expose no file links to non-owners (1 further id is a junk
+  placeholder — see `vimeo-missing.txt`); for those the bridge falls back
+  to embedding the real `player.vimeo.com` iframe and relays its events,
+  preserving the old behaviour (visitors still see them play from Vimeo).
+  `on-finish` auto-advance chains (139 chained interview clips in /jbmf)
+  run entirely locally once the files are in `media/vimeo/`.
   See `jbmf/MODERNIZATION.md` §8.
 - **/dh recording cells (49)** — *No Time To Fly* rehearsal takes
   (camera-angle pairs: wide `*_sync_AJA_1` + center

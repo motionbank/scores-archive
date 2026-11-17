@@ -297,12 +297,23 @@ dependency. They now play locally:
   without cookies, then again with browser session cookies after manual
   browser testing showed some 401s were cookie-gated, not dead (same
   class of false negative as the earlier Cloudflare-bot 403s). 352 are
-  public and were downloaded with `yt-dlp` into `media/vimeo/<id>.mp4`
-  (~10.5 h of footage, shipped in the media archive, not in git). The
-  27 that remain fail even with session cookies: 25 × HTTP 401
-  (private/deleted on Vimeo's side), one password-protected (68520878),
-  one junk placeholder (012345). Full list with referencing cells:
-  `vimeo-missing.txt`.
+  public and were downloaded with `yt-dlp` into `media/vimeo/<id>.mp4`.
+  The 27 that remained were 25 × HTTP 401 (private/deleted on Vimeo's
+  side), one password-protected (68520878), one junk placeholder (012345).
+  Full list with referencing cells: `vimeo-missing.txt`.
+
+  **2026-11-17 re-collection:** the media volume was lost with an external
+  drive, so every video was re-fetched — this time through the Vimeo API
+  with Motion Bank account-owner credentials, which bypass the bot-gating
+  entirely (the November "401 private/deleted" ids turned out to be
+  mostly public; only 21 really are third-party-owned: ACCAD OSU /two
+  recordings with download disabled, plus 1 Elsie Management video whose
+  files are likewise owner-only — 20 of those 21 third-party videos were
+  still recoverable via the player URL). 443 of 464 ids are now local
+  (~12 GB): original/progressive `files[]` renditions, all verified H.264
+  + faststart for progressive-download streaming, including the
+  password-protected 68520878 (owner tokens skip the password prompt).
+  Full current list: `vimeo-missing.txt`.
 - **Bridge module** `modules/vimeo/local/index.html`: an iframe page that
   HEADs `/media/vimeo/<vimeo-id>.mp4`; if present it plays the local MP4
   with the self-hosted Video.js stack (shared from `/dh/dhay/player/vendor/`),
