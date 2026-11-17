@@ -33,9 +33,9 @@ Goal: make the score work when hosted under **any `https://` domain**.
 
 | Dependency | Status (Nov 2026) |
 |---|---|
-| `s3.amazonaws.com/motionbank-media/two/...` (text cells, mocap pages) | **alive, https-capable** (200 over https) |
-| `player.vimeo.com` videos | alive over https; plays from any domain (a few individual videos may be private/deleted → HTTP 401/404) |
-| Unity Web Player content | **dead technology** (see limitations) |
+| `s3.amazonaws.com/motionbank-media/two/...` (text cells, mocap pages) | **alive, https-capable** (200 over https) — since mirrored to `media/two/data/` |
+| `player.vimeo.com` videos | alive over https; plays from any domain (a few individual videos may be private/deleted → HTTP 401/404) — **all 41 /two ids since recovered locally, see §6c** |
+| Unity Web Player content | **dead technology** (see limitations) — rebuilt as the local three.js viewer (see `modules/two/mocap/README.md`) |
 
 ---
 
@@ -211,15 +211,23 @@ https; vendoring them is optional future work).
 
 ---
 
-## 6c. Local Vimeo playback (2026-11-07)
+## 6c. Local Vimeo playback (2026-11-07, re-collected 2026-11-17)
 
 The vimeo cells in /two now play through the shared local bridge module
 `modules/vimeo/local/` (see `jbmf/MODERNIZATION.md` §8 for the full
 protocol rationale): local MP4 from `media/vimeo/<id>.mp4` via the
 self-hosted Video.js stack, with automatic fallback to the real
-`player.vimeo.com` embed for the ids that are gone from Vimeo
-(in /two most interview ids are private/deleted upstream — only 1 vimeo
-cell in the published sets is still recoverable, and it plays locally).
+`player.vimeo.com` embed for any id that is gone from Vimeo.
+
+At the time of the bridge round, most /two interview ids were
+private/deleted upstream and only 1 cell was recoverable. The
+**2026-11-17 re-collection** (Vimeo API with Motion Bank account-owner
+credentials) recovered essentially all of them; the last 21 ACCAD OSU
+recording ids (download disabled, files owner-only, embeds behind
+Cloudflare Turnstile) were captured as DASH manifests in the account
+holder's browser and rebuilt losslessly. All 41 /two vimeo ids now play
+locally (the ACCAD copies are 720p/1080p re-encodes of Vimeo's adaptive
+streams, not the original masters — see `vimeo-missing.txt`).
 
 ## 7. How to run
 

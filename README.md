@@ -150,8 +150,8 @@ per referenced video:
   e.g. "Heads In Sets", "Marble machine") with time-stamped annotations
   that steer other cells; plays via the YouTube iframe API.
 - **vimeo cells (381 across all scores; 294 in /jbmf)** — played
-  **locally** wherever the video could be recovered: all 464
-  referenced Vimeo ids (~14 GB of footage) are fetched into
+  **locally**: all 464 referenced Vimeo ids (~14 GB of footage) are
+  fetched into
   `media/vimeo/<vimeo-id>.mp4` and play through the self-hosted bridge
   module `modules/vimeo/local/` (Video.js player, same-origin, speaks the
   old Vimeo API envelope: `ready`/`finish` events, `play`/
@@ -163,6 +163,8 @@ per referenced video:
   the last 21, ACCAD OSU /two recordings behind Cloudflare-Turnstile-gated
   embeds, were recovered by capturing the embed player's DASH manifests in
   the account holder's browser and rebuilding them losslessly).
+  The landing page's tutorial video (80882239, never a score cell) was
+  recovered the same way, bringing `media/vimeo/` to 465 files.
   `on-finish` auto-advance chains (139 chained interview clips in /jbmf)
   run entirely locally once the files are in `media/vimeo/`.
   See `jbmf/MODERNIZATION.md` §8.
@@ -182,20 +184,22 @@ hosts were mirrored once and are no longer contacted at runtime:
 
 | Original | Mirrored to | State |
 |---|---|---|
-| `…/jbmf/piecemaker/*.mp4` (CloudFront, RTMP-era) | `media/jbmf/piecemaker/` | complete (419 files) |
-| `…/dh/piecemaker/*.mp4` (CloudFront) | `media/dh/piecemaker/` | complete (123 files) |
+| `…/jbmf/piecemaker/*.mp4` (CloudFront, RTMP-era) | `media/jbmf/piecemaker/` | complete (493 files) |
+| `…/dh/piecemaker/*.mp4` (CloudFront) | `media/dh/piecemaker/` | complete for all referenced takes (49 files; unreferenced camera variants dropped to keep the archive tractable) |
 | `s3.amazonaws.com/motionbank-media/two/…` | `media/two/data/` | complete |
 | `lab.motionbank.org/dhay/data/*_com.txt` | `modules/dhay/data_inspect_tracks_01/data/` | 20/22 (2 files already gone upstream) |
 | Open Sans (Google Fonts) | `assets/fonts/` | complete |
 | jQuery / froogaloop2 CDNs | vendored in each module | complete |
+| `media/dh/app/cells/` overlay + poster PNGs | (same tree) | CloudFront-probed 5,152 files + the `using_the_sky_media` production-backup merge (+6,329 cell/poster assets, 26 overlay pairs → 11,481 files) |
 
-The `media/` directory (~7 GB, 542 MP4s + text cells) is **not stored in
-`git`** — 25 of the dh full-take recordings exceed GitHub's 100 MB file
+The `media/` directory (~22 GB, ~1,000 MP4s + overlay/poster PNGs + text
+cells) is **not stored in
+`git`** — 41 files exceed GitHub's 100 MB file
 limit, and it would dominate the repository history. It ships as a
 separate archive, published at a fixed URL:
 
 > **https://assets.motionbank.org/archive/motionbank-scores-media.tar.gz**
-> (gzip-compressed tar, ~7.8 GiB)
+> (gzip-compressed tar, ~22 GiB)
 
 A SHA-256 checksum is published next to the archive
 (`…/archive/motionbank-scores-media.tar.gz.sha256`) — verify before
@@ -229,15 +233,18 @@ media/dh/app/cells/…             travel-path / recording overlay PNGs
 media/dh/vimeo/*.mp4             (via media/vimeo/) interview & context clips
 media/jbmf/piecemaker/*.mp4      Seven Duets filming takes + alternate angles
 media/two/data/                  TWO text cells + infographics (from S3)
-media/vimeo/*.mp4                all 464 referenced vimeo clips, local
+media/vimeo/*.mp4                all 465 vimeo clips (464 score ids + the
+                                 landing-page tutorial), local
 ```
 
 Without media, everything except the video cells works. The only external
-runtime dependencies left are
-the YouTube embeds, the real-Vimeo fallback for the 21 third-party-owned
-videos (ACCAD OSU — see `vimeo-missing.txt`), and the optional Google
-Analytics (removed from all published
-pages — kept only in the archived original module sources).
+runtime dependency left is
+the YouTube embeds (7 annotation + 1 pm_player service cells in /jbmf;
+all Vimeo playback is local — see `vimeo-missing.txt` for how the
+full set, including the Turnstile-gated ACCAD OSU recordings and the
+landing-page tutorial, was recovered). The optional Google
+Analytics was removed from all published
+pages — kept only in the archived original module sources.
 
 ### Data structures: a field guide
 
@@ -363,8 +370,9 @@ modernized to run from **any `https://` domain** with no hard-coded hosts:
   remaining `http://` iframe embed across all three scores to `https`
 
 See the per-score chronicles for details, verification results, and the
-known remaining limitations (occasionally private/deleted Vimeo videos and
-Unity InterAct scenes playing as viewers only).
+known remaining limitations (the Unity InterAct scenes play as viewers
+only; the private/deleted-Vimeo caveat was resolved in the later passes
+— see the fourth pass and `vimeo-missing.txt`).
 
 **Third pass (Nov 6, 2026) — timing data and full self-hosting:**
 
@@ -381,8 +389,9 @@ Unity InterAct scenes playing as viewers only).
   (CloudFront) → `/media/`, two's text/infographic cells (S3) →
   `/media/two/data/`, Open Sans → `assets/fonts/`, jQuery/froogaloop CDNs
   → vendored copies, `lab.motionbank.org` fullscreen helper + track data
-  → vendored. Only Vimeo/YouTube embeds (and the optional Google
-  Analytics snippet) remain external.
+→ vendored. Only the YouTube embeds remain external
+(Vimeo playback was fully localized in the fourth pass — see below and
+`vimeo-missing.txt`).
 
 ## Todo — open items
 
@@ -467,11 +476,13 @@ What is still broken or unfinished, and what each item needs to move forward.
 
 ### Infra / housekeeping
 
-- [x] **Media self-hosting (~7 GB)** — **done**: mirrored from CloudFront/S3,
-      all references repointed same-origin. The media set is not stored in
-      git (25 dh takes exceed GitHub's 100 MB limit); it ships as a separate
+- [x] **Media self-hosting (~22 GB)** — **done**: mirrored from CloudFront/S3,
+      all references repointed same-origin, and the merged production-backup
+      assets added. The media set is not stored in
+      git (41 files exceed GitHub's 100 MB limit); it ships as a separate
       archive with download + checksum documented in the root README
-      ("Media self-hosting"). Extract before `docker build`.
+      ("Media self-hosting"). The Docker container downloads it on first
+      start — no manual extract needed (mount a volume to persist it).
 - [x] **Commit `docker/ssl/` (self-signed-TLS image for local testing) and
       the matching `.dockerignore` exception** — **done**, including a fix
       for the healthcheck (dedicated plain-HTTP `/health` endpoint; the
@@ -502,15 +513,16 @@ What is still broken or unfinished, and what each item needs to move forward.
       certificate with a valid chain (LE YR1 → ISRG Root YR, verify OK),
       all three scores + API + vendored modules 200, media archive served
       with 206 range support (the container had downloaded it on first
-      start), vimeo clips local (200). Two follow-ups surfaced:
+      start), vimeo clips local (200), and full browser playback with
+      zero external requests. Two issues surfaced and were **resolved
+      same day**:
       (1) the merged-backup files rsynced from the HFS+ production drive
       carried owner-only modes (700/600) → nginx 403 after archive
       extraction; fixed in `tools/sync-dh-backup.sh` (--chmod=a+rX),
-      local media re-permissioned; the server media + archive need the
-      same `chmod -R a+rX` before recompressing/re-uploading.
-      (2) plain HTTP is served directly (no 80→443 redirect) — add the
-      redirect at the TLS-terminating proxy/LB, where the Let's Encrypt
-      certificate lives.
+      local + server media re-permissioned, archive recompressed,
+      re-uploaded and re-extracted (verified 200 again).
+      (2) the 80→443 redirect is installed at the TLS-terminating proxy
+      (verified 301).
 
 ## Running
 
@@ -533,7 +545,7 @@ docker run -d -p 8080:80 -v motionbank-media:/usr/share/nginx/html/media motionb
 # → http://localhost:8080/  (landing page; scores under /dh, /jbmf, /two)
 ```
 
-**The image ships without media** (the archive is ~20 GiB — baking it in
+**The image ships without media** (the archive is ~22 GiB — baking it in
 broke CI build runners). On **first start** the container downloads the
 media archive from `MEDIA_URL` (default: the published URL above), verifies
 it against the published SHA-256 checksum, and extracts it into
@@ -546,7 +558,7 @@ docker volume create motionbank-media
 docker run -d -p 8080:80 -v motionbank-media:/usr/share/nginx/html/media motionbank-scores
 ```
 
-- The download takes a while on first start (~20 GiB); the site answers
+- The download takes a while on first start (~22 GiB); the site answers
   once extraction is finished.
 - `MEDIA_DOWNLOAD=0` skips the download entirely (for offline smoke tests
   or when you mount media from elsewhere).
@@ -555,7 +567,8 @@ docker run -d -p 8080:80 -v motionbank-media:/usr/share/nginx/html/media motionb
   a mismatch aborts the container.
 
 **Local development with externally stored media:** if `media/` in the
-repository is a symlink to another volume (it is ~14 GB with the vimeo
+repository is a symlink to another volume (it is ~22 GB in total,
+~14 GB of which is the vimeo
 footage), mounting it avoids the download entirely:
 
 ```sh

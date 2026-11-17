@@ -230,10 +230,10 @@ A one-off script (querying the restored dump) wrote:
 ### Media
 
 The filming MP4s referenced by the score — 116 `fields.file` names plus 377
-alternate camera angles used via `&angle=` — are **all still on CloudFront**
-(542 files, ~7 GB) and were mirrored to `media/jbmf/piecemaker/`
-(shipped as a separate archive outside git; see root README). Only
-Vimeo/YouTube embeds remain external.
+alternate camera angles used via `&angle=` — were mirrored from
+CloudFront to `media/jbmf/piecemaker/` (493 files, ~1.4 GB; shipped as a
+separate archive outside git; see root README). Only YouTube embeds
+remain external — Vimeo was fully localized later (see §8).
 
 ### Verification
 
@@ -321,6 +321,10 @@ dependency. They now play locally:
   capturing the DASH manifests the embed streams; the highest rendition
   (720p/1080p H.264 + AAC) was rebuilt losslessly with `ffmpeg -c copy
   -movflags +faststart`. Every vimeo cell now plays locally.
+  **Later the same day** the landing page's tutorial video (80882239 —
+  embedded directly in the static `index.html`, never a score cell, hence
+  missed by the collection rounds) was recovered by the same CDP + DASH
+  method, bringing `media/vimeo/` to 465 files.
 - **Bridge module** `modules/vimeo/local/index.html`: an iframe page that
   HEADs `/media/vimeo/<vimeo-id>.mp4`; if present it plays the local MP4
   with the self-hosted Video.js stack (shared from `/dh/dhay/player/vendor/`),
@@ -356,5 +360,7 @@ python3 -m http.server 8765
 ```
 
 or the Docker image (see the repository README). Fully self-contained on any
-https domain (data from `api/jbmf/`, same origin) — except the `pm_player_01`
-cells noted above.
+https domain (data from `api/jbmf/`, same origin) — except the
+YouTube-service cells (`pm_player_01` with `vid_service: YouTube` and the
+`yt_annot_01` embeds), which intentionally keep using YouTube's iframe
+player.

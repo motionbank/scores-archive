@@ -457,14 +457,46 @@ visualization cells (per-recording/per-scene PNGs). Two gaps closed:
   path instead.
 - **Overlay availability manifest** (`dh/dhay/overlay-manifest.json`,
   generated from the mirrored files): the recording and visualization
-  views consult it before requesting a scene overlay, so the 332 of 1246
-  (recording, scene) combinations Motion Bank never uploaded ("end" and
+  views consult it before requesting a scene overlay, so the (recording,
+  scene) combinations Motion Bank never uploaded ("end" and
   "joy + sorrow again" for nearly every take; D06T03 has 12/26, D06T04,
   NTFF_A and 201306 have none — verified 404 on CloudFront *and* the
   still-live lab.motionbank.org, i.e. the original site had the same
-  gaps) no longer produce a wall of console 404s. Cells simply keep
-  their current overlay. If the manifest fails to load, views fall back
-  to requesting blindly.
+  gaps; the 2026-11-17 production-backup merge recovered 26 of these
+  pairs — see above) no longer produce a wall of console 404s. Cells
+  simply keep their current overlay. If the manifest fails to load,
+  views fall back to requesting blindly.
+
+## Production-backup merge (2026-11-17)
+
+The original production drive backup (`using_the_sky_media` — the
+"Using the Sky" production drive) was found and merged into the media
+tree via `tools/sync-dh-backup.sh`:
+
+- `media/dh/app/cells/` grew from 5,152 to **11,481 files** (+6,329:
+  poster images, alternate visualizations, backgrounds — more than
+  CloudFront ever served), and `media/dh/app/imgs/` (background images
+  referenced by the app CSS) came along.
+- **26 previously-missing overlay pairs** were recovered: 1,176 of the
+  1,295 (recording, scene) pairs now resolve (was 1,150); the overlay
+  availability manifest was regenerated from disk
+  (`dh/tools/regenerate-overlay-manifest.py` → 1,176 recording / 7,782
+  visualization entries).
+- Only the **49 referenced** piecemaker takes were taken from the backup
+  (it holds 159 takes/variants, ~27 GB, that the scores never request);
+  the media set keeps the CloudFront-mirrored referenced takes and skips
+  the unreferenced variants to keep the archive tractable.
+- The 20130601 "end"/"joy + sorrow again" renders are missing **even
+  from the production drive** — strong evidence they were never rendered
+  by the mocap pipeline (see the README todo; other backups may exist).
+- Modes lesson: the HFS+ backup carries owner-only permissions
+  (700/600); `rsync --chmod=a+rX` in the sync script now forces readable
+  modes, otherwise archived copies extract root-owned 700 in the
+  container and nginx 403s.
+
+Deployment with this media was verified end-to-end at
+`https://scores-archive.motionbank.org` (2026-11-17) — see the root
+README todo.
 
 ## Player cell UI (2026-11-16)
 
