@@ -335,14 +335,16 @@ https://github.com/motionbank). The parts this site depends on:
 | Original per-score repositories (2013, pre-MoSys consolidation) | [`deborah-hay-online-score`](https://github.com/motionbank/deborah-hay-online-score), [`burrows-fargion-online-score`](https://github.com/motionbank/burrows-fargion-online-score), [`two-osu-online-score`](https://github.com/motionbank/two-osu-online-score) (built at OSU ACCAD) |
 | Related tools around the data | [`piecemaker1-tfc`](https://github.com/motionbank/piecemaker1-tfc) (PieceMaker 1, source of the PM1 `notimetofly` data), [`piecemaker2-api-migration`](https://github.com/motionbank/piecemaker2-api-migration) (PM1→PM2), [`piecemaker2-timeline`](https://github.com/motionbank/piecemaker2-timeline) and [`piecemaker2-live-annotator`](https://github.com/motionbank/piecemaker2-live-annotator) (annotation tools), [`bvh`](https://github.com/motionbank/bvh) (JS BVH mocap parser — same motion-capture material the track-data inspector shows), [`score-system-frontend-sample`](https://github.com/motionbank/score-system-frontend-sample) (example score front-end extension) |
 
-## Modernization (November 5–6, 2026)
+## Modernization (November 5–18, 2026)
 
 The scores were built for `http://scores.motionbank.org` and no longer
 worked in modern browsers. This restoration stands on previous work by
 **Florian Jenett** (Motion Bank), who pulled the initial dump of the
 scores site — including the database export used to repair the data —
-from its previous hosting environment at MESO Frankfurt. All three
-modernization passes were then performed within roughly 24 hours:
+from its previous hosting environment at MESO Frankfurt. The first
+three passes were performed in a single two-day burst; several further
+rounds followed over the next two weeks (all dates below are commit
+dates in this repository's git history):
 
 **First pass (Nov 5, 2026) — browser compatibility.** All three scores
 modernized to run from **any `https://` domain** with no hard-coded hosts:
@@ -357,7 +359,7 @@ modernized to run from **any `https://` domain** with no hard-coded hosts:
   Google Analytics snippet
 - repaired a corrupted `two/index.html` tail
 
-**Second pass (Nov 5–6, 2026) — data and playback layer:**
+**Second pass (Nov 5, 2026) — data and playback layer:**
 
 - restored the 192 corrupted cell JSON files (nginx "502 Bad Gateway" bodies
   from the original scrape) from a February 2020 database export, with the
@@ -386,12 +388,46 @@ only; the private/deleted-Vimeo caveat was resolved in the later passes
 - **`/dh` scene timing maps** generated from the dump — text-score scene
   links and overlay switching seek the recordings again
 - **all remaining external hosts mirrored and repointed**: piecemaker MP4s
-  (CloudFront) → `/media/`, two's text/infographic cells (S3) →
-  `/media/two/data/`, Open Sans → `assets/fonts/`, jQuery/froogaloop CDNs
-  → vendored copies, `lab.motionbank.org` fullscreen helper + track data
-→ vendored. Only the YouTube embeds remain external
-(Vimeo playback was fully localized in the fourth pass — see below and
+(CloudFront) → `/media/`, two's text/infographic cells (S3) →
+`/media/two/data/`, Open Sans → `assets/fonts/`, jQuery/froogaloop CDNs
+→ vendored copies, `lab.motionbank.org` fullscreen helper + track data
+→ vendored. Only the YouTube embeds remain external (Vimeo playback
+was fully localized in the fourth pass — see below and
 `vimeo-missing.txt`).
+
+**Fourth pass (Nov 9, 2026) — local Vimeo playback:**
+
+- built the self-hosted bridge module `modules/vimeo/local/`
+(Video.js, same-origin, speaks the old Vimeo API envelope) and patched
+every score shell's `iframe-src` to it — one line per score (see
+`jbmf/MODERNIZATION.md` §8)
+- collected 353 of the 379 then-known Vimeo ids with `yt-dlp` + browser
+session cookies into `media/vimeo/<vimeo-id>.mp4`; the remainder were
+catalogued in `vimeo-missing.txt`
+
+**Later rounds (Nov 16–18, 2026) — finishing touches and completion:**
+
+- **travel path follows playback** and the **overlay availability
+manifest** (skip never-uploaded scene PNGs instead of console-404
+noise) (Nov 16 — see `dh/MODERNIZATION.md`)
+- **player cell UI round**: `object-fit: cover`, a minimal shared
+control bar (play/pause/seek/time/mute — no rate control), rectangular
+video (`--media-border-radius: 0`) (Nov 16)
+- **CI publishes `ghcr.io/<owner>/<repo>:latest`** on every push to main;
+the media moved out of the image — the container downloads the archive
+on first start (Nov 16–17)
+- **complete Vimeo re-collection**: the media volume was lost with an
+external drive; a re-fetch via the Vimeo API with account-owner
+credentials recovered 443/464, the last 21 (ACCAD OSU, Turnstile-gated)
+were ripped from their embeds via DASH-manifest capture, and the
+landing page's tutorial video (80882239) followed — 465 clips local
+(Nov 17–18; full history in `vimeo-missing.txt`)
+- **`/dh` production backup merge** (`using_the_sky_media`): +6,329
+cell/poster assets, +26 overlay pairs, media tree → 11,481 cell files
+(Nov 17 — see `dh/MODERNIZATION.md`)
+- **deploy-time verification** at `https://scores-archive.motionbank.org`
+— valid Let's Encrypt chain, all scores 200, media range requests,
+full browser playback with zero external requests (Nov 17–18)
 
 ## Todo — open items
 

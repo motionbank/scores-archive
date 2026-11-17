@@ -5,7 +5,7 @@ plus 1 junk placeholder id 012345) now play locally from
 media/vimeo/<vimeo-id>.mp4.
 
 History of the three collection rounds:
-- 2026-11-07: yt-dlp with Firefox session cookies recovered 353/379; 26
+- 2026-11-09: yt-dlp with Firefox session cookies recovered 353/379; 26
   inaccessible (bot-gating misread as private/deleted).
 - 2026-11-17 round 1: re-collection via the Vimeo API with Motion Bank
   account-owner credentials (the media volume was lost with an external

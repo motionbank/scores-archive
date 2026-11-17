@@ -211,7 +211,7 @@ https; vendoring them is optional future work).
 
 ---
 
-## 6c. Local Vimeo playback (2026-11-07, re-collected 2026-11-17)
+## 6c. Local Vimeo playback (2026-11-09, re-collected 2026-11-17)
 
 The vimeo cells in /two now play through the shared local bridge module
 `modules/vimeo/local/` (see `jbmf/MODERNIZATION.md` §8 for the full

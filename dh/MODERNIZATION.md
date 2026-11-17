@@ -440,7 +440,7 @@ Recovery, recorded step by step:
 
 ---
 
-## Travel path follows playback (2026-11-09)
+## Travel path follows playback (2026-11-16)
 
 Performer Insights-style sets pair recording cells with travel-path
 visualization cells (per-recording/per-scene PNGs). Two gaps closed:
@@ -520,7 +520,7 @@ shared vimeo bridge — same Video.js stack, fixes apply to both):
   pages zero it on the host element (`video-player, video-skin {
   --media-border-radius: 0px }`).
 
-## Local Vimeo playback (2026-11-07)
+## Local Vimeo playback (2026-11-09)
 
 The dh vimeo cells (interview/context clips) now play through the shared
 local bridge `modules/vimeo/local/` (see `jbmf/MODERNIZATION.md` §8):

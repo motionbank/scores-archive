@@ -279,7 +279,7 @@ Headless Chromium against a local static server
 
 ---
 
-## 8. Fourth pass, part 2 — local Vimeo playback (2026-11-07)
+## 8. Fourth pass, part 2 — local Vimeo playback (2026-11-09)
 
 **Player UI note (2026-11-16):** the pm_player_01 cells shipped with no
 layout CSS (the old flowplayer stylesheet was never vendored), so videos
