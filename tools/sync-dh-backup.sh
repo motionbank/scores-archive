@@ -12,9 +12,8 @@
 #   defaults: /Volumes/transport/using_the_sky_media  →  <repo>/media/dh
 # (or the symlink target, if media/ points at an external drive)
 #
-# After merging, the overlay availability manifest must be regenerated
-# (this script does it via tools/list-overlay-pngs.py --from-media, or
-# falls back to reminding you).
+# After merging, the overlay availability manifest is regenerated
+# automatically via dh/tools/regenerate-overlay-manifest.py.
 set -e
 cd "$(dirname "$0")/.."
 
@@ -29,14 +28,16 @@ DEST="$(cd media && pwd)/dh"
 
 echo ">> syncing app/cells + app/imgs from $SRC"
 mkdir -p "$DEST/app"
+# --chmod=a+rX,go-w: the backup's HFS+ modes are 700/600 (owner-only); without
+# this, tarred copies extract root-owned 700 in the container and nginx 403s.
 # macOS-safe: skip Finder/Spotlight junk
-rsync -a \
+rsync -a --chmod=a+rX,go-w \
     --exclude='.DS_Store' --exclude='._*' \
     --exclude='.Spotlight-V100' --exclude='.Trashes' \
     --exclude='.fseventsd' --exclude='.DocumentRevisions-V100' \
     --exclude='.TemporaryItems' \
     "$SRC/app/cells/" "$DEST/app/cells/"
-rsync -a --exclude='.DS_Store' --exclude='._*' \
+rsync -a --chmod=a+rX,go-w --exclude='.DS_Store' --exclude='._*' \
     "$SRC/app/imgs/" "$DEST/app/imgs/" 2>/dev/null || true
 
 echo ">> syncing piecemaker recordings (referenced takes only — the backup
@@ -46,7 +47,7 @@ for name in $(ls dh/dhay/player/scenes/*.json | xargs -n1 basename | grep -v '^i
     for f in "$SRC/piecemaker/$name.mp4"; do
         [ -f "$f" ] || continue
         dest="$DEST/piecemaker/$name.mp4"
-        [ -f "$dest" ] || { echo "   + $name.mp4"; cp "$f" "$dest"; }
+        [ -f "$dest" ] || { echo "   + $name.mp4"; cp "$f" "$dest"; chmod a+r "$dest"; }
     done
 done
 
