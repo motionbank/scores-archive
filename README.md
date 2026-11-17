@@ -150,20 +150,19 @@ per referenced video:
   e.g. "Heads In Sets", "Marble machine") with time-stamped annotations
   that steer other cells; plays via the YouTube iframe API.
 - **vimeo cells (381 across all scores; 294 in /jbmf)** — played
-  **locally** wherever the video could be recovered: 443 of the 464
-  referenced Vimeo ids (~12 GB of footage) are fetched into
+  **locally** wherever the video could be recovered: all 464
+  referenced Vimeo ids (~14 GB of footage) are fetched into
   `media/vimeo/<vimeo-id>.mp4` and play through the self-hosted bridge
   module `modules/vimeo/local/` (Video.js player, same-origin, speaks the
   old Vimeo API envelope: `ready`/`finish` events, `play`/
   `addEventListener` methods — so the compiled shells only had their
   `iframe-src` URL patched). All files are progressive-download-safe
   (H.264, faststart; original/rendition quality via the Vimeo API with
-  account-owner credentials). The remaining 21 ids belong to third-party
-  accounts (ACCAD OSU, the /two score partner) that have download disabled
-  and expose no file links to non-owners (1 further id is a junk
-  placeholder — see `vimeo-missing.txt`); for those the bridge falls back
-  to embedding the real `player.vimeo.com` iframe and relays its events,
-  preserving the old behaviour (visitors still see them play from Vimeo).
+  account-owner credentials). 1 further id is a junk
+  placeholder (see `vimeo-missing.txt` for the full collection history —
+  the last 21, ACCAD OSU /two recordings behind Cloudflare-Turnstile-gated
+  embeds, were recovered by capturing the embed player's DASH manifests in
+  the account holder's browser and rebuilding them losslessly).
   `on-finish` auto-advance chains (139 chained interview clips in /jbmf)
   run entirely locally once the files are in `media/vimeo/`.
   See `jbmf/MODERNIZATION.md` §8.

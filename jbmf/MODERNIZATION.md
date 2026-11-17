@@ -309,11 +309,18 @@ dependency. They now play locally:
   mostly public; only 21 really are third-party-owned: ACCAD OSU /two
   recordings with download disabled, plus 1 Elsie Management video whose
   files are likewise owner-only — 20 of those 21 third-party videos were
-  still recoverable via the player URL). 443 of 464 ids are now local
-  (~12 GB): original/progressive `files[]` renditions, all verified H.264
+  still recoverable via the player URL). 464 of 464 ids are now local
+  (~14 GB): original/progressive `files[]` renditions, all verified H.264
   + faststart for progressive-download streaming, including the
   password-protected 68520878 (owner tokens skip the password prompt).
   Full current list: `vimeo-missing.txt`.
+
+  **Final round (same day):** the last 21 (ACCAD OSU /two recordings)
+  were recovered by opening the real Vimeo embed in the account holder's
+  own browser — which alone passes Cloudflare's Turnstile gate — and
+  capturing the DASH manifests the embed streams; the highest rendition
+  (720p/1080p H.264 + AAC) was rebuilt losslessly with `ffmpeg -c copy
+  -movflags +faststart`. Every vimeo cell now plays locally.
 - **Bridge module** `modules/vimeo/local/index.html`: an iframe page that
   HEADs `/media/vimeo/<vimeo-id>.mp4`; if present it plays the local MP4
   with the self-hosted Video.js stack (shared from `/dh/dhay/player/vendor/`),
