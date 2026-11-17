@@ -497,9 +497,20 @@ What is still broken or unfinished, and what each item needs to move forward.
 - [ ] **Framework modernization** (jQuery 2.0.3 / Backbone / Chaplin in the
       bundles) — deliberately out of scope so far; works in current browsers
       for what the scores use.
-- [ ] **Deploy-time verification on a real https host** — local testing ran
-      on self-signed TLS; a check against the production domain (and its
-      certificate chain / CDN headers) is still recommended.
+- [x] **Deploy-time verification on a real https host** — verified at
+      `https://scores-archive.motionbank.org` (2026-11-17): Let's Encrypt
+      certificate with a valid chain (LE YR1 → ISRG Root YR, verify OK),
+      all three scores + API + vendored modules 200, media archive served
+      with 206 range support (the container had downloaded it on first
+      start), vimeo clips local (200). Two follow-ups surfaced:
+      (1) the merged-backup files rsynced from the HFS+ production drive
+      carried owner-only modes (700/600) → nginx 403 after archive
+      extraction; fixed in `tools/sync-dh-backup.sh` (--chmod=a+rX),
+      local media re-permissioned; the server media + archive need the
+      same `chmod -R a+rX` before recompressing/re-uploading.
+      (2) plain HTTP is served directly (no 80→443 redirect) — add the
+      redirect at the TLS-terminating proxy/LB, where the Let's Encrypt
+      certificate lives.
 
 ## Running
 
