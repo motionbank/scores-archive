@@ -36,7 +36,18 @@ if [ "${MEDIA_DOWNLOAD:-1}" != "0" ] && ! have_media; then
 
     echo ">> verifying checksum ..."
     wget -q -O /tmp/media.tar.gz.sha256 "$MEDIA_URL.sha256"
-    (cd /tmp && sha256sum -c media.tar.gz.sha256)
+    # The published .sha256 names the archive "motionbank-scores-media.tar.gz"
+    # but our download is /tmp/media.tar.gz — compare hashes directly instead
+    # of delegating to `sha256sum -c` (which keys on the filename).
+    expected=$(cut -d' ' -f1 /tmp/media.tar.gz.sha256 | head -n1)
+    actual=$(sha256sum "$TARBALL" | cut -d' ' -f1)
+    if [ -z "$expected" ] || [ "$actual" != "$expected" ]; then
+        echo ">> media-entrypoint: CHECKSUM MISMATCH for $MEDIA_URL"
+        echo "   expected: $expected"
+        echo "   actual:   $actual"
+        exit 1
+    fi
+    echo ">> checksum OK"
 
     echo ">> extracting ..."
     # The archive may contain media/... entries (extract at the html root)
