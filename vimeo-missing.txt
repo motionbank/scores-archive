@@ -26,3 +26,10 @@ streams (720p/1080p H.264), not the original upload masters. If Motion
 Bank wants the true originals, request them from ACCAD OSU directly; any
 replacement file dropped into media/vimeo/<id>.mp4 is picked up by the
 bridge automatically.
+
+Addendum (later, same day): the landing page's tutorial video
+(vimeo 80882239, referenced directly in the static index.html — not a score
+cell, hence missed by the three collection rounds) was harvested by the
+same real-browser CDP + DASH-rebuild method and now also plays locally
+(720p H.264 + AAC, 9:39, faststart). The complete set is 464 score videos
++ 1 tutorial.
